@@ -41,6 +41,13 @@
     }
     .login-btn:hover { transform: scale(1.05); }
     .error-msg { color: #e74c3c; font-size: 14px; margin-bottom: 16px; }
+    /* ponytail: card thumbnail injection — Decap CMS doesn't auto-render JSON entry images */
+    .nc-entryCard-card img[data-thumb] {
+      width: 100% !important;
+      height: 140px !important;
+      object-fit: cover !important;
+      border-radius: 8px 8px 0 0 !important;
+    }
   </style>
 </head>
 <body>
@@ -119,6 +126,54 @@
 
     setTimeout(function() { clearInterval(poll); }, 300000);
   })();
+
+  // ponytail: inject product thumbnails into Decap CMS card view
+  // CMS doesn't auto-render images for JSON-format entries — this fixes it
+  var PRODUCT_IMAGES = {
+    "panel-light":"/assets/images/products/panel-new.webp",
+    "large-downlight":"/assets/images/products/large-downlight-85057.jpeg",
+    "wall-light":"/assets/images/products/wall-light-01.jpeg",
+    "optical-line-zgl062":"/assets/images/products/optical-line-zgl062.jpeg",
+    "magnetic-track":"/assets/images/products/magnetic-track-48v.jpeg",
+    "optical-line-zgl070":"/assets/images/products/optical-line-zgl070.jpeg",
+    "linear-pendant":"/assets/images/products/linear-pendant-lc005.jpeg",
+    "solar-street":"/assets/images/products/solar-street.jpg",
+    "wall-washer":"/assets/images/products/led-wall-washer.jpeg",
+    "ufo-highbay":"/assets/images/products/highbay-new.webp",
+    "flood-light":"/assets/images/products/flood-light.jpg",
+    "df-downlight":"/assets/images/products/narrow-beam-js172.jpeg",
+    "spotlight":"/assets/images/products/spotlight-new.webp",
+    "cold-forged-spotlight":"/assets/images/products/cold-forged-js006.jpeg",
+    "grid-spotlight":"/assets/images/products/mini-spotlight-x01.jpeg",
+    "magnetic-track-fixture":"/assets/images/products/magnetic-track-fixture.jpeg"
+  };
+
+  function injectThumbs() {
+    var links = document.querySelectorAll('a[href*="/entries/"]');
+    for (var i = 0; i < links.length; i++) {
+      var link = links[i];
+      if (link.querySelector('img[data-thumb]')) continue;
+      var m = link.getAttribute('href').match(/\/entries\/(.+)$/);
+      if (!m) continue;
+      var src = PRODUCT_IMAGES[m[1]];
+      if (!src) continue;
+      var img = document.createElement('img');
+      img.src = src;
+      img.setAttribute('data-thumb', '1');
+      img.loading = 'lazy';
+      link.insertBefore(img, link.firstChild);
+    }
+  }
+
+  var thumbObs = new MutationObserver(function() { injectThumbs(); });
+  var thumbCheck = setInterval(function() {
+    if (document.querySelector('[class*="nc-"]')) {
+      clearInterval(thumbCheck);
+      thumbObs.observe(document.body, { childList: true, subtree: true });
+      injectThumbs();
+    }
+  }, 500);
+  window.addEventListener('hashchange', function() { setTimeout(injectThumbs, 300); });
   </script>
 </body>
 </html>
