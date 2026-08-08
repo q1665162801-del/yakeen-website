@@ -35,9 +35,9 @@ try { patchEsbuildWrite(await import('esbuild')); } catch {}
 
 export default defineConfig({
   site: 'https://www.yakeenlighting.com',
-  // ponytail: 每次构建输出到系统临时目录，彻底绕开项目目录下dist的reparse point损坏问题
-  outDir: path.join(tmpdir(), 'yakeen-dist'),
-  cacheDir: path.join(tmpdir(), 'astro-cache-yakeen'),
+  // ponytail: Windows sandbox has reparse point corruption in dist/; CI (Ubuntu) uses default dist/
+  outDir: process.platform === 'win32' ? path.join(tmpdir(), 'yakeen-dist') : 'dist',
+  cacheDir: process.platform === 'win32' ? path.join(tmpdir(), 'astro-cache-yakeen') : undefined,
   i18n: {
     locales: ['en', 'ar'],
     defaultLocale: 'en',
