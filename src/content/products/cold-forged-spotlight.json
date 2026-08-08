@@ -1,33 +1,5 @@
 {
-  "slug": "cold-forged-spotlight",
-  "featured": false,
-  "name": "Cold Forged LED Spotlight",
-  "shortName": "Cold Forged Spotlight",
-  "category": "indoor",
-  "tagline": "Superior thermal management with cold-forged aluminum housing",
-  "description": "Yakeen cold forged LED spotlight, 8-30W with cutout sizes from 55mm to 95mm. Features cold-forged aluminum construction for superior heat dissipation, extending LED lifespan. Beam angles 15°/24°/36° with multiple color options. SASO & G-Mark certified for commercial lighting.",
-  "metaDescription": "Yakeen Cold Forged LED Spotlight — 8-30W, cold-forged aluminum, 55-95mm cutout, SASO & G-Mark certified for commercial accent lighting in the Middle East.",
-  "ogImage": "/assets/images/products/cold-forged-js006.jpeg",
-  "mainImage": "/assets/images/products/cold-forged-js006.jpeg",
-  "galleryImages": [
-    "/assets/images/products/cold-forged-js006.jpeg",
-    "/assets/images/products/cold-forged-js006-page.png"
-  ],
-  "sceneImage": "/assets/images/products/downlight-scene-3.jpg",
-  "specs": {
-    "wattage": "8W-30W",
-    "efficacy": "90-110 lm/W",
-    "cct": "2700K / 3000K / 4000K / 6000K",
-    "cri": "Ra>90",
-    "beamAngle": "15° / 24° / 36°",
-    "ipRating": "IP44",
-    "dimming": "DALI / 0-10V / TRIAC",
-    "lifespan": "L70 > 50,000 hours",
-    "warranty": "5 years",
-    "certifications": "SASO, G-Mark, CE, RoHS",
-    "moq": "100 pieces",
-    "leadTime": "15-25 days"
-  },
+  "mainImage": "/assets/images/products/mini-spotlight-x01.jpeg",
   "applications": [
     {
       "title": "Retail Stores",
@@ -50,30 +22,17 @@
       "icon": "showroom"
     }
   ],
-  "features": [
-    "Cold-forged aluminum housing for superior thermal management",
-    "Extended LED lifespan through efficient heat dissipation",
-    "Beam angles: 15°/24°/36° for flexible lighting design",
-    "Color options: matte white, matte black, gunmetal, bright silver, gold",
-    "Standard and pre-embedded (pre-set) installation versions",
-    "Multiple heights available for different ceiling depths"
+  "ogImage": "/assets/images/products/cold-forged-js006.jpeg",
+  "shortName": "Cold Forged Spotlight",
+  "galleryImages": [
+    "/assets/images/products/cold-forged-js006.jpeg",
+    "/assets/images/products/cold-forged-js006-page.png"
   ],
-  "faqs": [
-    {
-      "question": "Why is cold-forged aluminum better than die-cast?",
-      "answer": "Cold forging produces a denser aluminum structure with better thermal conductivity than die-casting. This means more efficient heat dissipation, which directly extends LED lifespan and maintains light output over time. Yakeen Lighting uses cold-forged construction on all premium spotlight models."
-    },
-    {
-      "question": "What installation options are available?",
-      "answer": "Each model is available in standard (surface) and pre-embedded versions. The pre-embedded version includes a housing that can be set into concrete ceilings during construction for a cleaner, flush appearance."
-    }
-  ],
-  "caseStudy": {
-    "title": "Boutique Hotel",
-    "location": "Doha, Qatar",
-    "year": "2024",
-    "image": "/assets/images/products/downlight-scene-3.jpg"
-  },
+  "name": "Cold Forged LED Spotlight",
+  "slug": "cold-forged-spotlight",
+  "featured": false,
+  "tagline": "Superior thermal management with cold-forged aluminum housing",
+  "sceneImage": "/assets/images/products/downlight-scene-3.jpg",
   "ar": {
     "name": "كشافة LED مشكولة على البارد",
     "shortName": "كشافة مشكولة على البارد",
@@ -119,5 +78,46 @@
       "title": "فندق بوتيك",
       "location": "الدوحة، قطر"
     }
-  }
+  },
+  "metaDescription": "Yakeen Cold Forged LED Spotlight — 8-30W, cold-forged aluminum, 55-95mm cutout, SASO & G-Mark certified for commercial accent lighting in the Middle East.",
+  "specs": {
+    "ipRating": "IP44",
+    "beamAngle": "15° / 24° / 36°",
+    "lifespan": "L70 > 50,000 hours",
+    "leadTime": "15-25 days",
+    "moq": "100 pieces",
+    "cct": "2700K / 3000K / 4000K / 6000K",
+    "wattage": "8W-30W",
+    "efficacy": "90-110 lm/W",
+    "certifications": "SASO, G-Mark, CE, RoHS",
+    "cri": "Ra>90",
+    "warranty": "5 years",
+    "dimming": "DALI / 0-10V / TRIAC"
+  },
+  "caseStudy": {
+    "title": "Boutique Hotel",
+    "location": "Doha, Qatar",
+    "year": "2024",
+    "image": "/assets/images/products/downlight-scene-3.jpg"
+  },
+  "description": "Yakeen cold forged LED spotlight, 8-30W with cutout sizes from 55mm to 95mm. Features cold-forged aluminum construction for superior heat dissipation, extending LED lifespan. Beam angles 15°/24°/36° with multiple color options. SASO & G-Mark certified for commercial lighting.",
+  "faqs": [
+    {
+      "question": "Why is cold-forged aluminum better than die-cast?",
+      "answer": "Cold forging produces a denser aluminum structure with better thermal conductivity than die-casting. This means more efficient heat dissipation, which directly extends LED lifespan and maintains light output over time. Yakeen Lighting uses cold-forged construction on all premium spotlight models."
+    },
+    {
+      "question": "What installation options are available?",
+      "answer": "Each model is available in standard (surface) and pre-embedded versions. The pre-embedded version includes a housing that can be set into concrete ceilings during construction for a cleaner, flush appearance."
+    }
+  ],
+  "features": [
+    "Cold-forged aluminum housing for superior thermal management",
+    "Extended LED lifespan through efficient heat dissipation",
+    "Beam angles: 15°/24°/36° for flexible lighting design",
+    "Color options: matte white, matte black, gunmetal, bright silver, gold",
+    "Standard and pre-embedded (pre-set) installation versions",
+    "Multiple heights available for different ceiling depths"
+  ],
+  "category": "indoor"
 }
