@@ -127,53 +127,113 @@
     setTimeout(function() { clearInterval(poll); }, 300000);
   })();
 
-  // ponytail: inject product thumbnails into Decap CMS card view
-  // CMS doesn't auto-render images for JSON-format entries — this fixes it
-  var PRODUCT_IMAGES = {
-    "panel-light":"/assets/images/products/panel-new.webp",
-    "large-downlight":"/assets/images/products/large-downlight-85057.jpeg",
-    "wall-light":"/assets/images/products/wall-light-01.jpeg",
-    "optical-line-zgl062":"/assets/images/products/optical-line-zgl062.jpeg",
-    "magnetic-track":"/assets/images/products/magnetic-track-48v.jpeg",
-    "optical-line-zgl070":"/assets/images/products/optical-line-zgl070.jpeg",
-    "linear-pendant":"/assets/images/products/linear-pendant-lc005.jpeg",
-    "solar-street":"/assets/images/products/solar-street.jpg",
-    "wall-washer":"/assets/images/products/led-wall-washer.jpeg",
-    "ufo-highbay":"/assets/images/products/highbay-new.webp",
-    "flood-light":"/assets/images/products/flood-light.jpg",
-    "df-downlight":"/assets/images/products/narrow-beam-js172.jpeg",
-    "spotlight":"/assets/images/products/spotlight-new.webp",
-    "cold-forged-spotlight":"/assets/images/products/cold-forged-js006.jpeg",
-    "grid-spotlight":"/assets/images/products/mini-spotlight-x01.jpeg",
-    "magnetic-track-fixture":"/assets/images/products/magnetic-track-fixture.jpeg"
+  // ponytail: 3-strategy thumbnail fix for Decap CMS card view
+  // Strategy 1: global img error handler — fixes broken image URLs
+  // Strategy 2: text-based card matching — finds cards by product name text
+  // Strategy 3: href-based card matching — finds cards by entry slug in href
+
+  var IMG_BASE = '/assets/images/products/';
+  // slug → image filename
+  var SLUG_IMG = {
+    "panel-light":"panel-new.webp","large-downlight":"large-downlight-85057.jpeg",
+    "wall-light":"wall-light-01.jpeg","optical-line-zgl062":"optical-line-zgl062.jpeg",
+    "magnetic-track":"magnetic-track-48v.jpeg","optical-line-zgl070":"optical-line-zgl070.jpeg",
+    "linear-pendant":"linear-pendant-lc005.jpeg","solar-street":"solar-street.jpg",
+    "wall-washer":"led-wall-washer.jpeg","ufo-highbay":"highbay-new.webp",
+    "flood-light":"flood-light.jpg","df-downlight":"narrow-beam-js172.jpeg",
+    "spotlight":"spotlight-new.webp","cold-forged-spotlight":"cold-forged-js006.jpeg",
+    "grid-spotlight":"mini-spotlight-x01.jpeg","magnetic-track-fixture":"magnetic-track-fixture.jpeg"
+  };
+  // product name → image URL (for text-based matching)
+  var NAME_IMG = {
+    "Cold Forged LED Spotlight": IMG_BASE+"cold-forged-js006.jpeg",
+    "Mini Recessed LED Spotlight": IMG_BASE+"mini-spotlight-x01.jpeg",
+    "Large Format Commercial LED Downlight": IMG_BASE+"large-downlight-85057.jpeg",
+    "Narrow Beam Anti-Glare LED Downlight": IMG_BASE+"narrow-beam-js172.jpeg",
+    "Commercial LED Track Spotlight": IMG_BASE+"spotlight-new.webp",
+    "48V Magnetic Track Light System": IMG_BASE+"magnetic-track-48v.jpeg",
+    "Magnetic Track Light Modules": IMG_BASE+"magnetic-track-fixture.jpeg",
+    "Architectural Linear Pendant Light": IMG_BASE+"linear-pendant-lc005.jpeg",
+    "Optical Line Light — Wide Profile": IMG_BASE+"optical-line-zgl062.jpeg",
+    "Optical Line Light — Slim Profile": IMG_BASE+"optical-line-zgl070.jpeg",
+    "Ultra-Thin LED Panel Light": IMG_BASE+"panel-new.webp",
+    "UFO High Bay Light": IMG_BASE+"highbay-new.webp",
+    "LED Flood Light": IMG_BASE+"flood-light.jpg",
+    "All-in-One Solar Street Light": IMG_BASE+"solar-street.jpg",
+    "Architectural LED Wall Washer": IMG_BASE+"led-wall-washer.jpeg",
+    "Commercial LED Wall Light": IMG_BASE+"wall-light-01.jpeg"
   };
 
+  // Strategy 1: fix broken images globally
+  document.addEventListener('error', function(e) {
+    var t = e.target;
+    if (t.tagName !== 'IMG' || t.dataset.fixed) return;
+    var src = t.src || '';
+    var fname = src.split('/').pop().split('?')[0];
+    // check if this filename exists in our known images
+    var known = false;
+    for (var s in SLUG_IMG) { if (SLUG_IMG[s] === fname) { known = true; break; } }
+    if (known && src.indexOf(IMG_BASE) === -1) {
+      t.dataset.fixed = '1';
+      t.src = IMG_BASE + fname;
+    }
+  }, true);
+
+  // Strategy 2+3: inject thumbnails into cards
   function injectThumbs() {
-    var links = document.querySelectorAll('a[href*="/entries/"]');
-    for (var i = 0; i < links.length; i++) {
-      var link = links[i];
-      if (link.querySelector('img[data-thumb]')) continue;
-      var m = link.getAttribute('href').match(/\/entries\/(.+)$/);
-      if (!m) continue;
-      var src = PRODUCT_IMAGES[m[1]];
-      if (!src) continue;
-      var img = document.createElement('img');
-      img.src = src;
-      img.setAttribute('data-thumb', '1');
-      img.loading = 'lazy';
-      link.insertBefore(img, link.firstChild);
+    // collect all candidate card elements
+    var els = document.querySelectorAll(
+      '[class*="entryCard"], [class*="cardListing"], [class*="Card"], [class*="card"], a[href*="entries"], a[href*="/collections/"]'
+    );
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      if (el.querySelector('img[data-thumb]')) continue;
+      // skip if already has a visible (non-broken) img
+      var existing = el.querySelector('img:not([data-thumb])');
+      if (existing && existing.naturalWidth > 0) continue;
+
+      var imgUrl = null;
+
+      // Strategy 3: try href-based slug match
+      var href = el.getAttribute('href') || '';
+      var m = href.match(/\/entries\/(.+?)(?:[?#]|$)/);
+      if (m && SLUG_IMG[m[1]]) {
+        imgUrl = IMG_BASE + SLUG_IMG[m[1]];
+      }
+
+      // Strategy 2: try text-based name match
+      if (!imgUrl) {
+        var text = el.textContent || '';
+        for (var name in NAME_IMG) {
+          if (text.indexOf(name) >= 0) { imgUrl = NAME_IMG[name]; break; }
+        }
+      }
+
+      if (imgUrl) {
+        var img = document.createElement('img');
+        img.src = imgUrl;
+        img.setAttribute('data-thumb', '1');
+        img.loading = 'lazy';
+        img.style.cssText = 'width:100%;height:140px;object-fit:cover;border-radius:8px 8px 0 0;display:block;';
+        // insert at the very beginning
+        if (el.children.length > 0) {
+          el.insertBefore(img, el.firstChild);
+        } else {
+          el.appendChild(img);
+        }
+      }
     }
   }
 
-  var thumbObs = new MutationObserver(function() { injectThumbs(); });
+  var thumbObs = new MutationObserver(function() { setTimeout(injectThumbs, 50); });
   var thumbCheck = setInterval(function() {
-    if (document.querySelector('[class*="nc-"]')) {
+    if (document.querySelector('[class*="nc-"], [class*="cms"], [id*="nc-"]')) {
       clearInterval(thumbCheck);
       thumbObs.observe(document.body, { childList: true, subtree: true });
       injectThumbs();
     }
   }, 500);
-  window.addEventListener('hashchange', function() { setTimeout(injectThumbs, 300); });
+  window.addEventListener('hashchange', function() { setTimeout(injectThumbs, 500); });
   </script>
 </body>
 </html>
