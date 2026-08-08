@@ -1,34 +1,5 @@
 {
-  "slug": "linear-pendant",
-  "featured": true,
-  "name": "Architectural Linear Pendant Light",
-  "shortName": "Linear Pendant",
-  "category": "panel-linear",
-  "tagline": "Modular suspended linear lighting with customizable lengths",
-  "description": "Yakeen architectural linear pendant light — modular design with maximum 3.6-4m per section, customizable total length. Features pendant suspension with steel wires, aluminum housing, and integrated LED. Ideal for offices, hotels, and commercial spaces. SASO & G-Mark certified.",
-  "metaDescription": "Yakeen Linear Pendant Light — modular, max 4m/section, pendant suspended, aluminum housing, SASO & G-Mark certified for architectural lighting in the Middle East.",
-  "ogImage": "/assets/images/products/linear-pendant-lc005.jpeg",
   "mainImage": "/assets/images/products/linear-pendant-lc005.jpeg",
-  "galleryImages": [
-    "/assets/images/products/linear-pendant-lc005.jpeg",
-    "/assets/images/products/linear-pendant-lc005-page.png",
-    "/assets/images/products/linear-new.webp"
-  ],
-  "sceneImage": "/assets/images/products/linear-scene-1.jpg",
-  "specs": {
-    "wattage": "20W-60W per meter",
-    "efficacy": "100-120 lm/W",
-    "cct": "2700K / 3000K / 4000K / 5000K",
-    "cri": "Ra>90",
-    "beamAngle": "30° / 60° / 90° / 120°",
-    "ipRating": "IP20",
-    "dimming": "DALI / 0-10V / Smart",
-    "lifespan": "L70 > 50,000 hours",
-    "warranty": "5 years",
-    "certifications": "SASO, G-Mark, CE, RoHS",
-    "moq": "30 pieces",
-    "leadTime": "20-30 days"
-  },
   "applications": [
     {
       "title": "Offices",
@@ -51,30 +22,18 @@
       "icon": "office"
     }
   ],
-  "features": [
-    "Modular design: max 3.6-4m per section, extendable",
-    "Pendant suspension with adjustable steel wires",
-    "Aluminum housing with excellent thermal management",
-    "Multiple beam angles: 30°/60°/90°/120°",
-    "DALI/0-10V dimming for scene control",
-    "Custom lengths available (OEM/ODM)"
+  "ogImage": "/assets/images/products/magnetic-track-48v.jpeg",
+  "shortName": "Linear Pendant",
+  "galleryImages": [
+    "/assets/images/products/linear-pendant-lc005.jpeg",
+    "/assets/images/products/linear-pendant-lc005-page.png",
+    "/assets/images/products/linear-new.webp"
   ],
-  "faqs": [
-    {
-      "question": "What is the maximum length per section?",
-      "answer": "Each section can be up to 3.6-4 meters depending on the model. Multiple sections can be connected with end-to-end connectors for longer runs. Yakeen Lighting provides layout design and DIALux simulation."
-    },
-    {
-      "question": "Can I customize the pendant height?",
-      "answer": "Yes. The steel wire suspension is adjustable from 0.5m to 3m. Custom suspension systems are available for sloped ceilings or special architectural requirements."
-    }
-  ],
-  "caseStudy": {
-    "title": "Corporate Office",
-    "location": "Riyadh, Saudi Arabia",
-    "year": "2024",
-    "image": "/assets/images/products/linear-scene-1.jpg"
-  },
+  "name": "Architectural Linear Pendant Light",
+  "slug": "linear-pendant",
+  "featured": true,
+  "tagline": "Modular suspended linear lighting with customizable lengths",
+  "sceneImage": "/assets/images/products/linear-scene-1.jpg",
   "ar": {
     "name": "إضاءة خطية معلقة معمارية",
     "shortName": "إضاءة خطية معلقة",
@@ -120,5 +79,46 @@
       "title": "مكتب شركة",
       "location": "الرياض، السعودية"
     }
-  }
+  },
+  "metaDescription": "Yakeen Linear Pendant Light — modular, max 4m/section, pendant suspended, aluminum housing, SASO & G-Mark certified for architectural lighting in the Middle East.",
+  "specs": {
+    "ipRating": "IP20",
+    "beamAngle": "30° / 60° / 90° / 120°",
+    "lifespan": "L70 > 50,000 hours",
+    "leadTime": "20-30 days",
+    "moq": "30 pieces",
+    "cct": "2700K / 3000K / 4000K / 5000K",
+    "wattage": "20W-60W per meter",
+    "efficacy": "100-120 lm/W",
+    "certifications": "SASO, G-Mark, CE, RoHS",
+    "cri": "Ra>90",
+    "warranty": "5 years",
+    "dimming": "DALI / 0-10V / Smart"
+  },
+  "caseStudy": {
+    "title": "Corporate Office",
+    "location": "Riyadh, Saudi Arabia",
+    "year": "2024",
+    "image": "/assets/images/products/linear-scene-1.jpg"
+  },
+  "description": "Yakeen architectural linear pendant light — modular design with maximum 3.6-4m per section, customizable total length. Features pendant suspension with steel wires, aluminum housing, and integrated LED. Ideal for offices, hotels, and commercial spaces. SASO & G-Mark certified.",
+  "faqs": [
+    {
+      "question": "What is the maximum length per section?",
+      "answer": "Each section can be up to 3.6-4 meters depending on the model. Multiple sections can be connected with end-to-end connectors for longer runs. Yakeen Lighting provides layout design and DIALux simulation."
+    },
+    {
+      "question": "Can I customize the pendant height?",
+      "answer": "Yes. The steel wire suspension is adjustable from 0.5m to 3m. Custom suspension systems are available for sloped ceilings or special architectural requirements."
+    }
+  ],
+  "features": [
+    "Modular design: max 3.6-4m per section, extendable",
+    "Pendant suspension with adjustable steel wires",
+    "Aluminum housing with excellent thermal management",
+    "Multiple beam angles: 30°/60°/90°/120°",
+    "DALI/0-10V dimming for scene control",
+    "Custom lengths available (OEM/ODM)"
+  ],
+  "category": "panel-linear"
 }
