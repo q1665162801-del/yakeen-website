@@ -1,34 +1,5 @@
 {
-  "slug": "df-downlight",
-  "featured": true,
-  "name": "Narrow Beam Anti-Glare LED Downlight",
-  "shortName": "Narrow Beam Downlight",
-  "category": "indoor",
-  "tagline": "Precision 'single beam' optical design with UGR<16",
-  "description": "Yakeen narrow beam LED downlight with precision optical lens design, available in 8W-40W with cutout sizes from 55mm to 120mm. Features anti-glare UGR<16 performance, multiple beam angles (15°/24°/36°/50°), and premium aluminum housing. SASO & G-Mark certified for Middle East commercial projects.",
-  "metaDescription": "Yakeen Narrow Beam LED Downlight — 8-40W, UGR<16, precision optical lens, 55-120mm cutout, SASO & G-Mark certified for Middle East commercial lighting.",
-  "ogImage": "/assets/images/products/narrow-beam-js172.jpeg",
   "mainImage": "/assets/images/products/narrow-beam-js172.jpeg",
-  "galleryImages": [
-    "/assets/images/products/narrow-beam-js172.jpeg",
-    "/assets/images/products/narrow-beam-js172-page.png",
-    "/assets/images/products/downlight-new.webp"
-  ],
-  "sceneImage": "/assets/images/products/downlight-scene-1.jpg",
-  "specs": {
-    "wattage": "8W-40W",
-    "efficacy": "100-130 lm/W",
-    "cct": "2700K / 3000K / 4000K / 5000K / 6000K",
-    "cri": "Ra>90",
-    "beamAngle": "15° / 24° / 36° / 50°",
-    "ipRating": "IP44",
-    "dimming": "DALI / 0-10V / TRIAC",
-    "lifespan": "L70 > 50,000 hours",
-    "warranty": "5 years",
-    "certifications": "SASO, G-Mark, CE, RoHS",
-    "moq": "100 pieces",
-    "leadTime": "15-25 days"
-  },
   "applications": [
     {
       "title": "Shopping Malls",
@@ -51,34 +22,18 @@
       "icon": "gallery"
     }
   ],
-  "features": [
-    "Precision 'single beam' optical lens design (UGR<16)",
-    "Multiple beam angles: 15°/24°/36°/50° for flexible lighting design",
-    "Premium die-cast aluminum housing for excellent thermal management",
-    "Available in flat narrow-edge and curved bezel designs",
-    "Finish options: matte white, matte black, gunmetal, bright silver",
-    "Tool-free spring clip installation"
+  "ogImage": "/assets/images/products/downlight-3.jpg",
+  "shortName": "Narrow Beam Downlight",
+  "galleryImages": [
+    "/assets/images/products/narrow-beam-js172.jpeg",
+    "/assets/images/products/narrow-beam-js172-page.png",
+    "/assets/images/products/downlight-new.webp"
   ],
-  "faqs": [
-    {
-      "question": "What makes the narrow beam design different from standard downlights?",
-      "answer": "The narrow beam optical design uses a precision lens to create a focused 'single beam' of light with minimal spill. This achieves UGR<16 (virtually glare-free) while providing excellent accent lighting. Yakeen Lighting provides UGR test reports for every batch."
-    },
-    {
-      "question": "What cutout sizes are available?",
-      "answer": "We offer 55mm (8W), 75mm (12-18W), 95mm (24W), and 120mm (40W) cutout sizes. Custom sizes are available with OEM/ODM orders (MOQ 500pcs)."
-    },
-    {
-      "question": "Can I get both flat and curved bezel designs?",
-      "answer": "Yes. Each size is available in both flat narrow-edge and curved bezel options. We also offer frameless round designs for a seamless ceiling appearance."
-    }
-  ],
-  "caseStudy": {
-    "title": "Luxury Hotel Lobby",
-    "location": "Manama, Bahrain",
-    "year": "2024",
-    "image": "/assets/images/products/downlight-scene-1.jpg"
-  },
+  "name": "Narrow Beam Anti-Glare LED Downlight",
+  "slug": "df-downlight",
+  "featured": true,
+  "tagline": "Precision 'single beam' optical design with UGR<16",
+  "sceneImage": "/assets/images/products/downlight-scene-1.jpg",
   "ar": {
     "name": "إضاءة LED مدمجة بشعاع ضيق مضاد للوهج",
     "shortName": "إضاءة مدمجة بشعاع ضيق",
@@ -128,5 +83,50 @@
       "title": "بهو فندق فاخر",
       "location": "المنامة، البحرين"
     }
-  }
+  },
+  "metaDescription": "Yakeen Narrow Beam LED Downlight — 8-40W, UGR<16, precision optical lens, 55-120mm cutout, SASO & G-Mark certified for Middle East commercial lighting.",
+  "specs": {
+    "ipRating": "IP44",
+    "beamAngle": "15° / 24° / 36° / 50°",
+    "lifespan": "L70 > 50,000 hours",
+    "leadTime": "15-25 days",
+    "moq": "100 pieces",
+    "cct": "2700K / 3000K / 4000K / 5000K / 6000K",
+    "wattage": "8W-40W",
+    "efficacy": "100-130 lm/W",
+    "certifications": "SASO, G-Mark, CE, RoHS",
+    "cri": "Ra>90",
+    "warranty": "5 years",
+    "dimming": "DALI / 0-10V / TRIAC"
+  },
+  "caseStudy": {
+    "title": "Luxury Hotel Lobby",
+    "location": "Manama, Bahrain",
+    "year": "2024",
+    "image": "/assets/images/products/downlight-scene-1.jpg"
+  },
+  "description": "Yakeen narrow beam LED downlight with precision optical lens design, available in 8W-40W with cutout sizes from 55mm to 120mm. Features anti-glare UGR<16 performance, multiple beam angles (15°/24°/36°/50°), and premium aluminum housing. SASO & G-Mark certified for Middle East commercial projects.",
+  "faqs": [
+    {
+      "question": "What makes the narrow beam design different from standard downlights?",
+      "answer": "The narrow beam optical design uses a precision lens to create a focused 'single beam' of light with minimal spill. This achieves UGR<16 (virtually glare-free) while providing excellent accent lighting. Yakeen Lighting provides UGR test reports for every batch."
+    },
+    {
+      "question": "What cutout sizes are available?",
+      "answer": "We offer 55mm (8W), 75mm (12-18W), 95mm (24W), and 120mm (40W) cutout sizes. Custom sizes are available with OEM/ODM orders (MOQ 500pcs)."
+    },
+    {
+      "question": "Can I get both flat and curved bezel designs?",
+      "answer": "Yes. Each size is available in both flat narrow-edge and curved bezel options. We also offer frameless round designs for a seamless ceiling appearance."
+    }
+  ],
+  "features": [
+    "Precision 'single beam' optical lens design (UGR<16)",
+    "Multiple beam angles: 15°/24°/36°/50° for flexible lighting design",
+    "Premium die-cast aluminum housing for excellent thermal management",
+    "Available in flat narrow-edge and curved bezel designs",
+    "Finish options: matte white, matte black, gunmetal, bright silver",
+    "Tool-free spring clip installation"
+  ],
+  "category": "indoor"
 }
