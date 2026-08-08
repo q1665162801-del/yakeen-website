@@ -1,0 +1,107 @@
+[
+  {
+    "slug": "mini-spotlight-x01",
+    "description": "JS-X01 small recessed spotlight series",
+    "page": 3,
+    "extracted_image": true,
+    "rendered_page": true
+  },
+  {
+    "slug": "narrow-beam-js172",
+    "description": "JS172 narrow beam downlight",
+    "page": 8,
+    "extracted_image": true,
+    "rendered_page": true
+  },
+  {
+    "slug": "large-downlight-85057",
+    "description": "JS85057 large format downlight",
+    "page": 2,
+    "extracted_image": true,
+    "rendered_page": true
+  },
+  {
+    "slug": "cold-forged-js006",
+    "description": "JS006 cold forged spotlight",
+    "page": 8,
+    "extracted_image": true,
+    "rendered_page": true
+  },
+  {
+    "slug": "magnetic-track-48v",
+    "description": "48V magnetic track system",
+    "page": 6,
+    "extracted_image": true,
+    "rendered_page": true
+  },
+  {
+    "slug": "magnetic-track-fixture",
+    "description": "Magnetic track light fixtures",
+    "page": 7,
+    "extracted_image": true,
+    "rendered_page": true
+  },
+  {
+    "slug": "optical-line-zgl062",
+    "description": "ZGL062 optical line light",
+    "page": 16,
+    "extracted_image": true,
+    "rendered_page": true
+  },
+  {
+    "slug": "optical-line-zgl070",
+    "description": "ZGL070 optical line light",
+    "page": 17,
+    "extracted_image": true,
+    "rendered_page": true
+  },
+  {
+    "slug": "linear-pendant-lc005",
+    "description": "LC005 linear pendant light",
+    "page": 20,
+    "extracted_image": true,
+    "rendered_page": true
+  },
+  {
+    "slug": "led-wall-washer",
+    "description": "LED wall washer series",
+    "page": 14,
+    "extracted_image": true,
+    "rendered_page": true
+  },
+  {
+    "slug": "wall-light-01",
+    "description": "Wall light product",
+    "page": 1,
+    "extracted_image": true,
+    "rendered_page": true
+  },
+  {
+    "slug": "wall-light-02",
+    "description": "Wall light product 2",
+    "page": 5,
+    "extracted_image": true,
+    "rendered_page": true
+  },
+  {
+    "slug": "zhicheng-01",
+    "description": "Zhicheng catalog page 2",
+    "page": 2,
+    "extracted_image": true,
+    "rendered_page": true
+  },
+  {
+    "slug": "zhicheng-02",
+    "description": "Zhicheng catalog page 6",
+    "page": 6,
+    "extracted_image": true,
+    "rendered_page": true
+  },
+  {
+    "slug": "zhicheng-03",
+    "description": "Zhicheng catalog page 11",
+    "page": 11,
+    "extracted_image": true,
+    "rendered_page": true
+  }
+]

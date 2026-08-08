@@ -1,0 +1,123 @@
+{
+  "slug": "spotlight",
+  "featured": true,
+  "name": "Commercial LED Track Spotlight",
+  "shortName": "Track Spotlight",
+  "category": "track",
+  "tagline": "350° rotation with COB LED precision",
+  "description": "Yakeen commercial LED track spotlight with 350° rotation, COB LED, 10-35W, CRI>90, SASO & G-Mark certified for retail and gallery lighting.",
+  "metaDescription": "Yakeen LED Track Spotlight — 350° rotation, COB LED, 10-35W, CRI>90, SASO & G-Mark certified for retail and gallery lighting in the Middle East.",
+  "ogImage": "/assets/images/products/spotlight-new.webp",
+  "mainImage": "/assets/images/products/spotlight-new.webp",
+  "galleryImages": [
+    "/assets/images/products/spotlight-new.webp",
+    "/assets/images/products/spotlight-2.jpg"
+  ],
+  "sceneImage": "/assets/images/products/spotlight-scene-1.jpg",
+  "specs": {
+    "wattage": "10W-35W",
+    "efficacy": "90-110 lm/W",
+    "cct": "2700K / 3000K / 4000K / 5000K",
+    "cri": "Ra>90",
+    "beamAngle": "15° / 24° / 36° / 60°",
+    "ipRating": "IP20",
+    "dimming": "DALI / 0-10V / TRIAC",
+    "lifespan": "L70 > 50,000 hours",
+    "warranty": "5 years",
+    "certifications": "SASO, G-Mark, CE, RoHS",
+    "moq": "100 pieces",
+    "leadTime": "15-25 days"
+  },
+  "applications": [
+    {
+      "title": "Retail Stores",
+      "desc": "Precision accent lighting for merchandise displays.",
+      "icon": "retail"
+    },
+    {
+      "title": "Galleries & Museums",
+      "desc": "High CRI for accurate color rendering of artwork.",
+      "icon": "gallery"
+    },
+    {
+      "title": "Restaurants",
+      "desc": "Warm, focused light for intimate dining ambiance.",
+      "icon": "restaurant"
+    },
+    {
+      "title": "Showrooms",
+      "desc": "Flexible, adjustable lighting for product showcases.",
+      "icon": "showroom"
+    }
+  ],
+  "features": [
+    "COB LED for uniform, high-quality light",
+    "350° horizontal + 90° vertical rotation",
+    "Anti-glare honeycomb baffle option",
+    "Compatible with 2-wire/3-wire/4-wire track systems",
+    "Tool-free lamp head adjustment",
+    "DALI/0-10V/TRIAC dimming compatible"
+  ],
+  "faqs": [
+    {
+      "question": "Is the track spotlight compatible with existing track systems?",
+      "answer": "Yes. Yakeen Lighting provides adapters for all major track systems (Global, Halo, STC). Specify your existing track type when ordering."
+    },
+    {
+      "question": "Can I order different beam angles for different zones?",
+      "answer": "Absolutely. We offer 15°/24°/36°/60° beam angles. You can mix and match within a single order. Yakeen Lighting provides lighting design consultation to help you choose the right beam angles."
+    }
+  ],
+  "caseStudy": {
+    "title": "Retail Store",
+    "location": "Dubai, UAE",
+    "year": "2024",
+    "image": "/assets/images/products/spotlight-scene-1.jpg"
+  },
+  "ar": {
+    "name": "كشافة مسار LED تجاري",
+    "shortName": "كشافة مسار",
+    "tagline": "دوران 350° مع دقة COB LED",
+    "description": "كشافة مسار LED تجاري من Yakeen بدوران 350°، COB LED، 10-35واط، CRI>90، معتمد SASO و G-Mark لإضاءة التجزئة والمعارض.",
+    "features": [
+      "COB LED لإضاءة موحدة عالية الجودة",
+      "دوران أفقي 350° + عمودي 90°",
+      "خيار حاجز قرص النحل المضاد للوهج",
+      "متوافق مع أنظمة المسار 2 سلك/3 سلك/4 سلك",
+      "تعديل رأس المصباح بدون أدوات",
+      "تعتيم DALI/0-10V/TRIAC متوافق"
+    ],
+    "applications": [
+      {
+        "title": "المتاجر",
+        "desc": "إضاءة دقيقة للعرض البضائع."
+      },
+      {
+        "title": "المعارض والمتاحف",
+        "desc": "CRI عالي لعرض الألوان الدقيق للأعمال الفنية."
+      },
+      {
+        "title": "المطاعم",
+        "desc": "إضاءة دافئة مركزة لأجواء طعام حميمية."
+      },
+      {
+        "title": "صالات العرض",
+        "desc": "إضاءة مرنة قابلة للتعديل لعروض المنتجات."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "هل كشافة المسار متوافقة مع أنظمة المسار الموجودة؟",
+        "answer": "نعم. توفر Yakeen Lighting محولات لجميع أنظمة المسار الرئيسية (Global، Halo، STC). حدد نوع المسار الموجود عند الطلب."
+      },
+      {
+        "question": "هل يمكنني طلب زوايا شعاع مختلفة لمناطق مختلفة؟",
+        "answer": "بالتأكيد. نقدم زوايا شعاع 15°/24°/36°/60°. يمكنك المزج والمطابقة في طلب واحد. توفر Yakeen Lighting استشارة تصميم الإضاءة لمساعدتك في اختيار الزوايا المناسبة."
+      }
+    ],
+    "caseStudy": {
+      "title": "متجر تجزئة",
+      "location": "دبي، الإمارات"
+    }
+  }
+}

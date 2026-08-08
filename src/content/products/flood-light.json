@@ -1,0 +1,121 @@
+{
+  "slug": "flood-light",
+  "name": "LED Flood Light",
+  "shortName": "Flood Light",
+  "category": "outdoor",
+  "tagline": "50-500W modular with IP66 and IK08",
+  "description": "Yakeen LED flood light, 50-500W modular, IP66, IK08, tempered glass and stainless steel bracket, SASO & G-Mark certified.",
+  "metaDescription": "Yakeen LED Flood Light — 50-500W modular, IP66, IK08, tempered glass, stainless steel bracket, SASO & G-Mark certified for outdoor Middle East illumination.",
+  "ogImage": "/assets/images/products/flood-light.jpg",
+  "mainImage": "/assets/images/products/flood-light.jpg",
+  "galleryImages": [
+    "/assets/images/products/flood-light.jpg"
+  ],
+  "sceneImage": "/assets/images/products/flood-scene-1.jpg",
+  "specs": {
+    "wattage": "50W-500W",
+    "efficacy": "130-150 lm/W",
+    "cct": "3000K / 4000K / 5000K / 5700K",
+    "cri": "Ra>70",
+    "beamAngle": "30° / 60° / 90° / 120° / Type III/V",
+    "ipRating": "IP66",
+    "dimming": "0-10V / DALI",
+    "lifespan": "L70 > 50,000 hours",
+    "warranty": "5 years",
+    "certifications": "SASO, G-Mark, CE, RoHS",
+    "moq": "50 pieces",
+    "leadTime": "10-20 days"
+  },
+  "applications": [
+    {
+      "title": "Sports Stadiums",
+      "desc": "High-power floodlighting for sports facilities.",
+      "icon": "sports"
+    },
+    {
+      "title": "Building Facades",
+      "desc": "Architectural uplighting for building exteriors.",
+      "icon": "building"
+    },
+    {
+      "title": "Parking Lots",
+      "desc": "Area lighting for outdoor parking.",
+      "icon": "parking"
+    },
+    {
+      "title": "Construction Sites",
+      "desc": "Durable, bright lighting for work zones.",
+      "icon": "construction"
+    }
+  ],
+  "features": [
+    "Modular design: scale 50W to 500W",
+    "IK08 tempered glass lens",
+    "Stainless steel bracket (anti-corrosion)",
+    "Salt-spray tested for coastal environments",
+    "UV-resistant housing for desert climates",
+    "Mean Well driver standard"
+  ],
+  "faqs": [
+    {
+      "question": "Can the flood light withstand Middle East weather?",
+      "answer": "Yes. IP66 for water-jet and dust resistance, IK08 for impact resistance. Yakeen Lighting provides salt-spray test reports and UV-aging data."
+    },
+    {
+      "question": "What is the MOQ and lead time?",
+      "answer": "MOQ 50 pieces, lead time 10-20 days. Yakeen Lighting provides a confirmed delivery schedule with every quotation."
+    }
+  ],
+  "caseStudy": {
+    "title": "Sports Stadium",
+    "location": "Muscat, Oman",
+    "year": "2024",
+    "image": "/assets/images/products/flood-scene-1.jpg"
+  },
+  "ar": {
+    "name": "كشاف LED",
+    "shortName": "كشاف",
+    "tagline": "50-500واط معياري مع IP66 و IK08",
+    "description": "كشاف LED من Yakeen، 50-500واط معياري، IP66، IK08، زجاج مقوى وقوس ستانلس ستيل، معتمد SASO و G-Mark.",
+    "features": [
+      "تصميم معياري: من 50واط إلى 500واط",
+      "زجاج مقوى IK08",
+      "قوس ستانلس ستيل (مضاد للتآكل)",
+      "مختبر رذاذ الملح للبيئات الساحلية",
+      "هيكل مقاوم للأشعة فوق البنفسجية للمناخات الصحراوية",
+      "محرك Mean Well قياسي"
+    ],
+    "applications": [
+      {
+        "title": "الملاعب الرياضية",
+        "desc": "إضاءة قوية للملاعب الرياضية."
+      },
+      {
+        "title": "واجهات المباني",
+        "desc": "إضاءة معمارية صاعدة لواجهات المباني."
+      },
+      {
+        "title": "مواقف السيارات",
+        "desc": "إضاءة منطقة للمواقف الخارجية."
+      },
+      {
+        "title": "مواقع البناء",
+        "desc": "إضاءة ساطعة ومتينة لمناطق العمل."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "هل يمكن للكشاف تحمل طقس الشرق الأوسط؟",
+        "answer": "نعم. IP66 لمقاومة الماء والغبار، IK08 لمقاومة الصدمات. توفر Yakeen Lighting تقارير اختبار رذاذ الملح وبيانات شيخوخة الأشعة فوق البنفسجية."
+      },
+      {
+        "question": "ما هو الحد الأدنى للطلب ومدة التسليم؟",
+        "answer": "الحد الأدنى 50 قطعة، مدة التسليم 10-20 يوماً. توفر Yakeen Lighting جدول تسليم مؤكد مع كل عرض سعر."
+      }
+    ],
+    "caseStudy": {
+      "title": "ملعب رياضي",
+      "location": "مسقط، عمان"
+    }
+  }
+}

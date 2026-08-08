@@ -1,0 +1,79 @@
+---
+import { siteConfig } from '../data/site-config';
+import { getLocale, t } from '../i18n/ui';
+
+// Single source of truth — ['SASO', 'G-Mark', 'CE', 'RoHS', 'ISO 9001:2015']
+const certifications = siteConfig.certifications;
+const locale = getLocale(Astro.url);
+const certImages: Record<string, string> = {
+  'SASO': '/assets/images/certs/cert_saso.svg',
+  'G-Mark': '/assets/images/certs/cert_gcc.svg',
+  'CE': '/assets/images/certs/cert_ce.svg',
+  'RoHS': '/assets/images/certs/cert_rohs.svg',
+  'ISO 9001:2015': '/assets/images/certs/cert_iso_9001.svg',
+};
+
+interface Props {
+  /** Optional heading override (falls back to i18n key) */
+  heading?: string;
+}
+
+const { heading } = Astro.props;
+const headingText = heading || t(locale, 'trustbar.heading');
+---
+
+<section class="trustbar" aria-label={t(locale, 'aria.certifications')}>
+  <div class="container-yakeen py-8 md:py-10">
+    <p class="trust-heading text-center mb-6 md:mb-8">{headingText}</p>
+    <ul class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 md:gap-x-12">
+      {certifications.map((cert) => (
+        <li class="cert-item">
+          <img src={certImages[cert] || ''} alt={cert} class="cert-badge" loading="lazy" width="40" height="40" />
+          <span class="cert-label">{cert}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .trustbar {
+    background: #e8ecf4;
+    border-top: 3px solid var(--gold-500);
+  }
+
+  .trust-heading {
+    color: #050b14;
+    font-weight: 800;
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    letter-spacing: -0.01em;
+  }
+
+  .cert-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    color: #050b14;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .cert-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--gold-600);
+  }
+
+  .cert-badge svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .cert-label {
+    white-space: nowrap;
+  }
+</style>

@@ -1,0 +1,282 @@
+---
+import { navItems, marketItems, siteConfig, languages } from '../data/site-config';
+import { getLocale, t, switchLangPath } from '../i18n/ui';
+const { pathname } = Astro.url;
+
+const locale = getLocale(Astro.url);
+const prefix = locale === 'ar' ? '/ar' : '';
+
+// Active link detection (works for both EN root and /ar prefixed paths)
+const isActive = (href: string): boolean => {
+  if (href === '/') {
+    return pathname === '/' || pathname === '/ar' || pathname === '/ar/';
+  }
+  const clean = href.replace(/\/$/, '');
+  return (
+    pathname === clean ||
+    pathname.startsWith(clean + '/') ||
+    pathname.startsWith('/ar' + clean)
+  );
+};
+
+const homeHref = prefix || '/';
+const quoteHref = prefix + '/contact';
+---
+
+<header id="site-header" class="site-header fixed top-0 inset-x-0 z-50">
+  <div class="container-yakeen">
+    <div class="flex items-center justify-between" style="height: var(--header-height);">
+      <!-- Logo -->
+      <a
+        href={homeHref}
+        class="flex items-center gap-2.5 shrink-0"
+        aria-label={`${siteConfig.name} — ${t(locale, 'nav.home')}`}
+      >
+        <span
+          class="inline-flex items-center justify-center w-9 h-9 rounded-lg shadow-lg"
+          style="background: linear-gradient(135deg, var(--gold-500), var(--gold-600));"
+        >
+          <svg
+            width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="var(--navy-900)" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true"
+          >
+            <path d="M9 18h6" /><path d="M10 22h4" />
+            <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14" />
+          </svg>
+        </span>
+        <span class="font-serif text-2xl font-bold leading-none tracking-tight">
+          <span class="text-white">Yakeen</span><span class="text-gradient-gold"> Lighting</span>
+        </span>
+      </a>
+
+      <!-- Desktop navigation -->
+      <nav class="hidden lg:flex items-center gap-0.5" aria-label={t(locale, 'aria.primary')}>
+        {navItems.map((item) => (
+          <a
+            href={prefix + item.href}
+            class={`nav-link px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200 ${
+              isActive(item.href)
+                ? 'active text-gold-500'
+                : 'text-white/90 hover:text-white'
+            }`}
+            aria-current={isActive(item.href) ? 'page' : undefined}
+          >
+            {t(locale, item.i18nKey)}
+          </a>
+        ))}
+
+        <!-- Markets dropdown -->
+        <div class="relative group">
+          <button
+            type="button"
+            class="nav-link px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200 text-white/90 hover:text-white inline-flex items-center gap-1"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            {t(locale, 'nav.markets')}
+            <svg
+              class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <div
+            class="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-56 opacity-0 invisible
+                   group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100
+                   group-focus-within:visible transition-all duration-200"
+          >
+            <div
+              class="rounded-xl overflow-hidden border border-white/10 shadow-2xl"
+              style="background: rgba(10,21,37,0.96); backdrop-filter: blur(12px);"
+            >
+              {marketItems.map((m) => (
+                <a
+                  href={prefix + m.href}
+                  class="block px-4 py-3 text-sm text-white/80 hover:text-gold-400 hover:bg-white/5 transition-colors duration-150 border-b border-white/5 last:border-0"
+                >
+                  {t(locale, m.i18nKey)}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Right-side actions -->
+      <div class="hidden lg:flex items-center gap-4">
+        <div class="flex items-center gap-2 text-sm" role="group" aria-label={t(locale, 'aria.languageSwitcher')}>
+          <a
+            href={switchLangPath(pathname, 'en')}
+            class={`font-semibold transition-colors ${
+              locale === 'en' ? 'text-gold-500' : 'text-white/70 hover:text-white'
+            }`}
+            aria-current={locale === 'en' ? 'true' : undefined}
+          >
+            {languages.en.label}
+          </a>
+          <span class="text-white/30" aria-hidden="true">|</span>
+          <a
+            href={switchLangPath(pathname, 'ar')}
+            class={`font-semibold transition-colors ${
+              locale === 'ar' ? 'text-gold-500' : 'text-white/70 hover:text-white'
+            }`}
+            aria-current={locale === 'ar' ? 'true' : undefined}
+            dir="rtl"
+          >
+            {languages.ar.label}
+          </a>
+        </div>
+        <a href={quoteHref} class="btn-gold animate-pulse-gold">{t(locale, 'nav.getQuote')}</a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button
+        id="menu-toggle"
+        type="button"
+        class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-md text-white hover:bg-white/10 transition-colors"
+        aria-label={t(locale, 'nav.openMenu')}
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        data-label-open={t(locale, 'nav.openMenu')}
+        data-label-close={t(locale, 'nav.closeMenu')}
+      >
+        <svg class="menu-icon-open w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+        <svg class="menu-icon-close hidden w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu panel -->
+  <div
+    id="mobile-menu"
+    class="mobile-menu lg:hidden fixed inset-x-0 top-[var(--header-height)] z-40"
+    style="background: rgba(5,11,20,0.97); backdrop-filter: blur(16px);"
+  >
+    <div class="container-yakeen py-6 overflow-y-auto" style="max-height: calc(100vh - var(--header-height));">
+      <nav class="flex flex-col gap-1" aria-label={t(locale, 'aria.mobilePrimary')}>
+        {navItems.map((item) => (
+          <a
+            href={prefix + item.href}
+            class={`mobile-link px-4 py-3 rounded-lg text-base font-medium transition-colors ${
+              isActive(item.href)
+                ? 'text-gold-500 bg-white/5'
+                : 'text-white/90 hover:text-white hover:bg-white/5'
+            }`}
+          >
+            {t(locale, item.i18nKey)}
+          </a>
+        ))}
+
+        <div class="px-4 pt-4 pb-1 text-xs font-semibold uppercase tracking-wider text-gold-500/80">
+          {t(locale, 'nav.markets')}
+        </div>
+        {marketItems.map((m) => (
+          <a
+            href={prefix + m.href}
+            class="mobile-link px-4 py-3 rounded-lg text-base text-white/80 hover:text-gold-400 hover:bg-white/5 transition-colors"
+          >
+            {t(locale, m.i18nKey)}
+          </a>
+        ))}
+      </nav>
+
+      <div class="mt-6 pt-6 border-t border-white/10 flex flex-col gap-4">
+        <div class="flex items-center gap-3 text-sm" role="group" aria-label={t(locale, 'aria.languageSwitcher')}>
+          <span class="text-white/50 text-xs uppercase tracking-wider">{t(locale, 'nav.language')}</span>
+          <a
+            href={switchLangPath(pathname, 'en')}
+            class={`px-3 py-1.5 rounded-md font-semibold transition-colors ${
+              locale === 'en' ? 'bg-gold-500 text-navy-900' : 'text-white/80 border border-white/20'
+            }`}
+          >
+            {languages.en.label}
+          </a>
+          <a
+            href={switchLangPath(pathname, 'ar')}
+            class={`px-3 py-1.5 rounded-md font-semibold transition-colors ${
+              locale === 'ar' ? 'bg-gold-500 text-navy-900' : 'text-white/80 border border-white/20'
+            }`}
+            dir="rtl"
+          >
+            {languages.ar.label}
+          </a>
+        </div>
+        <a href={quoteHref} class="btn-gold animate-pulse-gold w-full">{t(locale, 'nav.getQuote')}</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Scroll state — toggle solid background after a small offset
+  const header = document.getElementById('site-header');
+  const onScroll = () => {
+    if (window.scrollY > 24) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Mobile menu toggle
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = toggle?.querySelector('.menu-icon-open');
+  const iconClose = toggle?.querySelector('.menu-icon-close');
+  const labelOpen = toggle?.dataset.labelOpen || 'Open menu';
+  const labelClose = toggle?.dataset.labelClose || 'Close menu';
+
+  const setMenu = (open: boolean) => {
+    if (!menu || !toggle) return;
+    menu.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? labelClose : labelOpen);
+    iconOpen?.classList.toggle('hidden', open);
+    iconClose?.classList.toggle('hidden', !open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+
+  toggle?.addEventListener('click', () => {
+    setMenu(!menu?.classList.contains('is-open'));
+  });
+
+  // Close after navigating via a link
+  menu?.querySelectorAll('a').forEach((el) => {
+    el.addEventListener('click', () => setMenu(false));
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setMenu(false);
+  });
+
+  // Close when resizing back to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) setMenu(false);
+  });
+</script>
+
+<style>
+  .mobile-menu {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  }
+  .mobile-menu.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+</style>

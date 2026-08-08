@@ -1,0 +1,198 @@
+---
+/**
+ * HomeContent.astro — Shared homepage body.
+ * Premium editorial design — warm tones, depth shadows, smooth section flow.
+ * Both / and /ar/ render this component.
+ */
+import { getAllProducts } from '../../data/products';
+import ProductCard from '../ProductCard.astro';
+import TrustBar from '../TrustBar.astro';
+import AISearchBar from '../AISearchBar.astro';
+import CTABanner from '../CTABanner.astro';
+import { getLocale, t } from '../../i18n/ui';
+
+const locale = getLocale(Astro.url);
+const prefix = locale === 'ar' ? '/ar' : '';
+
+const products = await getAllProducts();
+
+// ponytail: 5 professional category scene photos — each clearly shows its product type
+// All in /categories/ folder, distinct from product images, no duplicates anywhere
+const categories = [
+  { id: 'indoor', titleKey: 'home.cat.indoor.title', descKey: 'home.cat.indoor.desc', image: '/assets/images/categories/cat-indoor.jpg' },
+  { id: 'track', titleKey: 'home.cat.track.title', descKey: 'home.cat.track.desc', image: '/assets/images/categories/cat-track.jpg' },
+  { id: 'panel-linear', titleKey: 'home.cat.panel-linear.title', descKey: 'home.cat.panel-linear.desc', image: '/assets/images/categories/cat-panel.jpg' },
+  { id: 'industrial', titleKey: 'home.cat.industrial.title', descKey: 'home.cat.industrial.desc', image: '/assets/images/categories/cat-industrial.jpg' },
+  { id: 'outdoor', titleKey: 'home.cat.outdoor.title', descKey: 'home.cat.outdoor.desc', image: '/assets/images/categories/cat-outdoor.jpg' },
+];
+
+const testimonials = [
+  { id: 1, badgeKey: 'testimonials.t1.badge', textKey: 'testimonials.t1.text', nameKey: 'testimonials.t1.name', roleKey: 'testimonials.t1.role', image: '/assets/images/testimonials/testimonial-1.jpg' },
+  { id: 2, badgeKey: 'testimonials.t2.badge', textKey: 'testimonials.t2.text', nameKey: 'testimonials.t2.name', roleKey: 'testimonials.t2.role', image: '/assets/images/testimonials/testimonial-2.jpg' },
+  { id: 3, badgeKey: 'testimonials.t3.badge', textKey: 'testimonials.t3.text', nameKey: 'testimonials.t3.name', roleKey: 'testimonials.t3.role', image: '/assets/images/testimonials/testimonial-3.jpg' },
+  { id: 4, badgeKey: 'testimonials.t4.badge', textKey: 'testimonials.t4.text', nameKey: 'testimonials.t4.name', roleKey: 'testimonials.t4.role', image: '/assets/images/testimonials/testimonial-4.jpg' },
+  { id: 5, badgeKey: 'testimonials.t5.badge', textKey: 'testimonials.t5.text', nameKey: 'testimonials.t5.name', roleKey: 'testimonials.t5.role', image: '/assets/images/testimonials/testimonial-5.jpg' },
+];
+
+const whyItems = [
+  { icon: '🏭', titleKey: 'whyYakeen.manufacturing', descKey: 'whyYakeen.manufacturingDesc' },
+  { icon: '📋', titleKey: 'whyYakeen.certified', descKey: 'whyYakeen.certifiedDesc' },
+  { icon: '🔧', titleKey: 'whyYakeen.customization', descKey: 'whyYakeen.customizationDesc' },
+  { icon: '🚢', titleKey: 'whyYakeen.delivery', descKey: 'whyYakeen.deliveryDesc' },
+];
+---
+
+<!-- ===== Hero Section ===== -->
+<section class="relative min-h-[90vh] flex items-center overflow-hidden" style="background: #0a1525;">
+  <div class="absolute inset-0 z-0">
+    <img src="/assets/images/hero/hero-bright-elegant.webp" width="1280" height="960" loading="eager" fetchpriority="high" alt="Yakeen LED commercial lighting solutions for Middle East markets" class="w-full h-full object-cover" />
+  </div>
+  <div class="absolute inset-0 z-0" style="background: rgba(10,21,37,0.82);"></div>
+
+  <div class="container-yakeen relative z-20 py-20">
+    <div class="max-w-3xl">
+      <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style="background: rgba(201,169,97,0.15); border: 1px solid rgba(201,169,97,0.3);">
+        <span class="w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
+        <span class="text-gold-500 text-sm font-semibold tracking-wide">{t(locale, 'hero.badge')}</span>
+      </div>
+
+      <h1 class="reveal text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-white">
+        {t(locale, 'hero.title')}
+      </h1>
+
+      <p class="reveal text-lg md:text-xl text-gray-300 mb-8 max-w-2xl leading-relaxed">
+        {t(locale, 'hero.subtitle')}
+      </p>
+
+      <div class="reveal flex flex-wrap gap-4">
+        <a href={prefix + '/contact'} class="btn-gold animate-pulse-gold text-base px-8 py-4">
+          {t(locale, 'hero.getQuote')}
+        </a>
+        <a href={prefix + '/products'} class="btn-outline-gold text-base px-8 py-4">
+          {t(locale, 'hero.browseProducts')}
+        </a>
+      </div>
+
+      <div class="reveal grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-white/10">
+        <div>
+          <div class="text-3xl font-bold text-gold-500">10+</div>
+          <div class="text-sm text-gray-400 mt-1">{t(locale, 'hero.stat.products')}</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-gold-500">50°C</div>
+          <div class="text-sm text-gray-400 mt-1">{t(locale, 'hero.stat.heatRated')}</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-gold-500">6</div>
+          <div class="text-sm text-gray-400 mt-1">{t(locale, 'hero.stat.gcc')}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AI Search Bar ===== -->
+<AISearchBar />
+
+<!-- ===== Trust Bar ===== -->
+<TrustBar />
+
+<!-- ===== Product Categories — warm sand, borderless depth cards ===== -->
+<section class="section-padding" style="background: var(--sand-50);">
+  <div class="container-yakeen">
+    {/* Editorial header — left-aligned, magazine feel, not centered PPT */}
+    <div class="mb-16 reveal">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="block w-8 h-px bg-gold-500"></span>
+        <p class="text-gold-600 font-bold tracking-widest uppercase text-xs">{t(locale, 'products.eyebrow')}</p>
+      </div>
+      <h2 class="text-3xl md:text-5xl font-bold text-navy-900 leading-tight">{t(locale, 'products.title')}</h2>
+      <p class="text-gray-500 mt-4 max-w-xl text-lg">{t(locale, 'products.subtitle')}</p>
+    </div>
+
+    {/* Category tiles — no borders, depth via layered shadow */}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-16">
+      {categories.map((cat, i) => (
+        <div class="reveal group rounded-2xl overflow-hidden bg-white card-premium" style={`transition-delay: ${i * 60}ms`}>
+          <div class="aspect-[4/3] overflow-hidden bg-sand-100">
+            <img src={cat.image} alt={t(locale, cat.titleKey)} width="400" height="300" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-navy-900 text-base group-hover:text-gold-600 transition-colors duration-300">{t(locale, cat.titleKey)}</h3>
+            <p class="text-gray-500 text-sm mt-1">{t(locale, cat.descKey)}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {/* Featured products */}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      {products.filter(p => p.featured).map((product) => (
+        <ProductCard product={product} />
+      ))}
+    </div>
+
+    <div class="text-center mt-12 reveal">
+      <a href={prefix + '/products'} class="btn-outline-gold">
+        {t(locale, 'hero.browseProducts')} →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Why Choose Yakeen — dark, glassmorphism cards ===== -->
+<section class="section-padding relative overflow-hidden" style="background: #0a1525;">
+  <div class="container-yakeen relative z-10 pt-8">
+    <div class="mb-16 reveal">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="block w-8 h-px bg-gold-500"></span>
+        <p class="text-gold-500 font-bold tracking-widest uppercase text-xs">{t(locale, 'whyYakeen.eyebrow')}</p>
+      </div>
+      <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight">{t(locale, 'whyYakeen.title')}</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {whyItems.map((item, i) => (
+        <div class="reveal card-glass p-8" style={`transition-delay: ${i * 80}ms`}>
+          <div class="text-4xl mb-5">{item.icon}</div>
+          <h3 class="text-white font-bold text-lg mb-2">{t(locale, item.titleKey)}</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">{t(locale, item.descKey)}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ===== Customer Testimonials — warm sand, premium depth cards ===== -->
+<section class="section-padding relative" style="background: var(--sand-50);">
+  <div class="container-yakeen relative z-10 pt-8">
+    <div class="mb-16 reveal">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="block w-8 h-px bg-gold-500"></span>
+        <p class="text-gold-600 font-bold tracking-widest uppercase text-xs">{t(locale, 'testimonials.eyebrow')}</p>
+      </div>
+      <h2 class="text-3xl md:text-5xl font-bold text-navy-900 leading-tight">{t(locale, 'testimonials.title')}</h2>
+      <p class="text-gray-500 mt-4 max-w-xl text-lg">{t(locale, 'testimonials.subtitle')}</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {testimonials.map((testimonial, i) => (
+        <div class="reveal card-premium p-8" style={`transition-delay: ${i * 80}ms`}>
+          <span class="text-gold-500 text-xs font-bold uppercase tracking-widest">{t(locale, testimonial.badgeKey)}</span>
+          <div class="text-gold-500 mt-3 text-lg">★★★★★</div>
+          <p class="text-gray-700 mt-4 leading-relaxed">{t(locale, testimonial.textKey)}</p>
+          <div class="mt-6 flex items-center gap-3 pt-5 border-t border-gray-100">
+            <img src={testimonial.image} alt={t(locale, testimonial.nameKey)} width="48" height="48" loading="lazy" class="w-12 h-12 rounded-full object-cover ring-2 ring-gold-500/20" />
+            <div>
+              <div class="font-bold text-navy-900 text-sm">{t(locale, testimonial.nameKey)}</div>
+              <div class="text-xs text-gray-500">{t(locale, testimonial.roleKey)}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA Banner ===== -->
+<CTABanner />

@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# AI crawlers
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+Sitemap: https://www.yakeenlighting.com/sitemap-index.xml

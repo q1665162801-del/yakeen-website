@@ -1,0 +1,122 @@
+{
+  "slug": "ufo-highbay",
+  "featured": true,
+  "name": "UFO High Bay Light",
+  "shortName": "UFO High Bay",
+  "category": "industrial",
+  "tagline": "100-240W with 140-160 lm/W and IP65",
+  "description": "Yakeen UFO high bay light, 100-240W, 140-160 lm/W, IP65, 50°C rated, SASO & G-Mark certified for industrial lighting.",
+  "metaDescription": "Yakeen UFO High Bay Light — 100-240W, 140-160 lm/W, IP65, 50°C rated, SASO & G-Mark certified for industrial lighting in the Middle East.",
+  "ogImage": "/assets/images/products/highbay-new.webp",
+  "mainImage": "/assets/images/products/highbay-new.webp",
+  "galleryImages": [
+    "/assets/images/products/highbay-new.webp"
+  ],
+  "sceneImage": "/assets/images/products/highbay-scene-1.jpg",
+  "specs": {
+    "wattage": "100W-240W",
+    "efficacy": "140-160 lm/W",
+    "cct": "3000K-5700K",
+    "cri": "Ra>70",
+    "beamAngle": "60° / 90° / 110°",
+    "ipRating": "IP65",
+    "dimming": "0-10V / DALI / Motion Sensor",
+    "lifespan": "L70 > 50,000 hours",
+    "warranty": "5 years",
+    "certifications": "SASO, G-Mark, CE, RoHS",
+    "moq": "50 pieces",
+    "leadTime": "10-20 days"
+  },
+  "applications": [
+    {
+      "title": "Warehouses",
+      "desc": "High-efficiency lighting for storage facilities.",
+      "icon": "warehouse"
+    },
+    {
+      "title": "Factories",
+      "desc": "Durable, bright lighting for production floors.",
+      "icon": "factory"
+    },
+    {
+      "title": "Parking Garages",
+      "desc": "Energy-efficient lighting with motion sensors.",
+      "icon": "parking"
+    },
+    {
+      "title": "Sports Halls",
+      "desc": "Glare-free lighting for indoor sports.",
+      "icon": "sports"
+    }
+  ],
+  "features": [
+    "UFO disc design for optimal heat dissipation",
+    "Mean Well / Inventronics driver options",
+    "Samsung 3030 LED chips",
+    "50°C ambient temperature rated",
+    "Optional microwave motion sensor",
+    "Hook and bracket mounting included"
+  ],
+  "faqs": [
+    {
+      "question": "Can the high bay withstand Middle East summer temperatures?",
+      "answer": "Yes. Rated for 50°C ambient temperature. The aluminum housing and thermal design ensure stable operation even in GCC summer conditions. Yakeen Lighting provides thermal test data."
+    },
+    {
+      "question": "What is the recommended mounting height?",
+      "answer": "100W: 4-6m, 150W: 6-9m, 200W: 8-12m, 240W: 10-15m. We provide free DIALux simulation to calculate exact lux levels for your space."
+    }
+  ],
+  "caseStudy": {
+    "title": "Warehouse Facility",
+    "location": "Jubail, Saudi Arabia",
+    "year": "2024",
+    "image": "/assets/images/products/highbay-scene-1.jpg"
+  },
+  "ar": {
+    "name": "إضاءة HID صناعية UFO",
+    "shortName": "إضاءة UFO",
+    "tagline": "100-240واط مع 140-160 lm/W و IP65",
+    "description": "إضاءة HID صناعية UFO من Yakeen، 100-240واط، 140-160 لومن/واط، IP65، مقاومة 50°م، معتمدة SASO و G-Mark للإضاءة الصناعية.",
+    "features": [
+      "تصميم قرص UFO لتشتيت حراري مثالي",
+      "خيارات محرك Mean Well / Inventronics",
+      "رقائق Samsung 3030 LED",
+      "مصنفة لحرارة محيطة 50°م",
+      "مستشعر حركة ميكروويف اختياري",
+      "يشمل تركيب الخطاف والقوس"
+    ],
+    "applications": [
+      {
+        "title": "المستودعات",
+        "desc": "إضاءة عالية الكفاءة لمرافق التخزين."
+      },
+      {
+        "title": "المصانع",
+        "desc": "إضاءة ساطعة ومتينة لأرضيات الإنتاج."
+      },
+      {
+        "title": "مواقف السيارات",
+        "desc": "إضاءة موفرة للطاقة مع مستشعرات حركة."
+      },
+      {
+        "title": "الصالات الرياضية",
+        "desc": "إضاءة خالية من الوهج للرياضات الداخلية."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "هل يمكن للإضاءة تحمل درجات حرارة صيف الشرق الأوسط؟",
+        "answer": "نعم. مصنفة لحرارة محيطة 50°م. الهيكل الألمنيومي والتصميم الحراري يضمنان تشغيلاً مستقراً حتى في ظروف صيف مجلس التعاون الخليجي. توفر Yakeen Lighting بيانات الاختبار الحراري."
+      },
+      {
+        "question": "ما هو ارتفاع التركيب الموصى به؟",
+        "answer": "100واط: 4-6m، 150واط: 6-9m، 200واط: 8-12m، 240واط: 10-15m. نقدم محاكاة DIALux مجانية لحساب مستويات اللوكس بالضبط لمساحتك."
+      }
+    ],
+    "caseStudy": {
+      "title": "منشأة مستودع",
+      "location": "الجبيل، السعودية"
+    }
+  }
+}

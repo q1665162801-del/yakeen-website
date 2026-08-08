@@ -1,0 +1,107 @@
+---
+import '../styles/global.css';
+import { siteConfig } from '../data/site-config';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonicalPath: string;
+  type?: 'page' | 'product' | 'article';
+}
+
+const {
+  title,
+  description,
+  image = '/assets/images/hero/hero-bg-v3.jpg',
+  canonicalPath,
+  type = 'page',
+} = Astro.props;
+
+const fullTitle = title.includes(siteConfig.name)
+  ? title
+  : `${title} | ${siteConfig.name}`;
+
+// Source of truth: actual URL pathname (not the prop, which may be EN path on AR pages)
+const actualPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isArabic = actualPath.startsWith('/ar');
+// Strip /ar prefix → base path for hreflang computation
+const basePath = isArabic ? (actualPath.replace(/^\/ar/, '') || '/') : actualPath;
+
+const canonicalURL = new URL(actualPath, siteConfig.url).href;
+const ogImage = new URL(image, siteConfig.url).href;
+
+// hreflang alternates — derived from basePath, never double-prefixed
+// ponytail: only en + ar exist, no zh-CN version
+const hreflang = [
+  { lang: 'en', path: basePath },
+  { lang: 'ar', path: `/ar${basePath === '/' ? '' : basePath}` },
+  { lang: 'x-default', path: basePath },
+];
+
+const ogType = type === 'article' ? 'article' : 'website';
+const ogLocale = isArabic ? 'ar_SA' : 'en_US';
+
+const fontsHref =
+  'https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap';
+---
+
+<!-- Charset & viewport -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Primary meta -->
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+<meta name="author" content={siteConfig.legalName} />
+
+<!-- hreflang alternates -->
+{hreflang.map((h) => (
+  <link rel="alternate" hreflang={h.lang} href={new URL(h.path, siteConfig.url).href} />
+))}
+
+<!-- Open Graph -->
+<meta property="og:type" content={ogType} />
+<meta property="og:site_name" content={siteConfig.name} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content={ogLocale} />
+<meta property="og:locale:alternate" content={isArabic ? 'en_US' : 'ar_SA'} />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- Theme color -->
+<meta name="theme-color" content="#050b14" />
+
+<!-- Google Fonts (non-blocking via print media + onload swap) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href={fontsHref}
+  media="print"
+  onload="this.media='all'"
+/>
+<noscript>
+  <link rel="stylesheet" href={fontsHref} />
+</noscript>
+
+<!-- Google Analytics 4 -->
+<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-FN3DVP4JKH"></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-FN3DVP4JKH');
+</script>

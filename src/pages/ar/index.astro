@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HomeContent from '../../components/sections/HomeContent.astro';
+import { organizationSchema } from '../../utils/schema';
+import { getLocale, t } from '../../i18n/ui';
+
+const locale = getLocale(Astro.url); // 'ar'
+const orgSchema = organizationSchema();
+---
+<BaseLayout
+  title={t(locale, 'hero.title') + ' — Yakeen Lighting'}
+  description={t(locale, 'hero.subtitle')}
+  image="/assets/images/hero/hero-bg-v3.jpg"
+  canonicalPath="/ar"
+  type="page"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+  <HomeContent />
+</BaseLayout>

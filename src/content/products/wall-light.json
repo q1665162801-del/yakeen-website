@@ -1,0 +1,124 @@
+{
+  "slug": "wall-light",
+  "featured": false,
+  "name": "Commercial LED Wall Light",
+  "shortName": "Wall Light",
+  "category": "outdoor",
+  "tagline": "Weather-resistant wall lighting for facades and pathways",
+  "description": "Yakeen commercial LED wall light — weather-resistant design for building facades, pathways, and outdoor areas. Features premium aluminum housing with IP65 rating for Middle East climate. SASO & G-Mark certified.",
+  "metaDescription": "Yakeen Commercial LED Wall Light — IP65, aluminum housing, SASO & G-Mark certified for facade and pathway lighting in the Middle East.",
+  "ogImage": "/assets/images/products/wall-light-01.jpeg",
+  "mainImage": "/assets/images/products/wall-light-01.jpeg",
+  "galleryImages": [
+    "/assets/images/products/wall-light-01.jpeg",
+    "/assets/images/products/wall-light-01-page.png",
+    "/assets/images/products/wall-light-02.jpeg"
+  ],
+  "sceneImage": "/assets/images/products/wallwasher-scene-1.jpg",
+  "specs": {
+    "wattage": "10W-30W",
+    "efficacy": "90-110 lm/W",
+    "cct": "2700K / 3000K / 4000K / 6000K",
+    "cri": "Ra>80",
+    "beamAngle": "Up/down / asymmetric / 120° flood",
+    "ipRating": "IP65",
+    "dimming": "0-10V / TRIAC (select models)",
+    "lifespan": "L70 > 50,000 hours",
+    "warranty": "5 years",
+    "certifications": "SASO, G-Mark, CE, RoHS",
+    "moq": "100 pieces",
+    "leadTime": "20-30 days"
+  },
+  "applications": [
+    {
+      "title": "Building Facades",
+      "desc": "Architectural wall lighting for building exteriors.",
+      "icon": "building"
+    },
+    {
+      "title": "Pathways & Walkways",
+      "desc": "Guide lighting for outdoor walkways and corridors.",
+      "icon": "landscape"
+    },
+    {
+      "title": "Hotel Entrances",
+      "desc": "Welcome lighting for hotel and resort entrances.",
+      "icon": "hotel"
+    },
+    {
+      "title": "Garden Walls",
+      "desc": "Accent lighting for landscape and garden walls.",
+      "icon": "landscape"
+    }
+  ],
+  "features": [
+    "IP65 weather resistance for Middle East climate",
+    "Premium die-cast aluminum housing",
+    "Up/down, asymmetric, and flood beam options",
+    "UV-resistant coating for high-sun environments",
+    "Multiple design styles: modern, classic, and architectural",
+    "Easy installation with included mounting hardware"
+  ],
+  "faqs": [
+    {
+      "question": "Is the wall light suitable for Middle East climate?",
+      "answer": "Yes. The IP65 rating and UV-resistant coating are specifically designed for high-temperature, high-UV, and dusty environments typical of the Middle East. Yakeen Lighting provides climate-specific test reports."
+    },
+    {
+      "question": "What beam patterns are available?",
+      "answer": "We offer up/down (bi-directional), asymmetric (wall grazing), and 120° flood beam patterns. Each is available in multiple wattages and color temperatures."
+    }
+  ],
+  "caseStudy": {
+    "title": "Hotel Entrance",
+    "location": "Muscat, Oman",
+    "year": "2024",
+    "image": "/assets/images/products/wallwasher-scene-1.jpg"
+  },
+  "ar": {
+    "name": "إضاءة جدار LED تجارية",
+    "shortName": "إضاءة جدار",
+    "tagline": "إضاءة جدار مقاومة للطقس للواجهات والممرات",
+    "description": "إضاءة جدار LED تجارية من Yakeen — تصميم مقاوم للطقس لواجهات المباني والممرات والمناطق الخارجية. معتمدة SASO و G-Mark.",
+    "features": [
+      "IP65 مقاومة للطقس لمناخ الشرق الأوسط",
+      "هيكل ألمنيوم مصبوب فاخر",
+      "خيارات شعاع علوي/سفلي، غير متماثل، وفيضان 120°",
+      "طلاء مقاوم للأشعة فوق البنفسجية للبيئات المشمسة",
+      "أنماط تصميم متعددة: حديث، كلاسيكي، ومعماري",
+      "تركيب سهل مع ملحقات التركيب المضمنة"
+    ],
+    "applications": [
+      {
+        "title": "واجهات المباني",
+        "desc": "إضاءة جدار معمارية لواجهات المباني."
+      },
+      {
+        "title": "الممرات والمسالك",
+        "desc": "إضاءة توجيه للممرات الخارجية والممرات."
+      },
+      {
+        "title": "مداخل الفنادق",
+        "desc": "إضاءة ترحيب لمداخل الفنادق والمنتجعات."
+      },
+      {
+        "title": "جدران الحدائق",
+        "desc": "إضاءة مميزة لجدران المناظر الطبيعية والحدائق."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "هل إضاءة الجدار مناسبة لمناخ الشرق الأوسط؟",
+        "answer": "نعم. تصنيف IP65 والطلاء المقاوم للأشعة فوق البنفسجية مصممان خصيصاً لبيئات الحرارة العالية والأشعة فوق البنفسجية العالية والغبار النموذجية للشرق الأوسط."
+      },
+      {
+        "question": "ما أنماط الشعاع المتاحة؟",
+        "answer": "نقدم أنماط علوي/سفلي (ثنائي الاتجاه)، غير متماثل (تمشيد الجدار)، وفيضان 120°."
+      }
+    ],
+    "caseStudy": {
+      "title": "مدخل فندق",
+      "location": "مسقط، عمان"
+    }
+  }
+}

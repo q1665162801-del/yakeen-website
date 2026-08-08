@@ -1,0 +1,122 @@
+{
+  "slug": "solar-street",
+  "featured": true,
+  "name": "All-in-One Solar Street Light",
+  "shortName": "Solar Street Light",
+  "category": "outdoor",
+  "tagline": "60-300W with LiFePO4 battery and IP68",
+  "description": "Yakeen all-in-one solar street light, 60-300W, LiFePO4 battery, IP68, SASO & G-Mark certified for street and area lighting.",
+  "metaDescription": "Yakeen All-in-One Solar Street Light — 60-300W, LiFePO4 battery, IP68, SASO & G-Mark certified for street and area lighting in the Middle East.",
+  "ogImage": "/assets/images/products/solar-street.jpg",
+  "mainImage": "/assets/images/products/solar-street.jpg",
+  "galleryImages": [
+    "/assets/images/products/solar-street.jpg"
+  ],
+  "sceneImage": "/assets/images/products/solar-street-scene-1.jpg",
+  "specs": {
+    "wattage": "60W-300W",
+    "efficacy": "160-180 lm/W",
+    "cct": "4000K / 5000K / 5700K",
+    "cri": "Ra>70",
+    "beamAngle": "Type III (road pattern)",
+    "ipRating": "IP68",
+    "dimming": "Motion sensor (auto dimming)",
+    "lifespan": "L70 > 50,000 hours (LED) / 2000+ cycles (battery)",
+    "warranty": "3 years (battery) / 5 years (LED)",
+    "certifications": "SASO, G-Mark, CE, RoHS",
+    "moq": "30 pieces",
+    "leadTime": "15-25 days"
+  },
+  "applications": [
+    {
+      "title": "Residential Streets",
+      "desc": "Off-grid street lighting for neighborhoods.",
+      "icon": "street"
+    },
+    {
+      "title": "Parks & Walkways",
+      "desc": "Eco-friendly lighting for public spaces.",
+      "icon": "park"
+    },
+    {
+      "title": "Parking Lots",
+      "desc": "Solar-powered area lighting.",
+      "icon": "parking"
+    },
+    {
+      "title": "Rural Areas",
+      "desc": "Grid-independent lighting for remote locations.",
+      "icon": "rural"
+    }
+  ],
+  "features": [
+    "Monocrystalline solar panel (24% efficiency)",
+    "LiFePO4 battery (2000+ cycle life)",
+    "Smart motion sensor (auto dim/bright)",
+    "IP68 fully waterproof",
+    "All-in-one design (panel + battery + LED in one unit)",
+    "Remote control for settings adjustment"
+  ],
+  "faqs": [
+    {
+      "question": "How many days can it operate without sunlight?",
+      "answer": "3-5 rainy days as standard (configurable up to 7 days with larger battery). Yakeen Lighting provides solar irradiance analysis for your specific location."
+    },
+    {
+      "question": "What is the battery lifespan?",
+      "answer": "LiFePO4 battery with 2000+ charge cycles. Typically 5-8 years. Battery is replaceable. Yakeen Lighting provides battery specification sheets."
+    }
+  ],
+  "caseStudy": {
+    "title": "Residential Street",
+    "location": "Dammam, Saudi Arabia",
+    "year": "2024",
+    "image": "/assets/images/products/solar-street-scene-1.jpg"
+  },
+  "ar": {
+    "name": "ضوء شارع شمسي شامل",
+    "shortName": "ضوء شارع شمسي",
+    "tagline": "60-300واط مع بطارية LiFePO4 و IP68",
+    "description": "ضوء شارع شمسي شامل من Yakeen، 60-300واط، بطارية LiFePO4، IP68، معتمد SASO و G-Mark لإضاءة الشوارع والمناطق.",
+    "features": [
+      "لوح شمسي أحادي البلورة (كفاءة 24%)",
+      "بطارية LiFePO4 (2000+ دورة شحن)",
+      "مستشعر حركة ذكي (تعتيم/إضاءة تلقائي)",
+      "IP68 مقاوم للماء بالكامل",
+      "تصميم شامل (لوح + بطارية + LED في وحدة واحدة)",
+      "تحكم عن بعد لتعديل الإعدادات"
+    ],
+    "applications": [
+      {
+        "title": "الشوارع السكنية",
+        "desc": "إضاءة شوارع خارج الشبكة للأحياء."
+      },
+      {
+        "title": "الحدائق والممرات",
+        "desc": "إضاءة صديقة للبيئة للمساحات العامة."
+      },
+      {
+        "title": "مواقف السيارات",
+        "desc": "إضاءة منطقة بالطاقة الشمسية."
+      },
+      {
+        "title": "المناطق الريفية",
+        "desc": "إضاءة مستقلة عن الشبكة للمواقع النائية."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "كم يوماً يمكن أن تعمل دون أشعة الشمس؟",
+        "answer": "3-5 أيام ممطرة كمعيار (قابلة للتكوين حتى 7 أيام ببطارية أكبر). توفر Yakeen Lighting تحليل الإشعاع الشمسي لموقعك المحدد."
+      },
+      {
+        "question": "ما هو عمر البطارية؟",
+        "answer": "بطارية LiFePO4 مع 2000+ دورة شحن. عادة 5-8 سنوات. البطارية قابلة للاستبدال. توفر Yakeen Lighting أوراق مواصفات البطارية."
+      }
+    ],
+    "caseStudy": {
+      "title": "شارع سكني",
+      "location": "الدمام، السعودية"
+    }
+  }
+}

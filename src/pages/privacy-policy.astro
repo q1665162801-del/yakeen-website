@@ -1,0 +1,38 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getLocale, t } from '../i18n/ui';
+
+const locale = getLocale(Astro.url);
+const prefix = locale === 'ar' ? '/ar' : '';
+---
+
+<BaseLayout
+  title={t(locale, 'privacy.title') + ' | Yakeen Lighting'}
+  description={t(locale, 'privacy.intro')}
+  canonicalPath={Astro.url.pathname}
+>
+  <section class="bg-sand-50 py-20 md:py-28">
+    <div class="container-yakeen max-w-3xl">
+      <nav class="mb-6 text-sm text-navy-500" aria-label={t(locale, 'aria.breadcrumb')}>
+        <a href={prefix || '/'} class="hover:text-gold-600">{t(locale, 'nav.home')}</a>
+        <span class="mx-2">/</span>
+        <span class="text-navy-900 font-semibold">{t(locale, 'privacy.title')}</span>
+      </nav>
+      <h1 class="font-serif text-3xl md:text-4xl font-bold text-navy-900 mb-8">{t(locale, 'privacy.title')}</h1>
+      <div class="prose prose-navy max-w-none space-y-4 text-navy-700 leading-relaxed">
+        <p><strong>{t(locale, 'privacy.updated')}</strong> {t(locale, 'privacy.date')}</p>
+        <p>{t(locale, 'privacy.intro')}</p>
+        <h2 class="text-xl font-bold text-navy-900 mt-8 mb-3">{t(locale, 'privacy.collect.title')}</h2>
+        <p>{t(locale, 'privacy.collect.desc')}</p>
+        <h2 class="text-xl font-bold text-navy-900 mt-8 mb-3">{t(locale, 'privacy.use.title')}</h2>
+        <p>{t(locale, 'privacy.use.desc')}</p>
+        <h2 class="text-xl font-bold text-navy-900 mt-8 mb-3">{t(locale, 'privacy.analytics.title')}</h2>
+        <p>{t(locale, 'privacy.analytics.desc')}</p>
+        <h2 class="text-xl font-bold text-navy-900 mt-8 mb-3">{t(locale, 'privacy.rights.title')}</h2>
+        <p>{t(locale, 'privacy.rights.desc')} <a href="mailto:yakeenlight@outlook.com" class="text-gold-600 hover:text-gold-500">yakeenlight@outlook.com</a>.</p>
+        <h2 class="text-xl font-bold text-navy-900 mt-8 mb-3">{t(locale, 'privacy.contact.title')}</h2>
+        <p>{t(locale, 'privacy.contact.desc')} <a href="mailto:yakeenlight@outlook.com" class="text-gold-600 hover:text-gold-500">yakeenlight@outlook.com</a>.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,124 @@
+{
+  "slug": "magnetic-track",
+  "featured": true,
+  "name": "48V Magnetic Track Light System",
+  "shortName": "Magnetic Track",
+  "category": "track",
+  "tagline": "Modular 48V system with DALI/0-10V control",
+  "description": "Yakeen 48V magnetic track light system — modular, tool-free installation with DALI and 0-10V dimming. Available in surface-mounted, recessed, and concealed track profiles. Compatible with spotlight, flood, linear, and pendant modules. SASO & G-Mark certified for flexible commercial lighting.",
+  "metaDescription": "Yakeen 48V Magnetic Track Light System — modular, DALI/0-10V, surface/recessed/concealed, SASO & G-Mark certified for flexible commercial lighting in the Middle East.",
+  "ogImage": "/assets/images/products/magnetic-track-48v.jpeg",
+  "mainImage": "/assets/images/products/magnetic-track-48v.jpeg",
+  "galleryImages": [
+    "/assets/images/products/magnetic-track-48v.jpeg",
+    "/assets/images/products/magnetic-track-48v-page.png",
+    "/assets/images/products/magnetic.jpg"
+  ],
+  "sceneImage": "/assets/images/products/magnetic-scene-1.jpg",
+  "specs": {
+    "wattage": "6W-30W (per module)",
+    "efficacy": "90-110 lm/W",
+    "cct": "2700K / 3000K / 4000K / 5000K",
+    "cri": "Ra>90",
+    "beamAngle": "15° / 24° / 36° / 60° / 120°",
+    "ipRating": "IP20",
+    "dimming": "DALI / 0-10V / Smart",
+    "lifespan": "L70 > 50,000 hours",
+    "warranty": "5 years",
+    "certifications": "SASO, G-Mark, CE, RoHS",
+    "moq": "50 sets",
+    "leadTime": "20-30 days"
+  },
+  "applications": [
+    {
+      "title": "Showrooms & Galleries",
+      "desc": "Flexible, repositionable lighting for changing displays.",
+      "icon": "showroom"
+    },
+    {
+      "title": "Retail Stores",
+      "desc": "Quick reconfiguration for seasonal layouts.",
+      "icon": "retail"
+    },
+    {
+      "title": "Restaurants",
+      "desc": "Adaptive ambiance lighting.",
+      "icon": "restaurant"
+    },
+    {
+      "title": "Hotels",
+      "desc": "Modular lighting for dynamic spaces.",
+      "icon": "hotel"
+    }
+  ],
+  "features": [
+    "48V low-voltage safe system",
+    "Magnetic snap-in modules (no tools required)",
+    "Three track profiles: surface-mounted, recessed, concealed",
+    "DALI and 0-10V dimming per module",
+    "Spotlight, flood, linear, and pendant modules available",
+    "Corner, T, X, and I connectors for flexible layouts"
+  ],
+  "faqs": [
+    {
+      "question": "What track profiles are available?",
+      "answer": "We offer three profiles: surface-mounted (XH-MT20**), recessed (XH-GP20**), and concealed/embedded (XH-EM20**). All use the same 48V magnetic modules. Yakeen Lighting provides layout design consultation."
+    },
+    {
+      "question": "What modules are compatible with the system?",
+      "answer": "All Yakeen 48V magnetic modules: spotlights (6-20W), linear floods (10-30W), and pendant lights. Mix and match freely. Modules simply snap in and out magnetically."
+    }
+  ],
+  "caseStudy": {
+    "title": "Art Gallery",
+    "location": "Kuwait City, Kuwait",
+    "year": "2024",
+    "image": "/assets/images/products/magnetic-scene-1.jpg"
+  },
+  "ar": {
+    "name": "نظام مسار مغناطيسي 48V",
+    "shortName": "مسار مغناطيسي",
+    "tagline": "نظام 48V معياري مع تحكم DALI/0-10V",
+    "description": "نظام مسار مغناطيسي 48V من Yakeen — معياري، تركيب بدون أدوات مع تعتيم DALI و 0-10V. متوفر بملفات مسار سطحي ومدمج ومخفي. متوافق مع وحدات الكشاف والفيضان والخطي والمعلق. معتمد SASO و G-Mark.",
+    "features": [
+      "نظام 48V منخفض الجهد آمن",
+      "وحدات مغناطيسية بالنقر (بدون أدوات)",
+      "ثلاثة ملفات مسار: سطحي، مدمج، مخفي",
+      "تعتيم DALI و 0-10V لكل وحدة",
+      "وحدات كشاف وفيضان وخطي ومعلق متاحة",
+      "موصلات زاوية و T و X و I لتخطيطات مرنة"
+    ],
+    "applications": [
+      {
+        "title": "صالات العرض",
+        "desc": "إضاءة مرنة قابلة لإعادة التموضع للعروض المتغيرة."
+      },
+      {
+        "title": "المتاجر",
+        "desc": "إعادة تشكيل سريعة للتخطيطات الموسمية."
+      },
+      {
+        "title": "المطاعم",
+        "desc": "إضاءة أجواء قابلة للتكيف."
+      },
+      {
+        "title": "الفنادق",
+        "desc": "إضاءة معيارية للمساحات الديناميكية."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "ما ملفات المسار المتاحة؟",
+        "answer": "نقدم ثلاثة ملفات: سطحي (XH-MT20**)، مدمج (XH-GP20**)، ومخفي (XH-EM20**). كلها تستخدم نفس الوحدات المغناطيسية 48V."
+      },
+      {
+        "question": "ما الوحدات المتوافقة مع النظام؟",
+        "answer": "جميع وحدات Yakeen المغناطيسية 48V: كشافات (6-20واط)، فيضانات خطية (10-30واط)، وإضاءات معلقة. امزج وطابق بحرية."
+      }
+    ],
+    "caseStudy": {
+      "title": "معرض فني",
+      "location": "مدينة الكويت، الكويت"
+    }
+  }
+}

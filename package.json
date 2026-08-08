@@ -1,0 +1,26 @@
+{
+  "name": "yakeen-lighting-v2",
+  "type": "module",
+  "version": "2.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "postinstall": "node scripts/postinstall-patch.cjs",
+    "prebuild": "node scripts/clean-astro-cache.cjs",
+    "postbuild": "node scripts/copy-astro-assets.cjs",
+    "deploy": "node scripts/deploy.cjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/tailwind": "^6.0.0",
+    "astro": "^5.0.0",
+    "tailwindcss": "^3.4.0"
+  },
+  "devDependencies": {
+    "aria-query": "^5.3.2",
+    "axobject-query": "^4.1.0",
+    "patch-package": "^8.0.1"
+  }
+}

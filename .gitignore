@@ -1,0 +1,10 @@
+node_modules/
+.astro/
+.wrangler/
+dist/
+dist-clean/
+dist-deploy/
+dist-old/
+*.log
+.env
+.dev.vars

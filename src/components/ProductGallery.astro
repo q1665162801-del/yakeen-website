@@ -1,0 +1,133 @@
+---
+/**
+ * ProductGallery.astro
+ * Image gallery for a single product detail page.
+ *
+ * Layout:
+ *  - Large main image (eager loaded, the LCP candidate on a product page)
+ *  - Row of 80x80 thumbnails below (lazy loaded)
+ *
+ * Interaction:
+ *  - Clicking a thumbnail swaps the main image with a fade transition
+ *  - Keyboard accessible (Enter / Space activates a thumbnail)
+ *
+ * The component is self-contained: it scopes its DOM by a unique id derived
+ * from the product slug, so multiple galleries could coexist on a page.
+ */
+
+import type { Product } from '@data/products';
+import { getLocale, t } from '../i18n/ui';
+
+export interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+const locale = getLocale(Astro.url);
+
+// Build the gallery image set. Prefer galleryImages, fall back to mainImage.
+const galleryImages: string[] =
+  product.galleryImages.length > 0 ? product.galleryImages : [product.mainImage];
+
+const galleryId = `gallery-${product.slug}`;
+---
+
+<div class="product-gallery" id={galleryId} data-gallery>
+  {/* Main image (eager — LCP candidate) */}
+  <div class="relative aspect-square overflow-hidden rounded-2xl border border-navy-100 bg-sand-50">
+    <img
+      data-main-image
+      src={galleryImages[0]}
+      alt={t(locale, 'product.gallery.mainView', { name: product.name })}
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+      width="800"
+      height="800"
+      class="h-full w-full object-cover transition-opacity duration-300"
+    />
+  </div>
+
+  {/* Thumbnails (lazy) */}
+  <div class="mt-4 flex flex-wrap gap-3" role="tablist" aria-label={t(locale, 'aria.productGallery')}>
+    {galleryImages.map((image, index) => (
+      <button
+        type="button"
+        role="tab"
+        aria-selected={index === 0 ? 'true' : 'false'}
+        aria-label={t(locale, 'product.gallery.viewImage', { index: String(index + 1), total: String(galleryImages.length) })}
+        data-thumbnail={image}
+        class={`thumbnail group relative h-20 w-20 shrink-0 overflow-hidden rounded-lg border-2 transition-all duration-200 ${
+          index === 0
+            ? 'border-gold-500 ring-2 ring-gold-500/30'
+            : 'border-navy-100 hover:border-gold-400'
+        }`}
+      >
+        <img
+          src={image}
+          alt={t(locale, 'product.gallery.thumbnail', { name: product.name, index: String(index + 1) })}
+          loading="lazy"
+          decoding="async"
+          width="80"
+          height="80"
+          class="h-full w-full object-cover"
+        />
+      </button>
+    ))}
+  </div>
+</div>
+
+<script is:inline define:vars={{ galleryId }}>
+  (function () {
+    const gallery = document.getElementById(galleryId);
+    if (!gallery) return;
+
+    const mainImage = gallery.querySelector('[data-main-image]');
+    const thumbnails = gallery.querySelectorAll('[data-thumbnail]');
+    if (!mainImage || thumbnails.length === 0) return;
+
+    thumbnails.forEach(function (thumb) {
+      const activate = function () {
+        const src = thumb.getAttribute('data-thumbnail');
+        if (!src || mainImage.getAttribute('src') === src) return;
+
+        // Fade out, swap, fade in
+        mainImage.style.opacity = '0';
+        mainImage.addEventListener(
+          'transitionend',
+          function handler() {
+            mainImage.setAttribute('src', src);
+            mainImage.setAttribute('alt', thumb.getAttribute('aria-label') || '');
+            mainImage.style.opacity = '1';
+            mainImage.removeEventListener('transitionend', handler);
+          },
+          { once: true }
+        );
+
+        // Update selected state
+        thumbnails.forEach(function (t) {
+          t.setAttribute('aria-selected', 'false');
+          t.classList.remove('border-gold-500', 'ring-2', 'ring-gold-500/30');
+          t.classList.add('border-navy-100');
+        });
+        thumb.setAttribute('aria-selected', 'true');
+        thumb.classList.remove('border-navy-100');
+        thumb.classList.add('border-gold-500', 'ring-2', 'ring-gold-500/30');
+      };
+
+      thumb.addEventListener('click', activate);
+      thumb.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          activate();
+        }
+      });
+    });
+  })();
+</script>
+
+<style>
+  .product-gallery [data-main-image] {
+    opacity: 1;
+  }
+</style>

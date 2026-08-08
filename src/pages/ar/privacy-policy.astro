@@ -1,0 +1,38 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getLocale, t } from '../../i18n/ui';
+
+const locale = getLocale(Astro.url);
+const canonicalPath = '/privacy-policy';
+---
+
+<BaseLayout
+  title="سياسة الخصوصية"
+  description="سياسة الخصوصية وحماية البيانات في Yakeen Lighting."
+  canonicalPath={canonicalPath}
+>
+  <section class="bg-sand-50 py-20 md:py-28">
+    <div class="container-yakeen max-w-3xl">
+      <nav class="mb-6 text-sm text-navy-500" aria-label={t(locale, 'aria.breadcrumb')}>
+        <a href="/ar" class="hover:text-gold-600">الرئيسية</a>
+        <span class="mx-2">/</span>
+        <span class="text-navy-900 font-semibold">سياسة الخصوصية</span>
+      </nav>
+      <h1 class="font-serif text-3xl md:text-4xl font-bold text-navy-900 mb-8">سياسة الخصوصية</h1>
+      <div class="prose prose-navy max-w-none space-y-4 text-navy-700 leading-relaxed">
+        <p><strong>آخر تحديث:</strong> أغسطس 2026</p>
+        <p>تحترم شركة تاييوان ياكين التجارية المحدودة ("Yakeen Lighting"، "نحن") خصوصيتك. توضح هذه السياسة كيفية تعاملنا مع بياناتك.</p>
+        <h2 class="text-xl font-bold text-navy-900 mt-8 mb-3">المعلومات التي نجمعها</h2>
+        <p>عند تقديم نموذج الاتصال، نجمع: الاسم، الشركة، البريد الإلكتروني، الهاتف/واتساب، الدولة، وتفاصيل المشروع التي تقدمها. تستخدم هذه البيانات فقط للرد على استفسارك.</p>
+        <h2 class="text-xl font-bold text-navy-900 mt-8 mb-3">كيف نستخدم بياناتك</h2>
+        <p>للرد على الاستفسارات، تقديم عروض الأسعار، إرسال معلومات المنتجات، وتنفيذ الطلبات. لا نبيع أو نشارك بياناتك مع أطراف ثالثة لأغراض التسويق.</p>
+        <h2 class="text-xl font-bold text-navy-900 mt-8 mb-3">التحليلات</h2>
+        <p>نستخدم Google Analytics 4 لفهم أنماط حركة المرور على الموقع. هذه البيانات مجهولة الهوية ومجمعة.</p>
+        <h2 class="text-xl font-bold text-navy-900 mt-8 mb-3">حقوقك</h2>
+        <p>يمكنك طلب الوصول إلى بياناتك الشخصية أو تصحيحها أو حذفها عن طريق مراسلتنا على <a href="mailto:yakeenlight@outlook.com" class="text-gold-600 hover:text-gold-500">yakeenlight@outlook.com</a>.</p>
+        <h2 class="text-xl font-bold text-navy-900 mt-8 mb-3">الاتصال</h2>
+        <p>أسئلة حول هذه السياسة؟ راسلنا على <a href="mailto:yakeenlight@outlook.com" class="text-gold-600 hover:text-gold-500">yakeenlight@outlook.com</a>.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

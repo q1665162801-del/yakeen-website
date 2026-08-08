@@ -1,0 +1,290 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductGallery from '../../components/ProductGallery.astro';
+import ProductSpecs from '../../components/ProductSpecs.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { getAllProducts } from '../../data/products';
+import { productSchema, breadcrumbSchema, faqPageSchema } from '../../utils/schema';
+import { getLocale, t, trSpec } from '../../i18n/ui';
+
+export async function getStaticPaths() {
+  const products = await getAllProducts();
+  return products.map((product) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+const allProducts = await getAllProducts();
+const locale = getLocale(Astro.url);
+const prefix = locale === 'ar' ? '/ar' : '';
+const certImages: Record<string, string> = {
+  'SASO': '/assets/images/certs/cert_saso.svg',
+  'G-Mark': '/assets/images/certs/cert_gcc.svg',
+  'CE': '/assets/images/certs/cert_ce.svg',
+  'RoHS': '/assets/images/certs/cert_rohs.svg',
+};
+
+// Localized product data — uses Arabic translations when available
+const p = locale === 'ar' && product.ar ? {
+  ...product,
+  name: product.ar.name,
+  shortName: product.ar.shortName,
+  tagline: product.ar.tagline,
+  description: product.ar.description,
+  features: product.ar.features,
+  applications: product.ar.applications,
+  faqs: product.ar.faqs,
+  caseStudy: { ...product.caseStudy, title: product.ar.caseStudy.title, location: product.ar.caseStudy.location },
+} : product;
+
+// Related products (same category, exclude current)
+const relatedProducts = allProducts
+  .filter((p) => p.category === product.category && p.slug !== product.slug)
+  .slice(0, 4);
+
+// Fallback if not enough related products
+if (relatedProducts.length < 4) {
+  const filler = allProducts
+    .filter((p) => p.slug !== product.slug && !relatedProducts.includes(p))
+    .slice(0, 4 - relatedProducts.length);
+  relatedProducts.push(...filler);
+}
+
+const crumbs = [
+  { name: t(locale, 'nav.home'), url: prefix + '/' },
+  { name: t(locale, 'nav.products'), url: prefix + '/products' },
+  { name: p.shortName, url: `${prefix}/products/${product.slug}` },
+];
+
+const productJsonLd = productSchema(p);
+const breadcrumbJsonLd = breadcrumbSchema(crumbs);
+const faqJsonLd = p.faqs.length > 0 ? faqPageSchema(p.faqs) : null;
+
+// Specs for the key highlights grid
+const specHighlights = [
+  { key: 'product.specs.wattage', value: product.specs.wattage },
+  { key: 'product.specs.efficacy', value: product.specs.efficacy },
+  { key: 'product.specs.ipRating', value: product.specs.ipRating },
+  { key: 'product.specs.warranty', value: trSpec(locale, product.specs.warranty) },
+];
+
+// Technical options
+const techOptions = [
+  { key: 'product.techOptions.dimming', value: trSpec(locale, product.specs.dimming) },
+  { key: 'product.techOptions.lifespan', value: trSpec(locale, product.specs.lifespan) },
+  { key: 'product.techOptions.cri', value: product.specs.cri },
+  { key: 'product.techOptions.beamAngle', value: product.specs.beamAngle },
+];
+---
+
+<BaseLayout
+  title={`${p.name} | Yakeen Lighting`}
+  description={p.description || product.metaDescription}
+  image={product.ogImage}
+  canonicalPath={`/products/${product.slug}`}
+  type="product"
+>
+  {/* === Structured Data === */}
+  <script type="application/ld+json" set:html={JSON.stringify(productJsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+  {faqJsonLd && <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />}
+
+  {/* === Breadcrumb === */}
+  <section class="pt-28 pb-4" style="background: #0a1525;">
+    <div class="container-yakeen">
+      <nav class="text-sm text-white/60" aria-label={t(locale, 'aria.breadcrumb')}>
+        <a href={prefix + '/'} class="hover:text-gold-400 transition-colors">{t(locale, 'nav.home')}</a>
+        <span class="mx-2 text-white/30">/</span>
+        <a href={prefix + '/products'} class="hover:text-gold-400 transition-colors">{t(locale, 'nav.products')}</a>
+        <span class="mx-2 text-white/30">/</span>
+        <span class="text-gold-400 font-medium">{p.shortName}</span>
+      </nav>
+    </div>
+  </section>
+
+  {/* === Product Detail === */}
+  <section class="section-padding" style="background: linear-gradient(180deg, #0a1525 0%, #ffffff 100px);">
+    <div class="container-yakeen">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+
+        {/* Left: Gallery */}
+        <div class="reveal lg:sticky lg:top-24">
+          <ProductGallery product={p} />
+        </div>
+
+        {/* Right: Info */}
+        <div class="reveal">
+          {/* Category + title */}
+          <span class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-gold-500/15 text-gold-500 mb-3">
+            {p.shortName}
+          </span>
+          <h1 class="font-serif text-3xl md:text-4xl font-bold text-navy-900 leading-tight">
+            {p.name}
+          </h1>
+          <p class="mt-3 text-lg text-gray-600 leading-relaxed">{p.tagline}</p>
+
+          {/* Key highlights */}
+          <div class="mt-6 grid grid-cols-2 gap-3">
+            {specHighlights.map((spec) => (
+              <div class="rounded-lg border border-gray-200 p-3">
+                <p class="text-xs text-gray-500 uppercase tracking-wide">{t(locale, spec.key)}</p>
+                <p class="font-bold text-navy-900">{spec.value}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Description */}
+          <p class="mt-6 text-gray-700 leading-relaxed">{p.description}</p>
+
+          {/* Certifications */}
+          <div class="mt-6 flex flex-wrap gap-2">
+            {['SASO', 'G-Mark', 'CE', 'RoHS'].map((cert) => (
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-navy-900 text-gold-400">
+              <img src={certImages[cert] || ''} alt={cert} class="w-4 h-4" loading="lazy" width="16" height="16" />
+              {cert}
+            </span>
+          ))}
+          </div>
+
+          {/* MOQ + Lead time */}
+          <div class="mt-6 p-4 rounded-xl" style="background: #f8f6f1;">
+            <div class="flex items-center justify-between flex-wrap gap-2">
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-wide">{t(locale, 'product.specs.moq')}</p>
+                <p class="font-bold text-navy-900">{trSpec(locale, product.specs.moq)}</p>
+              </div>
+              <div class="w-px h-8 bg-gray-200"></div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-wide">{t(locale, 'product.specs.leadTime')}</p>
+                <p class="font-bold text-navy-900">{trSpec(locale, product.specs.leadTime)}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* CTAs */}
+          <div class="mt-6 flex flex-col sm:flex-row gap-3">
+            <a href={prefix + '/contact'} class="btn-gold animate-pulse-gold flex-1">{t(locale, 'product.cta.getQuote')}</a>
+            <a href={`https://wa.me/8618103434722?text=${encodeURIComponent(t(locale, 'whatsapp.message'))}`} target="_blank" rel="noopener noreferrer" class="btn-outline-gold flex-1">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+              {t(locale, 'product.cta.whatsapp')}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* === Applications === */}
+  <section class="section-padding bg-white">
+    <div class="container-yakeen">
+      <div class="text-center mb-10 reveal">
+        <p class="text-gold-600 font-semibold uppercase tracking-wide text-sm mb-2">{t(locale, 'product.applications.eyebrow')}</p>
+        <h2 class="text-3xl font-bold text-navy-900">{t(locale, 'product.applications.title', { name: p.shortName })}</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {p.applications.map((app, i) => (
+          <div class="reveal rounded-xl p-6 border border-gray-200 hover:border-gold-300 hover:shadow-lg transition-all" style={`transition-delay: ${i * 60}ms`}>
+            <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style="background: rgba(201,169,97,0.1);">
+              <svg class="w-6 h-6 text-gold-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+            </div>
+            <h3 class="font-bold text-navy-900 mb-2">{app.title}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">{app.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* === Scene Image === */}
+  <section class="relative">
+    <div class="container-yakeen py-12">
+      <div class="rounded-2xl overflow-hidden shadow-2xl relative aspect-[21/9]">
+        <img src={product.sceneImage} alt={t(locale, 'product.sceneAlt', { name: p.name })} loading="lazy" width="1200" height="514" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 flex items-end p-8 md:p-12" style="background: linear-gradient(0deg, rgba(5,11,20,0.85) 0%, transparent 60%);">
+          <div>
+            <p class="text-gold-400 font-semibold text-sm uppercase tracking-wide mb-1">{p.caseStudy.location} · {p.caseStudy.year}</p>
+            <h3 class="text-2xl md:text-3xl font-bold text-white">{p.caseStudy.title}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* === Specs Table === */}
+  <section class="section-padding" style="background: #f8f6f1;">
+    <div class="container-yakeen">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div class="reveal">
+          <ProductSpecs specs={product.specs} />
+        </div>
+        <div class="reveal">
+          <h2 class="font-serif text-2xl font-bold text-navy-900 mb-4">{t(locale, 'product.features.title')}</h2>
+          <ul class="space-y-3">
+            {p.features.map((feature) => (
+              <li class="flex items-start gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-gold-500 flex items-center justify-center mt-0.5">
+                  <svg class="w-4 h-4 text-navy-900" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                </span>
+                <span class="text-gray-700">{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          {/* Dimming + chip info */}
+          <div class="mt-8 p-4 rounded-xl border border-gray-200 bg-white">
+            <h3 class="font-bold text-navy-900 mb-3">{t(locale, 'product.techOptions.title')}</h3>
+            <dl class="space-y-2 text-sm">
+              {techOptions.map((opt) => (
+                <div class="flex justify-between"><dt class="text-gray-500">{t(locale, opt.key)}</dt><dd class="font-semibold text-navy-900">{opt.value}</dd></div>
+              ))}
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* === FAQ === */}
+  {p.faqs.length > 0 && (
+    <section class="section-padding bg-white">
+      <div class="container-yakeen max-w-3xl">
+        <div class="text-center mb-10 reveal">
+          <p class="text-gold-600 font-semibold uppercase tracking-wide text-sm mb-2">{t(locale, 'product.faq.eyebrow')}</p>
+          <h2 class="text-3xl font-bold text-navy-900">{t(locale, 'product.faq.title', { name: p.shortName })}</h2>
+        </div>
+        <div class="space-y-3">
+          {p.faqs.map((faq) => (
+            <details class="group rounded-xl border border-gray-200 overflow-hidden">
+              <summary class="flex items-center justify-between cursor-pointer p-5 font-semibold text-navy-900 hover:bg-sand-50 transition-colors">
+                {faq.question}
+                <svg class="w-5 h-5 text-gold-500 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="px-5 pb-5 text-gray-600 leading-relaxed">{faq.answer}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {/* === Related Products === */}
+  {relatedProducts.length > 0 && (
+    <section class="section-padding" style="background: #f8f6f1;">
+      <div class="container-yakeen">
+        <div class="text-center mb-10 reveal">
+          <h2 class="text-3xl font-bold text-navy-900">{t(locale, 'product.related.title')}</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {relatedProducts.map((rp) => (
+            <ProductCard product={rp} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <CTABanner title={t(locale, 'product.ctaBanner.title')} subtitle={t(locale, 'product.ctaBanner.subtitle', { name: p.name })} />
+</BaseLayout>

@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Yakeen Design System ===== */
+
+:root {
+  /* Brand Colors */
+  --navy-900: #050b14;
+  --navy-800: #0a1525;
+  --navy-700: #1a2744;
+  --navy-600: #2a4168;
+  --gold-500: #c9a961;
+  --gold-600: #b8964a;
+  --gold-400: #e9ad3c;
+  --sand-50: #faf7f2;
+  --sand-100: #f0ebe0;
+  
+  /* Typography */
+  --font-sans: 'Manrope', system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-arabic: 'Noto Naskh Arabic', sans-serif;
+  
+  /* Spacing */
+  --header-height: 72px;
+  --max-width: 1280px;
+}
+
+/* Base */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--navy-900);
+  background: #ffffff;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* RTL Support for Arabic */
+html[dir="rtl"] body {
+  font-family: var(--font-arabic);
+}
+
+html[dir="rtl"] {
+  direction: rtl;
+}
+
+/* Custom Scrollbar — gold-accented, Middle East luxury feel */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--navy-900);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--gold-500), var(--gold-600));
+  border-radius: 6px;
+  border: 2px solid var(--navy-900);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--gold-400), var(--gold-500));
+}
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-500) var(--navy-900);
+}
+
+/* Components */
+@layer components {
+  .btn-gold {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-bold text-sm transition-all duration-200;
+    background: linear-gradient(135deg, var(--gold-500), var(--gold-600));
+    color: var(--navy-900);
+  }
+  .btn-gold:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(201, 169, 97, 0.4);
+  }
+  .btn-gold:active {
+    transform: scale(0.98);
+  }
+  
+  .btn-outline-gold {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-bold text-sm transition-all duration-200 border-2;
+    border-color: var(--gold-500);
+    color: var(--gold-500);
+    background: transparent;
+  }
+  .btn-outline-gold:hover {
+    background: var(--gold-500);
+    color: var(--navy-900);
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .container-yakeen {
+    @apply mx-auto px-4 md:px-8 lg:px-16;
+    max-width: var(--max-width);
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, var(--gold-400), var(--gold-600));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ponytail: reveal moved to global scope (outside @layer) for correct priority */
+
+  /* ponytail: gold divider under section titles — pure CSS, zero DOM change */
+  .gold-divider {
+    width: 60px;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--gold-400), var(--gold-600));
+    margin: 12px auto 0;
+  }
+}
+
+/* ponytail: reveal — global scope (not in @layer) so Tailwind utilities can't override opacity/transform */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Pulse animation for CTA buttons */
+@keyframes pulse-gold {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(201, 169, 97, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(201, 169, 97, 0);
+  }
+}
+
+.animate-pulse-gold {
+  animation: pulse-gold 2s infinite;
+}
+
+/* Header scrolled state */
+.site-header {
+  background: transparent;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+.site-header.scrolled {
+  background: rgba(5, 11, 20, 0.85);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+.site-header.scrolled .nav-link {
+  color: rgba(255, 255, 255, 0.92);
+}
+.site-header.scrolled .nav-link.active {
+  color: rgb(201, 169, 97);
+}
+.site-header.scrolled .nav-link:hover {
+  color: #fff;
+}
+
+/* Image lazy loading */
+img {
+  loading: lazy;
+}
+
+/* Focus visible */
+*:focus-visible {
+  outline: 2px solid var(--gold-500);
+  outline-offset: 2px;
+}
+
+/* ponytail: premium card — layered shadow depth, no visible border, international feel */
+.card-premium {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px rgba(5,11,20,0.04), 0 8px 30px rgba(5,11,20,0.06);
+  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease;
+}
+.card-premium:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(5,11,20,0.06), 0 20px 50px rgba(5,11,20,0.10);
+}
+
+/* ponytail: glass card for dark sections — frosted glass, no hard borders */
+.card-glass {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), background 0.3s ease, border-color 0.3s ease;
+}
+.card-glass:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(201,169,97,0.3);
+  transform: translateY(-4px);
+}
+
+/* Touch devices: disable hover lift for native feel */
+@media (hover: none) {
+  .card-premium:hover, .card-glass:hover { transform: none; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

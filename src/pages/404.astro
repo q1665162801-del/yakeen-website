@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../data/site-config';
+import { getLocale, t } from '../i18n/ui';
+
+const locale = getLocale(Astro.url);
+const prefix = locale === 'ar' ? '/ar' : '';
+
+// Quick links shown on the 404 page to help users find their way back
+const quickLinks = [
+  { labelKey: '404.quick.home', href: '/', descKey: '404.quick.homeDesc', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
+  { labelKey: '404.quick.products', href: '/products', descKey: '404.quick.productsDesc', icon: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4' },
+  { labelKey: '404.quick.contact', href: '/contact', descKey: '404.quick.contactDesc', icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' },
+  { labelKey: '404.quick.faq', href: '/faq', descKey: '404.quick.faqDesc', icon: 'M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093M12 17h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
+];
+---
+
+<BaseLayout
+  title={t(locale, '404.title') + ' | Yakeen Lighting'}
+  description={t(locale, '404.message')}
+  canonicalPath="/404"
+  type="page"
+>
+  {/* Prevent indexing of the error page */}
+  <meta slot="head" name="robots" content="noindex" />
+
+  <!-- ===== 404 Centered Layout ===== -->
+  <section class="relative flex min-h-[80vh] items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #050b14 0%, #0a1525 45%, #1a2744 100%);">
+    <!-- Decorative gradient orbs -->
+    <div class="absolute top-10 left-10 w-96 h-96 rounded-full opacity-20 blur-3xl" style="background: radial-gradient(circle, #c9a961 0%, transparent 70%);"></div>
+    <div class="absolute bottom-10 right-10 w-80 h-80 rounded-full opacity-10 blur-3xl" style="background: radial-gradient(circle, #3a5685 0%, transparent 70%);"></div>
+
+    <div class="container-yakeen relative z-10 py-20 text-center">
+      <!-- Large 404 in gold gradient -->
+      <p class="reveal font-serif text-[8rem] md:text-[12rem] font-bold leading-none text-gradient-gold">
+        404
+      </p>
+
+      <!-- Heading -->
+      <h1 class="reveal text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-4">
+        {t(locale, '404.title')}
+      </h1>
+
+      <!-- Message -->
+      <p class="reveal text-lg text-gray-300 max-w-xl mx-auto leading-relaxed mb-10">
+        {t(locale, '404.message')}
+      </p>
+
+      <!-- Big gold Back to Home button -->
+      <div class="reveal mb-16">
+        <a href={prefix + '/'} class="btn-gold animate-pulse-gold text-base px-8 py-4">
+          <svg class="mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+          {t(locale, '404.backHome')}
+        </a>
+      </div>
+
+      <!-- Quick links grid -->
+      <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+        {quickLinks.map((link) => (
+          <a
+            href={prefix + link.href}
+            class="group flex flex-col items-center gap-3 rounded-2xl border border-white/10 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-gold-500/50"
+            style="background: rgba(255,255,255,0.03);"
+          >
+            <span class="flex h-12 w-12 items-center justify-center rounded-full text-gold-500 transition-colors group-hover:bg-gold-500 group-hover:text-navy-900" style="background: rgba(201,169,97,0.1);">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d={link.icon} />
+              </svg>
+            </span>
+            <span class="font-bold text-white text-sm md:text-base">{t(locale, link.labelKey)}</span>
+            <span class="text-xs text-gray-400 text-center leading-relaxed">{t(locale, link.descKey)}</span>
+          </a>
+        ))}
+      </div>
+
+      <!-- Contact hint -->
+      <p class="reveal mt-12 text-sm text-gray-400">
+        {t(locale, '404.stillLost')}{' '}
+        <a href={prefix + '/contact'} class="font-semibold text-gold-500 hover:text-gold-400 transition-colors">
+          {t(locale, '404.contactTeam')}
+        </a>
+        {' '}{t(locale, '404.orEmail')}{' '}
+        <a href={`mailto:${siteConfig.email}`} class="font-semibold text-gold-500 hover:text-gold-400 transition-colors">
+          {siteConfig.email}
+        </a>
+      </p>
+    </div>
+  </section>
+
+</BaseLayout>

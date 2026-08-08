@@ -1,0 +1,322 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABanner from '../components/CTABanner.astro';
+import { siteConfig } from '../data/site-config';
+import { breadcrumbSchema, faqPageSchema } from '../utils/schema';
+import { getLocale, t } from '../i18n/ui';
+
+const locale = getLocale(Astro.url);
+const prefix = locale === 'ar' ? '/ar' : '';
+
+// Read the ?search= query parameter (if present) so the input reflects the
+// current search and we can show a contextual confirmation message.
+const searchQuery = Astro.url.searchParams.get('search') ?? '';
+
+// Breadcrumb structured data (Home > AI Assistant)
+const breadcrumb = breadcrumbSchema([
+  { name: t(locale, 'nav.home'), url: prefix + '/' },
+  { name: t(locale, 'nav.aiAssistant'), url: prefix + '/ai-assistant' },
+]);
+
+// FAQ content (also emitted as FAQPage structured data for rich results)
+const faqs = [
+  {
+    question: 'What can the AI assistant help with?',
+    answer: 'The AI lighting assistant helps you find the right LED products for your project. Describe your application — hotel lobby, warehouse, retail store, street lighting — along with key specs like wattage, CCT, CRI, IP rating, or UGR, and it recommends matching Yakeen Lighting products with full SASO & G-Mark certification details.',
+    question_ar: 'بماذا يمكن لمساعد الذكاء الاصطناعي أن يساعد؟',
+    answer_ar: 'يساعد مساعد الإضاءة الذكي في العثور على منتجات LED المناسبة لمشروعك. صف تطبيقك — بهو فندق، مستودع، متجر تجزئة، إضاءة شوارع — مع المواصفات الرئيسية مثل الاستطاعة، حرارة اللون، CRI، تصنيف IP، أو UGR، وسيرشح منتجات Yakeen Lighting مع تفاصيل شهادات SASO و G-Mark الكاملة.',
+  },
+  {
+    question: 'How accurate are the product recommendations?',
+    answer: 'Recommendations are based on Yakeen Lighting\'s full product catalog and technical specifications. Every suggested product includes verified spec points (wattage, efficacy, CCT, CRI, IP rating, dimming, lifespan, warranty, and certifications). For project-specific lux calculations, request a free DIALux simulation from our engineering team.',
+    question_ar: 'ما مدى دقة توصيات المنتجات؟',
+    answer_ar: 'التوصيات مبنية على الكتالوج الكامل لمنتجات Yakeen Lighting والمواصفات الفنية. كل منتج مقترح يتضمن مواصفات موثقة (الاستطاعة، الكفاءة، حرارة اللون، CRI، تصنيف IP، التعتيم، العمر الافتراضي، الضمان، والشهادات). لحسابات الإضاءة المحددة للمشروع، اطلب محاكاة DIALux مجانية من فريق الهندسة لدينا.',
+  },
+  {
+    question: 'Can I get a project-based quotation?',
+    answer: 'Yes. After reviewing your recommendations, submit a quote request and Yakeen Lighting will respond within 24 hours with project-based pricing, MOQ, lead time, and full compliance documentation (SABER registration, SASO, G-Mark, CE, RoHS).',
+    question_ar: 'هل يمكنني الحصول على عرض سعر مخصص للمشروع؟',
+    answer_ar: 'نعم. بعد مراجعة التوصيات، أرسل طلب عرض سعر وسترد Yakeen Lighting رداً خلال 24 ساعة مع تسعير مخصص للمشروع، الحد الأدنى للطلب، مدة التسليم، ووثائق الامتثال الكاملة (تسجيل SABER، SASO، G-Mark، CE، RoHS).',
+  },
+  {
+    question: 'Does it support OEM/ODM customization requests?',
+    answer: 'Absolutely. Mention your customization needs — private labeling, custom wattages, CCTs, housing colors, or custom mold design — in your search or quote request. Yakeen Lighting supports full OEM/ODM with MOQ starting from 100 pieces.',
+    question_ar: 'هل يدعم طلبات التخصيص OEM/ODM؟',
+    answer_ar: 'بالتأكيد. اذكر احتياجاتك من التخصيص — وضع العلامات الخاصة، استطاعات مخصصة، حرارة لونية، ألوان هياكل، أو تصميم قوالب مخصص — في البحث أو طلب عرض السعر. تدعم Yakeen Lighting التخصيص الكامل OEM/ODM بحد أدنى للطلب يبدأ من 100 قطعة.',
+  },
+  {
+    question: 'Which markets does the assistant cover?',
+    answer: 'The assistant is tuned for Middle East commercial lighting projects across Saudi Arabia, UAE, Qatar, Kuwait, Bahrain, and Oman. Recommendations factor in GCC-specific requirements such as 50°C heat rating, SASO/G-Mark compliance, and salt-spray resistance for coastal environments.',
+    question_ar: 'ما الأسواق التي يغطيها المساعد؟',
+    answer_ar: 'المساعد مضبوط لمشاريع الإضاءة التجارية في الشرق الأوسط عبر السعودية والإمارات وقطر والكويت والبحرين وعمان. تراعي التوصيات متطلبات مجلس التعاون الخليجي المحددة مثل تصنيف الحرارة 50°م، الامتثال لـ SASO/G-Mark، ومقاومة رذاذ الملح للبيئات الساحلية.',
+  },
+];
+
+// Localize FAQs for display + schema
+const faqsL = faqs.map(f => ({
+  question: locale === 'ar' ? f.question_ar : f.question,
+  answer: locale === 'ar' ? f.answer_ar : f.answer,
+}));
+const faqSchema = faqPageSchema(faqsL);
+
+// "How it works" steps
+const steps = [
+  {
+    number: '1',
+    title: 'Describe your project',
+    desc: 'Tell us about your space and lighting needs — application, wattage, CCT, CRI, IP rating, or UGR. Natural language is fine.',
+    title_ar: 'صف مشروعك',
+    desc_ar: 'أخبرنا عن مساحتك واحتياجات الإضاءة — التطبيق، الاستطاعة، حرارة اللون، CRI، تصنيف IP، أو UGR. اللغة الطبيعية مقبولة.',
+  },
+  {
+    number: '2',
+    title: 'Get product recommendations',
+    desc: 'The assistant matches your requirements against Yakeen\'s certified LED catalog and returns the best-fit products with full specs.',
+    title_ar: 'احصل على توصيات المنتجات',
+    desc_ar: 'يطابق المساعد متطلباتك مع كتالوج Yakeen المعتمد ويعيد أفضل المنتجات المناسبة بالمواصفات الكاملة.',
+  },
+  {
+    number: '3',
+    title: 'Request a quote',
+    desc: 'Review the recommendations and request a project-based quotation with MOQ, lead time, and compliance documentation within 24 hours.',
+    title_ar: 'اطلب عرض سعر',
+    desc_ar: 'راجع التوصيات واطلب عرض سعر مخصص للمشروع مع الحد الأدنى للطلب ومدة التسليم ووثائق الامتثال خلال 24 ساعة.',
+  },
+];
+const stepsL = steps.map(s => ({
+  number: s.number,
+  title: locale === 'ar' ? s.title_ar : s.title,
+  desc: locale === 'ar' ? s.desc_ar : s.desc,
+}));
+
+// Popular search chips
+const popularSearches = locale === 'ar' ? [
+  'إضاءة مدمجة UGR<19',
+  'بانل 600x600',
+  'كشاف IP65',
+  'شارع شمسي',
+  'إضاءة فنادق',
+  'إضاءة مستودعات',
+] : [
+  'Downlight UGR<19',
+  'Panel 600x600',
+  'IP65 Flood',
+  'Solar Street',
+  'Hotel Lighting',
+  'Warehouse Lighting',
+];
+---
+
+<BaseLayout
+  title={t(locale, 'ai.heroTitle') + ' | Yakeen Lighting'}
+  description={t(locale, 'ai.heroSubtitle')}
+  canonicalPath="/ai-assistant"
+  type="page"
+>
+  <!-- BreadcrumbList + FAQPage Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ===== Hero + Search Interface ===== -->
+  <section class="relative overflow-hidden" style="background: linear-gradient(135deg, #050b14 0%, #0a1525 40%, #1a2744 100%);">
+    <!-- Decorative gradient orbs -->
+    <div class="absolute top-20 left-10 w-96 h-96 rounded-full opacity-20 blur-3xl" style="background: radial-gradient(circle, #c9a961 0%, transparent 70%);"></div>
+    <div class="absolute bottom-20 right-10 w-80 h-80 rounded-full opacity-10 blur-3xl" style="background: radial-gradient(circle, #3a5685 0%, transparent 70%);"></div>
+
+    <div class="container-yakeen relative z-10 py-20 md:py-28">
+      <div class="mx-auto max-w-3xl text-center">
+        <!-- Badge -->
+        <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style="background: rgba(201,169,97,0.15); border: 1px solid rgba(201,169,97,0.3);">
+          <svg class="h-4 w-4 text-gold-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+          <span class="text-gold-500 text-sm font-semibold tracking-wide">{t(locale, 'ai.badge')}</span>
+        </div>
+
+        <h1 class="reveal text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+          {t(locale, 'ai.heroTitle')}
+        </h1>
+
+        <p class="reveal text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+          {t(locale, 'ai.heroSubtitle')}
+        </p>
+
+        <!-- Search interface (focal point) -->
+        <div class="reveal ai-search-wrap mx-auto w-full max-w-2xl">
+          <form
+            id="ai-assistant-form"
+            data-base-path={prefix + '/ai-assistant'}
+            class="flex items-center gap-2 rounded-full border-2 border-gold-500 bg-white p-2 shadow-2xl shadow-navy-900/30 transition-shadow focus-within:shadow-xl focus-within:shadow-gold-500/20"
+            role="search"
+            aria-label={t(locale, 'aria.aiProductSearch')}
+          >
+            {/* Search icon */}
+            <span class="flex h-10 w-10 shrink-0 items-center justify-center pl-1 text-navy-500">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </span>
+
+            {/* Input — pre-filled from ?search= query param */}
+            <input
+              id="ai-assistant-input"
+              type="search"
+              name="search"
+              value={searchQuery}
+              placeholder={t(locale, 'ai.searchPlaceholder')}
+              autocomplete="off"
+              aria-label={t(locale, 'aria.searchProducts')}
+              class="min-w-0 flex-1 bg-transparent text-sm text-navy-900 placeholder:text-navy-400 focus:outline-none md:text-base"
+            />
+
+            {/* Submit button */}
+            <button type="submit" class="btn-gold shrink-0">
+              <svg class="mr-1.5 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              {t(locale, 'ai.searchButton')}
+            </button>
+          </form>
+
+          {/* Contextual confirmation when a search is active */}
+          {searchQuery && (
+            <p class="mt-4 text-sm text-gold-400">
+              {t(locale, 'ai.showingResults')} <span class="font-semibold">"{searchQuery}"</span>
+            </p>
+          )}
+        </div>
+
+        <!-- Popular searches -->
+        <div class="reveal mt-10">
+          <p class="text-sm font-medium uppercase tracking-wide text-white/95 mb-3">{t(locale, 'ai.popularSearches')}</p>
+          <div class="flex flex-wrap items-center justify-center gap-2">
+            {popularSearches.map((term) => (
+              <button
+                type="button"
+                data-quick-search={term}
+                class="quick-chip rounded-full border border-gold-500/60 bg-white/10 px-4 py-1.5 text-sm font-medium text-white/95 backdrop-blur-sm transition-colors hover:border-gold-500 hover:bg-gold-500 hover:text-navy-900"
+              >
+                {term}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== How It Works ===== -->
+  <section class="section-padding bg-white">
+    <div class="container-yakeen">
+      <div class="text-center mb-12 reveal">
+        <p class="text-gold-600 font-semibold tracking-wide uppercase text-sm mb-2">{t(locale, 'ai.howItWorks.eyebrow')}</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-navy-900">{t(locale, 'ai.howItWorks.title')}</h2>
+        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">{t(locale, 'ai.howItWorks.desc')}</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        {stepsL.map((step, i) => (
+          <div
+            class="reveal group relative flex flex-col items-center text-center rounded-2xl border border-gray-200 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-gold-500 hover:shadow-lg"
+            style={`transition-delay: ${i * 80}ms`}
+          >
+            {/* Step number */}
+            <div class="mb-5 flex h-16 w-16 items-center justify-center rounded-full font-serif text-2xl font-bold text-gold-600 transition-colors group-hover:bg-gold-500 group-hover:text-navy-900" style="background: rgba(201,169,97,0.1);">
+              {step.number}
+            </div>
+            <h3 class="font-bold text-navy-900 text-lg mb-2">{step.title}</h3>
+            <p class="text-sm leading-relaxed text-gray-600">{step.desc}</p>
+
+            {/* Connector arrow (hidden on last step / mobile) */}
+            {i < steps.length - 1 && (
+              <svg class="hidden md:block absolute top-1/2 -right-4 h-6 w-6 -translate-y-1/2 text-gold-500/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ Section ===== -->
+  <section class="section-padding" style="background: #0a1525;">
+    <div class="container-yakeen max-w-3xl">
+      <div class="text-center mb-12 reveal">
+        <p class="text-gold-500 font-semibold tracking-wide uppercase text-sm mb-2">{t(locale, 'ai.faq.eyebrow')}</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-white">{t(locale, 'ai.faq.title')}</h2>
+        <p class="text-gray-400 mt-4 max-w-2xl mx-auto">{t(locale, 'ai.faq.subtitle')}</p>
+      </div>
+
+      <div class="space-y-4">
+        {faqsL.map((faq, i) => (
+          <details
+            class="reveal faq-item group rounded-xl border border-white/10 p-5 transition-colors hover:border-gold-500/40 open:border-gold-500/50"
+            style={`background: rgba(255,255,255,0.03); transition-delay: ${i * 50}ms`}
+          >
+            <summary class="flex cursor-pointer items-center justify-between gap-4 list-none">
+              <h3 class="font-bold text-white text-base md:text-lg">{faq.question}</h3>
+              <svg class="h-5 w-5 shrink-0 text-gold-500 transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <p class="mt-4 text-sm leading-relaxed text-gray-400">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+
+      {/* Still have questions */}
+      <div class="reveal mt-10 text-center">
+        <p class="text-gray-400 text-sm">
+          {t(locale, 'ai.stillQuestions')}{' '}
+          <a href={prefix + '/contact'} class="font-semibold text-gold-500 hover:text-gold-400 transition-colors">
+            {t(locale, 'ai.contactExperts')}
+          </a>
+          {' ' + t(locale, 'ai.orEmail') + ' '}
+          <a href={`mailto:${siteConfig.email}`} class="font-semibold text-gold-500 hover:text-gold-400 transition-colors">
+            {siteConfig.email}
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA Banner ===== -->
+  <CTABanner
+    title={t(locale, 'ai.cta.title')}
+    subtitle={t(locale, 'ai.cta.subtitle')}
+  />
+
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    var form = document.getElementById('ai-assistant-form');
+    var input = document.getElementById('ai-assistant-input');
+    var chips = document.querySelectorAll('[data-quick-search]');
+    if (!form || !input) return;
+
+    // Redirect to the same page with the ?search= query parameter.
+    function handleSearch(query) {
+      var trimmed = (query || '').trim();
+      if (!trimmed) return;
+      var base = form.getAttribute('data-base-path') || '/ai-assistant';
+      window.location.href = base + '?search=' + encodeURIComponent(trimmed);
+    }
+
+    // Form submit (Enter or button click)
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      handleSearch(input.value);
+    });
+
+    // Popular-search chips: fill the input and submit
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var term = chip.getAttribute('data-quick-search');
+        input.value = term;
+        handleSearch(term);
+      });
+    });
+  })();
+</script>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <defs>
+    <linearGradient id="iso14k" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d6a4f"/>
+      <stop offset="100%" style="stop-color:#1b4332"/>
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="54" fill="url(#iso14k)" stroke="#c5a55a" stroke-width="3"/>
+  <circle cx="60" cy="60" r="46" fill="none" stroke="#c5a55a" stroke-width="1" opacity="0.4"/>
+  <text x="60" y="42" text-anchor="middle" fill="#c5a55a" font-family="Manrope, sans-serif" font-size="14" font-weight="700">ISO</text>
+  <text x="60" y="64" text-anchor="middle" fill="#ffffff" font-family="Manrope, sans-serif" font-size="20" font-weight="800">14001</text>
+  <text x="60" y="82" text-anchor="middle" fill="#c5a55a" font-family="Manrope, sans-serif" font-size="10" font-weight="600">2015</text>
+  <path d="M44 98 L54 108 L76 86" fill="none" stroke="#c5a55a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

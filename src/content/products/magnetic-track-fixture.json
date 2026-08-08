@@ -1,0 +1,123 @@
+{
+  "slug": "magnetic-track-fixture",
+  "featured": false,
+  "name": "Magnetic Track Light Modules",
+  "shortName": "Track Modules",
+  "category": "track",
+  "tagline": "Interchangeable spotlight and flood modules for 48V systems",
+  "description": "Yakeen magnetic track light modules — spotlight, flood, and linear modules compatible with all Yakeen 48V magnetic track systems. DALI/0-10V dimming ready. Simply snap in and out for instant reconfiguration. SASO & G-Mark certified.",
+  "metaDescription": "Yakeen Magnetic Track Light Modules — spotlight, flood, linear, 48V compatible, DALI/0-10V, SASO & G-Mark certified for flexible track lighting in the Middle East.",
+  "ogImage": "/assets/images/products/magnetic-track-fixture.jpeg",
+  "mainImage": "/assets/images/products/magnetic-track-fixture.jpeg",
+  "galleryImages": [
+    "/assets/images/products/magnetic-track-fixture.jpeg",
+    "/assets/images/products/magnetic-track-fixture-page.png"
+  ],
+  "sceneImage": "/assets/images/products/magnetic-2.jpg",
+  "specs": {
+    "wattage": "6W-30W (per module)",
+    "efficacy": "90-110 lm/W",
+    "cct": "2700K / 3000K / 4000K / 5000K",
+    "cri": "Ra>90",
+    "beamAngle": "15° / 24° / 36° / 60° / 120°",
+    "ipRating": "IP20",
+    "dimming": "DALI / 0-10V",
+    "lifespan": "L70 > 50,000 hours",
+    "warranty": "5 years",
+    "certifications": "SASO, G-Mark, CE, RoHS",
+    "moq": "100 pieces",
+    "leadTime": "20-30 days"
+  },
+  "applications": [
+    {
+      "title": "Retail Displays",
+      "desc": "Swap between spot and flood modules for different product categories.",
+      "icon": "retail"
+    },
+    {
+      "title": "Galleries",
+      "desc": "Adjustable modules for changing exhibitions.",
+      "icon": "gallery"
+    },
+    {
+      "title": "Hospitality",
+      "desc": "Create custom lighting zones with different module types.",
+      "icon": "hotel"
+    },
+    {
+      "title": "Offices",
+      "desc": "Linear flood modules for even task lighting.",
+      "icon": "office"
+    }
+  ],
+  "features": [
+    "Magnetic snap-in installation — no tools, no wiring",
+    "Spotlight modules (6-20W) with adjustable beam angles",
+    "Flood modules (10-30W) for even area lighting",
+    "Linear modules for continuous illumination",
+    "DALI/0-10V dimming integrated",
+    "360° rotation + 90° tilt on spotlight modules"
+  ],
+  "faqs": [
+    {
+      "question": "Can I mix different module types on the same track?",
+      "answer": "Absolutely. The 48V system supports any combination of spotlight, flood, and linear modules on the same track. Each module dims independently via DALI or 0-10V."
+    },
+    {
+      "question": "How do I reposition a module?",
+      "answer": "Simply lift the module off the track and snap it into a new position. The magnetic connection handles both power and data (for DALI). No tools or electrician required."
+    }
+  ],
+  "caseStudy": {
+    "title": "Fashion Boutique",
+    "location": "Dubai, UAE",
+    "year": "2024",
+    "image": "/assets/images/products/magnetic-2.jpg"
+  },
+  "ar": {
+    "name": "وحدات إضاءة مسار مغناطيسي",
+    "shortName": "وحدات المسار",
+    "tagline": "وحدات كشاف وفيضان قابلة للتبديل لأنظمة 48V",
+    "description": "وحدات إضاءة مسار مغناطيسي من Yakeen — وحدات كشاف وفيضان وخطي متوافقة مع جميع أنظمة المسار المغناطيسي 48V من Yakeen. تعتيم DALI/0-10V جاهز. معتمدة SASO و G-Mark.",
+    "features": [
+      "تركيب مغناطيسي بالنقر — بدون أدوات، بدون أسلاك",
+      "وحدات كشاف (6-20واط) بزوايا شعاع قابلة للتعديل",
+      "وحدات فيضان (10-30واط) لإضاءة منطقة متساوية",
+      "وحدات خطية لإضاءة مستمرة",
+      "تعتيم DALI/0-10V مدمج",
+      "دوران 360° + إمالة 90° على وحدات الكشاف"
+    ],
+    "applications": [
+      {
+        "title": "عارضات التجزئة",
+        "desc": "التبديل بين وحدات الكشاف والفيضان لفئات منتجات مختلفة."
+      },
+      {
+        "title": "المعارض",
+        "desc": "وحدات قابلة للتعديل للمعارض المتغيرة."
+      },
+      {
+        "title": "الضيافة",
+        "desc": "إنشاء مناطق إضاءة مخصصة بأنواع وحدات مختلفة."
+      },
+      {
+        "title": "المكاتب",
+        "desc": "وحدات فيضان خطية لإضاءة مهام متساوية."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "هل يمكنني خلط أنواع وحدات مختلفة على نفس المسار؟",
+        "answer": "بالتأكيد. نظام 48V يدعم أي مجموعة من وحدات الكشاف والفيضان والخطي على نفس المسار. كل وحدة تتعتيم بشكل مستقل عبر DALI أو 0-10V."
+      },
+      {
+        "question": "كيف أعيد تموضع وحدة؟",
+        "answer": "ببساطة ارفع الوحدة عن المسار وانقرها في موضع جديد. الاتصال المغناطيسي يتعامل مع كل من الطاقة والبيانات (لـ DALI)."
+      }
+    ],
+    "caseStudy": {
+      "title": "بوتيك أزياء",
+      "location": "دبي، الإمارات"
+    }
+  }
+}

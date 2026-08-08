@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABanner from '../components/CTABanner.astro';
+import { faqPageSchema, breadcrumbSchema } from '../utils/schema';
+import { getLocale, t } from '../i18n/ui';
+
+const locale = getLocale(Astro.url);
+const prefix = locale === 'ar' ? '/ar' : '';
+
+const crumbs = [
+  { name: t(locale, 'nav.home'), url: prefix + '/' },
+  { name: t(locale, 'faq.breadcrumb'), url: prefix + '/faq' },
+];
+const breadcrumbJsonLd = breadcrumbSchema(crumbs);
+
+const faqs = [
+  { categoryKey: 'faq.cat.certification', items: [
+    { q: 'What certifications do Yakeen products have?', a: 'Yakeen Lighting provides SASO, G-Mark, CE, RoHS, and CB certifications for all products. Every unit ships with compliance documentation for Saudi Arabia (SABER registration), UAE (ECAS), and other GCC markets. We assist with customs clearance paperwork at no extra cost.',
+      q_ar: 'ما الشهادات التي تحملها منتجات Yakeen؟', a_ar: 'توفر Yakeen Lighting شهادات SASO و G-Mark و CE و RoHS و CB لجميع المنتجات. كل وحدة تُشحن مع وثائق الامتثال للسعودية (تسجيل SABER) والإمارات (ECAS) وأسواق مجلس التعاون الأخرى. نساعد في أوراق تخليص الجمارك بدون تكلفة إضافية.' },
+    { q: 'What is SASO certification and why do I need it?', a: 'SASO (Saudi Standards, Metrology and Quality Organization) certification is mandatory for importing lighting products into Saudi Arabia. Without it, customs will reject your shipment. Yakeen Lighting provides SASO certificates and assists with SABER platform registration for every order.',
+      q_ar: 'ما هي شهادة SASO ولماذا أحتاجها؟', a_ar: 'شهادة SASO (هيئة المقاييس والمعايير السعودية) إلزامية لاستيراد منتجات الإضاءة إلى السعودية. بدونها، سيرفض الجمارك شحنتك. توفر Yakeen Lighting شهادات SASO وتساعد في تسجيل منصة SABER لكل طلب.' },
+    { q: 'What is G-Mark and which countries accept it?', a: 'G-Mark is the GCC Conformity Marking, accepted across all 6 GCC countries (Saudi Arabia, UAE, Qatar, Kuwait, Bahrain, Oman). It streamlines customs clearance across the region. All Yakeen products carry G-Mark certification.',
+      q_ar: 'ما هي علامة G-Mark وأي الدول تقبلها؟', a_ar: 'علامة G-Mark هي علامة مطابقة مجلس التعاون الخليجي، مقبولة في جميع دول مجلس التعاون الست (السعودية والإمارات وقطر والكويت والبحرين وعمان). تسهل تخليص الجمارك في جميع أنحاء المنطقة. جميع منتجات Yakeen تحمل شهادة G-Mark.' },
+    { q: 'Can you provide test reports for specific products?', a: 'Yes. Yakeen Lighting provides LM-80 LED chip test reports, TM-21 lumen maintenance reports, photometric IES files, UGR test reports, IP/IK test reports, and salt-spray test data. Contact us with your specific requirements.',
+      q_ar: 'هل يمكنكم توفير تقارير اختبار لمنتجات محددة؟', a_ar: 'نعم. توفر Yakeen Lighting تقارير اختبار رقائق LED LM-80، تقارير صيانة التدفق الضوئي TM-21، ملفات IES الضوئية، تقارير UGR، تقارير IP/IK، وبيانات اختبار رذاذ الملح. اتصل بنا بمتطلباتك المحددة.' },
+  ]},
+  { categoryKey: 'faq.cat.oem', items: [
+    { q: 'What is the difference between OEM and ODM?', a: 'OEM (Original Equipment Manufacturing): We manufacture products to your exact design and specifications. ODM (Original Design Manufacturing): We use our existing product designs but customize branding, packaging, and specifications. Yakeen Lighting provides both services with flexible MOQs.',
+      q_ar: 'ما الفرق بين OEM و ODM؟', a_ar: 'OEM (التصنيع الأصلي للمعدات): نصنع المنتجات حسب تصميمك ومواصفاتك الدقيقة. ODM (التصميم الأصلي للتصنيع): نستخدم تصاميم منتجاتنا الحالية لكن نخصص العلامة التجارية والتغليف والمواصفات. توفر Yakeen Lighting كلتا الخدمتين بحد أدنى لطلب مرن.' },
+    { q: 'What is the MOQ for custom branded products?', a: 'MOQ varies by product and customization level. Private labeling (logo + packaging): 100-500pcs. Custom wattage/CCT: 500pcs. Full product redesign with new mold: 1000pcs+. Contact us for a project-specific quote.',
+      q_ar: 'ما هو الحد الأدنى للطلب للمنتجات ذات العلامة المخصصة؟', a_ar: 'يختلف الحد الأدنى للطلب حسب المنتج ومستوى التخصيص. وضع العلامات الخاصة (شعار + تغليف): 100-500 قطعة. استطاعة/حرارة لونية مخصصة: 500 قطعة. إعادة تصميم المنتج بالكامل بقالب جديد: 1000+ قطعة. اتصل بنا لعرض سعر مخصص للمشروع.' },
+    { q: 'Can I customize the product packaging?', a: 'Yes. Yakeen Lighting provides custom packaging with your brand logo, product specifications, and compliance labels. We support English, Arabic, and bilingual packaging. MOQ for custom packaging is 100pcs.',
+      q_ar: 'هل يمكنني تخصيص تغليف المنتج؟', a_ar: 'نعم. توفر Yakeen Lighting تغليفاً مخصصاً بشعار علامتك التجارية ومواصفات المنتج وملصقات الامتثال. ندعم التغليف بالإنجليزية والعربية وثنائي اللغة. الحد الأدنى للتغليف المخصص 100 قطعة.' },
+  ]},
+  { categoryKey: 'faq.cat.pricing', items: [
+    { q: 'How do I get a price quote?', a: 'Submit the contact form on our Contact page or WhatsApp us directly. Provide your product interest, estimated quantity, and delivery country. Yakeen Lighting sends a project-based quotation within 24 hours, including unit price, shipping, and SASO/G-Mark documentation.',
+      q_ar: 'كيف أحصل على عرض سعر؟', a_ar: 'أرسل نموذج الاتصال في صفحة الاتصال بنا أو راسلنا عبر واتساب مباشرة. اذكر اهتمامك بالمنتج والكمية المقدرة ودولة التسليم. ترسل Yakeen Lighting عرض سعر مخصص خلال 24 ساعة، يشمل سعر الوحدة والشحن ووثائق SASO/G-Mark.' },
+    { q: 'What payment methods do you accept?', a: 'Yakeen Lighting accepts T/T (bank transfer), L/C (letter of credit for large orders), and PayPal (for samples). Standard terms: 30% deposit, 70% balance before shipment. For large project orders, we can discuss milestone payments.',
+      q_ar: 'ما طرق الدفع التي تقبلونها؟', a_ar: 'تقبل Yakeen Lighting التحويل البنكي (T/T)، وخطاب الاعتماد (L/C للطلبات الكبيرة)، و PayPal (للعينات). الشروط القياسية: 30% دفعة مقدمة، 70% الرصيد قبل الشحن. للطلبات الكبيرة، يمكننا مناقشة الدفع على مراحل.' },
+    { q: 'Do prices include shipping?', a: 'Quotations can be EXW (ex-works), FOB (free on board), CIF (cost, insurance, freight), or DDP (delivered duty paid). Yakeen Lighting helps you choose the most cost-effective shipping method for your destination. Air freight, sea freight, and express courier available.',
+      q_ar: 'هل تشمل الأسعار الشحن؟', a_ar: 'يمكن أن تكون عروض الأسعار EXW (تسليم المصنع)، FOB (تسليم على ظهر السفينة)، CIF (التكلفة والتأمين والشحن)، أو DDP (تسليم مدفوع الرسوم). تساعدك Yakeen Lighting في اختيار طريقة الشحن الأكثر فعالية. الشحن الجوي والبحري والسريع متاح.' },
+  ]},
+  { categoryKey: 'faq.cat.shipping', items: [
+    { q: 'What is the typical lead time?', a: 'Standard products: 10-25 days depending on quantity. OEM/ODM custom orders: 20-35 days including customization. Yakeen Lighting provides a confirmed delivery schedule with every quotation and keeps a 1-2% spare buffer for large project orders.',
+      q_ar: 'ما هي مدة التسليم المعتادة؟', a_ar: 'المنتجات القياسية: 10-25 يوماً حسب الكمية. طلبات OEM/ODM المخصصة: 20-35 يوماً بما في ذلك التخصيص. توفر Yakeen Lighting جدول تسليم مؤكد مع كل عرض سعر وتحتفظ بمخزون احتياطي 1-2% للطلبات الكبيرة.' },
+    { q: 'Do you ship to all Middle East countries?', a: 'Yes. Yakeen Lighting ships to Saudi Arabia, UAE, Qatar, Kuwait, Bahrain, and Oman regularly. We also ship to other Middle East and African countries — contact us for specific destination support.',
+      q_ar: 'هل تشحنون إلى جميع دول الشرق الأوسط؟', a_ar: 'نعم. تشحن Yakeen Lighting بانتظام إلى السعودية والإمارات وقطر والكويت والبحرين وعمان. نشحن أيضاً إلى دول الشرق الأوسط وأفريقيا الأخرى — اتصل بنا لدعم وجهات محددة.' },
+    { q: 'How do you handle customs clearance?', a: 'Yakeen Lighting provides full customs documentation: SASO certificate, commercial invoice, packing list, certificate of origin, and bill of lading. We assist with SABER registration for Saudi Arabia and ECAS for UAE. For DDP shipments, we handle the entire customs process.',
+      q_ar: 'كيف تتعاملون مع تخليص الجمارك؟', a_ar: 'توفر Yakeen Lighting وثائق جمارك كاملة: شهادة SASO، فاتورة تجارية، قائمة تعبئة، شهادة منشأ، وبوليصة شحن. نساعد في تسجيل SABER للسعودية و ECAS للإمارات. لشحنات DDP، نتولى عملية الجمارك بالكامل.' },
+  ]},
+  { categoryKey: 'faq.cat.quality', items: [
+    { q: 'What is your quality control process?', a: 'Yakeen Lighting has a 5-stage QC process: 1) Incoming material inspection (LED chips, drivers, housings), 2) In-process production QC, 3) 100% aging test (4-8 hours), 4) Final electrical and photometric test, 5) Pre-shipment inspection with photos and videos. We provide QC reports for every batch.',
+      q_ar: 'ما هي عملية مراقبة الجودة لديكم؟', a_ar: 'لدى Yakeen Lighting عملية مراقبة جودة من 5 مراحل: 1) فحص المواد الواردة (رقائق LED، مشغلات، هياكل)، 2) مراقبة جودة الإنتاج، 3) اختبار تعتيق 100% (4-8 ساعات)، 4) اختبار كهربائي وضوئي نهائي، 5) فحص ما قبل الشحن بالصور والفيديو. نقدم تقارير مراقبة جودة لكل دفعة.' },
+    { q: 'What warranty do you offer?', a: 'Standard warranty: 5 years for LED products (3 years for solar street light batteries). Warranty covers LED failure, driver failure, and manufacturing defects. Yakeen Lighting provides spare parts (1-2% of order) with large orders for fast replacement.',
+      q_ar: 'ما الضمان الذي تقدمونه؟', a_ar: 'الضمان القياسي: 5 سنوات لمنتجات LED (3 سنوات لبطاريات أضواء الشارع الشمسية). يغطي الضمان فشل LED وفشل المشغل والعيوب التصنيعية. توفر Yakeen Lighting قطع غيار (1-2% من الطلب) مع الطلبات الكبيرة للاستبدال السريع.' },
+    { q: 'Can you provide a factory video audit?', a: 'Yes. Yakeen Lighting provides live factory video audits via WhatsApp or Zoom. You can see the SMT production line, assembly workshop, testing laboratory, and finished goods warehouse in real time. Contact us to schedule a video audit.',
+      q_ar: 'هل يمكنكم توفير جولة فيديو للمصنع؟', a_ar: 'نعم. توفر Yakeen Lighting جولات فيديو مباشرة للمصنع عبر واتساب أو زووم. يمكنك رؤية خط إنتاج SMT وورشة التجميع ومختبر الاختبار ومستودع البضائع الجاهزة في الوقت الحقيقي. اتصل بنا لجدولة جولة فيديو.' },
+  ]},
+  { categoryKey: 'faq.cat.tech', items: [
+    { q: 'Do you provide free DIALux lighting design?', a: 'Yes. Yakeen Lighting provides free DIALux lighting simulation for your project. Send us your floor plan, ceiling height, and required lux levels. We deliver a complete lighting layout with lux distribution, UGR calculation, and product recommendations within 3-5 days.',
+      q_ar: 'هل تقدمون تصميم إضاءة DIALux مجاني؟', a_ar: 'نعم. توفر Yakeen Lighting محاكاة إضاءة DIALux مجانية لمشروعك. أرسل لنا مخطط الأرضية وارتفاع السقف ومستويات الإضاءة المطلوبة. نقدم تخطيط إضاءة كامل مع توزيع اللوكس وحساب UGR وتوصيات المنتجات خلال 3-5 أيام.' },
+    { q: 'Do you provide installation support?', a: 'Yakeen Lighting provides installation manuals, wiring diagrams, and remote commissioning support via WhatsApp video. For large projects in the Middle East, we can arrange on-site installation guidance — contact us for details.',
+      q_ar: 'هل تقدمون دعم التركيب؟', a_ar: 'توفر Yakeen Lighting أدلة التركيب ومخططات الأسلاك ودعم التشغيل عن بعد عبر فيديو واتساب. للمشاريع الكبيرة في الشرق الأوسط، يمكننا ترتيب إرشاد تركيب في الموقع — اتصل بنا للتفاصيل.' },
+  ]},
+];
+
+const faqsLocalized = faqs.map(section => ({
+  category: t(locale, section.categoryKey),
+  items: section.items.map(item => ({
+    q: locale === 'ar' ? item.q_ar : item.q,
+    a: locale === 'ar' ? item.a_ar : item.a,
+  }))
+}));
+
+const allFaqs = faqsLocalized.flatMap(cat => cat.items);
+const faqJsonLd = faqPageSchema(allFaqs);
+---
+
+<BaseLayout
+  title={t(locale, 'faq.hero.title') + ' — Yakeen Lighting'}
+  description={t(locale, 'faq.hero.subtitle')}
+  image="/assets/images/hero/hero-bg-v3.jpg"
+  canonicalPath="/faq"
+  type="page"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  {/* Hero */}
+  <section class="relative overflow-hidden pt-32 pb-12 md:pt-40 md:pb-16" style="background: linear-gradient(135deg, #050b14 0%, #0a1525 50%, #1a2744 100%);">
+    <div class="container-yakeen relative z-10">
+      <nav class="text-sm text-white/60 mb-4" aria-label={t(locale, 'aria.breadcrumb')}>
+        <a href={prefix + '/'} class="hover:text-gold-400 transition-colors">{t(locale, 'nav.home')}</a>
+        <span class="mx-2 text-white/30">/</span>
+        <span class="text-gold-400 font-medium">{t(locale, 'faq.breadcrumb')}</span>
+      </nav>
+      <h1 class="reveal text-4xl md:text-5xl font-bold text-white leading-tight">
+        {t(locale, 'faq.hero.title')}
+      </h1>
+      <p class="reveal mt-4 text-lg text-white/70 max-w-2xl">
+        {t(locale, 'faq.hero.subtitle')}
+      </p>
+    </div>
+  </section>
+
+  {/* FAQ sections */}
+  <section class="section-padding bg-white">
+    <div class="container-yakeen max-w-4xl">
+      {faqsLocalized.map((section) => (
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold text-navy-900 mb-6 reveal">{section.category}</h2>
+          <div class="space-y-3">
+            {section.items.map((faq) => (
+              <details class="group rounded-xl border border-gray-200 overflow-hidden reveal">
+                <summary class="flex items-center justify-between cursor-pointer p-5 font-semibold text-navy-900 hover:bg-sand-50 transition-colors">
+                  {faq.q}
+                  <svg class="w-5 h-5 text-gold-500 transition-transform group-open:rotate-180 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </summary>
+                <div class="px-5 pb-5 text-gray-600 leading-relaxed">{faq.a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <CTABanner title={t(locale, 'faq.cta.title')} subtitle={t(locale, 'faq.cta.subtitle')} />
+</BaseLayout>

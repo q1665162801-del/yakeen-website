@@ -1,0 +1,218 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../data/site-config';
+import { breadcrumbSchema } from '../utils/schema';
+import { getLocale, t } from '../i18n/ui';
+
+const locale = getLocale(Astro.url);
+const prefix = locale === 'ar' ? '/ar' : '';
+
+const crumbs = [
+  { name: t(locale, 'nav.home'), url: prefix + '/' },
+  { name: t(locale, 'contact.breadcrumb.contact'), url: prefix + '/contact' },
+];
+const breadcrumbJsonLd = breadcrumbSchema(crumbs);
+
+const whatsappLink = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(t(locale, 'whatsapp.message'))}`;
+
+const countries = [
+  { code: 'SA', key: 'contact.country.sa' },
+  { code: 'AE', key: 'contact.country.ae' },
+  { code: 'QA', key: 'contact.country.qa' },
+  { code: 'KW', key: 'contact.country.kw' },
+  { code: 'BH', key: 'contact.country.bh' },
+  { code: 'OM', key: 'contact.country.om' },
+  { code: 'other', key: 'contact.country.other' },
+];
+
+const productOptions = [
+  { value: 'LED Downlights & Spotlights', key: 'contact.product.downlights' },
+  { value: 'LED Track Lights', key: 'contact.product.track' },
+  { value: 'LED Panel Lights & Linear Lights', key: 'contact.product.panel' },
+  { value: 'Magnetic Track Light System', key: 'contact.product.magnetic' },
+  { value: 'LED High Bay & Industrial', key: 'contact.product.highbay' },
+  { value: 'LED Flood Lights', key: 'contact.product.flood' },
+  { value: 'Solar Street Lights', key: 'contact.product.solar' },
+  { value: 'Architectural Wall Washer', key: 'contact.product.washer' },
+  { value: 'OEM/ODM Custom Project', key: 'contact.product.oem' },
+];
+---
+
+<BaseLayout
+  title={t(locale, 'contact.hero.title') + ' — Yakeen Lighting'}
+  description={t(locale, 'contact.hero.subtitle')}
+  image="/assets/images/hero/hero-bg-v3.jpg"
+  canonicalPath="/contact"
+  type="page"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  {/* Hero */}
+  <section class="relative overflow-hidden pt-32 pb-12 md:pt-40 md:pb-16" style="background: linear-gradient(135deg, #050b14 0%, #0a1525 50%, #1a2744 100%);">
+    <div class="container-yakeen relative z-10">
+      <nav class="text-sm text-white/60 mb-4" aria-label={t(locale, 'aria.breadcrumb')}>
+        <a href={prefix + '/'} class="hover:text-gold-400 transition-colors">{t(locale, 'nav.home')}</a>
+        <span class="mx-2 text-white/30">/</span>
+        <span class="text-gold-400 font-medium">{t(locale, 'contact.breadcrumb.contact')}</span>
+      </nav>
+      <h1 class="reveal text-4xl md:text-5xl font-bold text-white leading-tight">
+        {t(locale, 'contact.hero.title')}
+      </h1>
+      <p class="reveal mt-4 text-lg text-white/70 max-w-2xl">
+        {t(locale, 'contact.hero.subtitle')}
+      </p>
+    </div>
+  </section>
+
+  {/* Contact section */}
+  <section class="section-padding bg-white">
+    <div class="container-yakeen">
+      <div class="grid lg:grid-cols-2 gap-12">
+
+        {/* Left: Contact info */}
+        <div class="reveal">
+          <h2 class="text-2xl font-bold text-navy-900 mb-6">{t(locale, 'contact.directContact')}</h2>
+
+          <div class="space-y-4">
+            {/* Email */}
+            <a href={`mailto:${siteConfig.email}`} class="flex items-center gap-4 p-4 rounded-xl border border-gray-200 hover:border-gold-300 hover:shadow-md transition-all">
+              <div class="w-12 h-12 rounded-lg flex items-center justify-center" style="background: rgba(201,169,97,0.1);">
+                <svg class="w-6 h-6 text-gold-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-wide">{t(locale, 'contact.email')}</p>
+                <p class="font-bold text-navy-900">{siteConfig.email}</p>
+              </div>
+            </a>
+
+            {/* WhatsApp */}
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 rounded-xl border border-gray-200 hover:border-green-400 hover:shadow-md transition-all">
+              <div class="w-12 h-12 rounded-lg flex items-center justify-center" style="background: rgba(37,211,102,0.1);">
+                <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-wide">{t(locale, 'contact.whatsapp')}</p>
+                <p class="font-bold text-navy-900">{siteConfig.phone}</p>
+              </div>
+            </a>
+
+            {/* Phone */}
+            <a href={`tel:${siteConfig.phone.replace(/[^+\d]/g, '')}`} class="flex items-center gap-4 p-4 rounded-xl border border-gray-200 hover:border-gold-300 hover:shadow-md transition-all">
+              <div class="w-12 h-12 rounded-lg flex items-center justify-center" style="background: rgba(201,169,97,0.1);">
+                <svg class="w-6 h-6 text-gold-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-wide">{t(locale, 'contact.phone')}</p>
+                <p class="font-bold text-navy-900">{siteConfig.phone}</p>
+              </div>
+            </a>
+          </div>
+
+          {/* Service area */}
+          <div class="mt-8 p-6 rounded-xl" style="background: #f8f6f1;">
+            <h3 class="font-bold text-navy-900 mb-3">{t(locale, 'contact.serviceArea')}</h3>
+            <div class="flex flex-wrap gap-2">
+              {countries.slice(0, 6).map((country) => (
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-white border border-gray-200 text-navy-700">{t(locale, country.key)}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Right: Form */}
+        <div class="reveal">
+          <h2 class="text-2xl font-bold text-navy-900 mb-6">{t(locale, 'contact.sendMsg')}</h2>
+          <form id="contact-form" class="space-y-4" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="b9ac1297-e3a4-4f58-a5cf-b386330aabe0">
+            <input type="checkbox" name="botcheck" class="hidden" style="display:none">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label for="name" class="block text-sm font-semibold text-navy-900 mb-1">{t(locale, 'contact.form.name')}</label>
+                <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all" />
+              </div>
+              <div>
+                <label for="company" class="block text-sm font-semibold text-navy-900 mb-1">{t(locale, 'contact.form.company')}</label>
+                <input type="text" id="company" name="company" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all" />
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label for="email" class="block text-sm font-semibold text-navy-900 mb-1">{t(locale, 'contact.form.email')}</label>
+                <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all" />
+              </div>
+              <div>
+                <label for="phone" class="block text-sm font-semibold text-navy-900 mb-1">{t(locale, 'contact.form.phone')}</label>
+                <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all" />
+              </div>
+            </div>
+            <div>
+              <label for="country" class="block text-sm font-semibold text-navy-900 mb-1">{t(locale, 'contact.form.country')}</label>
+              <select id="country" name="country" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all">
+                <option value="">{t(locale, 'contact.form.selectCountry')}</option>
+                {countries.map((country) => (
+                  <option value={country.code}>{t(locale, country.key)}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label for="product" class="block text-sm font-semibold text-navy-900 mb-1">{t(locale, 'contact.form.productInterest')}</label>
+              <select id="product" name="product" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all">
+                <option value="">{t(locale, 'contact.form.selectProduct')}</option>
+                {productOptions.map((opt) => (
+                  <option value={opt.value}>{t(locale, opt.key)}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-semibold text-navy-900 mb-1">{t(locale, 'contact.form.message')}</label>
+              <textarea id="message" name="message" rows="5" required placeholder={t(locale, 'contact.form.messagePlaceholder')} class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all resize-none"></textarea>
+            </div>
+            <button type="submit" class="btn-gold animate-pulse-gold w-full">
+              {t(locale, 'contact.form.submit')}
+            </button>
+            <p id="form-success" class="hidden text-center text-green-600 font-semibold">
+              {t(locale, 'contact.form.success')}
+            </p>
+            <p id="form-error" class="hidden text-center text-red-600 font-semibold">
+              {t(locale, 'contact.form.error', { email: siteConfig.email })}
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    var form = document.getElementById('contact-form');
+    var successMsg = document.getElementById('form-success');
+    var errorMsg = document.getElementById('form-error');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var formData = new FormData(form);
+
+      // ponytail: Web3Forms email — primary and only submission path
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' },
+      })
+        .then(function (response) {
+          if (response.ok) {
+            form.reset();
+            successMsg.classList.remove('hidden');
+            errorMsg.classList.add('hidden');
+          } else {
+            throw new Error('Form submission failed');
+          }
+        })
+        .catch(function () {
+          errorMsg.classList.remove('hidden');
+          successMsg.classList.add('hidden');
+        });
+    });
+  })();
+</script>

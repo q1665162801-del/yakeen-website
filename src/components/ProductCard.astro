@@ -1,0 +1,102 @@
+---
+/**
+ * ProductCard.astro
+ * Reusable product card for grids across the products listing and homepage.
+ *
+ * Renders a product image (lazy), name, tagline, and a "View Details →" link.
+ * Designed for responsive grids: 1 column (mobile), 2 columns (tablet),
+ * 3–4 columns (desktop). Hover lifts the card and elevates its shadow.
+ */
+
+import type { Product } from '@data/products';
+import { getLocale, t } from '../i18n/ui';
+
+export interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+const locale = getLocale(Astro.url);
+const prefix = locale === 'ar' ? '/ar' : '';
+
+const pName = locale === 'ar' && product.ar ? product.ar.name : product.name;
+const pShortName = locale === 'ar' && product.ar ? product.ar.shortName : product.shortName;
+const pTagline = locale === 'ar' && product.ar ? product.ar.tagline : product.tagline;
+
+const productUrl = `${prefix}/products/${product.slug}`;
+---
+
+<article
+  class="product-card group relative flex flex-col overflow-hidden rounded-2xl bg-white card-premium"
+>
+  <a href={productUrl} class="flex flex-col h-full" aria-label={t(locale, 'product.card.viewDetails', { name: pName })}>
+    {/* Product image (lazy) */}
+    <div class="relative aspect-[4/3] overflow-hidden bg-sand-50">
+      <img
+        src={product.mainImage}
+        alt={`${pName} — ${pTagline}`}
+        loading="lazy"
+        decoding="async"
+        width="600"
+        height="450"
+        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+      {/* Category badge */}
+      <span class="absolute top-3 left-3 rounded-full bg-navy-900/85 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gold-400 backdrop-blur-sm">
+        {pShortName}
+      </span>
+    </div>
+
+    {/* Card body */}
+    <div class="flex flex-1 flex-col p-5">
+      <h3 class="font-serif text-xl font-semibold leading-snug text-navy-900 transition-colors group-hover:text-navy-700">
+        {pName}
+      </h3>
+      <p class="mt-2 flex-1 text-sm leading-relaxed text-navy-500">
+        {pTagline}
+      </p>
+
+      {/* Spec highlights */}
+      <div class="mt-4 flex flex-wrap gap-2">
+        <span class="rounded-md bg-sand-100 px-2.5 py-1 text-xs font-medium text-navy-700">
+          {product.specs.wattage}
+        </span>
+        <span class="rounded-md bg-sand-100 px-2.5 py-1 text-xs font-medium text-navy-700">
+          {product.specs.ipRating}
+        </span>
+      </div>
+
+      {/* View details link */}
+      <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-gold-600 transition-colors group-hover:text-gold-500">
+        {t(locale, 'common.viewDetails')}
+        <svg
+          class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2.5"
+          aria-hidden="true"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </span>
+    </div>
+  </a>
+</article>
+
+<style>
+  /* Card is grid-friendly: drop into any responsive container.
+     Recommended parent grid for 1/2/3-4 column responsiveness:
+       grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6
+  */
+  .product-card {
+    isolation: isolate;
+  }
+
+  /* Touch devices: disable lift for a more native feel */
+  @media (hover: none) {
+    .product-card:hover {
+      transform: none;
+    }
+  }
+</style>

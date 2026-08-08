@@ -1,0 +1,378 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABanner from '../components/CTABanner.astro';
+import { siteConfig } from '../data/site-config';
+import { breadcrumbSchema } from '../utils/schema';
+import { getLocale, t } from '../i18n/ui';
+
+const locale = getLocale(Astro.url);
+const prefix = locale === 'ar' ? '/ar' : '';
+
+// Breadcrumb structured data (Home > Projects)
+const breadcrumb = breadcrumbSchema([
+  { name: t(locale, 'nav.home'), url: prefix + '/' },
+  { name: t(locale, 'projects.breadcrumb'), url: prefix + '/projects-cases' },
+]);
+
+// Hero title split to preserve the gold gradient on "Middle East" / "الشرق الأوسط"
+const heroTitleFull = t(locale, 'projects.hero.title');
+const heroHighlight = locale === 'ar' ? 'الشرق الأوسط' : 'Middle East';
+const heroTitleParts = heroTitleFull.split(heroHighlight);
+
+// Filter categories shown above the grid
+const filters = [
+  { id: 'all', labelKey: 'projects.filter.all' },
+  { id: 'hotel', labelKey: 'projects.filter.hotel' },
+  { id: 'retail', labelKey: 'projects.filter.retail' },
+  { id: 'office', labelKey: 'projects.filter.office' },
+  { id: 'industrial', labelKey: 'projects.filter.industrial' },
+  { id: 'outdoor', labelKey: 'projects.filter.outdoor' },
+];
+
+// Real lighting installations across the Middle East
+const projects = [
+  {
+    type: 'hotel',
+    title: 'Luxury Hotel Lobby',
+    title_ar: 'بهو فندق فاخر',
+    location: 'Manama, Bahrain',
+    location_ar: 'المنامة، البحرين',
+    year: '2024',
+    product: 'DF Series Downlights',
+    product_ar: 'إضاءة مدمجة سلسلة DF',
+    description: '3000K warm white, UGR<16 for glare-free ambiance',
+    description_ar: '3000K أبيض دافئ، UGR<16 لإضاءة خالية من الوهج',
+    image: '/assets/images/products/downlight-scene-1.jpg',
+  },
+  {
+    type: 'retail',
+    title: 'Retail Store Chain',
+    title_ar: 'سلسلة متاجر تجزئة',
+    location: 'Dubai, UAE',
+    location_ar: 'دبي، الإمارات',
+    year: '2024',
+    product: 'Track Spotlights',
+    product_ar: 'كشافات مسار',
+    description: '4000K, CRI>90 for merchandise accent lighting',
+    description_ar: '4000K، CRI>90 لإضاءة البضائع التوجيهية',
+    image: '/assets/images/products/spotlight-scene-1.jpg',
+  },
+  {
+    type: 'industrial',
+    title: 'Warehouse Facility',
+    title_ar: 'مستودع صناعي',
+    location: 'Jubail, Saudi Arabia',
+    location_ar: 'الجبيل، السعودية',
+    year: '2024',
+    product: 'UFO High Bay 200W',
+    product_ar: 'هاي باي UFO 200واط',
+    description: 'IP65, 50°C rated for industrial use',
+    description_ar: 'IP65، مقاوم 50°م للاستخدام الصناعي',
+    image: '/assets/images/products/highbay-scene-1.jpg',
+  },
+  {
+    type: 'office',
+    title: 'Office Building',
+    title_ar: 'مبنى مكاتب',
+    location: 'Doha, Qatar',
+    location_ar: 'الدوحة، قطر',
+    year: '2024',
+    product: 'Panel Lights 600x600',
+    product_ar: 'أضواء بانل 600×600',
+    description: '4000K, flicker-free for productive workspace',
+    description_ar: '4000K، خالي من الوميض لبيئة عمل منتجة',
+    image: '/assets/images/products/panel-scene-1.jpg',
+  },
+  {
+    type: 'office',
+    title: 'Airport Terminal',
+    title_ar: 'صالة مطار',
+    location: 'Jeddah, Saudi Arabia',
+    location_ar: 'جدة، السعودية',
+    year: '2024',
+    product: 'Linear Pendant Lights',
+    product_ar: 'أضواء خطية معلقة',
+    description: 'Suspended, DALI dimming for architectural lighting',
+    description_ar: 'معلقة، تعتيم DALI للإضاءة المعمارية',
+    image: '/assets/images/products/linear-scene-1.jpg',
+  },
+  {
+    type: 'outdoor',
+    title: 'Sports Stadium',
+    title_ar: 'ملعب رياضي',
+    location: 'Muscat, Oman',
+    location_ar: 'مسقط، عمان',
+    year: '2024',
+    product: 'LED Flood Lights 500W',
+    product_ar: 'كشافات LED 500واط',
+    description: 'IP66, IK08 for outdoor sports lighting',
+    description_ar: 'IP66، IK08 لإضاءة الملاعب الخارجية',
+    image: '/assets/images/products/flood-scene-1.jpg',
+  },
+  {
+    type: 'outdoor',
+    title: 'Residential Street',
+    title_ar: 'شارع سكني',
+    location: 'Dammam, Saudi Arabia',
+    location_ar: 'الدمام، السعودية',
+    year: '2024',
+    product: 'Solar Street Lights',
+    product_ar: 'أضواء شارع شمسية',
+    description: 'IP68, motion sensor for off-grid lighting',
+    description_ar: 'IP68، مستشعر حركة للإضاءة خارج الشبكة',
+    image: '/assets/images/products/solar-street-scene-1.jpg',
+  },
+  {
+    type: 'hotel',
+    title: 'Hotel Facade',
+    title_ar: 'واجهة فندق',
+    location: 'Abu Dhabi, UAE',
+    location_ar: 'أبوظبي، الإمارات',
+    year: '2024',
+    product: 'Wall Washer RGBW',
+    product_ar: 'غسالة جدار RGBW',
+    description: 'DMX512 for dynamic architectural lighting',
+    description_ar: 'DMX512 للإضاءة المعمارية الديناميكية',
+    image: '/assets/images/products/wallwasher-scene-1.jpg',
+  },
+  {
+    type: 'retail',
+    title: 'Art Gallery',
+    title_ar: 'معرض فني',
+    location: 'Kuwait City, Kuwait',
+    location_ar: 'مدينة الكويت، الكويت',
+    year: '2024',
+    product: 'Magnetic Track System',
+    product_ar: 'نظام مسار مغناطيسي',
+    description: '48V modular, CRI>90 for artwork illumination',
+    description_ar: '48V معياري، CRI>90 لإضاءة الأعمال الفنية',
+    image: '/assets/images/products/magnetic-scene-1.jpg',
+  },
+];
+---
+
+<BaseLayout
+  title={t(locale, 'projects.hero.title') + ' | Yakeen Lighting'}
+  description={t(locale, 'projects.hero.subtitle')}
+  image="/assets/images/hero/hero-bg-v3.jpg"
+  canonicalPath="/projects-cases"
+  type="page"
+>
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+
+  <!-- ===== Hero Section ===== -->
+  <section class="relative overflow-hidden" style="background: linear-gradient(135deg, #050b14 0%, #0a1525 40%, #1a2744 100%);">
+    <!-- Decorative gradient orbs -->
+    <div class="absolute top-20 left-10 w-96 h-96 rounded-full opacity-20 blur-3xl" style="background: radial-gradient(circle, #c9a961 0%, transparent 70%);"></div>
+    <div class="absolute bottom-20 right-10 w-80 h-80 rounded-full opacity-10 blur-3xl" style="background: radial-gradient(circle, #3a5685 0%, transparent 70%);"></div>
+
+    <div class="container-yakeen relative z-10 py-20 md:py-28">
+      <div class="max-w-3xl">
+        <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style="background: rgba(201,169,97,0.15); border: 1px solid rgba(201,169,97,0.3);">
+          <span class="w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
+          <span class="text-gold-500 text-sm font-semibold tracking-wide">{t(locale, 'projects.hero.badge')}</span>
+        </div>
+
+        <h1 class="reveal text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+          {heroTitleParts[0]}<span class="text-gradient-gold">{heroHighlight}</span>{heroTitleParts[1]}
+        </h1>
+
+        <p class="reveal text-lg md:text-xl text-gray-300 mb-8 max-w-2xl leading-relaxed">
+          {t(locale, 'projects.hero.subtitle')}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Project Filters + Grid ===== -->
+  <section class="section-padding bg-white">
+    <div class="container-yakeen">
+      <div class="text-center mb-10 reveal">
+        <p class="text-gold-600 font-semibold tracking-wide uppercase text-sm mb-2">{t(locale, 'projects.section.eyebrow')}</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-navy-900">{t(locale, 'projects.section.title')}</h2>
+        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">{t(locale, 'projects.section.desc')}</p>
+      </div>
+
+      <!-- Filter buttons -->
+      <div class="reveal flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-12">
+        {filters.map((filter, i) => (
+          <button
+            type="button"
+            data-filter={filter.id}
+            class={`filter-btn rounded-full px-4 py-2 text-sm font-semibold transition-all duration-200 border-2 ${i === 0 ? 'is-active' : ''}`}
+            aria-pressed={i === 0 ? 'true' : 'false'}
+          >
+            {t(locale, filter.labelKey)}
+          </button>
+        ))}
+      </div>
+
+      <!-- Project cards grid -->
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        {projects.map((project, i) => {
+          const title = locale === 'ar' && project.title_ar ? project.title_ar : project.title;
+          const location = locale === 'ar' && project.location_ar ? project.location_ar : project.location;
+          const product = locale === 'ar' && project.product_ar ? project.product_ar : project.product;
+          const description = locale === 'ar' && project.description_ar ? project.description_ar : project.description;
+          return (
+          <article
+            data-type={project.type}
+            class="project-card reveal group relative flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-navy-900/15 hover:border-gold-500"
+            style={`transition-delay: ${i * 20}ms`}
+          >
+            {/* Image */}
+            <div class="relative aspect-[16/10] overflow-hidden bg-sand-50">
+              <img
+                src={project.image}
+                alt={`${title} — ${location} ${t(locale, 'projects.altSuffix')}`}
+                loading="lazy"
+                decoding="async"
+                width="640"
+                height="400"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              {/* Type badge (category ID, not display text) */}
+              <span class="absolute top-3 left-3 rounded-full bg-navy-900/85 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gold-400 backdrop-blur-sm">
+                {t(locale, `projects.filter.${project.type}`)}
+              </span>
+              {/* Year badge */}
+              <span class="absolute top-3 right-3 rounded-full bg-gold-500/90 px-3 py-1 text-xs font-bold text-navy-900 backdrop-blur-sm">
+                {project.year}
+              </span>
+            </div>
+
+            {/* Card body */}
+            <div class="flex flex-1 flex-col p-6">
+              <h3 class="font-serif text-xl md:text-2xl font-semibold leading-snug text-navy-900 transition-colors group-hover:text-navy-700">
+                {title}
+              </h3>
+
+              {/* Location */}
+              <p class="mt-2 flex items-center gap-1.5 text-sm font-medium text-gold-600">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                {location} · {project.year}
+              </p>
+
+              {/* Product used */}
+              <p class="mt-3 flex items-center gap-1.5 text-sm font-semibold text-navy-900">
+                <svg class="h-4 w-4 text-gold-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+                {product}
+              </p>
+
+              {/* Description */}
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-gray-600">
+                {description}
+              </p>
+
+              {/* CTA link */}
+              <a
+                href={prefix + '/contact'}
+                class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-gold-600 transition-colors hover:text-gold-500"
+              >
+                {t(locale, 'projects.card.cta')}
+                <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+            </div>
+          </article>
+          );
+        })}
+      </div>
+
+      {/* Empty state (shown when no cards match a filter) */}
+      <p id="no-results" class="hidden mt-12 text-center text-gray-500">
+        {t(locale, 'projects.card.empty')} <a href={prefix + '/contact'} class="font-semibold text-gold-600 hover:text-gold-500">{t(locale, 'common.contactUs')}</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Start Your Project ===== -->
+  <section class="section-padding" style="background: #0a1525;">
+    <div class="container-yakeen">
+      <div class="text-center mb-10 reveal">
+        <p class="text-gold-500 font-semibold tracking-wide uppercase text-sm mb-2">{t(locale, 'projects.cta.eyebrow')}</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-white">{t(locale, 'projects.cta.title')}</h2>
+        <p class="text-gray-400 mt-4 max-w-2xl mx-auto">{t(locale, 'projects.cta.desc')}</p>
+      </div>
+    </div>
+
+    <CTABanner />
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* Filter button states */
+  .filter-btn {
+    border-color: #e5e7eb;
+    background: transparent;
+    color: #374151;
+  }
+  .filter-btn:hover {
+    border-color: #c9a961;
+    color: #b8964a;
+  }
+  .filter-btn.is-active {
+    background: linear-gradient(135deg, #c9a961, #b8964a);
+    border-color: transparent;
+    color: #050b14;
+  }
+
+  /* Card isolation for clean hover stacking */
+  .project-card {
+    isolation: isolate;
+  }
+
+  /* Touch devices: disable lift */
+  @media (hover: none) {
+    .project-card:hover {
+      transform: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var buttons = document.querySelectorAll('.filter-btn');
+    var cards = document.querySelectorAll('#projects-grid [data-type]');
+    var noResults = document.getElementById('no-results');
+    if (!buttons.length || !cards.length) return;
+
+    function applyFilter(filter) {
+      var visibleCount = 0;
+      cards.forEach(function (card) {
+        var type = card.getAttribute('data-type');
+        var show = filter === 'all' || type === filter;
+        card.style.display = show ? '' : 'none';
+        if (show) visibleCount++;
+      });
+
+      if (noResults) {
+        noResults.classList.toggle('hidden', visibleCount > 0);
+      }
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var filter = btn.getAttribute('data-filter');
+
+        // Toggle active state
+        buttons.forEach(function (b) {
+          b.classList.remove('is-active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('is-active');
+        btn.setAttribute('aria-pressed', 'true');
+
+        applyFilter(filter);
+      });
+    });
+  })();
+</script>

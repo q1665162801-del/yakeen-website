@@ -1,0 +1,11 @@
+# ponytail: Cloudflare Pages config — Decap CMS (Git-based, no D1)
+# D1 backend removed — products now managed via Decap CMS + Content Collections
+#
+# Setup (one-time, in Cloudflare Dashboard → Pages → yakeen-lighting → Settings → Environment Variables):
+#   OAUTH_CLIENT_ID     = GitHub OAuth App Client ID
+#   OAUTH_CLIENT_SECRET = GitHub OAuth App Client Secret
+# (Create OAuth App at: https://github.com/settings/developers — callback URL: https://www.yakeenlighting.com/api/oauth)
+
+name = "yakeen-lighting"
+compatibility_date = "2024-09-01"
+pages_build_output_dir = "dist"

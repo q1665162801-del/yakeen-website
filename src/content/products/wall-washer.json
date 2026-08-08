@@ -1,0 +1,124 @@
+{
+  "slug": "wall-washer",
+  "featured": true,
+  "name": "Architectural LED Wall Washer",
+  "shortName": "Wall Washer",
+  "category": "outdoor",
+  "tagline": "Uniform wall washing with DALI/0-10V and multiple mounting options",
+  "description": "Yakeen architectural LED wall washer — uniform wall washing effect with track, recessed, or surface-mounted installation. Features DALI/0-10V dimming and premium aluminum housing. SASO & G-Mark certified for facade and architectural lighting in the Middle East.",
+  "metaDescription": "Yakeen Architectural LED Wall Washer — uniform wall washing, DALI/0-10V, track/recessed/surface mount, SASO & G-Mark certified for Middle East architectural lighting.",
+  "ogImage": "/assets/images/products/led-wall-washer.jpeg",
+  "mainImage": "/assets/images/products/led-wall-washer.jpeg",
+  "galleryImages": [
+    "/assets/images/products/led-wall-washer.jpeg",
+    "/assets/images/products/led-wall-washer-page.png",
+    "/assets/images/products/wallwasher.jpg"
+  ],
+  "sceneImage": "/assets/images/products/wallwasher-scene-1.jpg",
+  "specs": {
+    "wattage": "18W-36W per meter",
+    "efficacy": "80-100 lm/W",
+    "cct": "2700K / 3000K / 4000K / RGBW",
+    "cri": "Ra>80",
+    "beamAngle": "10° / 15° / 25° / 45° / asymmetric",
+    "ipRating": "IP66",
+    "dimming": "DALI / 0-10V / DMX512",
+    "lifespan": "L70 > 50,000 hours",
+    "warranty": "5 years",
+    "certifications": "SASO, G-Mark, CE, RoHS",
+    "moq": "50 pieces",
+    "leadTime": "20-30 days"
+  },
+  "applications": [
+    {
+      "title": "Building Facades",
+      "desc": "Uniform uplighting for building exteriors and entrances.",
+      "icon": "building"
+    },
+    {
+      "title": "Hotels & Resorts",
+      "desc": "Architectural accent lighting for hospitality facades.",
+      "icon": "hotel"
+    },
+    {
+      "title": "Interior Walls",
+      "desc": "Indoor wall washing for feature walls and art displays.",
+      "icon": "building"
+    },
+    {
+      "title": "Retail Spaces",
+      "desc": "Highlight vertical merchandise displays with even lighting.",
+      "icon": "retail"
+    }
+  ],
+  "features": [
+    "Uniform wall washing effect — no hotspots or dark spots",
+    "Three mounting options: track, recessed, surface-mounted",
+    "DALI/0-10V dimming for precise brightness control",
+    "Premium aluminum housing with excellent weather resistance",
+    "Available in white, RGBW, and tunable white",
+    "Custom lengths available for project requirements"
+  ],
+  "faqs": [
+    {
+      "question": "Can this wall washer be used both indoors and outdoors?",
+      "answer": "The IP66 rated version is suitable for outdoor use. For indoor applications, we also offer IP20 versions with the same optical performance. Both versions share the same mounting system for design consistency."
+    },
+    {
+      "question": "What mounting options are available?",
+      "answer": "Three mounting options: track-mounted (for magnetic track integration), recessed (for ceiling integration), and surface-mounted (for direct wall/ceiling mounting). All achieve the same uniform wall washing effect."
+    }
+  ],
+  "caseStudy": {
+    "title": "Hotel Facade",
+    "location": "Abu Dhabi, UAE",
+    "year": "2024",
+    "image": "/assets/images/products/wallwasher-scene-1.jpg"
+  },
+  "ar": {
+    "name": "إضاءة معمارية لغسل الجدران LED",
+    "shortName": "غسالة جدار",
+    "tagline": "غسل جدران موحد مع DALI/0-10V وخيارات تركيب متعددة",
+    "description": "إضاءة معمارية LED لغسل الجدران من Yakeen — تأثير غسل جدران موحد مع تركيب مسار أو مدمج أو سطحي. معتمدة SASO و G-Mark.",
+    "features": [
+      "تأثير غسل جدران موحد — لا بقع ساخنة أو بقع مظلمة",
+      "ثلاث خيارات تركيب: مسار، مدمج، سطحي",
+      "تعتيم DALI/0-10V للتحكم الدقيق في السطوع",
+      "هيكل ألمنيوم فاخر مع مقاومة طقس ممتازة",
+      "متوفر بأبيض، RGBW، وأبيض قابل للضبط",
+      "أطوال مخصصة متاحة لمتطلبات المشاريع"
+    ],
+    "applications": [
+      {
+        "title": "واجهات المباني",
+        "desc": "إضاءة معمارية صاعدة موحدة لواجهات المباني والمداخل."
+      },
+      {
+        "title": "الفنادق والمنتجعات",
+        "desc": "إضاءة مميزة معمارية لواجهات الضيافة."
+      },
+      {
+        "title": "الجدران الداخلية",
+        "desc": "غسل جدران داخلي للجدران المميزة وعروض الفن."
+      },
+      {
+        "title": "المساحات التجارية",
+        "desc": "إبراز عروض البضائع العمودية بإضاءة متساوية."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "هل يمكن استخدام غسالة الجدران هذه في الداخل والخارج؟",
+        "answer": "النسخة المصنفة IP66 مناسبة للاستخدام الخارجي. للتطبيقات الداخلية، نقدم أيضاً نسخ IP20 بنفس الأداء البصري."
+      },
+      {
+        "question": "ما خيارات التركيب المتاحة؟",
+        "answer": "ثلاث خيارات: تركيب مسار، مدمج، وسطحي. جميعها تحقق نفس تأثير غسل الجدران الموحد."
+      }
+    ],
+    "caseStudy": {
+      "title": "واجهة فندق",
+      "location": "أبو ظبي، الإمارات"
+    }
+  }
+}

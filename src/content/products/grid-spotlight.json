@@ -1,0 +1,123 @@
+{
+  "slug": "grid-spotlight",
+  "featured": true,
+  "name": "Mini Recessed LED Spotlight",
+  "shortName": "Mini Spotlight",
+  "category": "indoor",
+  "tagline": "Ultra-compact 1-9W spotlight for accent and display lighting",
+  "description": "Yakeen mini recessed LED spotlight series, 1-9W with cutout sizes from 18mm to 65mm. Features precision beam control with 5°/8°/10°/15°/24°/36°/50° options. Ideal for display cabinets, jewelry counters, and architectural accent lighting. SASO & G-Mark certified.",
+  "metaDescription": "Yakeen Mini Recessed LED Spotlight — 1-9W, 18-65mm cutout, precision beam 5°-50°, SASO & G-Mark certified for display and accent lighting in the Middle East.",
+  "ogImage": "/assets/images/products/mini-spotlight-x01.jpeg",
+  "mainImage": "/assets/images/products/mini-spotlight-x01.jpeg",
+  "galleryImages": [
+    "/assets/images/products/mini-spotlight-x01.jpeg",
+    "/assets/images/products/mini-spotlight-x01-page.png"
+  ],
+  "sceneImage": "/assets/images/products/grid-spotlight-scene-1.jpg",
+  "specs": {
+    "wattage": "1W-9W",
+    "efficacy": "80-100 lm/W",
+    "cct": "2700K / 3000K / 4000K / 6000K",
+    "cri": "Ra>90",
+    "beamAngle": "5° / 8° / 10° / 15° / 24° / 36° / 50°",
+    "ipRating": "IP20",
+    "dimming": "TRIAC / 0-10V (select models)",
+    "lifespan": "L70 > 50,000 hours",
+    "warranty": "5 years",
+    "certifications": "SASO, G-Mark, CE, RoHS",
+    "moq": "200 pieces",
+    "leadTime": "15-25 days"
+  },
+  "applications": [
+    {
+      "title": "Display Cabinets",
+      "desc": "Ultra-narrow 5° beam for jewelry and luxury product displays.",
+      "icon": "retail"
+    },
+    {
+      "title": "Museums & Galleries",
+      "desc": "Precision accent lighting for artwork and artifacts.",
+      "icon": "gallery"
+    },
+    {
+      "title": "Restaurants & Cafes",
+      "desc": "Subtle accent lighting for ambiance and table highlighting.",
+      "icon": "restaurant"
+    },
+    {
+      "title": "Architectural Accent",
+      "desc": "Highlight architectural features and textures.",
+      "icon": "building"
+    }
+  ],
+  "features": [
+    "Ultra-compact design: 18mm to 65mm cutout",
+    "Precision beam control from 5° (pin-point) to 50° (flood)",
+    "High CRI>90 for accurate color rendering",
+    "Low-profile housing for shallow ceiling installations",
+    "Available in matte white and matte black finishes",
+    "Spring clip mounting for tool-free installation"
+  ],
+  "faqs": [
+    {
+      "question": "What is the smallest cutout size available?",
+      "answer": "The smallest model has an 18mm cutout (1W) — perfect for tight display cabinets and shelving. We also offer 25mm, 30mm, 35mm, 40mm, 45mm, 50mm, 55mm, 60mm, and 65mm options."
+    },
+    {
+      "question": "Can I get ultra-narrow beam angles for jewelry displays?",
+      "answer": "Yes. We offer 5°, 8°, and 10° beam angles on selected models. These create a pin-point spot ideal for jewelry and luxury product highlighting. Yakeen Lighting provides sample units for testing."
+    }
+  ],
+  "caseStudy": {
+    "title": "Jewelry Display",
+    "location": "Dubai, UAE",
+    "year": "2024",
+    "image": "/assets/images/products/grid-spotlight-scene-1.jpg"
+  },
+  "ar": {
+    "name": "كشافة LED مدمجة مصغرة",
+    "shortName": "كشافة مصغرة",
+    "tagline": "كشافة فائقة الصغر 1-9واط للإضاءة المميزة والعرض",
+    "description": "سلسلة كشافات LED مدمجة مصغرة من Yakeen، 1-9واط بأحجام فتحة من 18مم إلى 65مم. تتميز بتحكم دقيق في الشعاع بخيارات 5°/8°/10°/15°/24°/36°/50°. مثالية لخزائن العرض ومجوهريات العدادات والإضاءة المعمارية المميزة. معتمدة SASO و G-Mark.",
+    "features": [
+      "تصميم فائق الصغر: فتحة 18مم إلى 65مم",
+      "تحكم دقيق في الشعاع من 5° (نقطة دبوس) إلى 50° (فيضان)",
+      "CRI>90 لعرض ألوان دقيق",
+      "هيكل منخفض للم笑容ات السقفية الضحلة",
+      "متوفر بلمسة بيضاء مطفية وسوداء مطفية",
+      "تركيب بمشابك نابضة بدون أدوات"
+    ],
+    "applications": [
+      {
+        "title": "خزائن العرض",
+        "desc": "شعاع فائق الضيق 5° لمجوهرات وعرض المنتجات الفاخرة."
+      },
+      {
+        "title": "المتاحف والمعارض",
+        "desc": "إضاءة مميزة دقيقة للأعمال الفنية والقطع الأثرية."
+      },
+      {
+        "title": "المطاعم والمقاهي",
+        "desc": "إضاءة مميزة خفيفة للأجواء وإبراز الطاولات."
+      },
+      {
+        "title": "اللمسات المعمارية",
+        "desc": "إبراز الميزات المعمارية والملمس."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "ما أصغر حجم فتحة متاح؟",
+        "answer": "أصغر طراز يحتوي فتحة 18مم (1واط) — مثالي لخزائن العرض الضيقة والأرفف. نقدم أيضاً خيارات 25مم، 30مم، 35مم، 40مم، 45مم، 50مم، 55مم، 60مم، و65مم."
+      },
+      {
+        "question": "هل يمكنني الحصول على زوايا شعاع فائقة الضيق لعرض المجوهرات؟",
+        "answer": "نعم. نقدم زوايا شعاع 5°، 8°، و10° على موديلات مختارة. هذه تنشئ بقعة دبوس مثالية لإبراز المجوهرات والمنتجات الفاخرة."
+      }
+    ],
+    "caseStudy": {
+      "title": "عرض مجوهرات",
+      "location": "دبي، الإمارات"
+    }
+  }
+}

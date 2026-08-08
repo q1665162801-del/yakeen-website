@@ -1,0 +1,122 @@
+{
+  "slug": "panel-light",
+  "name": "Ultra-Thin LED Panel Light",
+  "shortName": "Panel Light",
+  "category": "panel-linear",
+  "tagline": "10mm slim edge-lit design with 110-130 lm/W",
+  "description": "Yakeen ultra-thin LED panel light, 10mm slim, edge-lit, 30-60W, 110-130 lm/W, SASO & G-Mark certified for offices and commercial spaces.",
+  "metaDescription": "Yakeen Ultra-Thin LED Panel Light — 10mm slim, edge-lit, 30-60W, 110-130 lm/W, SASO & G-Mark certified for offices and commercial spaces in the Middle East.",
+  "ogImage": "/assets/images/products/panel-new.webp",
+  "mainImage": "/assets/images/products/panel-new.webp",
+  "galleryImages": [
+    "/assets/images/products/panel-new.webp",
+    "/assets/images/products/panel-2.jpg"
+  ],
+  "sceneImage": "/assets/images/products/panel-scene-1.jpg",
+  "specs": {
+    "wattage": "30W-60W",
+    "efficacy": "110-130 lm/W",
+    "cct": "3000K / 4000K / 5000K / 6000K",
+    "cri": "Ra>80",
+    "beamAngle": "120°",
+    "ipRating": "IP40",
+    "dimming": "0-10V / DALI",
+    "lifespan": "L70 > 50,000 hours",
+    "warranty": "5 years",
+    "certifications": "SASO, G-Mark, CE, RoHS",
+    "moq": "100 pieces",
+    "leadTime": "15-25 days"
+  },
+  "applications": [
+    {
+      "title": "Offices",
+      "desc": "Even, shadow-free illumination for productive workspaces.",
+      "icon": "office"
+    },
+    {
+      "title": "Hospitals",
+      "desc": "Clean, bright light for medical environments.",
+      "icon": "hospital"
+    },
+    {
+      "title": "Schools",
+      "desc": "Flicker-free lighting for comfortable learning.",
+      "icon": "school"
+    },
+    {
+      "title": "Shopping Malls",
+      "desc": "Uniform general lighting for retail floors.",
+      "icon": "mall"
+    }
+  ],
+  "features": [
+    "10mm ultra-thin profile",
+    "Edge-lit technology for uniform light",
+    "Aluminum frame for efficient heat dissipation",
+    "Recessed, surface, or suspended mounting",
+    "PMMA light guide plate (non-yellowing)",
+    "0-10V/DALI dimming compatible"
+  ],
+  "faqs": [
+    {
+      "question": "What sizes are available?",
+      "answer": "Standard sizes: 300x300mm, 300x600mm, 600x600mm, 600x1200mm. Custom sizes available with MOQ 500pcs."
+    },
+    {
+      "question": "Is the panel flicker-free?",
+      "answer": "Yes. We use high-quality drivers with <5% flicker rate, meeting IEEE 1789 standards. Yakeen Lighting provides flicker test reports."
+    }
+  ],
+  "caseStudy": {
+    "title": "Office Building",
+    "location": "Doha, Qatar",
+    "year": "2024",
+    "image": "/assets/images/products/panel-scene-1.jpg"
+  },
+  "ar": {
+    "name": "بانل LED رفيع جداً",
+    "shortName": "بانل LED",
+    "tagline": "تصميم بحافة 10mm بإضاءة حافة 110-130 lm/W",
+    "description": "بانل LED رفيع جداً من Yakeen، 10mm، إضاءة حافة، 30-60واط، 110-130 لومن/واط، معتمد SASO و G-Mark للمكاتب والمساحات التجارية.",
+    "features": [
+      "سمك 10mm فائق النحافة",
+      "تقنية الإضاءة الحرفية لضوء موحد",
+      "إطار ألمنيوم لتشتيت الحرارة بكفاءة",
+      "تركيب مدمج أو سطحي أو معلق",
+      "لوح توجيه ضوء PMMA (لا يصفر)",
+      "تعتيم 0-10V/DALI متوافق"
+    ],
+    "applications": [
+      {
+        "title": "المكاتب",
+        "desc": "إضاءة متساوية خالية من الظلال لمساحات عمل منتجة."
+      },
+      {
+        "title": "المستشفيات",
+        "desc": "إضاءة نظيفة وساطعة للبيئات الطبية."
+      },
+      {
+        "title": "المدارس",
+        "desc": "إضاءة خالية من الوميض لتعلم مريح."
+      },
+      {
+        "title": "المولات",
+        "desc": "إضاءة عامة موحدة للأرضيات التجارية."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "ما الأحجام المتاحة؟",
+        "answer": "الأحجام القياسية: 300×300mm، 300×600mm، 600×600mm، 600×1200mm. الأحجام المخصصة متاحة بحد أدنى 500 قطعة."
+      },
+      {
+        "question": "هل البانل خالٍ من الوميض؟",
+        "answer": "نعم. نستخدم محركات عالية الجودة بمعدل وميض <5%، يلبي معايير IEEE 1789. توفر Yakeen Lighting تقارير اختبار الوميض."
+      }
+    ],
+    "caseStudy": {
+      "title": "مبنى مكاتب",
+      "location": "الدوحة، قطر"
+    }
+  }
+}

@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABanner from '../components/CTABanner.astro';
+import TrustBar from '../components/TrustBar.astro';
+import { siteConfig } from '../data/site-config';
+import { breadcrumbSchema } from '../utils/schema';
+import { getLocale, t } from '../i18n/ui';
+
+const locale = getLocale(Astro.url);
+const prefix = locale === 'ar' ? '/ar' : '';
+
+const crumbs = [
+  { name: t(locale, 'nav.home'), url: prefix + '/' },
+  { name: t(locale, 'cert.breadcrumb'), url: prefix + '/certifications' },
+];
+const breadcrumbJsonLd = breadcrumbSchema(crumbs);
+
+const certs = [
+  { name: 'SASO', name_ar: 'SASO', fullName: 'Saudi Standards, Metrology and Quality Organization', fullName_ar: 'هيئة المقاييس والمعايير السعودية', desc: 'Mandatory for Saudi Arabia imports. All Yakeen products carry SASO certification with SABER platform registration support.', desc_ar: 'إلزامي لاستيراد المنتجات إلى السعودية. جميع منتجات Yakeen تحمل شهادة SASO مع دعم تسجيل منصة SABER.', color: '#0a1525' },
+  { name: 'G-Mark', name_ar: 'G-Mark', fullName: 'GCC Conformity Marking', fullName_ar: 'علامة مطابقة مجلس التعاون الخليجي', desc: 'Accepted across all 6 GCC countries. Streamlines customs clearance for Saudi Arabia, UAE, Qatar, Kuwait, Bahrain, and Oman.', desc_ar: 'مقبولة في جميع دول مجلس التعاون الخليجي الست. تسهل تخليص الجمارك للسعودية والإمارات وقطر والكويت والبحرين وعمان.', color: '#1a2744' },
+  { name: 'CE', name_ar: 'CE', fullName: 'Conformité Européenne', fullName_ar: 'علامة المطابقة الأوروبية', desc: 'European safety standard. Required for many Middle East markets as a baseline quality benchmark.', desc_ar: 'معيار السلامة الأوروبي. مطلوب في العديد من أسواق الشرق الأوسط كمعيار أساسي للجودة.', color: '#2a4168' },
+  { name: 'RoHS', name_ar: 'RoHS', fullName: 'Restriction of Hazardous Substances', fullName_ar: 'تقييد المواد الخطرة', desc: 'Ensures products are free from hazardous materials (lead, mercury, cadmium). Environmental compliance.', desc_ar: 'يضمن خلو المنتجات من المواد الخطرة (الرصاص والزئبق والكادميوم). الامتثال البيئي.', color: '#3a5685' },
+  { name: 'CB', name_ar: 'CB', fullName: 'IEC System of Conformity Assessment', fullName_ar: 'نظام IEC لتقييم المطابقة', desc: 'International electrotechnical certification. Accepted by 50+ member countries as basis for national certifications.', desc_ar: 'شهادة كهروتقنية دولية. مقبولة في أكثر من 50 دولة عضوة كأساس للشهادات الوطنية.', color: '#5d7ba8' },
+  { name: 'ISO 9001', name_ar: 'ISO 9001', fullName: 'Quality Management System', fullName_ar: 'نظام إدارة الجودة', desc: 'Our partner factories maintain ISO 9001:2015 certified quality management systems.', desc_ar: 'مصانعنا الشركاء يحافظون على أنظمة إدارة جودة معتمدة ISO 9001:2015.', color: '#8da9d0' },
+];
+const certImages: Record<string, string> = {
+  'SASO': '/assets/images/certs/cert_saso.svg',
+  'G-Mark': '/assets/images/certs/cert_gcc.svg',
+  'CE': '/assets/images/certs/cert_ce.svg',
+  'RoHS': '/assets/images/certs/cert_rohs.svg',
+  'CB': '/assets/images/certs/cert_cb.svg',
+  'ISO 9001': '/assets/images/certs/cert_iso_9001.svg',
+};
+const certsL = certs.map(c => ({
+  name: locale === 'ar' ? c.name_ar : c.name,
+  fullName: locale === 'ar' ? c.fullName_ar : c.fullName,
+  desc: locale === 'ar' ? c.desc_ar : c.desc,
+  color: c.color,
+  img: certImages[c.name] || '',
+}));
+
+const qcSteps = [
+  { step: '01', title: 'Incoming Material Inspection', title_ar: 'فحص المواد الواردة', desc: 'LED chips (Samsung/Epistar/San\'an), drivers (Meanwell/Inventronics), and housings inspected for spec compliance.', desc_ar: 'فحص رقائق LED (Samsung/Epistar/San\'an) والمشغلات (Meanwell/Inventronics) والهياكل للتأكد من المطابقة.' },
+  { step: '02', title: 'In-Process Production QC', title_ar: 'مراقبة جودة الإنتاج', desc: 'SMT line monitoring, solder joint inspection, and assembly quality checks at every production stage.', desc_ar: 'مراقبة خط SMT، فحص نقاط اللحام، ومراقبة جودة التجميع في كل مرحلة إنتاج.' },
+  { step: '03', title: '100% Aging Test', title_ar: 'اختبار التعتيق 100%', desc: 'Every unit undergoes 4-8 hour continuous burn-in test. Any failure is rejected and replaced.', desc_ar: 'كل وحدة تخضع لاختبار حرق مستمر 4-8 ساعات. أي فشل يتم رفضه واستبداله.' },
+  { step: '04', title: 'Electrical & Photometric Test', title_ar: 'الاختبار الكهربائي والضوئي', desc: 'Final test: power consumption, luminous flux, CCT, CRI, and beam angle verification against spec.', desc_ar: 'اختبار نهائي: استهلاك الطاقة، التدفق الضوئي، حرارة اللون، CRI، وزاوية الشعاع.' },
+  { step: '05', title: 'Pre-Shipment Inspection', title_ar: 'فحص ما قبل الشحن', desc: 'Photos and videos of finished goods, packaging, and loading. QC report provided for every batch.', desc_ar: 'صور وفيديو للبضائع الجاهزة والتغليف والتحميل. تقرير مراقبة جودة لكل دفعة.' },
+];
+const qcStepsL = qcSteps.map(s => ({
+  step: s.step,
+  title: locale === 'ar' ? s.title_ar : s.title,
+  desc: locale === 'ar' ? s.desc_ar : s.desc,
+}));
+---
+
+<BaseLayout
+  title={t(locale, 'cert.hero.title') + ' — Yakeen Lighting'}
+  description={t(locale, 'cert.hero.subtitle')}
+  image="/assets/images/hero/hero-bg-v3.jpg"
+  canonicalPath="/certifications"
+  type="page"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  {/* Hero */}
+  <section class="relative overflow-hidden pt-32 pb-12 md:pt-40 md:pb-16" style="background: linear-gradient(135deg, #050b14 0%, #0a1525 50%, #1a2744 100%);">
+    <div class="container-yakeen relative z-10">
+      <nav class="text-sm text-white/60 mb-4" aria-label={t(locale, 'aria.breadcrumb')}>
+        <a href={prefix + '/'} class="hover:text-gold-400 transition-colors">{t(locale, 'nav.home')}</a>
+        <span class="mx-2 text-white/30">/</span>
+        <span class="text-gold-400 font-medium">{t(locale, 'cert.breadcrumb')}</span>
+      </nav>
+      <h1 class="reveal text-4xl md:text-5xl font-bold text-white leading-tight">
+        {t(locale, 'cert.hero.title')}
+      </h1>
+      <p class="reveal mt-4 text-lg text-white/70 max-w-2xl">
+        {t(locale, 'cert.hero.subtitle')}
+      </p>
+    </div>
+  </section>
+
+  {/* Certifications grid */}
+  <section class="section-padding bg-white">
+    <div class="container-yakeen">
+      <div class="text-center mb-12 reveal">
+        <p class="text-gold-600 font-semibold uppercase tracking-wide text-sm mb-2">{t(locale, 'cert.compliance.eyebrow')}</p>
+        <h2 class="text-3xl font-bold text-navy-900">{t(locale, 'cert.compliance.title')}</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {certsL.map((cert, i) => (
+          <div class="reveal rounded-xl p-6 border border-gray-200 hover:border-gold-300 hover:shadow-lg transition-all" style={`transition-delay: ${i * 60}ms`}>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-14 h-14 rounded-lg flex items-center justify-center bg-white p-1.5" style={`border: 1px solid ${cert.color};`}>
+                <img src={cert.img} alt={cert.name} class="w-full h-full object-contain" loading="lazy" width="40" height="40" />
+              </div>
+              <div>
+                <h3 class="font-bold text-navy-900 text-lg">{cert.name}</h3>
+                <p class="text-xs text-gray-500">{cert.fullName}</p>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600 leading-relaxed">{cert.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* QC Process */}
+  <section class="section-padding" style="background: #f8f6f1;">
+    <div class="container-yakeen">
+      <div class="text-center mb-12 reveal">
+        <p class="text-gold-600 font-semibold uppercase tracking-wide text-sm mb-2">{t(locale, 'cert.qc.eyebrow')}</p>
+        <h2 class="text-3xl font-bold text-navy-900">{t(locale, 'cert.qc.title')}</h2>
+        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">{t(locale, 'cert.qc.desc')}</p>
+      </div>
+      <div class="space-y-4">
+        {qcStepsL.map((step, i) => (
+          <div class="reveal flex items-start gap-6 p-6 rounded-xl bg-white border border-gray-200" style={`transition-delay: ${i * 80}ms`}>
+            <div class="flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center font-bold text-xl text-navy-900" style="background: linear-gradient(135deg, var(--gold-400), var(--gold-600));">
+              {step.step}
+            </div>
+            <div class="flex-1">
+              <h3 class="font-bold text-navy-900 text-lg mb-2">{step.title}</h3>
+              <p class="text-gray-600 leading-relaxed">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Factory audit CTA */}
+  <section class="section-padding bg-white">
+    <div class="container-yakeen">
+      <div class="rounded-2xl p-8 md:p-12 text-center" style="background: linear-gradient(135deg, #050b14 0%, #0a1525 50%, #1a2744 100%);">
+        <h2 class="text-3xl font-bold text-white mb-4">{t(locale, 'cert.audit.title')}</h2>
+        <p class="text-white/70 max-w-2xl mx-auto mb-6">
+          {t(locale, 'cert.audit.desc')}
+        </p>
+        <a href={prefix + '/contact'} class="btn-gold animate-pulse-gold">{t(locale, 'cert.audit.cta')}</a>
+      </div>
+    </div>
+  </section>
+
+  <TrustBar />
+  <CTABanner />
+</BaseLayout>

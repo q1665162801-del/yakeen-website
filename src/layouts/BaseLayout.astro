@@ -1,0 +1,213 @@
+---
+/**
+ * BaseLayout.astro
+ * Full-site base layout for Yakeen Lighting.
+ *
+ * Responsibilities:
+ *  - <head>: SEO component (meta tags, fonts, GA4) + global.css
+ *  - <body>: Header + <main><slot /></main> + Footer + WhatsAppButton
+ *  - Scroll listener: toggles `.scrolled` on the site header when scrollY > 10
+ *  - Reveal animation: IntersectionObserver adds `.is-visible` to `.reveal` elements
+ *  - Mobile menu toggle JS
+ *  - <noscript> fallback content (company intro + contact info)
+ */
+
+import SEO from '@components/SEO.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import WhatsAppButton from '@components/WhatsAppButton.astro';
+import { siteConfig } from '@data/site-config';
+import { getLocale, getDir, t } from '../i18n/ui';
+import '@styles/global.css';
+
+export interface Props {
+  /** Page title (passed to the SEO component, which appends the site name) */
+  title?: string;
+  /** Meta description for the page */
+  description?: string;
+  /** Social share / OG image URL (absolute or root-relative) */
+  image?: string;
+  /** Canonical path for the page (root-relative, e.g. "/products/df-downlight") */
+  canonicalPath?: string;
+  /** Page type, aligned with the SEO component's accepted values */
+  type?: 'page' | 'product' | 'article';
+}
+
+const {
+  title,
+  description = siteConfig.tagline,
+  image = '/assets/images/hero/hero-bg-v3.jpg',
+  canonicalPath = Astro.url.pathname,
+  type = 'page',
+} = Astro.props;
+
+// Default title when none is provided. The SEO component appends the site name
+// to a bare title, so we only fall back to a brand-led default here.
+const pageTitle = title ?? `${siteConfig.name} — ${siteConfig.tagline}`;
+const locale = getLocale(Astro.url);
+const dir = getDir(locale);
+const prefix = locale === 'ar' ? '/ar' : '';
+---
+
+<!doctype html>
+<html lang={locale} dir={dir}>
+  <head>
+    {/* The SEO component renders ALL head meta tags: charset, viewport,
+        title, description, canonical, hreflang, OG/Twitter cards, fonts
+        (preconnect + Google Fonts), and Google Analytics 4. */}
+    <SEO
+      title={pageTitle}
+      description={description}
+      image={image}
+      canonicalPath={canonicalPath}
+      type={type}
+    />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    {/* Optional per-page head injections (e.g. noindex meta on the 404 page).
+        Backward-compatible: pages that don't define a "head" slot are unaffected. */}
+    <slot name="head" />
+  </head>
+
+  <body>
+    {/* Skip link for accessibility */}
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:rounded focus:bg-navy-900 focus:px-4 focus:py-2 focus:text-white">
+      {t(locale, 'skip.toMain')}
+    </a>
+
+    <Header />
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <Footer />
+    <WhatsAppButton />
+
+    {/* ===== Scroll listener: toggle .scrolled on the site header ===== */}
+    <script is:inline>
+      (function () {
+        const header = document.querySelector('.site-header');
+        if (!header) return;
+
+        const onScroll = function () {
+          if (window.scrollY > 10) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        };
+
+        // Set initial state (handles page reload mid-scroll)
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+      })();
+    </script>
+
+    {/* ===== Reveal animation: IntersectionObserver adds .is-visible to .reveal ===== */}
+    <script is:inline>
+      (function () {
+        // Respect reduced-motion preference: show everything immediately.
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const revealEls = document.querySelectorAll('.reveal');
+
+        if (prefersReduced || !('IntersectionObserver' in window)) {
+          revealEls.forEach(function (el) {
+            el.classList.add('is-visible');
+          });
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          function (entries, obs) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                obs.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+        );
+
+        revealEls.forEach(function (el) {
+          observer.observe(el);
+        });
+      })();
+    </script>
+
+    {/* ===== Mobile menu toggle ===== */}
+    <script is:inline>
+      (function () {
+        const toggle = document.querySelector('[data-menu-toggle]');
+        const menu = document.querySelector('[data-mobile-menu]');
+        if (!toggle || !menu) return;
+
+        const closeMenu = function () {
+          menu.classList.add('hidden');
+          menu.setAttribute('aria-hidden', 'true');
+          toggle.setAttribute('aria-expanded', 'false');
+          document.body.classList.remove('overflow-hidden');
+        };
+
+        const openMenu = function () {
+          menu.classList.remove('hidden');
+          menu.setAttribute('aria-hidden', 'false');
+          toggle.setAttribute('aria-expanded', 'true');
+          document.body.classList.add('overflow-hidden');
+        };
+
+        toggle.addEventListener('click', function () {
+          const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+          if (isOpen) {
+            closeMenu();
+          } else {
+            openMenu();
+          }
+        });
+
+        // Close on link click
+        menu.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', closeMenu);
+        });
+
+        // Close on Escape
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') {
+            closeMenu();
+          }
+        });
+
+        // Close when resizing up to desktop
+        window.addEventListener('resize', function () {
+          if (window.innerWidth >= 1024) {
+            closeMenu();
+          }
+        });
+      })();
+    </script>
+
+    {/* ===== noscript fallback: company intro + contact info ===== */}
+    <noscript>
+      <div style="padding: 2rem; text-align: center; background: #0a1525; color: #ffffff; font-family: system-ui, sans-serif;">
+        <h1 style="color: #c9a961; margin-bottom: 0.5rem;">{siteConfig.name}</h1>
+        <p style="font-size: 1.125rem; margin-bottom: 1rem;">
+          {t(locale, 'noscript.tagline')}. {t(locale, 'noscript.desc')}
+        </p>
+        <p style="margin-bottom: 0.25rem;">
+          <strong>{t(locale, 'footer.email')}:</strong> <a href="mailto:{siteConfig.email}" style="color: #c9a961;">{siteConfig.email}</a>
+        </p>
+        <p style="margin-bottom: 0.25rem;">
+          <strong>{t(locale, 'footer.phone')}:</strong> <a href="tel:{siteConfig.phone}" style="color: #c9a961;">{siteConfig.phone}</a>
+        </p>
+        <p>
+          <a href={prefix + '/products'} style="display: inline-block; margin-top: 1rem; padding: 0.75rem 1.5rem; background: #c9a961; color: #050b14; border-radius: 9999px; text-decoration: none; font-weight: 700;">
+            {t(locale, 'footer.browseProducts')}
+          </a>
+        </p>
+      </div>
+    </noscript>
+  </body>
+</html>
