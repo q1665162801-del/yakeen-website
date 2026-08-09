@@ -10,11 +10,13 @@
     "postinstall": "node scripts/postinstall-patch.cjs",
     "prebuild": "node scripts/clean-astro-cache.cjs",
     "postbuild": "node scripts/copy-astro-assets.cjs",
-    "deploy": "node scripts/deploy.cjs"
+    "deploy": "node scripts/deploy.cjs",
+    "import:sanity": "node scripts/import-to-sanity.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^6.0.0",
+    "@sanity/client": "^7.26.2",
     "astro": "^5.0.0",
     "tailwindcss": "^3.4.0"
   },

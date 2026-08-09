@@ -8,3 +8,5 @@ dist-old/
 *.log
 .env
 .dev.vars
+sanity/.sanity/
+sanity/dist/

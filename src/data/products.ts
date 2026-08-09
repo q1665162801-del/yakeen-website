@@ -1,8 +1,10 @@
 // Product data model — interfaces only.
-// Product data now lives in src/content/products/*.json (managed by Decap CMS).
-// ponytail: async loaders replace the static array — pages add `await`.
+// ponytail: Sanity-first with local JSON fallback — zero downtime during migration.
+// If SANITY_PROJECT_ID is set → fetch from Sanity Content Lake.
+// If not set or fetch fails → fall back to local JSON (Content Collections).
 
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { sanityEnabled, fetchAllProductsFromSanity, fetchProductFromSanity } from '../lib/sanity';
 
 export interface ProductSpec {
   wattage: string;
@@ -51,16 +53,38 @@ export interface Product {
   featured?: boolean;
 }
 
-// ponytail: cast CollectionEntry data to Product — schema guarantees shape
+// ponytail: local JSON fallback — same as before, unchanged
 type ProductEntry = CollectionEntry<'products'>;
 
-export async function getAllProducts(): Promise<Product[]> {
+async function getLocalProducts(): Promise<Product[]> {
   const entries = await getCollection('products');
   return entries.map(e => e.data as unknown as Product);
 }
 
+// ponytail: try Sanity first, fall back to local JSON on any error
+export async function getAllProducts(): Promise<Product[]> {
+  if (sanityEnabled) {
+    try {
+      const products = await fetchAllProductsFromSanity();
+      if (products.length > 0) return products;
+      console.warn('[sanity] No products found, falling back to local JSON');
+    } catch (err) {
+      console.warn('[sanity] Fetch failed, falling back to local JSON:', err);
+    }
+  }
+  return getLocalProducts();
+}
+
 export async function getProduct(slug: string): Promise<Product | undefined> {
-  const products = await getAllProducts();
+  if (sanityEnabled) {
+    try {
+      const product = await fetchProductFromSanity(slug);
+      if (product) return product;
+    } catch (err) {
+      console.warn('[sanity] Fetch failed, falling back to local JSON:', err);
+    }
+  }
+  const products = await getLocalProducts();
   return products.find(p => p.slug === slug);
 }
 
