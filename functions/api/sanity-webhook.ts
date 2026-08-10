@@ -5,19 +5,19 @@
 export async function onRequestPost(context) {
   const { env } = context;
 
-  // Step 1: verify GH_PAT is set
-  if (!env.GH_PAT) {
+  // ponytail: trim whitespace — PowerShell pipe adds trailing newline to secret
+  const token = (env.GH_PAT || '').trim();
+  if (!token) {
     return new Response('ERROR: GH_PAT not configured', { status: 500 });
   }
 
-  // Step 2: call GitHub workflow_dispatch
   try {
     const res = await fetch(
       'https://api.github.com/repos/q1665162801-del/yakeen-website/actions/workflows/deploy.yml/dispatches',
       {
         method: 'POST',
         headers: {
-          Authorization: `token ${env.GH_PAT}`,
+          Authorization: `token ${token}`,
           Accept: 'application/vnd.github+json',
           'Content-Type': 'application/json',
         },
