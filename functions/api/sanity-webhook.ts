@@ -25,8 +25,10 @@ export async function onRequestPost(context) {
       }
     );
 
+    // ponytail: include GH response body + token length for debugging 403
+    const ghBody = res.ok ? '' : await res.text();
     return new Response(
-      res.ok ? `OK: GitHub build triggered (${res.status})` : `FAIL: GitHub returned ${res.status}`,
+      res.ok ? `OK: GitHub build triggered (${res.status})` : `FAIL: GitHub ${res.status} | tokenLen=${token.length} | ${ghBody}`,
       {
         status: res.ok ? 200 : res.status,
         headers: { 'Content-Type': 'text/plain' },
