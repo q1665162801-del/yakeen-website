@@ -4,8 +4,10 @@ name: Build & Deploy
 on:
   push:
     branches: [main]
+  # ponytail: workflow_dispatch only needs actions:write (not contents:write)
+  # Sanity webhook calls this endpoint directly
+  workflow_dispatch:
   repository_dispatch:
-    # Sanity webhook calls GitHub API with event_type: sanity_update
     types: [sanity_update]
 
 jobs:
