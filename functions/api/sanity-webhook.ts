@@ -20,15 +20,14 @@ export async function onRequestPost(context) {
           Authorization: `token ${token}`,
           Accept: 'application/vnd.github+json',
           'Content-Type': 'application/json',
+          'User-Agent': 'yakeen-webhook-relay',
         },
         body: JSON.stringify({ ref: 'main' }),
       }
     );
 
-    // ponytail: include GH response body + token length for debugging 403
-    const ghBody = res.ok ? '' : await res.text();
     return new Response(
-      res.ok ? `OK: GitHub build triggered (${res.status})` : `FAIL: GitHub ${res.status} | tokenLen=${token.length} | ${ghBody}`,
+      res.ok ? `OK: GitHub build triggered (${res.status})` : `FAIL: GitHub returned ${res.status}`,
       {
         status: res.ok ? 200 : res.status,
         headers: { 'Content-Type': 'text/plain' },
