@@ -15,6 +15,7 @@ const en: Record<string, string> = {
   'nav.projects': 'Projects',
   'nav.about': 'About',
   'nav.faq': 'FAQ',
+  'nav.blog': 'Blog',
   'nav.certifications': 'Certifications',
   'nav.saudi': 'Saudi Market',
   'nav.uae': 'UAE Market',
@@ -131,6 +132,7 @@ const en: Record<string, string> = {
   'contact.email': 'Email',
   'contact.whatsapp': 'WhatsApp',
   'contact.phone': 'Phone',
+  'contact.catalog': 'Product Catalog 2026',
   'contact.serviceArea': 'Service Area',
   'contact.form.name': 'Name *',
   'contact.form.company': 'Company',
@@ -393,13 +395,13 @@ const en: Record<string, string> = {
 };
 
 const ar: Record<string, string> = {
-  // Navigation
   'nav.home': 'الرئيسية',
   'nav.products': 'المنتجات',
   'nav.aiAssistant': 'مساعد الذكاء الاصطناعي',
   'nav.projects': 'المشاريع',
   'nav.about': 'من نحن',
   'nav.faq': 'الأسئلة الشائعة',
+  'nav.blog': 'المدونة',
   'nav.certifications': 'الشهادات',
   'nav.saudi': 'السوق السعودي',
   'nav.uae': 'سوق الإمارات',
@@ -409,11 +411,7 @@ const ar: Record<string, string> = {
   'nav.language': 'اللغة',
   'nav.openMenu': 'فتح القائمة',
   'nav.closeMenu': 'إغلاق القائمة',
-
-  // Skip link
   'skip.toMain': 'تخطي إلى المحتوى الرئيسي',
-
-  // Hero
   'hero.badge': 'معتمد SASO و G-Mark · تتوفر جولة فيديو للمصنع',
   'hero.title': 'شريكك الموثوق للإضاءة التجارية في الشرق الأوسط',
   'hero.subtitle': 'إضاءة LED معتمدة SASO مع تخصيص OEM/ODM. من الإضاءة المدمجة إلى أضواء الشوارع الشمسية — مصنعة وفق معايير مجلس التعاون الخليجي مع وثائق امتثال كاملة.',
@@ -422,19 +420,13 @@ const ar: Record<string, string> = {
   'hero.stat.products': 'فئات المنتجات',
   'hero.stat.heatRated': 'مقاومة الحرارة',
   'hero.stat.gcc': 'دول مجلس التعاون الخليجي',
-
-  // Trust Bar
   'trust.certified': 'معتمد SASO و G-Mark',
   'trust.factoryAudit': 'تتوفر جولة فيديو للمصنع',
   'trust.oemOdm': 'تخصيص OEM/ODM',
   'trust.gccCountries': '6 دول خليجية مخدومة',
-
-  // Products section
   'products.eyebrow': 'منتجاتنا',
   'products.title': 'كتالوج الإضاءة التجارية',
   'products.subtitle': '10 منتجات LED أساسية مع شهادات SASO/G-Mark كاملة. يتوفر التخصيص OEM/ODM لجميع الفئات.',
-
-  // Why Yakeen
   'whyYakeen.eyebrow': 'لماذا Yakeen',
   'whyYakeen.title': 'مصمم للشرق الأوسط',
   'whyYakeen.manufacturing': 'شبكة التصنيع',
@@ -445,15 +437,11 @@ const ar: Record<string, string> = {
   'whyYakeen.customizationDesc': 'من وضع العلامات الخاصة إلى تصميم القوالب المخصصة. علامتك التجارية، مواصفاتك، تصنيعنا.',
   'whyYakeen.delivery': 'تسليم من البداية إلى النهاية',
   'whyYakeen.deliveryDesc': 'من تصميم DIALux إلى تسجيل SABER إلى الشحن. نتولى العملية بأكملها.',
-
-  // CTA Banner
   'cta.title': 'هل أنت مستعد لبدء مشروع الإضاءة الخاص بك؟',
   'cta.subtitle': 'احصل على عرض سعر مجاني خلال 24 ساعة. منتجات معتمدة SASO، تخصيص OEM/ODM، وشحن DDP متاح.',
   'cta.button': 'احصل على عرض سعر مجاني ←',
   'cta.whatsapp': 'تواصل عبر واتساب',
   'cta.watchFactory': 'شاهد جولة المصنع',
-
-  // Footer
   'footer.tagline': 'شريكك الموثوق للإضاءة التجارية في الشرق الأوسط',
   'footer.quickLinks': 'روابط سريعة',
   'footer.products': 'المنتجات',
@@ -466,19 +454,13 @@ const ar: Record<string, string> = {
   'footer.privacyPolicy': 'سياسة الخصوصية',
   'footer.browseProducts': 'تصفح المنتجات',
   'footer.aboutDesc': 'مصنع إضاءة LED تجارية معتمد SASO و G-Mark يخدم السعودية والإمارات وقطر والكويت والبحرين وعمان.',
-
-  // WhatsApp
   'whatsapp.label': 'دردشة عبر واتساب',
   'whatsapp.message': 'مرحباً Yakeen Lighting، أنا مهتم بمنتجات LED الخاصة بكم لسوق الشرق الأوسط.',
-
-  // Common
   'common.back': 'رجوع',
   'common.learnMore': 'اعرف المزيد',
   'common.viewDetails': 'عرض التفاصيل',
   'common.requestQuote': 'اطلب عرض سعر',
   'common.contactUs': 'اتصل بنا',
-
-  // ── About Page ──
   'about.eyebrow': 'عن Yakeen Lighting',
   'about.heroDesc': '{legalName}، التي تعمل باسم Yakeen Lighting، هي مزود متخصص لحلول الإضاءة التجارية يركز حصرياً على سوق الشرق الأوسط ودول مجلس التعاون الخليجي. بقيادة المؤسس آلان ما، نقدم تصميم DIALux مجاني، ومراقبة جودة مستقلة، وامتثال SASO/G-Mark، ودعم كامل للمشاريع — مع مصانع شركاء في جميع أنحاء الصين.',
   'about.stats.coreProducts': 'منتجات أساسية',
@@ -506,8 +488,6 @@ const ar: Record<string, string> = {
   'about.founder.quote2': 'تملأ Yakeen Lighting هذه الفجوة. نحن صادقون بشأن ما نحن عليه: شريك حلول تصنيع بشبكة مصانع موثقة. كل ادعاء نقدمه قابل للتحقق. كل منتج نشحنه مختبر. كل مشروع نتولاه يحصل على اهتمامنا التقني الكامل.',
   'about.founder.attribution': '— آلان ما، المؤسس ومدير المشاريع',
   'about.breadcrumb.about': 'من نحن',
-
-  // ── Contact Page ──
   'contact.hero.title': 'احصل على عرض سعر الإضاءة',
   'contact.hero.subtitle': 'أخبرنا عن مشروعك. احصل على عرض سعر مخصص مع وثائق SASO/G-Mark خلال 24 ساعة.',
   'contact.breadcrumb.contact': 'اتصل بنا',
@@ -516,6 +496,7 @@ const ar: Record<string, string> = {
   'contact.email': 'البريد الإلكتروني',
   'contact.whatsapp': 'واتساب',
   'contact.phone': 'الهاتف',
+  'contact.catalog': 'كتالوج المنتجات 2026',
   'contact.serviceArea': 'منطقة الخدمة',
   'contact.form.name': 'الاسم *',
   'contact.form.company': 'الشركة',
@@ -537,8 +518,6 @@ const ar: Record<string, string> = {
   'contact.country.bh': 'البحرين',
   'contact.country.om': 'عمان',
   'contact.country.other': 'أخرى',
-
-  // ── Product Detail Page ──
   'product.specs.title': 'المواصفات الفنية',
   'product.specs.parameter': 'المعامل',
   'product.specs.value': 'القيمة',
@@ -570,8 +549,6 @@ const ar: Record<string, string> = {
   'product.ctaBanner.title': 'تحتاج إلى عرض سعر مخصص؟',
   'product.ctaBanner.subtitle': 'احصل على تسعير قائم على المشروع لـ {name} خلال 24 ساعة. تشمل وثائق SASO/G-Mark.',
   'product.sceneAlt': 'مشهد تطبيق {name}',
-
-  // ── Products List Page ──
   'products.hero.title': 'كتالوج الإضاءة التجارية',
   'products.hero.subtitle': '10 منتجات LED أساسية مع شهادات SASO و G-Mark كاملة. يتوفر التخصيص OEM/ODM لجميع الفئات. مصممة لظروف الشرق الأوسط (مقاومة حرارة 50°م، مقاومة الغبار والأشعة فوق البنفسجية).',
   'products.breadcrumb.products': 'المنتجات',
@@ -586,11 +563,7 @@ const ar: Record<string, string> = {
   'products.oem.f3': 'إعادة تصميم المنتج بالكامل وتطوير القوالب',
   'products.oem.f4': 'إدارة SKU حصرية للعلامة التجارية',
   'products.oem.cta': 'ناقش مشروعك ←',
-
-  // ── TrustBar ──
   'trustbar.heading': 'موثوق به في مشاريع الشرق الأوسط',
-
-  // ── AI Search ──
   'ai.search.placeholder': 'صف مشروع الإضاءة الخاص بك… مثلاً "إضاءة مدمجة لبهو فندق UGR<16"',
   'ai.search.button': 'بحث ذكي',
   'ai.search.quickSearch': 'بحث سريع:',
@@ -598,13 +571,9 @@ const ar: Record<string, string> = {
   'ai.search.quick2': 'بانل 600x600',
   'ai.search.quick3': 'كشاف IP65',
   'ai.search.quick4': 'ضوء شارع شمسي',
-
-  // ── Product Gallery ──
   'product.gallery.mainView': 'عرض رئيسي لـ {name}',
   'product.gallery.thumbnail': 'صورة مصغرة {index} لـ {name}',
   'product.gallery.viewImage': 'عرض الصورة {index} من {total}',
-
-  // ── Homepage Categories ──
   'home.cat.indoor.title': 'إضاءة LED مدمجة وكشفات',
   'home.cat.indoor.desc': 'UGR<16 مضادة للوهج، CRI>90، مثالية للمولات والفنادق',
   'home.cat.track.title': 'أضواء المسار LED',
@@ -615,8 +584,6 @@ const ar: Record<string, string> = {
   'home.cat.industrial.desc': '100-240واط، IP65، مقاومة 50°م للمستودعات',
   'home.cat.outdoor.title': 'إضاءة خارجية ومعمارية',
   'home.cat.outdoor.desc': 'ضوء شارع شمسي، كشاف، غسالة جدار — IP66/IP68',
-
-  // ── Contact Form Products ──
   'contact.product.downlights': 'إضاءة LED مدمجة وكشفات',
   'contact.product.track': 'أضواء المسار LED',
   'contact.product.panel': 'أضواء بانل وخطية LED',
@@ -626,15 +593,11 @@ const ar: Record<string, string> = {
   'contact.product.solar': 'أضواء الشارع الشمسية',
   'contact.product.washer': 'غسالة جدار معمارية',
   'contact.product.oem': 'مشروع تخصيص OEM/ODM',
-
-  // ── Product Filter Labels ──
   'products.filter.indoor': 'إضاءة داخلية',
   'products.filter.track': 'إضاءة المسار',
   'products.filter.panel-linear': 'بانل وخطي',
   'products.filter.industrial': 'صناعي',
   'products.filter.outdoor': 'خارجي',
-
-  // ── Certifications Page ──
   'cert.hero.title': 'الشهادات ومراقبة الجودة',
   'cert.hero.subtitle': 'كل منتج يُشحن مع وثائق امتثال كاملة. كل دفعة تجتاز عملية مراقبة جودة من 5 مراحل. كل ادعاء قابل للتحقق.',
   'cert.breadcrumb': 'الشهادات',
@@ -646,8 +609,6 @@ const ar: Record<string, string> = {
   'cert.audit.title': 'تتوفر جولة فيديو للمصنع',
   'cert.audit.desc': 'شاهد مصانعنا الشركاء في الوقت الحقيقي: خطوط إنتاج SMT، ورش التجميع، مختبرات الاختبار، ومستودعات البضائع الجاهزة. احجز جولة فيديو مباشرة عبر واتساب أو زووم.',
   'cert.audit.cta': 'احجز جولة فيديو ←',
-
-  // ── Projects Page ──
   'projects.hero.badge': 'تركيبات حقيقية · 6 دول خليجية',
   'projects.hero.title': 'مشاريع في جميع أنحاء الشرق الأوسط',
   'projects.hero.subtitle': 'تركيبات حقيقية. نتائج حقيقية. استكشف مشاريع الإضاءة المنفذة بمنتجات LED معتمدة SASO و G-Mark — من بهوه الفنادق إلى المستودعات الصناعية.',
@@ -667,8 +628,6 @@ const ar: Record<string, string> = {
   'projects.cta.desc': 'من تصميم DIALux إلى تسجيل SABER إلى التسليم — تتولى Yakeen Lighting العملية الكاملة لمشروعك القادم.',
   'projects.card.cta': 'ابدأ مشروعاً مماثلاً',
   'projects.card.empty': 'لا توجد مشاريع في هذه الفئة بعد.',
-
-  // ── FAQ Page ──
   'faq.breadcrumb': 'الأسئلة الشائعة',
   'faq.hero.title': 'الأسئلة الشائعة',
   'faq.hero.subtitle': 'كل ما يحتاج معرفته المشترون في الشرق الأوسط عن الشهادات والتخصيص والتسعير والشحن والجودة.',
@@ -680,13 +639,9 @@ const ar: Record<string, string> = {
   'faq.cat.shipping': 'الشحن والتسليم',
   'faq.cat.quality': 'الجودة والضمان',
   'faq.cat.tech': 'الدعم الفني',
-
-  // ── Misc i18n ──
   'product.specs.caption': 'المواصفات الفنية للمنتج',
   'noscript.desc': 'مصنع إضاءة LED تجارية للشرق الأوسط — إضاءة مدمجة، بانل، مسار، كشافات، إضاءة صناعية، وأضواء شارع شمسية. معتمد SASO و G-Mark.',
   'noscript.tagline': 'شريكك الموثوق للإضاءة التجارية في الشرق الأوسط',
-
-  // ── Privacy Policy ──
   'privacy.title': 'سياسة الخصوصية',
   'privacy.updated': 'آخر تحديث:',
   'privacy.date': 'أغسطس 2026',
@@ -701,8 +656,6 @@ const ar: Record<string, string> = {
   'privacy.rights.desc': 'يمكنك طلب الوصول إلى بياناتك الشخصية أو تصحيحها أو حذفها عبر البريد الإلكتروني',
   'privacy.contact.title': 'اتصل بنا',
   'privacy.contact.desc': 'أسئلة حول هذه السياسة؟ راسلنا عبر البريد الإلكتروني',
-
-  // ── Aria labels ──
   'aria.aiSearch': 'بحث الإضاءة بالذكاء الاصطناعي',
   'aria.searchProducts': 'ابحث عن منتجات الإضاءة',
   'aria.aiProductSearch': 'بحث منتجات الإضاءة بالذكاء الاصطناعي',
@@ -714,8 +667,6 @@ const ar: Record<string, string> = {
   'aria.productFilter': 'تصفية فئات المنتجات',
   'aria.productGallery': 'معرض صور المنتج',
   'product.card.viewDetails': 'عرض تفاصيل {name}',
-
-  // AI Assistant page
   'ai.badge': 'بحث المنتجات بالذكاء الاصطناعي',
   'ai.heroTitle': 'مساعد الإضاءة بالذكاء الاصطناعي',
   'ai.heroSubtitle': 'صف مشروع الإضاءة الخاص بك واحصل على توصيات فورية للمنتجات من كتالوج Yakeen المعتمد بشهادات SASO و G-Mark.',
@@ -734,8 +685,6 @@ const ar: Record<string, string> = {
   'ai.orEmail': 'أو راسلنا على',
   'ai.cta.title': 'هل أنت مستعد للعثور على إضاءتك؟',
   'ai.cta.subtitle': 'صف مشروعك لمساعد الذكاء الاصطناعي، أو تواصل مع Yakeen Lighting مباشرة للحصول على حل مخصص وعرض سعر للمشروع خلال 24 ساعة.',
-
-  // ── 404 Page ──
   '404.title': 'الصفحة غير موجودة',
   '404.message': 'الصفحة التي تبحث عنها غير موجودة أو تم نقلها. دعنا نعيدك إلى المسار الصحيح.',
   '404.backHome': 'العودة للرئيسية',
@@ -750,8 +699,6 @@ const ar: Record<string, string> = {
   '404.quick.contactDesc': 'تحدث مع خبراء الإضاءة',
   '404.quick.faq': 'الأسئلة الشائعة',
   '404.quick.faqDesc': 'اعثر على إجابات سريعة',
-
-  // ── Testimonials ──
   'testimonials.eyebrow': 'قصص عملائنا',
   'testimonials.title': 'موثوق من مشتري الشرق الأوسط',
   'testimonials.subtitle': 'آراء حقيقية من تجار الجملة والمصممين والبنائين والمقاولين في جميع أنحاء الخليج.',
@@ -779,13 +726,10 @@ const ar: Record<string, string> = {
 
 const translations: Record<Locale, Record<string, string>> = { en, ar };
 
-/** Get locale from URL pathname */
 export function getLocale(url: URL): Locale {
   return url.pathname.startsWith('/ar') ? 'ar' : 'en';
 }
 
-/** Translate a key for the given locale. Falls back to EN, then to the key itself.
- *  Optional params replace {placeholders} in the translated string. */
 export function t(locale: Locale | string, key: string, params?: Record<string, string>): string {
   const l = (locale === 'ar' ? 'ar' : 'en') as Locale;
   let str = translations[l][key] ?? translations.en[key] ?? key;
@@ -793,12 +737,10 @@ export function t(locale: Locale | string, key: string, params?: Record<string, 
   return str;
 }
 
-/** Get text direction for locale */
 export function getDir(locale: Locale | string): 'ltr' | 'rtl' {
   return locale === 'ar' ? 'rtl' : 'ltr';
 }
 
-/** Build the equivalent path for the requested locale */
 export function switchLangPath(pathname: string, targetLang: Locale): string {
   const currentLang: Locale = pathname.startsWith('/ar') ? 'ar' : 'en';
   if (targetLang === currentLang) return pathname;
@@ -808,7 +750,6 @@ export function switchLangPath(pathname: string, targetLang: Locale): string {
   return pathname.replace(/^\/ar/, '') || '/';
 }
 
-// ponytail: spec value translation map — technical values (lm/W, CCT, IP, etc.) stay as-is.
 const specValueAr: Record<string, string> = {
   '5 years': '5 سنوات',
   '3 years (battery) / 5 years (LED)': '3 سنوات (بطارية) / 5 سنوات (LED)',
@@ -826,7 +767,6 @@ const specValueAr: Record<string, string> = {
   'DALI / 0-10V / Smart': 'DALI / 0-10V / ذكي',
 };
 
-/** Translate a spec value for the given locale (no-op for EN). */
 export function trSpec(locale: Locale | string, value: string): string {
   if (locale !== 'ar') return value;
   return specValueAr[value] ?? value;
