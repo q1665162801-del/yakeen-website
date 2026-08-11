@@ -22,8 +22,8 @@ const fullTitle = title.includes(siteConfig.name)
   ? title
   : `${title} | ${siteConfig.name}`;
 
-// Source of truth: actual URL pathname (not the prop, which may be EN path on AR pages)
-const actualPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+// Source of truth: actual URL pathname — keep trailing slash to match Cloudflare Pages routing
+const actualPath = Astro.url.pathname;
 const isArabic = actualPath.startsWith('/ar');
 // Strip /ar prefix → base path for hreflang computation
 const basePath = isArabic ? (actualPath.replace(/^\/ar/, '') || '/') : actualPath;
@@ -35,7 +35,7 @@ const ogImage = new URL(image, siteConfig.url).href;
 // ponytail: only en + ar exist, no zh-CN version
 const hreflang = [
   { lang: 'en', path: basePath },
-  { lang: 'ar', path: `/ar${basePath === '/' ? '' : basePath}` },
+  { lang: 'ar', path: basePath === '/' ? '/ar/' : `/ar${basePath}` },
   { lang: 'x-default', path: basePath },
 ];
 
@@ -43,7 +43,7 @@ const ogType = type === 'article' ? 'article' : 'website';
 const ogLocale = isArabic ? 'ar_SA' : 'en_US';
 
 const fontsHref =
-  'https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap';
+  'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap';
 ---
 
 <!-- Charset & viewport -->
