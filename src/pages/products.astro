@@ -21,7 +21,7 @@ const breadcrumbJsonLd = breadcrumbSchema(crumbs);
 ---
 
 <BaseLayout
-  title={t(locale, 'products.hero.title') + ' · Yakeen Lighting'}
+  title={t(locale, 'products.hero.title') + ' � Yakeen Lighting'}
   description={t(locale, 'products.hero.subtitle')}
   image="/assets/images/products/downlight-new.webp"
   canonicalPath="/products"
@@ -71,22 +71,37 @@ const breadcrumbJsonLd = breadcrumbSchema(crumbs);
   {/* ===== Filter + Product Grid ===== */}
   <section class="section-padding bg-white">
     <div class="container-yakeen">
-      {/* Filter bar */}
-      <div class="flex flex-wrap items-center gap-2 mb-10" id="filter-bar" role="toolbar" aria-label={t(locale, 'aria.productFilter')}>
-        <button type="button" data-filter="all" class="filter-btn active px-5 py-2 rounded-full text-sm font-semibold transition-all">
-          {t(locale, 'products.filter.all')}
-        </button>
-        {productCategories.map((cat) => (
-          <button type="button" data-filter={cat.id} class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all">
-            {t(locale, `products.filter.${cat.id}`)}
+      {/* Filter bar + search */}
+      <div class="flex flex-wrap items-center gap-3 mb-10" id="filter-bar" role="toolbar" aria-label={t(locale, 'aria.productFilter')}>
+        <div class="flex flex-wrap items-center gap-2">
+          <button type="button" data-filter="all" class="filter-btn active px-5 py-2 rounded-full text-sm font-semibold transition-all">
+            {t(locale, 'products.filter.all')}
           </button>
-        ))}
+          {productCategories.map((cat) => (
+            <button type="button" data-filter={cat.id} class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all">
+              {t(locale, `products.filter.${cat.id}`)}
+            </button>
+          ))}
+        </div>
+        {/* ponytail: search input - reads ?search= URL param on load */}
+        <div class="relative flex-1 min-w-[200px] max-w-xs ml-auto">
+          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </span>
+          <input
+            id="product-search"
+            type="search"
+            placeholder={t(locale, 'products.searchPlaceholder')}
+            autocomplete="off"
+            class="w-full pl-9 pr-4 py-2 rounded-full text-sm border border-gray-300 focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500 transition-colors"
+          />
+        </div>
       </div>
 
       {/* Product grid */}
       <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {products.map((product) => (
-          <div data-category={product.category} class="product-item">
+          <div data-category={product.category} data-search-text={`${product.name || ''} ${product.shortName || ''} ${product.category || ''} ${product.tagline || ''} ${(product.description || '').slice(0, 200)}`.toLowerCase()} class="product-item">
             <ProductCard product={product} />
           </div>
         ))}
@@ -137,12 +152,26 @@ const breadcrumbJsonLd = breadcrumbSchema(crumbs);
     var noResults = document.getElementById('no-results');
     var resetBtn = document.getElementById('reset-filter');
     var grid = document.getElementById('product-grid');
+    var searchInput = document.getElementById('product-search');
 
-    function applyFilter(filter) {
+    // ponytail: read ?search= URL param on load
+    var urlParams = new URLSearchParams(window.location.search);
+    var initialSearch = urlParams.get('search') || '';
+    if (initialSearch && searchInput) {
+      searchInput.value = initialSearch;
+    }
+
+    var currentFilter = 'all';
+    var currentSearch = (searchInput?.value || '').trim().toLowerCase();
+
+    function applyFilters() {
       var visibleCount = 0;
       items.forEach(function (item) {
         var cat = item.getAttribute('data-category');
-        if (filter === 'all' || cat === filter) {
+        var searchText = item.getAttribute('data-search-text') || '';
+        var catMatch = (currentFilter === 'all' || cat === currentFilter);
+        var searchMatch = !currentSearch || searchText.indexOf(currentSearch) !== -1;
+        if (catMatch && searchMatch) {
           item.classList.remove('hidden');
           visibleCount++;
         } else {
@@ -157,22 +186,45 @@ const breadcrumbJsonLd = breadcrumbSchema(crumbs);
       }
     }
 
+    // Category filter buttons
     buttons.forEach(function (btn) {
       btn.addEventListener('click', function () {
         buttons.forEach(function (b) { b.classList.remove('active'); });
         btn.classList.add('active');
-        applyFilter(btn.getAttribute('data-filter'));
+        currentFilter = btn.getAttribute('data-filter');
+        applyFilters();
       });
     });
 
+    // Search input - debounced
+    var debounceTimer;
+    if (searchInput) {
+      searchInput.addEventListener('input', function () {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(function () {
+          currentSearch = searchInput.value.trim().toLowerCase();
+          applyFilters();
+        }, 200);
+      });
+    }
+
+    // Reset button
     if (resetBtn) {
       resetBtn.addEventListener('click', function () {
         buttons.forEach(function (b) { b.classList.remove('active'); });
         var allBtn = document.querySelector('[data-filter="all"]');
         if (allBtn) allBtn.classList.add('active');
-        applyFilter('all');
+        currentFilter = 'all';
+        if (searchInput) {
+          searchInput.value = '';
+          currentSearch = '';
+        }
+        applyFilters();
       });
     }
+
+    // Initial filter run (applies URL search param if present)
+    applyFilters();
   })();
 </script>
 

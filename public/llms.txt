@@ -13,7 +13,6 @@
 ## Key Pages
 - [Home](https://www.yakeenlighting.com/)
 - [Products](https://www.yakeenlighting.com/products)
-- [AI Lighting Assistant](https://www.yakeenlighting.com/ai-assistant)
 - [About Us](https://www.yakeenlighting.com/about)
 - [Contact](https://www.yakeenlighting.com/contact)
 - [Certifications](https://www.yakeenlighting.com/certifications)
@@ -26,13 +25,13 @@
 - [UAE Market](https://www.yakeenlighting.com/markets/uae)
 - [Middle East Market](https://www.yakeenlighting.com/markets/middle-east)
 
-## Blog — LED Lighting Guides for the Middle East
+## Blog - LED Lighting Guides for the Middle East
 - [Blog Home](https://www.yakeenlighting.com/blog)
 - [SASO Certification for LED Lighting: Complete Guide for Saudi Arabia Importers](https://www.yakeenlighting.com/blog/saso-certification-guide)
 - [G-Mark Certification for LED Lighting: GCC Compliance Guide](https://www.yakeenlighting.com/blog/g-mark-certification-guide)
 - [Hotel Lighting Design Guide: LED Solutions for Middle East Hospitality](https://www.yakeenlighting.com/blog/hotel-lighting-design-guide)
 - [LED Lighting Procurement Guide for Middle East Buyers](https://www.yakeenlighting.com/blog/led-procurement-guide-middle-east)
-- [High Temperature LED Lighting: Solutions for 50°C Middle East Climate](https://www.yakeenlighting.com/blog/high-temperature-led-lighting)
+- [High Temperature LED Lighting: Solutions for 50�C Middle East Climate](https://www.yakeenlighting.com/blog/high-temperature-led-lighting)
 
 ## Product Pages
 - [Narrow Beam Anti-Glare LED Downlight](https://www.yakeenlighting.com/products/df-downlight)

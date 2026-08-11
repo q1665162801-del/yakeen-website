@@ -27,22 +27,27 @@ export const siteConfig = {
   },
 };
 
-// Navigation structure — single source of truth
+// Navigation structure - single source of truth
+// ponytail: consolidated from 8+1=9 items to 2 direct + 3 dropdowns = 5 items
 export const navItems = [
-  { label: 'Home', href: '/', page: 'home', i18nKey: 'nav.home' },
   { label: 'Products', href: '/products', page: 'products', i18nKey: 'nav.products' },
-  { label: 'AI Assistant', href: '/ai-assistant', page: 'ai', i18nKey: 'nav.aiAssistant' },
   { label: 'Projects', href: '/projects-cases', page: 'projects', i18nKey: 'nav.projects' },
-  { label: 'Blog', href: '/blog', page: 'blog', i18nKey: 'nav.blog' },
-  { label: 'About', href: '/about', page: 'about', i18nKey: 'nav.about' },
-  { label: 'FAQ', href: '/faq', i18nKey: 'nav.faq' },
-  { label: 'Certifications', href: '/certifications', page: 'certifications', i18nKey: 'nav.certifications' },
 ];
 
 export const marketItems = [
   { label: 'Saudi Market', href: '/markets/saudi-arabia', i18nKey: 'nav.saudi' },
   { label: 'UAE Market', href: '/markets/uae', i18nKey: 'nav.uae' },
   { label: 'Middle East', href: '/markets/middle-east', i18nKey: 'nav.middleEast' },
+];
+
+export const aboutItems = [
+  { label: 'About Us', href: '/about', i18nKey: 'nav.about' },
+  { label: 'Certifications', href: '/certifications', i18nKey: 'nav.certifications' },
+];
+
+export const resourceItems = [
+  { label: 'Blog', href: '/blog', i18nKey: 'nav.blog' },
+  { label: 'FAQ', href: '/faq', i18nKey: 'nav.faq' },
 ];
 
 // Product categories for filters
@@ -57,5 +62,5 @@ export const productCategories = [
 // Languages
 export const languages = {
   en: { label: 'EN', dir: 'ltr' },
-  ar: { label: 'العربية', dir: 'rtl' },
+  ar: { label: '???????', dir: 'rtl' },
 };

@@ -1,5 +1,5 @@
 /**
- * schema.ts — JSON-LD structured data generators for Yakeen Lighting.
+ * schema.ts - JSON-LD structured data generators for Yakeen Lighting.
  *
  * Each generator returns a plain JSON-LD object that can be serialized into a
  * <script type="application/ld+json"> tag. All objects use the schema.org
@@ -35,7 +35,7 @@ function absUrl(path: string): string {
 }
 
 /**
- * Organization schema — describes Yakeen Lighting as a business entity.
+ * Organization schema - describes Yakeen Lighting as a business entity.
  * Embedded site-wide (every page) so search engines understand who we are.
  */
 export function organizationSchema(): JsonLd {
@@ -100,14 +100,14 @@ export function organizationSchema(): JsonLd {
 }
 
 /**
- * Product schema — describes a single Yakeen product for rich results.
+ * Product schema - describes a single Yakeen product for rich results.
  *
  * `additionalProperty` lists all 12 commercial spec points (wattage, efficacy,
  * CCT, CRI, beam angle, IP rating, dimming, lifespan, warranty, certifications,
  * MOQ, lead time) so buyers (and crawlers) get full technical context.
  *
  * The offer is inquiry-type: no fixed retail price, quote-based B2B sales.
- * Google requires price to be numeric — omitting it is valid for inquiry-type offers.
+ * Google requires price to be numeric - omitting it is valid for inquiry-type offers.
  * ponytail: ceiling = no rich-result price snippet; upgrade path = add real pricing when available.
  */
 export function productSchema(product: Product): JsonLd {
@@ -157,7 +157,7 @@ export function productSchema(product: Product): JsonLd {
       url: productUrl,
       availability: 'https://schema.org/InStock',
       priceCurrency: 'USD',
-      // ponytail: inquiry-type B2B pricing — no numeric price, Google accepts omission
+      // ponytail: inquiry-type B2B pricing - no numeric price, Google accepts omission
       description: `MOQ ${product.specs.moq}. Contact Yakeen Lighting for a project-based quotation.`,
       eligibleQuantity: {
         '@type': 'QuantitativeValue',
@@ -168,13 +168,13 @@ export function productSchema(product: Product): JsonLd {
         '@type': 'Organization',
         name: siteConfig.name,
       },
-      // ponytail: priceSpecification omitted — Google requires numeric price, "Contact for quote" triggers error
+      // ponytail: priceSpecification omitted - Google requires numeric price, "Contact for quote" triggers error
     },
   };
 }
 
 /**
- * BreadcrumbList schema — helps search engines render breadcrumb trails in
+ * BreadcrumbList schema - helps search engines render breadcrumb trails in
  * SERPs and clarifies site hierarchy.
  *
  * @param items ordered list of `{ name, url }` crumbs, root to current page.
@@ -194,7 +194,7 @@ export function breadcrumbSchema(items: BreadcrumbItem[]): JsonLd {
 }
 
 /**
- * FAQPage schema — enables rich-result expandable FAQ accordions in SERPs.
+ * FAQPage schema - enables rich-result expandable FAQ accordions in SERPs.
  *
  * @param faqs list of `{ question, answer }` pairs.
  */
@@ -215,7 +215,7 @@ export function faqPageSchema(faqs: FaqEntry[]): JsonLd {
 }
 
 /**
- * WebSite schema — enables sitelinks search box and clarifies site identity.
+ * WebSite schema - enables sitelinks search box and clarifies site identity.
  * Optional helper, embedded on the homepage.
  */
 export function websiteSchema(): JsonLd {
@@ -231,7 +231,7 @@ export function websiteSchema(): JsonLd {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: `${siteConfig.url}/ai-assistant?search={search_term_string}`,
+        urlTemplate: `${siteConfig.url}/products?search={search_term_string}`,
       },
       'query-input': 'required name=search_term_string',
     },
@@ -240,7 +240,7 @@ export function websiteSchema(): JsonLd {
 }
 
 /**
- * LocalBusiness schema — for market-specific pages.
+ * LocalBusiness schema - for market-specific pages.
  * Helps search engines and AI answer engines associate Yakeen Lighting
  * with specific geographic markets (Saudi Arabia, UAE, Middle East).
  */
@@ -249,7 +249,7 @@ export function localBusinessSchema(marketName: string, countryCode: string): Js
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     '@id': `${siteConfig.url}/markets/${countryCode.toLowerCase()}#localbusiness`,
-    name: `${siteConfig.name} — ${marketName}`,
+    name: `${siteConfig.name} - ${marketName}`,
     parentOrganization: { '@id': `${siteConfig.url}/#organization` },
     url: `${siteConfig.url}/markets/${countryCode.toLowerCase()}`,
     image: absUrl('/assets/images/hero/hero-bg-v3.jpg'),
