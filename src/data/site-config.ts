@@ -27,7 +27,7 @@ export const siteConfig = {
   },
 };
 
-// Navigation structure - single source of truth
+// Navigation structure — single source of truth
 // ponytail: consolidated from 8+1=9 items to 2 direct + 3 dropdowns = 5 items
 export const navItems = [
   { label: 'Products', href: '/products', page: 'products', i18nKey: 'nav.products' },
@@ -62,5 +62,5 @@ export const productCategories = [
 // Languages
 export const languages = {
   en: { label: 'EN', dir: 'ltr' },
-  ar: { label: '???????', dir: 'rtl' },
+  ar: { label: 'العربية', dir: 'rtl' },
 };
