@@ -22,7 +22,7 @@ const isActive = (href: string): boolean => {
 const homeHref = prefix || '/';
 const quoteHref = prefix + '/contact';
 
-// ponytail: data-driven dropdowns - one config, three dropdowns, zero duplication
+// ponytail: data-driven dropdowns — one config, three dropdowns, zero duplication
 const dropdowns = [
   { id: 'markets', label: t(locale, 'nav.markets'), items: marketItems },
   { id: 'about', label: t(locale, 'nav.about'), items: aboutItems },
@@ -37,7 +37,7 @@ const dropdowns = [
       <a
         href={homeHref}
         class="flex items-center gap-2.5 shrink-0"
-        aria-label={`${siteConfig.name} - ${t(locale, 'nav.home')}`}
+        aria-label={`${siteConfig.name} — ${t(locale, 'nav.home')}`}
       >
         <span
           class="inline-flex items-center justify-center w-9 h-9 rounded-lg shadow-lg"
@@ -73,7 +73,7 @@ const dropdowns = [
           </a>
         ))}
 
-        <!-- Dropdowns: Markets, About, Resources - ponytail: data-driven, one pattern -->
+        <!-- Dropdowns: Markets, About, Resources — ponytail: data-driven, one pattern -->
         {dropdowns.map((dd) => (
           <div class="relative group" id={`dd-${dd.id}-wrap`}>
             <button
@@ -143,6 +143,30 @@ const dropdowns = [
           </a>
         </div>
         <a href={quoteHref} class="btn-gold animate-pulse-gold">{t(locale, 'nav.getQuote')}</a>
+      </div>
+
+      <!-- Mobile language switcher (always visible, not hidden in menu) -->
+      <div class="lg:hidden flex items-center gap-1.5 text-sm">
+        <a
+          href={switchLangPath(pathname, 'en')}
+          class={`px-2.5 py-2 rounded-md font-semibold transition-colors ${
+            locale === 'en' ? 'text-gold-500' : 'text-white/60 hover:text-white'
+          }`}
+          aria-current={locale === 'en' ? 'true' : undefined}
+        >
+          {languages.en.label}
+        </a>
+        <span class="text-white/20" aria-hidden="true">|</span>
+        <a
+          href={switchLangPath(pathname, 'ar')}
+          class={`px-2.5 py-2 rounded-md font-semibold transition-colors ${
+            locale === 'ar' ? 'text-gold-500' : 'text-white/60 hover:text-white'
+          }`}
+          aria-current={locale === 'ar' ? 'true' : undefined}
+          dir="rtl"
+        >
+          {languages.ar.label}
+        </a>
       </div>
 
       <!-- Mobile hamburger -->
@@ -233,7 +257,7 @@ const dropdowns = [
 </header>
 
 <script is:inline>
-  // Scroll state - toggle solid background after a small offset
+  // Scroll state — toggle solid background after a small offset
   const header = document.getElementById('site-header');
   const onScroll = () => {
     if (window.scrollY > 24) {
@@ -282,7 +306,7 @@ const dropdowns = [
     if (window.innerWidth >= 1024) setMenu(false);
   });
 
-  // ponytail: generic dropdown handler - one function for all 3 dropdowns
+  // ponytail: generic dropdown handler — one function for all 3 dropdowns
   var openDd = null;
   document.querySelectorAll('.dd-btn').forEach(function(btn) {
     var ddId = btn.getAttribute('data-dd-id');
