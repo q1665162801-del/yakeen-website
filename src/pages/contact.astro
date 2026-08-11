@@ -108,6 +108,17 @@ const productOptions = [
             </a>
           </div>
 
+          {/* Catalog download */}
+          <a href="/assets/Yakeen-Catalog-2026.pdf" download class="flex items-center gap-4 p-4 rounded-xl border border-gray-200 hover:border-gold-300 hover:shadow-md transition-all">
+            <div class="w-12 h-12 rounded-lg flex items-center justify-center" style="background: rgba(201,169,97,0.1);">
+              <svg class="w-6 h-6 text-gold-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+            </div>
+            <div>
+              <p class="text-xs text-gray-500 uppercase tracking-wide">{t(locale, 'contact.catalog') || 'Product Catalog 2026'}</p>
+              <p class="font-bold text-navy-900">PDF · 2.5MB · Free Download</p>
+            </div>
+          </a>
+
           {/* Service area */}
           <div class="mt-8 p-6 rounded-xl" style="background: #f8f6f1;">
             <h3 class="font-bold text-navy-900 mb-3">{t(locale, 'contact.serviceArea')}</h3>
@@ -125,43 +136,36 @@ const productOptions = [
           <form id="contact-form" class="space-y-4" action="https://api.web3forms.com/submit" method="POST">
             <input type="hidden" name="access_key" value="b9ac1297-e3a4-4f58-a5cf-b386330aabe0">
             <input type="checkbox" name="botcheck" class="hidden" style="display:none">
+            {/* ponytail: 5 fields only — removed Company & Phone to cut mobile friction */}
             <div class="grid sm:grid-cols-2 gap-4">
               <div>
                 <label for="name" class="block text-sm font-semibold text-navy-900 mb-1">{t(locale, 'contact.form.name')}</label>
-                <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all" />
+                <input type="text" id="name" name="name" required autocomplete="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all" />
               </div>
               <div>
-                <label for="company" class="block text-sm font-semibold text-navy-900 mb-1">{t(locale, 'contact.form.company')}</label>
-                <input type="text" id="company" name="company" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all" />
+                <label for="email" class="block text-sm font-semibold text-navy-900 mb-1">{t(locale, 'contact.form.email')}</label>
+                <input type="email" id="email" name="email" required autocomplete="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all" />
               </div>
             </div>
             <div class="grid sm:grid-cols-2 gap-4">
               <div>
-                <label for="email" class="block text-sm font-semibold text-navy-900 mb-1">{t(locale, 'contact.form.email')}</label>
-                <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all" />
+                <label for="country" class="block text-sm font-semibold text-navy-900 mb-1">{t(locale, 'contact.form.country')}</label>
+                <select id="country" name="country" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all">
+                  <option value="">{t(locale, 'contact.form.selectCountry')}</option>
+                  {countries.map((country) => (
+                    <option value={country.code}>{t(locale, country.key)}</option>
+                  ))}
+                </select>
               </div>
               <div>
-                <label for="phone" class="block text-sm font-semibold text-navy-900 mb-1">{t(locale, 'contact.form.phone')}</label>
-                <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all" />
+                <label for="product" class="block text-sm font-semibold text-navy-900 mb-1">{t(locale, 'contact.form.productInterest')}</label>
+                <select id="product" name="product" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all">
+                  <option value="">{t(locale, 'contact.form.selectProduct')}</option>
+                  {productOptions.map((opt) => (
+                    <option value={opt.value}>{t(locale, opt.key)}</option>
+                  ))}
+                </select>
               </div>
-            </div>
-            <div>
-              <label for="country" class="block text-sm font-semibold text-navy-900 mb-1">{t(locale, 'contact.form.country')}</label>
-              <select id="country" name="country" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all">
-                <option value="">{t(locale, 'contact.form.selectCountry')}</option>
-                {countries.map((country) => (
-                  <option value={country.code}>{t(locale, country.key)}</option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label for="product" class="block text-sm font-semibold text-navy-900 mb-1">{t(locale, 'contact.form.productInterest')}</label>
-              <select id="product" name="product" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all">
-                <option value="">{t(locale, 'contact.form.selectProduct')}</option>
-                {productOptions.map((opt) => (
-                  <option value={opt.value}>{t(locale, opt.key)}</option>
-                ))}
-              </select>
             </div>
             <div>
               <label for="message" class="block text-sm font-semibold text-navy-900 mb-1">{t(locale, 'contact.form.message')}</label>
@@ -205,6 +209,8 @@ const productOptions = [
             form.reset();
             successMsg.classList.remove('hidden');
             errorMsg.classList.add('hidden');
+            // ponytail: GA4 conversion — gtag already global via SEO.astro
+            if (typeof gtag === 'function') gtag('event', 'generate_lead', { currency: 'USD', value: 1 });
           } else {
             throw new Error('Form submission failed');
           }
