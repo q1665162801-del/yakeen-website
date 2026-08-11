@@ -28,8 +28,8 @@ export const siteConfig = {
 };
 
 // Navigation structure — single source of truth
-// ponytail: consolidated from 8+1=9 items to 2 direct + 3 dropdowns = 5 items
 export const navItems = [
+  { label: 'Home', href: '/', page: 'home', i18nKey: 'nav.home' },
   { label: 'Products', href: '/products', page: 'products', i18nKey: 'nav.products' },
   { label: 'Projects', href: '/projects-cases', page: 'projects', i18nKey: 'nav.projects' },
 ];
