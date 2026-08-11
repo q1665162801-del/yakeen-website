@@ -46,6 +46,8 @@ export default defineConfig({
   integrations: [
     sitemap({
       i18n: { defaultLocale: 'en', locales: { en: 'en-US', ar: 'ar-SA' } },
+      // ponytail: exclude noindex redirect pages from sitemap (Google best practice)
+      filter: (page) => !page.includes('/ai-assistant'),
     }),
     tailwind({ applyBaseStyles: false }),
   ],
