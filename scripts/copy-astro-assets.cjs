@@ -37,4 +37,18 @@ function copyDir(dir) {
   }
 }
 copyDir(src);
-console.log(`[copy-astro-assets] Copied ${copied} files to ${dst}`);
+console.log(`[copy-astro-assets] Copied ${copied} CSS/JS files to ${dst}`);
+
+// ponytail: Astro doesn't copy public/ files to custom outDir on Windows — copy them manually
+const publicDir = path.join(__dirname, '..', 'public');
+const outDir = path.join(tmpdir(), 'yakeen-dist');
+if (fs.existsSync(publicDir)) {
+  let pubCopied = 0;
+  for (const entry of fs.readdirSync(publicDir, { withFileTypes: true })) {
+    if (entry.isFile()) {
+      fs.copyFileSync(path.join(publicDir, entry.name), path.join(outDir, entry.name));
+      pubCopied++;
+    }
+  }
+  console.log(`[copy-astro-assets] Copied ${pubCopied} public files to ${outDir}`);
+}

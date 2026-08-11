@@ -1,0 +1,14 @@
+---
+import { markets } from '../../../data/markets';
+import MarketPage from '../../markets/[market].astro';
+
+export async function getStaticPaths() {
+  return markets.map((market) => ({
+    params: { market: market.slug },
+    props: { market },
+  }));
+}
+
+const { market } = Astro.props;
+---
+<MarketPage market={market} />

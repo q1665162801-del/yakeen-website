@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABanner from '../components/CTABanner.astro';
+import { breadcrumbSchema } from '../utils/schema';
+import { getLocale, t } from '../i18n/ui';
+import { getCollection } from 'astro:content';
+
+const locale = getLocale(Astro.url);
+const prefix = locale === 'ar' ? '/ar' : '';
+
+// ponytail: filter by locale — EN articles have lang='en', AR articles have lang='ar'
+const allPosts = await getCollection('blog');
+const posts = allPosts
+  .filter(post => post.data.lang === locale)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+const blogTitle = locale === 'ar' ? 'مدونة Yakeen Lighting' : 'Yakeen Lighting Blog';
+const blogSubtitle = locale === 'ar'
+  ? 'دليل شامل لإضاءة LED في الشرق الأوسط — الشهادات والتصميم والمشتريات'
+  : 'Expert guides on LED lighting certifications, design, and procurement for the Middle East market';
+
+const crumbs = [
+  { name: t(locale, 'nav.home'), url: prefix + '/' },
+  { name: locale === 'ar' ? 'المدونة' : 'Blog', url: prefix + '/blog' },
+];
+const breadcrumbJsonLd = breadcrumbSchema(crumbs);
+
+// ponytail: category labels
+const categoryLabels: Record<string, { en: string; ar: string }> = {
+  Certification: { en: 'Certification', ar: 'الشهادات' },
+  'Design Guide': { en: 'Design Guide', ar: 'دليل التصميم' },
+  Procurement: { en: 'Procurement', ar: 'المشتريات' },
+  Technical: { en: 'Technical', ar: 'تقني' },
+};
+
+// ponytail: extract slug from id (strip 'ar/' prefix for AR articles)
+function getSlug(id: string): string {
+  return id.replace(/^ar\//, '');
+}
+---
+
+<BaseLayout
+  title={blogTitle + ' — Yakeen Lighting'}
+  description={blogSubtitle}
+  image="/assets/images/hero/hero-bg-v3.jpg"
+  canonicalPath={prefix + '/blog'}
+  type="page"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  {/* Hero */}
+  <section class="relative overflow-hidden pt-32 pb-12 md:pt-40 md:pb-16" style="background: linear-gradient(135deg, #050b14 0%, #0a1525 50%, #1a2744 100%);">
+    <div class="container-yakeen relative z-10">
+      <nav class="text-sm text-white/60 mb-4" aria-label={t(locale, 'aria.breadcrumb')}>
+        <a href={prefix + '/'} class="hover:text-gold-400 transition-colors">{t(locale, 'nav.home')}</a>
+        <span class="mx-2 text-white/30">/</span>
+        <span class="text-gold-400 font-medium">{locale === 'ar' ? 'المدونة' : 'Blog'}</span>
+      </nav>
+      <h1 class="reveal text-4xl md:text-5xl font-bold text-white leading-tight">{blogTitle}</h1>
+      <p class="reveal mt-4 text-lg text-white/70 max-w-2xl">{blogSubtitle}</p>
+    </div>
+  </section>
+
+  {/* Blog grid — ponytail: gradient header cards instead of stock images */}
+  <section class="section-padding bg-white">
+    <div class="container-yakeen">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map((post, i) => {
+          const slug = getSlug(post.id);
+          const cat = categoryLabels[post.data.category] || { en: post.data.category, ar: post.data.category };
+          const catLabel = locale === 'ar' ? cat.ar : cat.en;
+          return (
+            <article class="reveal rounded-2xl overflow-hidden border border-gray-200 hover:shadow-2xl transition-all duration-300 bg-white hover:-translate-y-1" style={`transition-delay: ${i * 50}ms`}>
+              <a href={prefix + '/blog/' + slug} class="block group">
+                {/* ponytail: real blog cover image from frontmatter */}
+                <div class="aspect-[16/9] relative overflow-hidden">
+                  <img src={post.data.image} alt={post.data.title} loading="lazy" width="800" height="450" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-navy-900/60 to-transparent"></div>
+                  <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm" style="background: rgba(201,169,97,0.2); color: #c9a961; border: 1px solid rgba(201,169,97,0.3);">{catLabel}</span>
+                </div>
+                <div class="p-6">
+                  <time class="text-gray-400 text-sm mb-2 block" datetime={post.data.date}>{post.data.date}</time>
+                  <h2 class="text-xl font-bold text-navy-900 mb-2 group-hover:text-gold-600 transition-colors leading-snug">
+                    {post.data.title}
+                  </h2>
+                  <p class="text-gray-600 leading-relaxed line-clamp-3 text-sm">{post.data.description}</p>
+                  <span class="inline-flex items-center gap-1 mt-4 text-gold-600 font-semibold group-hover:text-gold-700 group-hover:gap-2 transition-all">
+                    {locale === 'ar' ? 'اقرأ المزيد' : 'Read more'}
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                  </span>
+                </div>
+              </a>
+            </article>
+          );
+        })}
+      </div>
+
+      {posts.length === 0 && (
+        <div class="text-center py-16">
+          <p class="text-gray-500 text-lg">{locale === 'ar' ? 'لا توجد مقالات حاليا' : 'No articles yet.'}</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  {/* noscript: full article list for AI crawlers */}
+  <noscript>
+    <div style="padding: 2rem; background: #f8f9fa; font-family: system-ui, sans-serif;">
+      <h2 style="color: #050b14; margin-bottom: 1rem;">{blogTitle}</h2>
+      <ul style="list-style: disc; padding-left: 2rem;">
+        {posts.map((post) => (
+          <li style="margin-bottom: 0.75rem;">
+            <strong>{post.data.title}</strong> — {post.data.description}
+            <span style="color: #666;"> ({post.data.date})</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </noscript>
+
+  <CTABanner title={t(locale, 'cta.title')} subtitle={t(locale, 'cta.subtitle')} />
+</BaseLayout>

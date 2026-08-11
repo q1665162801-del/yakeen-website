@@ -2,15 +2,32 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTABanner from '../components/CTABanner.astro';
 import { siteConfig } from '../data/site-config';
+import { getAllProducts } from '../data/products';
 import { breadcrumbSchema, faqPageSchema } from '../utils/schema';
 import { getLocale, t } from '../i18n/ui';
 
 const locale = getLocale(Astro.url);
 const prefix = locale === 'ar' ? '/ar' : '';
 
-// Read the ?search= query parameter (if present) so the input reflects the
-// current search and we can show a contextual confirmation message.
-const searchQuery = Astro.url.searchParams.get('search') ?? '';
+// ponytail: SSG can't read URL params at build time — embed products, filter client-side
+const allProducts = await getAllProducts();
+const productSearchData = allProducts.map(p => ({
+  slug: p.slug,
+  name: p.name || '',
+  shortName: p.shortName || '',
+  category: p.category || '',
+  tagline: p.tagline || '',
+  description: p.description || '',
+  mainImage: p.mainImage || '',
+  wattage: p.specs?.wattage || '',
+  ipRating: p.specs?.ipRating || '',
+  cct: p.specs?.cct || '',
+  cri: p.specs?.cri || '',
+  certifications: p.specs?.certifications || '',
+  ar: p.ar ? {
+    name: p.ar.name, shortName: p.ar.shortName, tagline: p.ar.tagline, description: p.ar.description,
+  } : null,
+}));
 
 // Breadcrumb structured data (Home > AI Assistant)
 const breadcrumb = breadcrumbSchema([
@@ -94,7 +111,7 @@ const popularSearches = locale === 'ar' ? [
   'إضاءة مدمجة UGR<19',
   'بانل 600x600',
   'كشاف IP65',
-  'شارع شمسي',
+  'ضوء شارع شمسي',
   'إضاءة فنادق',
   'إضاءة مستودعات',
 ] : [
@@ -105,6 +122,32 @@ const popularSearches = locale === 'ar' ? [
   'Hotel Lighting',
   'Warehouse Lighting',
 ];
+
+// ponytail: AI Lighting Wizard — scenario cards that trigger renderResults with predefined queries
+const scenarios = [
+  { icon: 'hotel', title: 'Hotel & Hospitality', title_ar: 'فنادق وضيافة', desc: 'Warm, glare-free lighting for lobbies, corridors, and guest rooms', desc_ar: 'إضاءة دافئة خالية من الوهج للبهوات والممرات وغرف الضيوف', query: 'hotel downlight spotlight track warm' },
+  { icon: 'office', title: 'Office & Commercial', title_ar: 'مكاتب وتجاري', desc: 'UGR-compliant panels and linear lights for productive workspaces', desc_ar: 'بانلات وإضاءة خطية متوافقة مع UGR لمساحات عمل منتجة', query: 'panel office ugr linear' },
+  { icon: 'mall', title: 'Mall & Retail', title_ar: 'مراكز تسوق وتجزئة', desc: 'Track lights and spotlights to highlight merchandise', desc_ar: 'إضاءة مسار وكشافات لإبراز السلع', query: 'mall retail track spotlight downlight' },
+  { icon: 'warehouse', title: 'Warehouse & Industrial', title_ar: 'مستودعات وصناعي', desc: 'High-power UFO high bay lights for large spaces', desc_ar: 'إضاءة مرتفعة UFO عالية القدرة للمساحات الكبيرة', query: 'warehouse high bay industrial ufo' },
+  { icon: 'outdoor', title: 'Outdoor & Street', title_ar: 'خارجي وطرق', desc: 'Flood lights, solar street lights, and wall washers', desc_ar: 'كشافات، أضواء شارع شمسية، وغسالات جدارية', query: 'outdoor flood street solar ip65 ip68' },
+  { icon: 'museum', title: 'Museum & Gallery', title_ar: 'متاحف ومعارض', desc: 'Precision accent lighting with high CRI and narrow beams', desc_ar: 'إضاءة مميزة دقيقة مع CRI عالي وشعاع ضيق', query: 'museum gallery spotlight downlight accent' },
+];
+const scenariosL = scenarios.map(s => ({
+  icon: s.icon,
+  title: locale === 'ar' ? s.title_ar : s.title,
+  desc: locale === 'ar' ? s.desc_ar : s.desc,
+  query: s.query,
+}));
+
+// ponytail: inline SVG icons for scenario cards — zero dependencies
+const scenarioIcons: Record<string, string> = {
+  hotel: '<path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h2M9 13h2M9 17h2M13 9h2M13 13h2M13 17h2"/>',
+  office: '<path d="M3 21h18M6 21V3h8v18M14 21V8h4v13M9 7h2M9 11h2M9 15h2"/>',
+  mall: '<path d="M3 9l1-5h16l1 5M4 9h16v12H4zM9 13h2v4H9zM13 13h2v4h-2z"/>',
+  warehouse: '<path d="M3 21V8l9-5 9 5v13M3 21h18M7 21v-7h10v7M9 15h2M13 15h2"/>',
+  outdoor: '<path d="M3 21h18M12 3v2m6.36 1.64l-1.42 1.42M21 12h-2M5 12H3m4.36-5.36L5.94 5.22M12 9a3 3 0 100 6 3 3 0 000-6zM5 21v-3a7 7 0 0114 0v3"/>',
+  museum: '<path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6M9 12h2M13 12h2"/>',
+};
 ---
 
 <BaseLayout
@@ -162,7 +205,6 @@ const popularSearches = locale === 'ar' ? [
               id="ai-assistant-input"
               type="search"
               name="search"
-              value={searchQuery}
               placeholder={t(locale, 'ai.searchPlaceholder')}
               autocomplete="off"
               aria-label={t(locale, 'aria.searchProducts')}
@@ -178,12 +220,8 @@ const popularSearches = locale === 'ar' ? [
             </button>
           </form>
 
-          {/* Contextual confirmation when a search is active */}
-          {searchQuery && (
-            <p class="mt-4 text-sm text-gold-400">
-              {t(locale, 'ai.showingResults')} <span class="font-semibold">"{searchQuery}"</span>
-            </p>
-          )}
+          {/* Contextual confirmation when a search is active — populated client-side */}
+          <p id="showing-results" class="mt-4 text-sm text-gold-400" style="display: none;"></p>
         </div>
 
         <!-- Popular searches -->
@@ -201,6 +239,48 @@ const popularSearches = locale === 'ar' ? [
             ))}
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Search Results (client-side filtered) ===== -->
+  <section id="search-results-section" class="section-padding bg-white" style="display: none;">
+    <div class="container-yakeen">
+      <div class="mb-8">
+        <p class="text-gold-600 font-bold tracking-widest uppercase text-xs mb-2">{t(locale, 'ai.badge')}</p>
+        <h2 id="search-results-title" class="text-2xl md:text-3xl font-bold text-navy-900"></h2>
+      </div>
+      <div id="search-results-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      <div id="search-no-results" class="text-center py-12" style="display: none;">
+        <p class="text-gray-500 text-lg mb-4" id="no-results-text"></p>
+        <a href={prefix + '/products'} class="btn-outline-gold">{t(locale, 'hero.browseProducts')} →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AI Lighting Wizard — Scenario Selection ===== -->
+  <section class="section-padding" style="background: linear-gradient(180deg, #f8f6f1 0%, #ffffff 100%);">
+    <div class="container-yakeen">
+      <div class="text-center mb-12 reveal">
+        <p class="text-gold-600 font-semibold tracking-wide uppercase text-sm mb-2">{t(locale, 'ai.badge')}</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-navy-900">{locale === 'ar' ? 'اختر حسب التطبيق' : 'Select by Application'}</h2>
+        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">{locale === 'ar' ? 'اختر سيناريو مشروعك واحصل على توصيات منتجات فورية' : 'Choose your project scenario and get instant product recommendations'}</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+        {scenariosL.map((s, i) => (
+          <button
+            type="button"
+            data-scenario-query={s.query}
+            class="reveal group flex flex-col items-center text-center rounded-2xl border-2 border-gray-200 bg-white p-5 md:p-7 transition-all duration-300 hover:-translate-y-1 hover:border-gold-500 hover:shadow-lg cursor-pointer"
+            style={`transition-delay: ${i * 60}ms`}
+          >
+            <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-full transition-colors group-hover:bg-gold-500 group-hover:text-navy-900" style="background: rgba(201,169,97,0.1);">
+              <svg class="h-7 w-7 text-gold-600 group-hover:text-navy-900 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true" set:html={scenarioIcons[s.icon]} />
+            </div>
+            <h3 class="font-bold text-navy-900 text-sm md:text-base mb-1">{s.title}</h3>
+            <p class="text-xs md:text-sm leading-relaxed text-gray-500">{s.desc}</p>
+          </button>
+        ))}
       </div>
     </div>
   </section>
@@ -289,12 +369,159 @@ const popularSearches = locale === 'ar' ? [
 
 </BaseLayout>
 
+<!-- ponytail: product data for client-side search -->
+<script id="ai-search-products" type="application/json" set:html={JSON.stringify(productSearchData)} />
+
 <script is:inline>
   (function () {
     var form = document.getElementById('ai-assistant-form');
     var input = document.getElementById('ai-assistant-input');
     var chips = document.querySelectorAll('[data-quick-search]');
     if (!form || !input) return;
+
+    var isAr = window.location.pathname.startsWith('/ar');
+    var prefix = isAr ? '/ar' : '';
+
+    // ponytail: parse embedded product data
+    var dataScript = document.getElementById('ai-search-products');
+    var products = [];
+    try { products = JSON.parse(dataScript ? dataScript.textContent : '[]'); } catch (e) {}
+
+    // ponytail: synonym map — expand user queries to match product fields
+    var synonyms = {
+      // English synonyms
+      'outdoor': ['outdoor', 'flood', 'street', 'wall washer', 'ip65', 'ip66', 'ip68', 'solar'],
+      'indoor': ['indoor', 'downlight', 'spotlight', 'panel', 'indoor'],
+      'warehouse': ['high bay', 'industrial', 'warehouse', 'ufo', 'highbay'],
+      'hotel': ['downlight', 'spotlight', 'track', 'warm', '3000k', 'cri90', 'cri>90'],
+      'office': ['panel', 'ugr', 'office', 'linear', '5000k'],
+      'mall': ['downlight', 'spotlight', 'track', 'mall', 'retail'],
+      'shop': ['track', 'spotlight', 'retail', 'shop', 'store'],
+      'downlight': ['downlight', 'recessed', 'grid', 'ceiling'],
+      'spotlight': ['spotlight', 'track', 'spot', 'accent'],
+      'panel': ['panel', 'ceiling', 'flat', 'backlit'],
+      'flood': ['flood', 'floodlight', 'outdoor', 'ip65', 'ip66'],
+      'street': ['street', 'road', 'solar', 'ip68'],
+      'track': ['track', 'rail', 'spotlight'],
+      'linear': ['linear', 'pendant', 'suspended', 'line'],
+      'highbay': ['high bay', 'highbay', 'ufo', 'industrial', 'warehouse'],
+      'solar': ['solar', 'street', 'battery', 'lifepo4'],
+      // Arabic synonyms — ponytail: enables Arabic search by mapping to English product fields
+      'فندق': ['hotel', 'downlight', 'spotlight', 'track', 'warm'],
+      'فنادق': ['hotel', 'downlight', 'spotlight', 'track', 'warm'],
+      'ضيافة': ['hotel', 'downlight', 'spotlight', 'track'],
+      'مكتب': ['office', 'panel', 'ugr', 'linear'],
+      'مكاتب': ['office', 'panel', 'ugr', 'linear'],
+      'تجاري': ['office', 'panel', 'linear', 'mall'],
+      'متجر': ['mall', 'retail', 'track', 'spotlight'],
+      'متاجر': ['mall', 'retail', 'track', 'spotlight'],
+      'تسوق': ['mall', 'retail', 'track', 'spotlight'],
+      'جزئة': ['mall', 'retail', 'track', 'spotlight'],
+      'مستودع': ['warehouse', 'high bay', 'industrial', 'ufo'],
+      'مستودعات': ['warehouse', 'high bay', 'industrial', 'ufo'],
+      'صناعي': ['warehouse', 'industrial', 'high bay', 'ufo'],
+      'مصنع': ['warehouse', 'industrial', 'high bay', 'ufo'],
+      'خارجي': ['outdoor', 'flood', 'street', 'solar', 'ip65', 'ip68'],
+      'شارع': ['street', 'solar', 'road', 'ip68'],
+      'شمسي': ['solar', 'street', 'battery'],
+      'كشاف': ['flood', 'floodlight', 'outdoor', 'spotlight'],
+      'كشافة': ['spotlight', 'track', 'spot', 'accent'],
+      'مدمجة': ['downlight', 'recessed', 'grid', 'ceiling'],
+      'بانل': ['panel', 'ceiling', 'flat', 'backlit'],
+      'مسار': ['track', 'rail', 'spotlight'],
+      'خطية': ['linear', 'pendant', 'suspended', 'line'],
+      'معلقة': ['linear', 'pendant', 'suspended'],
+      'سقف': ['downlight', 'panel', 'ceiling', 'recessed'],
+      'حائط': ['wall', 'wall washer', 'wall light'],
+      'جداري': ['wall', 'wall washer', 'wall light'],
+      'حديقة': ['outdoor', 'flood', 'garden', 'ip65'],
+      'مواقف': ['outdoor', 'flood', 'street', 'ip65'],
+    };
+
+    function filterProducts(query) {
+      var q = query.trim().toLowerCase();
+      if (!q) return [];
+      var expanded = q;
+      Object.keys(synonyms).forEach(function (key) {
+        if (q.indexOf(key) !== -1) {
+          expanded = expanded + ' ' + synonyms[key].join(' ');
+        }
+      });
+      var terms = expanded.split(/\s+/).filter(Boolean);
+      return products.filter(function (p) {
+        var haystack = (p.name + ' ' + p.shortName + ' ' + p.category + ' ' + p.tagline + ' ' + p.description + ' ' + p.wattage + ' ' + p.ipRating + ' ' + p.cct + ' ' + p.cri + ' ' + p.certifications).toLowerCase();
+        // ponytail: also search Arabic fields so Arabic queries match Arabic product data
+        if (p.ar) {
+          haystack += ' ' + (p.ar.name || '') + ' ' + (p.ar.shortName || '') + ' ' + (p.ar.tagline || '') + ' ' + (p.ar.description || '');
+        }
+        return terms.some(function (t) { return haystack.indexOf(t) !== -1; });
+      });
+    }
+
+    function renderResults(query) {
+      var section = document.getElementById('search-results-section');
+      var grid = document.getElementById('search-results-grid');
+      var titleEl = document.getElementById('search-results-title');
+      var noResults = document.getElementById('search-no-results');
+      var noResultsText = document.getElementById('no-results-text');
+      var showingEl = document.getElementById('showing-results');
+      if (!section || !grid) return;
+
+      if (query) {
+        input.value = query;
+        if (showingEl) {
+          showingEl.style.display = 'block';
+          showingEl.innerHTML = (isAr ? 'عرض نتائج البحث عن: ' : 'Showing results for: ') + '<span class="font-semibold">"' + query + '"</span>';
+        }
+
+        var matches = filterProducts(query);
+        section.style.display = 'block';
+
+        if (matches.length > 0) {
+          grid.style.display = '';
+          noResults.style.display = 'none';
+          titleEl.textContent = (isAr ? matches.length + ' منتج' : matches.length + ' products found');
+          grid.innerHTML = matches.map(function (p) {
+            var name = isAr && p.ar ? p.ar.name : p.name;
+            var shortName = isAr && p.ar ? p.ar.shortName : p.shortName;
+            var tagline = isAr && p.ar ? p.ar.tagline : p.tagline;
+            var viewDetails = isAr ? 'عرض التفاصيل' : 'View Details';
+            return '<article class="product-card group relative flex flex-col overflow-hidden rounded-2xl bg-white card-premium">' +
+              '<a href="' + prefix + '/products/' + p.slug + '" class="flex flex-col h-full">' +
+                '<div class="relative aspect-[4/3] overflow-hidden bg-sand-50">' +
+                  '<img src="' + p.mainImage + '" alt="' + name + '" loading="lazy" width="600" height="450" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />' +
+                  '<span class="absolute top-3 left-3 rounded-full bg-navy-900/85 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gold-400 backdrop-blur-sm">' + shortName + '</span>' +
+                '</div>' +
+                '<div class="flex flex-1 flex-col p-5">' +
+                  '<h3 class="font-serif text-xl font-semibold leading-snug text-navy-900 group-hover:text-navy-700">' + name + '</h3>' +
+                  '<p class="mt-2 text-sm leading-relaxed text-navy-500">' + tagline + '</p>' +
+                  '<div class="mt-4 flex flex-wrap gap-2">' +
+                    '<span class="rounded-md bg-sand-100 px-2.5 py-1 text-xs font-medium text-navy-700">' + p.wattage + '</span>' +
+                    '<span class="rounded-md bg-sand-100 px-2.5 py-1 text-xs font-medium text-navy-700">' + p.ipRating + '</span>' +
+                  '</div>' +
+                  '<span class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-gold-600 group-hover:text-gold-500">' +
+                    viewDetails +
+                    ' <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>' +
+                  '</span>' +
+                '</div>' +
+              '</a>' +
+            '</article>';
+          }).join('');
+          // smooth scroll to results
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          grid.style.display = 'none';
+          noResults.style.display = 'block';
+          titleEl.textContent = isAr ? 'لا توجد نتائج' : 'No products found';
+          if (noResultsText) noResultsText.textContent = isAr
+            ? 'لم نجد منتجات تطابق "' + query + '". جرّب كلمات أخرى أو تصفح جميع المنتجات.'
+            : 'We couldn\'t find products matching "' + query + '". Try different keywords or browse all products.';
+        }
+      } else {
+        section.style.display = 'none';
+        if (showingEl) showingEl.style.display = 'none';
+      }
+    }
 
     // Redirect to the same page with the ?search= query parameter.
     function handleSearch(query) {
@@ -318,5 +545,23 @@ const popularSearches = locale === 'ar' ? [
         handleSearch(term);
       });
     });
+
+    // ponytail: scenario card clicks — trigger search with predefined query, reuse renderResults
+    var scenarioCards = document.querySelectorAll('[data-scenario-query]');
+    scenarioCards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        var query = card.getAttribute('data-scenario-query');
+        if (!query) return;
+        input.value = query;
+        renderResults(query);
+      });
+    });
+
+    // ponytail: on page load, read ?search= from URL and render results
+    var params = new URLSearchParams(window.location.search);
+    var initialQuery = params.get('search') || '';
+    if (initialQuery) {
+      renderResults(initialQuery);
+    }
   })();
 </script>

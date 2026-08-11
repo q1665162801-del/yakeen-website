@@ -1,32 +1,41 @@
 ---
 /**
  * AISearchBar.astro
- * Hero AI-powered search bar.
+ * Hero AI-powered search bar with live product suggestions.
  *
- * Layout:
- *  - White rounded search box with a gold border
- *  - Search icon + text input + "AI Search" gold button
- *  - Quick-search chips below: Downlight UGR<19, Panel 600x600, IP65 Flood, Solar Street
- *
+ * ponytail: embed product data as JSON, filter client-side, zero API calls.
  * Behavior:
- *  - Typing a query and submitting (Enter or button) redirects to
- *    /ai-assistant?search=<query>
- *  - Clicking a quick-search chip runs quickSearch() with that term
- *  - Exposes handleHeroSearch() and quickSearch() for reuse/testability
+ *  - Typing shows live product matches in a dropdown
+ *  - Enter or button click redirects to /ai-assistant?search=<query>
+ *  - Clicking a suggestion navigates to the product page
+ *  - Quick-search chips run instant search
  */
 
 import { getLocale, t } from '../i18n/ui';
 
 export interface Props {
-  /** Optional placeholder text for the input */
   placeholder?: string;
+  products?: any[];
 }
 
 const locale = getLocale(Astro.url);
-const { placeholder } = Astro.props;
+const { placeholder, products = [] } = Astro.props;
 const placeholderText = placeholder || t(locale, 'ai.search.placeholder');
+const prefix = locale === 'ar' ? '/ar' : '';
 
-// Quick-search suggestion chips — i18n driven
+// ponytail: extract searchable fields — include description + key specs for better matching
+const searchData = products.map(p => ({
+  slug: p.slug,
+  name: p.name || '',
+  shortName: p.shortName || '',
+  category: p.category || '',
+  tagline: p.tagline || '',
+  description: (p.description || '').slice(0, 200),
+  wattage: p.specs?.wattage || '',
+  ipRating: p.specs?.ipRating || '',
+  certifications: p.specs?.certifications || '',
+}));
+
 const quickSearches = [
   t(locale, 'ai.search.quick1'),
   t(locale, 'ai.search.quick2'),
@@ -35,7 +44,7 @@ const quickSearches = [
 ];
 ---
 
-<div class="ai-search-bar mx-auto w-full max-w-3xl">
+<div class="ai-search-bar mx-auto w-full max-w-3xl relative">
   <form
     id="ai-search-form"
     class="flex items-center gap-2 rounded-full border-2 border-gold-500 bg-white p-2 shadow-lg shadow-navy-900/10 transition-shadow focus-within:shadow-xl focus-within:shadow-gold-500/20"
@@ -44,19 +53,8 @@ const quickSearches = [
   >
     {/* Search icon */}
     <span class="flex h-10 w-10 shrink-0 items-center justify-center pl-1 text-navy-500">
-      <svg
-        class="h-5 w-5"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        stroke-width="2"
-        aria-hidden="true"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-        />
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
       </svg>
     </span>
 
@@ -72,23 +70,27 @@ const quickSearches = [
     />
 
     {/* AI Search button */}
-    <button
-      type="submit"
-      class="btn-gold shrink-0"
-    >
-      <svg
-        class="mr-1.5 h-4 w-4"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        stroke-width="2.5"
-        aria-hidden="true"
-      >
+    <button type="submit" class="btn-gold shrink-0">
+      <svg class="mr-1.5 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
       </svg>
       {t(locale, 'ai.search.button')}
     </button>
   </form>
+
+  {/* Live search suggestions dropdown */}
+  <div
+    id="ai-search-suggestions"
+    class="hidden absolute left-0 right-0 top-full mt-2 rounded-2xl border border-white/10 shadow-2xl overflow-hidden z-50"
+    style="background: rgba(10,21,37,0.97); backdrop-filter: blur(12px);"
+  >
+    <div id="suggestion-list" class="max-h-80 overflow-y-auto"></div>
+    <div class="px-4 py-3 border-t border-white/10 text-center">
+      <a href={prefix + '/ai-assistant'} class="text-sm text-gold-400 hover:text-gold-300 font-medium">
+        {t(locale, 'ai.search.button')} →
+      </a>
+    </div>
+  </div>
 
   {/* Quick-search chips */}
   <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
@@ -107,32 +109,140 @@ const quickSearches = [
   </div>
 </div>
 
+<!-- ponytail: product data for client-side live search -->
+<script id="search-data" type="application/json" set:html={JSON.stringify(searchData)} />
+
 <script is:inline>
   (function () {
     var form = document.getElementById('ai-search-form');
     var input = document.getElementById('ai-search-input');
     var chips = document.querySelectorAll('[data-quick-search]');
+    var suggestionsEl = document.getElementById('ai-search-suggestions');
+    var listEl = document.getElementById('suggestion-list');
+    var dataScript = document.getElementById('search-data');
     if (!form || !input) return;
 
-    // Redirect to the AI assistant with the search query.
-    // ponytail: derive prefix from current path to support /ar/ locale
+    // ponytail: parse embedded product data
+    var products = [];
+    try { products = JSON.parse(dataScript?.textContent || '[]'); } catch {}
+
     var _p = window.location.pathname.startsWith('/ar') ? '/ar' : '';
+
     function handleHeroSearch(query) {
       var trimmed = (query || '').trim();
       if (!trimmed) return;
       window.location.href = _p + '/ai-assistant?search=' + encodeURIComponent(trimmed);
     }
 
-    // Fill the input with a quick-search term and submit.
     function quickSearch(term) {
       input.value = term;
       handleHeroSearch(term);
     }
 
-    // Form submit (Enter or button click)
+    // ponytail: live search — filter products by name/category/tagline, show top 5
+    function showSuggestions(query) {
+      if (!suggestionsEl || !listEl) return;
+      var q = query.trim().toLowerCase();
+      if (!q || q.length < 2) {
+        suggestionsEl.classList.add('hidden');
+        return;
+      }
+
+      // ponytail: synonym map — expand user queries to match product fields
+      var synonyms = {
+        'outdoor': ['outdoor', 'flood', 'street', 'wall washer', 'ip65', 'ip66', 'ip68', 'solar'],
+        'indoor': ['indoor', 'downlight', 'spotlight', 'panel', 'indoor'],
+        'warehouse': ['high bay', 'industrial', 'warehouse', 'ufo', 'highbay'],
+        'hotel': ['downlight', 'spotlight', 'track', 'warm', '3000k', 'cri90', 'cri>90'],
+        'office': ['panel', 'ugr', 'office', 'linear', '5000k'],
+        'mall': ['downlight', 'spotlight', 'track', 'mall', 'retail'],
+        'shop': ['track', 'spotlight', 'retail', 'shop', 'store'],
+        'downlight': ['downlight', 'recessed', 'grid', 'ceiling'],
+        'spotlight': ['spotlight', 'track', 'spot', 'accent'],
+        'panel': ['panel', 'ceiling', 'flat', 'backlit'],
+        'flood': ['flood', 'floodlight', 'outdoor', 'ip65', 'ip66'],
+        'street': ['street', 'road', 'solar', 'ip68'],
+        'track': ['track', 'rail', 'spotlight'],
+        'linear': ['linear', 'pendant', 'suspended', 'line'],
+        'highbay': ['high bay', 'highbay', 'ufo', 'industrial', 'warehouse'],
+        'solar': ['solar', 'street', 'battery', 'lifepo4'],
+        // Arabic synonyms — ponytail: enables Arabic live search on homepage
+        'فندق': ['hotel', 'downlight', 'spotlight', 'track'],
+        'فنادق': ['hotel', 'downlight', 'spotlight', 'track'],
+        'مكتب': ['office', 'panel', 'ugr', 'linear'],
+        'مكاتب': ['office', 'panel', 'ugr', 'linear'],
+        'متجر': ['mall', 'retail', 'track', 'spotlight'],
+        'تسوق': ['mall', 'retail', 'track', 'spotlight'],
+        'مستودع': ['warehouse', 'high bay', 'industrial', 'ufo'],
+        'مستودعات': ['warehouse', 'high bay', 'industrial', 'ufo'],
+        'صناعي': ['warehouse', 'industrial', 'high bay', 'ufo'],
+        'خارجي': ['outdoor', 'flood', 'street', 'solar', 'ip65', 'ip68'],
+        'شارع': ['street', 'solar', 'road', 'ip68'],
+        'شمسي': ['solar', 'street', 'battery'],
+        'كشاف': ['flood', 'floodlight', 'outdoor', 'spotlight'],
+        'كشافة': ['spotlight', 'track', 'spot', 'accent'],
+        'مدمجة': ['downlight', 'recessed', 'grid', 'ceiling'],
+        'بانل': ['panel', 'ceiling', 'flat', 'backlit'],
+        'مسار': ['track', 'rail', 'spotlight'],
+        'خطية': ['linear', 'pendant', 'suspended', 'line'],
+        'سقف': ['downlight', 'panel', 'ceiling', 'recessed'],
+      };
+      var expanded = q;
+      Object.keys(synonyms).forEach(function(key) {
+        if (q.indexOf(key) !== -1) {
+          expanded = expanded + ' ' + synonyms[key].join(' ');
+        }
+      });
+      var terms = expanded.toLowerCase().split(/\s+/).filter(Boolean);
+
+      var matches = products.filter(function(p) {
+        var haystack = (p.name + ' ' + p.shortName + ' ' + p.category + ' ' + p.tagline + ' ' + (p.description||'') + ' ' + (p.wattage||'') + ' ' + (p.ipRating||'') + ' ' + (p.certifications||'')).toLowerCase();
+        return terms.some(function(t) { return haystack.indexOf(t) !== -1; });
+      }).slice(0, 5);
+
+      if (matches.length === 0) {
+        listEl.innerHTML = '<div class="px-4 py-6 text-center text-sm text-white/60">No products found. Try AI Search for full results.</div>';
+      } else {
+        listEl.innerHTML = matches.map(function(p) {
+          return '<a href="' + _p + '/products/' + p.slug + '" class="block px-4 py-3 hover:bg-white/5 transition-colors border-b border-white/5 last:border-0">' +
+            '<div class="flex items-center justify-between gap-3">' +
+              '<div>' +
+                '<div class="text-sm font-semibold text-white">' + p.name + '</div>' +
+                '<div class="text-xs text-gold-400 mt-0.5">' + p.category + ' · ' + p.tagline + '</div>' +
+              '</div>' +
+              '<svg class="w-4 h-4 text-white/40 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>' +
+            '</div>' +
+          '</a>';
+        }).join('');
+      }
+      suggestionsEl.classList.remove('hidden');
+    }
+
+    // Form submit
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       handleHeroSearch(input.value);
+    });
+
+    // Live search on input
+    var debounceTimer;
+    input.addEventListener('input', function() {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(function() {
+        showSuggestions(input.value);
+      }, 200);
+    });
+
+    // Hide suggestions when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.ai-search-bar')) {
+        suggestionsEl?.classList.add('hidden');
+      }
+    });
+
+    // Show suggestions on focus if there's text
+    input.addEventListener('focus', function() {
+      if (input.value.trim().length >= 2) showSuggestions(input.value);
     });
 
     // Quick-search chips

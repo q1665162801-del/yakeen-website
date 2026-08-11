@@ -1,19 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HomeContent from '../components/sections/HomeContent.astro';
-import { organizationSchema } from '../utils/schema';
+import { websiteSchema } from '../utils/schema';
 import { getLocale, t } from '../i18n/ui';
 
 const locale = getLocale(Astro.url);
-const orgSchema = organizationSchema();
+const wsSchema = websiteSchema();
 ---
 <BaseLayout
   title={t(locale, 'hero.title') + ' — Yakeen Lighting'}
   description={t(locale, 'hero.subtitle')}
-  image="/assets/images/hero/hero-bg-v3.jpg"
+  image="/assets/images/hero/hero-bright-elegant.webp"
   canonicalPath="/"
   type="page"
 >
-  <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+  {/* WebSite schema — enables sitelinks search box in Google SERPs */}
+  <script type="application/ld+json" set:html={JSON.stringify(wsSchema)} />
   <HomeContent />
 </BaseLayout>

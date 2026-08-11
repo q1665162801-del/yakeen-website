@@ -17,6 +17,7 @@ import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import WhatsAppButton from '@components/WhatsAppButton.astro';
 import { siteConfig } from '@data/site-config';
+import { organizationSchema } from '@utils/schema';
 import { getLocale, getDir, t } from '../i18n/ui';
 import '@styles/global.css';
 
@@ -47,6 +48,9 @@ const pageTitle = title ?? `${siteConfig.name} — ${siteConfig.tagline}`;
 const locale = getLocale(Astro.url);
 const dir = getDir(locale);
 const prefix = locale === 'ar' ? '/ar' : '';
+
+// ponytail: Organization schema — global, every page gets it for AI crawler discovery
+const orgSchema = organizationSchema();
 ---
 
 <!doctype html>
@@ -72,10 +76,16 @@ const prefix = locale === 'ar' ? '/ar' : '';
   </head>
 
   <body>
+    {/* ponytail: Organization schema — global on every page for AI crawlers */}
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+
     {/* Skip link for accessibility */}
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:rounded focus:bg-navy-900 focus:px-4 focus:py-2 focus:text-white">
       {t(locale, 'skip.toMain')}
     </a>
+
+    {/* ponytail: scroll progress bar — 1 div, 3 lines in existing scroll handler */}
+    <div class="scroll-progress" id="scroll-progress"></div>
 
     <Header />
 
@@ -86,21 +96,25 @@ const prefix = locale === 'ar' ? '/ar' : '';
     <Footer />
     <WhatsAppButton />
 
-    {/* ===== Scroll listener: toggle .scrolled on the site header ===== */}
+    {/* ===== Scroll listener: toggle .scrolled on header + update progress bar ===== */}
     <script is:inline>
       (function () {
         const header = document.querySelector('.site-header');
-        if (!header) return;
+        const progress = document.getElementById('scroll-progress');
 
         const onScroll = function () {
-          if (window.scrollY > 10) {
-            header.classList.add('scrolled');
-          } else {
-            header.classList.remove('scrolled');
+          const y = window.scrollY;
+          if (header) {
+            if (y > 10) { header.classList.add('scrolled'); }
+            else { header.classList.remove('scrolled'); }
+          }
+          // ponytail: update progress bar width — 3 lines, reuses same scroll event
+          if (progress) {
+            var max = document.documentElement.scrollHeight - window.innerHeight;
+            progress.style.width = max > 0 ? (y / max * 100) + '%' : '0%';
           }
         };
 
-        // Set initial state (handles page reload mid-scroll)
         onScroll();
         window.addEventListener('scroll', onScroll, { passive: true });
       })();
@@ -111,7 +125,7 @@ const prefix = locale === 'ar' ? '/ar' : '';
       (function () {
         // Respect reduced-motion preference: show everything immediately.
         const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const revealEls = document.querySelectorAll('.reveal');
+        const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
 
         if (prefersReduced || !('IntersectionObserver' in window)) {
           revealEls.forEach(function (el) {

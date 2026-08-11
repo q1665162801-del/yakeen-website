@@ -13,13 +13,38 @@
 ## Key Pages
 - [Home](https://www.yakeenlighting.com/)
 - [Products](https://www.yakeenlighting.com/products)
-- [About](https://www.yakeenlighting.com/about)
+- [AI Lighting Assistant](https://www.yakeenlighting.com/ai-assistant)
+- [About Us](https://www.yakeenlighting.com/about)
 - [Contact](https://www.yakeenlighting.com/contact)
 - [Certifications](https://www.yakeenlighting.com/certifications)
-- [Downloads](https://www.yakeenlighting.com/downloads)
 - [FAQ](https://www.yakeenlighting.com/faq)
-- [Projects](https://www.yakeenlighting.com/projects-cases)
-- [AI Assistant](https://www.yakeenlighting.com/ai-assistant)
+- [Projects & Cases](https://www.yakeenlighting.com/projects-cases)
+- [Blog](https://www.yakeenlighting.com/blog)
+
+## Market Pages
+- [Saudi Arabia Market](https://www.yakeenlighting.com/markets/saudi-arabia)
+- [UAE Market](https://www.yakeenlighting.com/markets/uae)
+- [Middle East Market](https://www.yakeenlighting.com/markets/middle-east)
+
+## Blog — LED Lighting Guides for the Middle East
+- [Blog Home](https://www.yakeenlighting.com/blog)
+- [SASO Certification for LED Lighting: Complete Guide for Saudi Arabia Importers](https://www.yakeenlighting.com/blog/saso-certification-guide)
+- [G-Mark Certification for LED Lighting: GCC Compliance Guide](https://www.yakeenlighting.com/blog/g-mark-certification-guide)
+- [Hotel Lighting Design Guide: LED Solutions for Middle East Hospitality](https://www.yakeenlighting.com/blog/hotel-lighting-design-guide)
+- [LED Lighting Procurement Guide for Middle East Buyers](https://www.yakeenlighting.com/blog/led-procurement-guide-middle-east)
+- [High Temperature LED Lighting: Solutions for 50°C Middle East Climate](https://www.yakeenlighting.com/blog/high-temperature-led-lighting)
+
+## Product Pages
+- [Narrow Beam Anti-Glare LED Downlight](https://www.yakeenlighting.com/products/df-downlight)
+- [LED Track Light](https://www.yakeenlighting.com/products/track-light)
+- [LED Spotlight](https://www.yakeenlighting.com/products/spotlight)
+- [LED Panel Light](https://www.yakeenlighting.com/products/panel-light)
+- [LED Linear Light](https://www.yakeenlighting.com/products/optical-line-zgl070)
+- [UFO LED High Bay](https://www.yakeenlighting.com/products/ufo-highbay)
+- [LED Flood Light](https://www.yakeenlighting.com/products/flood-light)
+- [Solar Street Light](https://www.yakeenlighting.com/products/solar-street-light)
+- [Wall Washer Light](https://www.yakeenlighting.com/products/wall-light)
+- [Magnetic Track Light](https://www.yakeenlighting.com/products/magnetic-track-fixture)
 
 ## Contact
 - Email: yakeenlight@outlook.com

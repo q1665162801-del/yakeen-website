@@ -238,3 +238,47 @@ export function websiteSchema(): JsonLd {
     inLanguage: 'en',
   };
 }
+
+/**
+ * LocalBusiness schema — for market-specific pages.
+ * Helps search engines and AI answer engines associate Yakeen Lighting
+ * with specific geographic markets (Saudi Arabia, UAE, Middle East).
+ */
+export function localBusinessSchema(marketName: string, countryCode: string): JsonLd {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': `${siteConfig.url}/markets/${countryCode.toLowerCase()}#localbusiness`,
+    name: `${siteConfig.name} — ${marketName}`,
+    parentOrganization: { '@id': `${siteConfig.url}/#organization` },
+    url: `${siteConfig.url}/markets/${countryCode.toLowerCase()}`,
+    image: absUrl('/assets/images/hero/hero-bg-v3.jpg'),
+    telephone: siteConfig.phone,
+    email: siteConfig.email,
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: siteConfig.address.country,
+      addressLocality: siteConfig.address.city,
+      addressRegion: siteConfig.address.region,
+      streetAddress: siteConfig.address.street,
+      postalCode: siteConfig.address.postalCode,
+    },
+    areaServed: countryCode === 'ME' ? siteConfig.areaServed : [countryCode],
+    hasCredential: siteConfig.certifications,
+    makesOffer: {
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Product',
+        name: 'Commercial LED Lighting',
+        category: 'Commercial LED Lighting',
+      },
+    },
+    sameAs: [
+      siteConfig.social.linkedin,
+      siteConfig.social.facebook,
+      siteConfig.social.instagram,
+      siteConfig.social.youtube,
+      siteConfig.social.alibaba,
+    ].filter(Boolean),
+  };
+}

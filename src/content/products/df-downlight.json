@@ -1,132 +1,132 @@
 {
-  "mainImage": "/assets/images/products/downlight-2.jpg",
-  "applications": [
-    {
-      "title": "Shopping Malls",
-      "desc": "Precision accent lighting that highlights merchandise with controlled beam angles.",
-      "icon": "mall"
-    },
-    {
-      "title": "Hotels & Hospitality",
-      "desc": "Warm, glare-free illumination for lobbies, corridors, and guest rooms.",
-      "icon": "hotel"
-    },
-    {
-      "title": "Retail Stores",
-      "desc": "Narrow beam options for highlighting premium products and displays.",
-      "icon": "retail"
-    },
-    {
-      "title": "Museums & Galleries",
-      "desc": "UGR<16 compliant for comfortable, accurate artwork illumination.",
-      "icon": "gallery"
-    }
-  ],
-  "ogImage": "/assets/images/products/downlight-3.jpg",
-  "shortName": "Narrow Beam Downlight",
-  "galleryImages": [
-    "/assets/images/products/narrow-beam-js172.jpeg",
-    "/assets/images/products/narrow-beam-js172-page.png",
-    "/assets/images/products/downlight-new.webp"
-  ],
-  "name": "Narrow Beam Anti-Glare LED Downlight",
-  "slug": "df-downlight",
-  "featured": true,
-  "tagline": "Precision 'single beam' optical design with UGR<16",
-  "sceneImage": "/assets/images/products/downlight-scene-1.jpg",
-  "ar": {
-    "name": "إضاءة LED مدمجة بشعاع ضيق مضاد للوهج",
-    "shortName": "إضاءة مدمجة بشعاع ضيق",
-    "tagline": "تصميم بصري دقيق 'شعاع واحد' مع UGR<16",
-    "description": "إضاءة LED مدمجة بشعاع ضيق من Yakeen بتصميم عدسة بصرية دقيقة، متاحة بـ 8-40واط بأحجام فتحة من 55مم إلى 120مم. تتميز بأداء مضاد للوهج UGR<16، زوايا شعاع متعددة (15°/24°/36°/50°)، وهيكل ألمنيوم فاخر. معتمدة SASO و G-Mark لمشاريع الشرق الأوسط التجارية.",
-    "features": [
-      "تصميم عدسة بصرية دقيقة 'شعاع واحد' (UGR<16)",
-      "زوايا شعاع متعددة: 15°/24°/36°/50° لتصميم إضاءة مرن",
-      "هيكل ألمنيوم مصبوب فاخر لإدارة حرارية ممتازة",
-      "متوفر بتصاميم حافة مسطحة ضيقة وإطار منحني",
-      "خيارات اللمسة: أبيض مطفي، أسود مطفي، رمادي معدني، فضي لامع",
-      "تركيب بدون أدوات بمشابك نابضة"
-    ],
-    "applications": [
-      {
-        "title": "المولات التجارية",
-        "desc": "إضاءة دقيقة تبرز البضائع بزوايا شعاع محكومة."
-      },
-      {
-        "title": "الفنادق والضيافة",
-        "desc": "إضاءة دافئة خالية من الوهج للبهوات والممرات وغرف الضيوف."
-      },
-      {
-        "title": "المتاجر",
-        "desc": "خيارات الشعاع الضيق لإبراز المنتجات المتميزة والعارضات."
-      },
-      {
-        "title": "المتاحف والمعارض",
-        "desc": "متوافقة مع UGR<16 لإضاءة مريحة ودقيقة للأعمال الفنية."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "ما الذي يميز تصميم الشعاع الضيق عن الإضاءة المدمجة العادية؟",
-        "answer": "يستخدم التصميم البصري ذو الشعاع الضيق عدسة دقيقة لإنشاء 'شعاع واحد' مركز من الضوء مع تسرب أدنى. هذا يحقق UGR<16 (خالي من الوهج تقريباً) مع توفير إضاءة تظليل ممتازة."
-      },
-      {
-        "question": "ما أحجام الفتحة المتاحة؟",
-        "answer": "نقدم 55مم (8واط)، 75مم (12-18واط)، 95مم (24واط)، و120مم (40واط). الأحجام المخصصة متاحة مع طلبات OEM/ODM (الحد الأدنى 500 قطعة)."
-      },
-      {
-        "question": "هل يمكنني الحصول على تصميمات حافة مسطحة ومنحنية؟",
-        "answer": "نعم. كل حجم متوفر بكل من خيارات الحافة المسطحة الضيقة والإطار المنحني. نقدم أيضاً تصميمات دائرية بلا إطار لمظهر سقف متكامل."
-      }
-    ],
-    "caseStudy": {
-      "title": "بهو فندق فاخر",
-      "location": "المنامة، البحرين"
-    }
-  },
-  "metaDescription": "Yakeen Narrow Beam LED Downlight — 8-40W, UGR<16, precision optical lens, 55-120mm cutout, SASO & G-Mark certified for Middle East commercial lighting.",
-  "specs": {
-    "ipRating": "IP44",
-    "beamAngle": "15° / 24° / 36° / 50°",
-    "lifespan": "L70 > 50,000 hours",
-    "leadTime": "15-25 days",
-    "moq": "100 pieces",
-    "cct": "2700K / 3000K / 4000K / 5000K / 6000K",
-    "wattage": "8W-40W",
-    "efficacy": "100-130 lm/W",
-    "certifications": "SASO, G-Mark, CE, RoHS",
-    "cri": "Ra>90",
-    "warranty": "5 years",
-    "dimming": "DALI / 0-10V / TRIAC"
-  },
-  "caseStudy": {
-    "title": "Luxury Hotel Lobby",
-    "location": "Manama, Bahrain",
-    "year": "2024",
-    "image": "/assets/images/products/downlight-scene-1.jpg"
-  },
-  "description": "Yakeen narrow beam LED downlight with precision optical lens design, available in 8W-40W with cutout sizes from 55mm to 120mm. Features anti-glare UGR<16 performance, multiple beam angles (15°/24°/36°/50°), and premium aluminum housing. SASO & G-Mark certified for Middle East commercial projects.",
-  "faqs": [
-    {
-      "question": "What makes the narrow beam design different from standard downlights?",
-      "answer": "The narrow beam optical design uses a precision lens to create a focused 'single beam' of light with minimal spill. This achieves UGR<16 (virtually glare-free) while providing excellent accent lighting. Yakeen Lighting provides UGR test reports for every batch."
-    },
-    {
-      "question": "What cutout sizes are available?",
-      "answer": "We offer 55mm (8W), 75mm (12-18W), 95mm (24W), and 120mm (40W) cutout sizes. Custom sizes are available with OEM/ODM orders (MOQ 500pcs)."
-    },
-    {
-      "question": "Can I get both flat and curved bezel designs?",
-      "answer": "Yes. Each size is available in both flat narrow-edge and curved bezel options. We also offer frameless round designs for a seamless ceiling appearance."
-    }
-  ],
-  "features": [
-    "Precision 'single beam' optical lens design (UGR<16)",
-    "Multiple beam angles: 15°/24°/36°/50° for flexible lighting design",
-    "Premium die-cast aluminum housing for excellent thermal management",
-    "Available in flat narrow-edge and curved bezel designs",
-    "Finish options: matte white, matte black, gunmetal, bright silver",
-    "Tool-free spring clip installation"
-  ],
-  "category": "indoor"
+
+    "mainImage":  "/assets/images/products/downlight-2.jpg",
+    "applications":  [
+                         {
+                             "title":  "Shopping Malls",
+                             "desc":  "Precision accent lighting that highlights merchandise with controlled beam angles.",
+                             "icon":  "mall"
+                         },
+                         {
+                             "title":  "Hotels \u0026 Hospitality",
+                             "desc":  "Warm, glare-free illumination for lobbies, corridors, and guest rooms.",
+                             "icon":  "hotel"
+                         },
+                         {
+                             "title":  "Retail Stores",
+                             "desc":  "Narrow beam options for highlighting premium products and displays.",
+                             "icon":  "retail"
+                         },
+                         {
+                             "title":  "Museums \u0026 Galleries",
+                             "desc":  "UGR\u003c16 compliant for comfortable, accurate artwork illumination.",
+                             "icon":  "gallery"
+                         }
+                     ],
+    "ogImage":  "/assets/images/products/downlight-3.jpg",
+    "shortName":  "Narrow Beam Downlight",
+    "galleryImages":  [
+                          "/assets/images/products/narrow-beam-js172.jpeg",
+                          "/assets/images/products/downlight-new.webp"
+                      ],
+    "name":  "Narrow Beam Anti-Glare LED Downlight",
+    "slug":  "df-downlight",
+    "featured":  true,
+    "tagline":  "Precision \u0027single beam\u0027 optical design with UGR\u003c16",
+    "sceneImage":  "/assets/images/products/downlight-scene-1.jpg",
+    "ar":  {
+               "name":  "إضاءة LED مدمجة بشعاع ضيق مضاد للوهج",
+               "shortName":  "إضاءة مدمجة بشعاع ضيق",
+               "tagline":  "تصميم بصري دقيق \u0027شعاع واحد\u0027 مع UGR\u003c16",
+               "description":  "إضاءة LED مدمجة بشعاع ضيق من Yakeen بتصميم عدسة بصرية دقيقة، متاحة بـ 8-40واط بأحجام فتحة من 55مم إلى 120مم. تتميز بأداء مضاد للوهج UGR\u003c16، زوايا شعاع متعددة (15°/24°/36°/50°)، وهيكل ألمنيوم فاخر. معتمدة SASO و G-Mark لمشاريع الشرق الأوسط التجارية.",
+               "features":  [
+                                "تصميم عدسة بصرية دقيقة \u0027شعاع واحد\u0027 (UGR\u003c16)",
+                                "زوايا شعاع متعددة: 15°/24°/36°/50° لتصميم إضاءة مرن",
+                                "هيكل ألمنيوم مصبوب فاخر لإدارة حرارية ممتازة",
+                                "متوفر بتصاميم حافة مسطحة ضيقة وإطار منحني",
+                                "خيارات اللمسة: أبيض مطفي، أسود مطفي، رمادي معدني، فضي لامع",
+                                "تركيب بدون أدوات بمشابك نابضة"
+                            ],
+               "applications":  [
+                                    {
+                                        "title":  "المولات التجارية",
+                                        "desc":  "إضاءة دقيقة تبرز البضائع بزوايا شعاع محكومة."
+                                    },
+                                    {
+                                        "title":  "الفنادق والضيافة",
+                                        "desc":  "إضاءة دافئة خالية من الوهج للبهوات والممرات وغرف الضيوف."
+                                    },
+                                    {
+                                        "title":  "المتاجر",
+                                        "desc":  "خيارات الشعاع الضيق لإبراز المنتجات المتميزة والعارضات."
+                                    },
+                                    {
+                                        "title":  "المتاحف والمعارض",
+                                        "desc":  "متوافقة مع UGR\u003c16 لإضاءة مريحة ودقيقة للأعمال الفنية."
+                                    }
+                                ],
+               "faqs":  [
+                            {
+                                "question":  "ما الذي يميز تصميم الشعاع الضيق عن الإضاءة المدمجة العادية؟",
+                                "answer":  "يستخدم التصميم البصري ذو الشعاع الضيق عدسة دقيقة لإنشاء \u0027شعاع واحد\u0027 مركز من الضوء مع تسرب أدنى. هذا يحقق UGR\u003c16 (خالي من الوهج تقريباً) مع توفير إضاءة تظليل ممتازة."
+                            },
+                            {
+                                "question":  "ما أحجام الفتحة المتاحة؟",
+                                "answer":  "نقدم 55مم (8واط)، 75مم (12-18واط)، 95مم (24واط)، و120مم (40واط). الأحجام المخصصة متاحة مع طلبات OEM/ODM (الحد الأدنى 500 قطعة)."
+                            },
+                            {
+                                "question":  "هل يمكنني الحصول على تصميمات حافة مسطحة ومنحنية؟",
+                                "answer":  "نعم. كل حجم متوفر بكل من خيارات الحافة المسطحة الضيقة والإطار المنحني. نقدم أيضاً تصميمات دائرية بلا إطار لمظهر سقف متكامل."
+                            }
+                        ],
+               "caseStudy":  {
+                                 "title":  "بهو فندق فاخر",
+                                 "location":  "المنامة، البحرين"
+                             }
+           },
+    "metaDescription":  "Yakeen Narrow Beam LED Downlight — 8-40W, UGR\u003c16, precision optical lens, 55-120mm cutout, SASO \u0026 G-Mark certified for Middle East commercial lighting.",
+    "specs":  {
+                  "ipRating":  "IP44",
+                  "beamAngle":  "15° / 24° / 36° / 50°",
+                  "lifespan":  "L70 \u003e 50,000 hours",
+                  "leadTime":  "15-25 days",
+                  "moq":  "100 pieces",
+                  "cct":  "2700K / 3000K / 4000K / 5000K / 6000K",
+                  "wattage":  "8W-40W",
+                  "efficacy":  "100-130 lm/W",
+                  "certifications":  "SASO, G-Mark, CE, RoHS",
+                  "cri":  "Ra\u003e90",
+                  "warranty":  "5 years",
+                  "dimming":  "DALI / 0-10V / TRIAC"
+              },
+    "caseStudy":  {
+                      "title":  "Luxury Hotel Lobby",
+                      "location":  "Manama, Bahrain",
+                      "year":  "2024",
+                      "image":  "/assets/images/products/downlight-scene-1.jpg"
+                  },
+    "description":  "Yakeen narrow beam LED downlight with precision optical lens design, available in 8W-40W with cutout sizes from 55mm to 120mm. Features anti-glare UGR\u003c16 performance, multiple beam angles (15°/24°/36°/50°), and premium aluminum housing. SASO \u0026 G-Mark certified for Middle East commercial projects.",
+    "faqs":  [
+                 {
+                     "question":  "What makes the narrow beam design different from standard downlights?",
+                     "answer":  "The narrow beam optical design uses a precision lens to create a focused \u0027single beam\u0027 of light with minimal spill. This achieves UGR\u003c16 (virtually glare-free) while providing excellent accent lighting. Yakeen Lighting provides UGR test reports for every batch."
+                 },
+                 {
+                     "question":  "What cutout sizes are available?",
+                     "answer":  "We offer 55mm (8W), 75mm (12-18W), 95mm (24W), and 120mm (40W) cutout sizes. Custom sizes are available with OEM/ODM orders (MOQ 500pcs)."
+                 },
+                 {
+                     "question":  "Can I get both flat and curved bezel designs?",
+                     "answer":  "Yes. Each size is available in both flat narrow-edge and curved bezel options. We also offer frameless round designs for a seamless ceiling appearance."
+                 }
+             ],
+    "features":  [
+                     "Precision \u0027single beam\u0027 optical lens design (UGR\u003c16)",
+                     "Multiple beam angles: 15°/24°/36°/50° for flexible lighting design",
+                     "Premium die-cast aluminum housing for excellent thermal management",
+                     "Available in flat narrow-edge and curved bezel designs",
+                     "Finish options: matte white, matte black, gunmetal, bright silver",
+                     "Tool-free spring clip installation"
+                 ],
+    "category":  "indoor"
 }

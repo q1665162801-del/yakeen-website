@@ -33,15 +33,16 @@ export const navItems = [
   { label: 'Products', href: '/products', page: 'products', i18nKey: 'nav.products' },
   { label: 'AI Assistant', href: '/ai-assistant', page: 'ai', i18nKey: 'nav.aiAssistant' },
   { label: 'Projects', href: '/projects-cases', page: 'projects', i18nKey: 'nav.projects' },
+  { label: 'Blog', href: '/blog', page: 'blog', i18nKey: 'nav.blog' },
   { label: 'About', href: '/about', page: 'about', i18nKey: 'nav.about' },
   { label: 'FAQ', href: '/faq', i18nKey: 'nav.faq' },
   { label: 'Certifications', href: '/certifications', page: 'certifications', i18nKey: 'nav.certifications' },
 ];
 
 export const marketItems = [
-  { label: 'Saudi Market', href: '/certifications', i18nKey: 'nav.saudi' },
-  { label: 'UAE Market', href: '/certifications', i18nKey: 'nav.uae' },
-  { label: 'Middle East', href: '/about', i18nKey: 'nav.middleEast' },
+  { label: 'Saudi Market', href: '/markets/saudi-arabia', i18nKey: 'nav.saudi' },
+  { label: 'UAE Market', href: '/markets/uae', i18nKey: 'nav.uae' },
+  { label: 'Middle East', href: '/markets/middle-east', i18nKey: 'nav.middleEast' },
 ];
 
 // Product categories for filters

@@ -1,0 +1,19 @@
+---
+// ponytail: AR blog detail — same pattern as ar/products/[slug].astro
+import { getCollection } from 'astro:content';
+import BlogDetail from '../../blog/[slug].astro';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog');
+  // ponytail: only AR articles at /ar/blog/[slug]; strip 'ar/' prefix for URL slug
+  return allPosts
+    .filter(post => post.data.lang === 'ar')
+    .map(post => ({
+      params: { slug: post.id.replace(/^ar\//, '') },
+      props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+---
+<BlogDetail post={post} />

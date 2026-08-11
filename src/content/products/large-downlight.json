@@ -1,123 +1,123 @@
 {
-  "slug": "large-downlight",
-  "featured": false,
-  "name": "Large Format Commercial LED Downlight",
-  "shortName": "Large Downlight",
-  "category": "indoor",
-  "tagline": "High-power 8-45W downlight for large commercial spaces",
-  "description": "Yakeen large format LED downlight series, 8-45W with cutout sizes from 75mm to 200mm. Designed for high-ceiling commercial spaces including shopping malls, hotel lobbies, and exhibition halls. Features premium die-cast housing with multiple finish options. SASO & G-Mark certified.",
-  "metaDescription": "Yakeen Large Format LED Downlight — 8-45W, 75-200mm cutout, die-cast aluminum, SASO & G-Mark certified for high-ceiling commercial lighting in the Middle East.",
-  "ogImage": "/assets/images/products/large-downlight-85057.jpeg",
-  "mainImage": "/assets/images/products/large-downlight-85057.jpeg",
-  "galleryImages": [
-    "/assets/images/products/large-downlight-85057.jpeg",
-    "/assets/images/products/large-downlight-85057-page.png"
-  ],
-  "sceneImage": "/assets/images/products/downlight-scene-2.jpg",
-  "specs": {
-    "wattage": "8W-45W",
-    "efficacy": "100-120 lm/W",
-    "cct": "2700K / 3000K / 4000K / 5000K / 6000K",
-    "cri": "Ra>90",
-    "beamAngle": "15° / 24° / 36° / 60° (spotlight version)",
-    "ipRating": "IP44",
-    "dimming": "DALI / 0-10V / TRIAC",
-    "lifespan": "L70 > 50,000 hours",
-    "warranty": "5 years",
-    "certifications": "SASO, G-Mark, CE, RoHS",
-    "moq": "50 pieces",
-    "leadTime": "15-25 days"
-  },
-  "applications": [
-    {
-      "title": "Shopping Malls",
-      "desc": "High-output lighting for large retail spaces with high ceilings.",
-      "icon": "mall"
-    },
-    {
-      "title": "Hotel Lobbies",
-      "desc": "Powerful, even illumination for grand entrance spaces.",
-      "icon": "hotel"
-    },
-    {
-      "title": "Exhibition Halls",
-      "desc": "Flexible lighting for trade show and exhibition venues.",
-      "icon": "showroom"
-    },
-    {
-      "title": "Office Buildings",
-      "desc": "Bright, comfortable lighting for open-plan offices.",
-      "icon": "office"
-    }
-  ],
-  "features": [
-    "High-power range: 8W to 45W for large spaces",
-    "Cutout sizes: 75mm, 95mm, 120mm, 140mm, 160mm, 200mm",
-    "Premium die-cast aluminum housing with excellent heat dissipation",
-    "Multiple finish options: matte white, matte black, gunmetal, champagne gold",
-    "Downlight and spotlight combo (selectable beam angle)",
-    "DALI/0-10V/TRIAC dimming compatible"
-  ],
-  "faqs": [
-    {
-      "question": "What is the maximum wattage and cutout size?",
-      "answer": "The largest model offers 35-45W with a 200mm cutout size. This is ideal for ceilings 4-8 meters high in shopping malls and exhibition halls."
-    },
-    {
-      "question": "Can this series be used as both downlight and spotlight?",
-      "answer": "Yes. The series offers both wide-beam downlight (no angle limitation) and spotlight versions (15°/24°/36°/50°). This flexibility makes it perfect for mixed-use commercial spaces."
-    }
-  ],
-  "caseStudy": {
-    "title": "Shopping Mall Atrium",
-    "location": "Riyadh, Saudi Arabia",
-    "year": "2024",
-    "image": "/assets/images/products/downlight-scene-2.jpg"
-  },
-  "ar": {
-    "name": "إضاءة LED مدمجة كبيرة الحجم تجارية",
-    "shortName": "إضاءة مدمجة كبيرة",
-    "tagline": "إضاءة عالية القدرة 8-45واط للمساحات التجارية الكبيرة",
-    "description": "سلسلة إضاءة LED مدمجة كبيرة الحجم من Yakeen، 8-45واط بأحجام فتحة من 75مم إلى 200مم. مصممة للمساحات التجارية ذات الأسقف العالية بما في ذلك المولات وبهوات الفنادق وقاعات المعارض. معتمدة SASO و G-Mark.",
-    "features": [
-      "مدى قدرة عالي: 8واط إلى 45واط للمساحات الكبيرة",
-      "أحجام الفتحة: 75مم، 95مم، 120مم، 140مم، 160مم، 200مم",
-      "هيكل ألمنيوم مصبوب فاخر مع تبديد حراري ممتاز",
-      "خيارات لمسة متعددة: أبيض مطفي، أسود مطفي، رمادي معدني، ذهبي شمبانيا",
-      "نسخة إضاءة مدمجة وكشافة (زاوية شعاع قابلة للاختيار)",
-      "تعتيم DALI/0-10V/TRIAC متوافق"
-    ],
-    "applications": [
-      {
-        "title": "المولات التجارية",
-        "desc": "إضاءة عالية الإخراج للمساحات التجارية الكبيرة ذات الأسقف العالية."
-      },
-      {
-        "title": "بهوات الفنادق",
-        "desc": "إضاءة قوية ومتساوية للمساحات الكبيرة."
-      },
-      {
-        "title": "قاعات المعارض",
-        "desc": "إضاءة مرنة لمعارض التجارة والمعارض."
-      },
-      {
-        "title": "المباني المكتبية",
-        "desc": "إضاءة ساطعة ومريحة للمكاتب المفتوحة."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "ما الحد الأقصى للقدرة وحجم الفتحة؟",
-        "answer": "أكبر طراز يقدم 35-45واط مع فتحة 200مم. هذا مثالي للأسقف بارتفاع 4-8 أمتار في المولات وقاعات المعارض."
-      },
-      {
-        "question": "هل يمكن استخدام هذه السلسلة كإضاءة مدمجة وكشافة؟",
-        "answer": "نعم. تقدم السلسلة كل من نسخة الإضاءة المدمجة واسعة الشعاع ونسخة الكشافة (15°/24°/36°/50°)."
-      }
-    ],
-    "caseStudy": {
-      "title": "ردهة مول تجاري",
-      "location": "الرياض، السعودية"
-    }
-  }
+
+    "slug":  "large-downlight",
+    "featured":  false,
+    "name":  "Large Format Commercial LED Downlight",
+    "shortName":  "Large Downlight",
+    "category":  "indoor",
+    "tagline":  "High-power 8-45W downlight for large commercial spaces",
+    "description":  "Yakeen large format LED downlight series, 8-45W with cutout sizes from 75mm to 200mm. Designed for high-ceiling commercial spaces including shopping malls, hotel lobbies, and exhibition halls. Features premium die-cast housing with multiple finish options. SASO \u0026 G-Mark certified.",
+    "metaDescription":  "Yakeen Large Format LED Downlight — 8-45W, 75-200mm cutout, die-cast aluminum, SASO \u0026 G-Mark certified for high-ceiling commercial lighting in the Middle East.",
+    "ogImage":  "/assets/images/products/large-downlight-85057.jpeg",
+    "mainImage":  "/assets/images/products/large-downlight-85057.jpeg",
+    "galleryImages":  [
+                          "/assets/images/products/large-downlight-85057.jpeg"
+                      ],
+    "sceneImage":  "/assets/images/products/downlight-scene-3.jpg",
+    "specs":  {
+                  "wattage":  "8W-45W",
+                  "efficacy":  "100-120 lm/W",
+                  "cct":  "2700K / 3000K / 4000K / 5000K / 6000K",
+                  "cri":  "Ra\u003e90",
+                  "beamAngle":  "15° / 24° / 36° / 60° (spotlight version)",
+                  "ipRating":  "IP44",
+                  "dimming":  "DALI / 0-10V / TRIAC",
+                  "lifespan":  "L70 \u003e 50,000 hours",
+                  "warranty":  "5 years",
+                  "certifications":  "SASO, G-Mark, CE, RoHS",
+                  "moq":  "50 pieces",
+                  "leadTime":  "15-25 days"
+              },
+    "applications":  [
+                         {
+                             "title":  "Shopping Malls",
+                             "desc":  "High-output lighting for large retail spaces with high ceilings.",
+                             "icon":  "mall"
+                         },
+                         {
+                             "title":  "Hotel Lobbies",
+                             "desc":  "Powerful, even illumination for grand entrance spaces.",
+                             "icon":  "hotel"
+                         },
+                         {
+                             "title":  "Exhibition Halls",
+                             "desc":  "Flexible lighting for trade show and exhibition venues.",
+                             "icon":  "showroom"
+                         },
+                         {
+                             "title":  "Office Buildings",
+                             "desc":  "Bright, comfortable lighting for open-plan offices.",
+                             "icon":  "office"
+                         }
+                     ],
+    "features":  [
+                     "High-power range: 8W to 45W for large spaces",
+                     "Cutout sizes: 75mm, 95mm, 120mm, 140mm, 160mm, 200mm",
+                     "Premium die-cast aluminum housing with excellent heat dissipation",
+                     "Multiple finish options: matte white, matte black, gunmetal, champagne gold",
+                     "Downlight and spotlight combo (selectable beam angle)",
+                     "DALI/0-10V/TRIAC dimming compatible"
+                 ],
+    "faqs":  [
+                 {
+                     "question":  "What is the maximum wattage and cutout size?",
+                     "answer":  "The largest model offers 35-45W with a 200mm cutout size. This is ideal for ceilings 4-8 meters high in shopping malls and exhibition halls."
+                 },
+                 {
+                     "question":  "Can this series be used as both downlight and spotlight?",
+                     "answer":  "Yes. The series offers both wide-beam downlight (no angle limitation) and spotlight versions (15°/24°/36°/50°). This flexibility makes it perfect for mixed-use commercial spaces."
+                 }
+             ],
+    "caseStudy":  {
+                      "title":  "Shopping Mall Atrium",
+                      "location":  "Riyadh, Saudi Arabia",
+                      "year":  "2024",
+                      "image":  "/assets/images/products/downlight-scene-2.jpg"
+                  },
+    "ar":  {
+               "name":  "إضاءة LED مدمجة كبيرة الحجم تجارية",
+               "shortName":  "إضاءة مدمجة كبيرة",
+               "tagline":  "إضاءة عالية القدرة 8-45واط للمساحات التجارية الكبيرة",
+               "description":  "سلسلة إضاءة LED مدمجة كبيرة الحجم من Yakeen، 8-45واط بأحجام فتحة من 75مم إلى 200مم. مصممة للمساحات التجارية ذات الأسقف العالية بما في ذلك المولات وبهوات الفنادق وقاعات المعارض. معتمدة SASO و G-Mark.",
+               "features":  [
+                                "مدى قدرة عالي: 8واط إلى 45واط للمساحات الكبيرة",
+                                "أحجام الفتحة: 75مم، 95مم، 120مم، 140مم، 160مم، 200مم",
+                                "هيكل ألمنيوم مصبوب فاخر مع تبديد حراري ممتاز",
+                                "خيارات لمسة متعددة: أبيض مطفي، أسود مطفي، رمادي معدني، ذهبي شمبانيا",
+                                "نسخة إضاءة مدمجة وكشافة (زاوية شعاع قابلة للاختيار)",
+                                "تعتيم DALI/0-10V/TRIAC متوافق"
+                            ],
+               "applications":  [
+                                    {
+                                        "title":  "المولات التجارية",
+                                        "desc":  "إضاءة عالية الإخراج للمساحات التجارية الكبيرة ذات الأسقف العالية."
+                                    },
+                                    {
+                                        "title":  "بهوات الفنادق",
+                                        "desc":  "إضاءة قوية ومتساوية للمساحات الكبيرة."
+                                    },
+                                    {
+                                        "title":  "قاعات المعارض",
+                                        "desc":  "إضاءة مرنة لمعارض التجارة والمعارض."
+                                    },
+                                    {
+                                        "title":  "المباني المكتبية",
+                                        "desc":  "إضاءة ساطعة ومريحة للمكاتب المفتوحة."
+                                    }
+                                ],
+               "faqs":  [
+                            {
+                                "question":  "ما الحد الأقصى للقدرة وحجم الفتحة؟",
+                                "answer":  "أكبر طراز يقدم 35-45واط مع فتحة 200مم. هذا مثالي للأسقف بارتفاع 4-8 أمتار في المولات وقاعات المعارض."
+                            },
+                            {
+                                "question":  "هل يمكن استخدام هذه السلسلة كإضاءة مدمجة وكشافة؟",
+                                "answer":  "نعم. تقدم السلسلة كل من نسخة الإضاءة المدمجة واسعة الشعاع ونسخة الكشافة (15°/24°/36°/50°)."
+                            }
+                        ],
+               "caseStudy":  {
+                                 "title":  "ردهة مول تجاري",
+                                 "location":  "الرياض، السعودية"
+                             }
+           }
 }

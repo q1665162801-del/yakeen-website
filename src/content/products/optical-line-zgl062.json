@@ -1,123 +1,123 @@
 {
-  "slug": "optical-line-zgl062",
-  "featured": false,
-  "name": "Optical Line Light — Wide Profile",
-  "shortName": "Optical Line Light",
-  "category": "panel-linear",
-  "tagline": "DIY modular optical line light with interchangeable lens/reflector system",
-  "description": "Yakeen optical line light with wide 70mm profile — modular DIY system with interchangeable optical components (lens, reflector, honeycomb, grille). Max 4m per section with 286mm segments. Pendant, recessed, or surface mounted. SASO & G-Mark certified for premium commercial lighting.",
-  "metaDescription": "Yakeen Optical Line Light — 70mm profile, modular DIY, interchangeable lens/reflector, max 4m, pendant/recessed/surface, SASO & G-Mark certified.",
-  "ogImage": "/assets/images/products/optical-line-zgl062.jpeg",
-  "mainImage": "/assets/images/products/optical-line-zgl062.jpeg",
-  "galleryImages": [
-    "/assets/images/products/optical-line-zgl062.jpeg",
-    "/assets/images/products/optical-line-zgl062-page.png"
-  ],
-  "sceneImage": "/assets/images/products/linear-scene-1.jpg",
-  "specs": {
-    "wattage": "20W-50W per meter",
-    "efficacy": "100-120 lm/W",
-    "cct": "2700K / 3000K / 4000K / 5000K",
-    "cri": "Ra>90",
-    "beamAngle": "30° / 60° / 90° (single 18°, double 20°/40°)",
-    "ipRating": "IP20",
-    "dimming": "DALI / 0-10V",
-    "lifespan": "L70 > 50,000 hours",
-    "warranty": "5 years",
-    "certifications": "SASO, G-Mark, CE, RoHS",
-    "moq": "30 pieces",
-    "leadTime": "20-30 days"
-  },
-  "applications": [
-    {
-      "title": "Offices",
-      "desc": "Architectural linear lighting with precise optical control.",
-      "icon": "office"
-    },
-    {
-      "title": "Hotels",
-      "desc": "Premium line lighting for lobbies and feature areas.",
-      "icon": "hotel"
-    },
-    {
-      "title": "Business Areas",
-      "desc": "Sleek, professional lighting for corporate environments.",
-      "icon": "office"
-    },
-    {
-      "title": "Supermarkets",
-      "desc": "Even, high-quality illumination for retail floors.",
-      "icon": "mall"
-    }
-  ],
-  "features": [
-    "Modular DIY system with interchangeable optical components",
-    "Optical options: lens (down-light), reflector, honeycomb, grille",
-    "Beam angles: 30°/60°/90° + single 18°/double 20°/40°",
-    "Max 4m per section (286mm segments)",
-    "Three installation: pendant, recessed (with trim), surface mounted",
-    "Black or white housing, 7 end cap types, L-type 180° extender"
-  ],
-  "faqs": [
-    {
-      "question": "What makes the optical line light different from standard linear lights?",
-      "answer": "The optical line light features a DIY modular system where you can mix and match optical components — lens, reflector, honeycomb grille, and PC cover — to achieve exactly the light distribution you need. This level of optical customization is typically only found in premium architectural lighting."
-    },
-    {
-      "question": "Can I change the optical components after installation?",
-      "answer": "Yes. The modular design allows you to swap optical components (lens, reflector, honeycomb, grille) without replacing the entire fixture. This makes it easy to adjust lighting for space redesigns or tenant changes."
-    }
-  ],
-  "caseStudy": {
-    "title": "Premium Office Space",
-    "location": "Abu Dhabi, UAE",
-    "year": "2024",
-    "image": "/assets/images/products/linear-scene-1.jpg"
-  },
-  "ar": {
-    "name": "إضاءة خطية بصرية — ملف عريض",
-    "shortName": "إضاءة خطية بصرية",
-    "tagline": "نظام إضاءة خطي بصري معياري DIY بعدسات/عاكسات قابلة للتبديل",
-    "description": "إضاءة خطية بصرية من Yakeen بملف عريض 70مم — نظام معياري DIY بمكونات بصرية قابلة للتبديل. معتمدة SASO و G-Mark.",
-    "features": [
-      "نظام معياري DIY بمكونات بصرية قابلة للتبديل",
-      "خيارات بصرية: عدسة، عاكس، قرص نحل، شبكة",
-      "زوايا الشعاع: 30°/60°/90° + مفرد 18°/مزدوج 20°/40°",
-      "حد أقصى 4م لكل قسم (قطع 286مم)",
-      "ثلاث تركيبات: معلق، مدمج، سطحي",
-      "هيكل أسود أو أبيض، 7 أنواع أغطية طرفية"
-    ],
-    "applications": [
-      {
-        "title": "المكاتب",
-        "desc": "إضاءة خطية معمارية بتحكم بصري دقيق."
-      },
-      {
-        "title": "الفنادق",
-        "desc": "إضاءة خطية فاخرة للبهوات والمناطق المميزة."
-      },
-      {
-        "title": "المناطق التجارية",
-        "desc": "إضاءة أنيقة ومهنية للبيئات المؤسسية."
-      },
-      {
-        "title": "الأسواق التجارية",
-        "desc": "إضاءة متساوية عالية الجودة للأرضيات التجارية."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "ما الذي يميز الإضاءة الخطية البصرية عن الإضاءة الخطية العادية؟",
-        "answer": "تتميز الإضاءة الخطية البصرية بنظام معياري DIY حيث يمكنك مزج ومطابقة المكونات البصرية — عدسة، عاكس، قرص نحل، وغطاء PC — لتحقيق توزيع الضوء الذي تحتاجه بالضبط."
-      },
-      {
-        "question": "هل يمكنني تغيير المكونات البصرية بعد التركيب؟",
-        "answer": "نعم. التصميم المعياري يسمح بتبديل المكونات البصرية دون استبدال التركيب بالكامل."
-      }
-    ],
-    "caseStudy": {
-      "title": "مساحة مكتبية فاخرة",
-      "location": "أبو ظبي، الإمارات"
-    }
-  }
+
+    "slug":  "optical-line-zgl062",
+    "featured":  false,
+    "name":  "Optical Line Light — Wide Profile",
+    "shortName":  "Optical Line Light",
+    "category":  "panel-linear",
+    "tagline":  "DIY modular optical line light with interchangeable lens/reflector system",
+    "description":  "Yakeen optical line light with wide 70mm profile — modular DIY system with interchangeable optical components (lens, reflector, honeycomb, grille). Max 4m per section with 286mm segments. Pendant, recessed, or surface mounted. SASO \u0026 G-Mark certified for premium commercial lighting.",
+    "metaDescription":  "Yakeen Optical Line Light — 70mm profile, modular DIY, interchangeable lens/reflector, max 4m, pendant/recessed/surface, SASO \u0026 G-Mark certified.",
+    "ogImage":  "/assets/images/products/optical-line-zgl062.jpeg",
+    "mainImage":  "/assets/images/products/optical-line-zgl062.jpeg",
+    "galleryImages":  [
+                          "/assets/images/products/optical-line-zgl062.jpeg"
+                      ],
+    "sceneImage":  "/assets/images/products/linear-scene-1.jpg",
+    "specs":  {
+                  "wattage":  "20W-50W per meter",
+                  "efficacy":  "100-120 lm/W",
+                  "cct":  "2700K / 3000K / 4000K / 5000K",
+                  "cri":  "Ra\u003e90",
+                  "beamAngle":  "30° / 60° / 90° (single 18°, double 20°/40°)",
+                  "ipRating":  "IP20",
+                  "dimming":  "DALI / 0-10V",
+                  "lifespan":  "L70 \u003e 50,000 hours",
+                  "warranty":  "5 years",
+                  "certifications":  "SASO, G-Mark, CE, RoHS",
+                  "moq":  "30 pieces",
+                  "leadTime":  "20-30 days"
+              },
+    "applications":  [
+                         {
+                             "title":  "Offices",
+                             "desc":  "Architectural linear lighting with precise optical control.",
+                             "icon":  "office"
+                         },
+                         {
+                             "title":  "Hotels",
+                             "desc":  "Premium line lighting for lobbies and feature areas.",
+                             "icon":  "hotel"
+                         },
+                         {
+                             "title":  "Business Areas",
+                             "desc":  "Sleek, professional lighting for corporate environments.",
+                             "icon":  "office"
+                         },
+                         {
+                             "title":  "Supermarkets",
+                             "desc":  "Even, high-quality illumination for retail floors.",
+                             "icon":  "mall"
+                         }
+                     ],
+    "features":  [
+                     "Modular DIY system with interchangeable optical components",
+                     "Optical options: lens (down-light), reflector, honeycomb, grille",
+                     "Beam angles: 30°/60°/90° + single 18°/double 20°/40°",
+                     "Max 4m per section (286mm segments)",
+                     "Three installation: pendant, recessed (with trim), surface mounted",
+                     "Black or white housing, 7 end cap types, L-type 180° extender"
+                 ],
+    "faqs":  [
+                 {
+                     "question":  "What makes the optical line light different from standard linear lights?",
+                     "answer":  "The optical line light features a DIY modular system where you can mix and match optical components — lens, reflector, honeycomb grille, and PC cover — to achieve exactly the light distribution you need. This level of optical customization is typically only found in premium architectural lighting."
+                 },
+                 {
+                     "question":  "Can I change the optical components after installation?",
+                     "answer":  "Yes. The modular design allows you to swap optical components (lens, reflector, honeycomb, grille) without replacing the entire fixture. This makes it easy to adjust lighting for space redesigns or tenant changes."
+                 }
+             ],
+    "caseStudy":  {
+                      "title":  "Premium Office Space",
+                      "location":  "Abu Dhabi, UAE",
+                      "year":  "2024",
+                      "image":  "/assets/images/products/linear-scene-1.jpg"
+                  },
+    "ar":  {
+               "name":  "إضاءة خطية بصرية — ملف عريض",
+               "shortName":  "إضاءة خطية بصرية",
+               "tagline":  "نظام إضاءة خطي بصري معياري DIY بعدسات/عاكسات قابلة للتبديل",
+               "description":  "إضاءة خطية بصرية من Yakeen بملف عريض 70مم — نظام معياري DIY بمكونات بصرية قابلة للتبديل. معتمدة SASO و G-Mark.",
+               "features":  [
+                                "نظام معياري DIY بمكونات بصرية قابلة للتبديل",
+                                "خيارات بصرية: عدسة، عاكس، قرص نحل، شبكة",
+                                "زوايا الشعاع: 30°/60°/90° + مفرد 18°/مزدوج 20°/40°",
+                                "حد أقصى 4م لكل قسم (قطع 286مم)",
+                                "ثلاث تركيبات: معلق، مدمج، سطحي",
+                                "هيكل أسود أو أبيض، 7 أنواع أغطية طرفية"
+                            ],
+               "applications":  [
+                                    {
+                                        "title":  "المكاتب",
+                                        "desc":  "إضاءة خطية معمارية بتحكم بصري دقيق."
+                                    },
+                                    {
+                                        "title":  "الفنادق",
+                                        "desc":  "إضاءة خطية فاخرة للبهوات والمناطق المميزة."
+                                    },
+                                    {
+                                        "title":  "المناطق التجارية",
+                                        "desc":  "إضاءة أنيقة ومهنية للبيئات المؤسسية."
+                                    },
+                                    {
+                                        "title":  "الأسواق التجارية",
+                                        "desc":  "إضاءة متساوية عالية الجودة للأرضيات التجارية."
+                                    }
+                                ],
+               "faqs":  [
+                            {
+                                "question":  "ما الذي يميز الإضاءة الخطية البصرية عن الإضاءة الخطية العادية؟",
+                                "answer":  "تتميز الإضاءة الخطية البصرية بنظام معياري DIY حيث يمكنك مزج ومطابقة المكونات البصرية — عدسة، عاكس، قرص نحل، وغطاء PC — لتحقيق توزيع الضوء الذي تحتاجه بالضبط."
+                            },
+                            {
+                                "question":  "هل يمكنني تغيير المكونات البصرية بعد التركيب؟",
+                                "answer":  "نعم. التصميم المعياري يسمح بتبديل المكونات البصرية دون استبدال التركيب بالكامل."
+                            }
+                        ],
+               "caseStudy":  {
+                                 "title":  "مساحة مكتبية فاخرة",
+                                 "location":  "أبو ظبي، الإمارات"
+                             }
+           }
 }

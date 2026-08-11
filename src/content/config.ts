@@ -70,4 +70,19 @@ const products = defineCollection({
   }),
 });
 
-export const collections = { products };
+// ponytail: blog collection — glob matches both EN (root) and AR (ar/) articles
+const blog = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    lang: z.enum(['en', 'ar']).default('en'),
+    author: z.string().default('Yakeen Lighting Team'),
+    date: z.string(),
+    category: z.string(),
+    image: z.string().optional().default('/assets/images/hero/hero-bg-v3.jpg'),
+    keywords: z.array(z.string()).default([]),
+  }),
+});
+
+export const collections = { products, blog };

@@ -1,123 +1,123 @@
 {
-  "slug": "optical-line-zgl070",
-  "featured": false,
-  "name": "Optical Line Light — Slim Profile",
-  "shortName": "Slim Optical Line",
-  "category": "panel-linear",
-  "tagline": "Slim 52mm profile with up/down lighting capability",
-  "description": "Yakeen slim optical line light with 52mm profile — features up/down lighting options, interchangeable optical suite (reflector/lens), and 132mm modular segments. Max 4m per section. Pendant, recessed, or surface mounted. SASO & G-Mark certified.",
-  "metaDescription": "Yakeen Slim Optical Line Light — 52mm profile, up/down lighting, modular, max 4m, SASO & G-Mark certified for architectural linear lighting in the Middle East.",
-  "ogImage": "/assets/images/products/optical-line-zgl070.jpeg",
-  "mainImage": "/assets/images/products/optical-line-zgl070.jpeg",
-  "galleryImages": [
-    "/assets/images/products/optical-line-zgl070.jpeg",
-    "/assets/images/products/optical-line-zgl070-page.png"
-  ],
-  "sceneImage": "/assets/images/products/linear-scene-1.jpg",
-  "specs": {
-    "wattage": "15W-40W per meter",
-    "efficacy": "100-120 lm/W",
-    "cct": "2700K / 3000K / 4000K / 5000K",
-    "cri": "Ra>90",
-    "beamAngle": "30° / 45° / 90° / 10x35° (asymmetric)",
-    "ipRating": "IP20",
-    "dimming": "DALI / 0-10V",
-    "lifespan": "L70 > 50,000 hours",
-    "warranty": "5 years",
-    "certifications": "SASO, G-Mark, CE, RoHS",
-    "moq": "30 pieces",
-    "leadTime": "20-30 days"
-  },
-  "applications": [
-    {
-      "title": "Offices",
-      "desc": "Slim, architectural lighting with up/down illumination.",
-      "icon": "office"
-    },
-    {
-      "title": "Hotels",
-      "desc": "Elegant line lighting for corridors and feature walls.",
-      "icon": "hotel"
-    },
-    {
-      "title": "Business Areas",
-      "desc": "Professional, low-profile lighting for corporate spaces.",
-      "icon": "office"
-    },
-    {
-      "title": "Supermarkets",
-      "desc": "Even illumination with asymmetric beam option for shelving.",
-      "icon": "mall"
-    }
-  ],
-  "features": [
-    "Slim 52mm profile for minimalist architectural design",
-    "Up/down lighting capability (top + bottom illumination)",
-    "Interchangeable optical suite: reflector or lens options",
-    "Beam angles: 30°/45°/90°/10x35° (asymmetric)",
-    "Max 4m per section (132mm segments)",
-    "Pendant, recessed, or surface mounted installation"
-  ],
-  "faqs": [
-    {
-      "question": "What is the difference between ZGL062 and ZGL070?",
-      "answer": "ZGL062 has a wider 70mm profile with more optical options (honeycomb, grille) and dual-direction beam control. ZGL070 has a slimmer 52mm profile with up/down lighting and asymmetric beam option. Choose ZGL062 for maximum optical flexibility, ZGL070 for minimalist aesthetics."
-    },
-    {
-      "question": "Can I get both up and down lighting?",
-      "answer": "Yes. The ZGL070 supports up/down lighting with separate lens options for top (up-light) and bottom (down-light) illumination. This creates a stunning architectural effect for pendant installations."
-    }
-  ],
-  "caseStudy": {
-    "title": "Hotel Corridor",
-    "location": "Doha, Qatar",
-    "year": "2024",
-    "image": "/assets/images/products/linear-scene-1.jpg"
-  },
-  "ar": {
-    "name": "إضاءة خطية بصرية — ملف نحيف",
-    "shortName": "إضاءة خطية نحيفة",
-    "tagline": "ملف نحيف 52مم مع قدرة إضاءة علوية/سفلية",
-    "description": "إضاءة خطية بصرية نحيفة من Yakeen بملف 52مم — تتميز بخيارات إضاءة علوية/سفلية ومجموعة بصرية قابلة للتبديل. معتمدة SASO و G-Mark.",
-    "features": [
-      "ملف نحيف 52مم لتصميم معماري بسيط",
-      "قدرة إضاءة علوية/سفلية (إضاءة علوية + سفلية)",
-      "مجموعة بصرية قابلة للتبديل: خيارات عاكس أو عدسة",
-      "زوايا الشعاع: 30°/45°/90°/10x35° (غير متماثل)",
-      "حد أقصى 4م لكل قسم (قطع 132مم)",
-      "تركيب معلق أو مدمج أو سطحي"
-    ],
-    "applications": [
-      {
-        "title": "المكاتب",
-        "desc": "إضاءة معمارية نحيفة بإضاءة علوية/سفلية."
-      },
-      {
-        "title": "الفنادق",
-        "desc": "إضاءة خطية أنيقة للممرات والجدران المميزة."
-      },
-      {
-        "title": "المناطق التجارية",
-        "desc": "إضاءة مهنية منخفضة الملف للمساحات المؤسسية."
-      },
-      {
-        "title": "الأسواق التجارية",
-        "desc": "إضاءة متساوية مع خيار شعاع غير متماثل للأرفف."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "ما الفرق بين ZGL062 و ZGL070؟",
-        "answer": "ZGL062 له ملف عريض 70مم مع خيارات بصرية أكثر. ZGL070 له ملف أنحف 52مم مع إضاءة علوية/سفلية وخيار شعاع غير متماثل."
-      },
-      {
-        "question": "هل يمكنني الحصول على إضاءة علوية وسفلية؟",
-        "answer": "نعم. ZGL070 يدعم الإضاءة العلوية/السفلية بخيارات عدسات منفصلة للإضاءة العلوية والسفلية."
-      }
-    ],
-    "caseStudy": {
-      "title": "ممر فندق",
-      "location": "الدوحة، قطر"
-    }
-  }
+
+    "slug":  "optical-line-zgl070",
+    "featured":  false,
+    "name":  "Optical Line Light — Slim Profile",
+    "shortName":  "Slim Optical Line",
+    "category":  "panel-linear",
+    "tagline":  "Slim 52mm profile with up/down lighting capability",
+    "description":  "Yakeen slim optical line light with 52mm profile — features up/down lighting options, interchangeable optical suite (reflector/lens), and 132mm modular segments. Max 4m per section. Pendant, recessed, or surface mounted. SASO \u0026 G-Mark certified.",
+    "metaDescription":  "Yakeen Slim Optical Line Light — 52mm profile, up/down lighting, modular, max 4m, SASO \u0026 G-Mark certified for architectural linear lighting in the Middle East.",
+    "ogImage":  "/assets/images/products/optical-line-zgl070.jpeg",
+    "mainImage":  "/assets/images/products/optical-line-zgl070.jpeg",
+    "galleryImages":  [
+                          "/assets/images/products/optical-line-zgl070.jpeg"
+                      ],
+    "sceneImage":  "/assets/images/products/linear-scene-1.jpg",
+    "specs":  {
+                  "wattage":  "15W-40W per meter",
+                  "efficacy":  "100-120 lm/W",
+                  "cct":  "2700K / 3000K / 4000K / 5000K",
+                  "cri":  "Ra\u003e90",
+                  "beamAngle":  "30° / 45° / 90° / 10x35° (asymmetric)",
+                  "ipRating":  "IP20",
+                  "dimming":  "DALI / 0-10V",
+                  "lifespan":  "L70 \u003e 50,000 hours",
+                  "warranty":  "5 years",
+                  "certifications":  "SASO, G-Mark, CE, RoHS",
+                  "moq":  "30 pieces",
+                  "leadTime":  "20-30 days"
+              },
+    "applications":  [
+                         {
+                             "title":  "Offices",
+                             "desc":  "Slim, architectural lighting with up/down illumination.",
+                             "icon":  "office"
+                         },
+                         {
+                             "title":  "Hotels",
+                             "desc":  "Elegant line lighting for corridors and feature walls.",
+                             "icon":  "hotel"
+                         },
+                         {
+                             "title":  "Business Areas",
+                             "desc":  "Professional, low-profile lighting for corporate spaces.",
+                             "icon":  "office"
+                         },
+                         {
+                             "title":  "Supermarkets",
+                             "desc":  "Even illumination with asymmetric beam option for shelving.",
+                             "icon":  "mall"
+                         }
+                     ],
+    "features":  [
+                     "Slim 52mm profile for minimalist architectural design",
+                     "Up/down lighting capability (top + bottom illumination)",
+                     "Interchangeable optical suite: reflector or lens options",
+                     "Beam angles: 30°/45°/90°/10x35° (asymmetric)",
+                     "Max 4m per section (132mm segments)",
+                     "Pendant, recessed, or surface mounted installation"
+                 ],
+    "faqs":  [
+                 {
+                     "question":  "What is the difference between ZGL062 and ZGL070?",
+                     "answer":  "ZGL062 has a wider 70mm profile with more optical options (honeycomb, grille) and dual-direction beam control. ZGL070 has a slimmer 52mm profile with up/down lighting and asymmetric beam option. Choose ZGL062 for maximum optical flexibility, ZGL070 for minimalist aesthetics."
+                 },
+                 {
+                     "question":  "Can I get both up and down lighting?",
+                     "answer":  "Yes. The ZGL070 supports up/down lighting with separate lens options for top (up-light) and bottom (down-light) illumination. This creates a stunning architectural effect for pendant installations."
+                 }
+             ],
+    "caseStudy":  {
+                      "title":  "Hotel Corridor",
+                      "location":  "Doha, Qatar",
+                      "year":  "2024",
+                      "image":  "/assets/images/products/linear-scene-1.jpg"
+                  },
+    "ar":  {
+               "name":  "إضاءة خطية بصرية — ملف نحيف",
+               "shortName":  "إضاءة خطية نحيفة",
+               "tagline":  "ملف نحيف 52مم مع قدرة إضاءة علوية/سفلية",
+               "description":  "إضاءة خطية بصرية نحيفة من Yakeen بملف 52مم — تتميز بخيارات إضاءة علوية/سفلية ومجموعة بصرية قابلة للتبديل. معتمدة SASO و G-Mark.",
+               "features":  [
+                                "ملف نحيف 52مم لتصميم معماري بسيط",
+                                "قدرة إضاءة علوية/سفلية (إضاءة علوية + سفلية)",
+                                "مجموعة بصرية قابلة للتبديل: خيارات عاكس أو عدسة",
+                                "زوايا الشعاع: 30°/45°/90°/10x35° (غير متماثل)",
+                                "حد أقصى 4م لكل قسم (قطع 132مم)",
+                                "تركيب معلق أو مدمج أو سطحي"
+                            ],
+               "applications":  [
+                                    {
+                                        "title":  "المكاتب",
+                                        "desc":  "إضاءة معمارية نحيفة بإضاءة علوية/سفلية."
+                                    },
+                                    {
+                                        "title":  "الفنادق",
+                                        "desc":  "إضاءة خطية أنيقة للممرات والجدران المميزة."
+                                    },
+                                    {
+                                        "title":  "المناطق التجارية",
+                                        "desc":  "إضاءة مهنية منخفضة الملف للمساحات المؤسسية."
+                                    },
+                                    {
+                                        "title":  "الأسواق التجارية",
+                                        "desc":  "إضاءة متساوية مع خيار شعاع غير متماثل للأرفف."
+                                    }
+                                ],
+               "faqs":  [
+                            {
+                                "question":  "ما الفرق بين ZGL062 و ZGL070؟",
+                                "answer":  "ZGL062 له ملف عريض 70مم مع خيارات بصرية أكثر. ZGL070 له ملف أنحف 52مم مع إضاءة علوية/سفلية وخيار شعاع غير متماثل."
+                            },
+                            {
+                                "question":  "هل يمكنني الحصول على إضاءة علوية وسفلية؟",
+                                "answer":  "نعم. ZGL070 يدعم الإضاءة العلوية/السفلية بخيارات عدسات منفصلة للإضاءة العلوية والسفلية."
+                            }
+                        ],
+               "caseStudy":  {
+                                 "title":  "ممر فندق",
+                                 "location":  "الدوحة، قطر"
+                             }
+           }
 }

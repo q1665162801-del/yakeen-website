@@ -1,7 +1,8 @@
 ---
 /**
  * HomeContent.astro — Shared homepage body.
- * Premium editorial design — warm tones, depth shadows, smooth section flow.
+ * ponytail: redesigned to match FAQ page style — clean sections, no hero image,
+ * eyebrow + heading + subtitle pattern, text-focused content.
  * Both / and /ar/ render this component.
  */
 import { getAllProducts } from '../../data/products';
@@ -16,22 +17,19 @@ const prefix = locale === 'ar' ? '/ar' : '';
 
 const products = await getAllProducts();
 
-// ponytail: 5 professional category scene photos — each clearly shows its product type
-// All in /categories/ folder, distinct from product images, no duplicates anywhere
+// ponytail: categories with images
 const categories = [
-  { id: 'indoor', titleKey: 'home.cat.indoor.title', descKey: 'home.cat.indoor.desc', image: '/assets/images/categories/cat-indoor.jpg' },
-  { id: 'track', titleKey: 'home.cat.track.title', descKey: 'home.cat.track.desc', image: '/assets/images/categories/cat-track.jpg' },
-  { id: 'panel-linear', titleKey: 'home.cat.panel-linear.title', descKey: 'home.cat.panel-linear.desc', image: '/assets/images/categories/cat-panel.jpg' },
-  { id: 'industrial', titleKey: 'home.cat.industrial.title', descKey: 'home.cat.industrial.desc', image: '/assets/images/categories/cat-industrial.jpg' },
-  { id: 'outdoor', titleKey: 'home.cat.outdoor.title', descKey: 'home.cat.outdoor.desc', image: '/assets/images/categories/cat-outdoor.jpg' },
+  { id: 'indoor', titleKey: 'home.cat.indoor.title', descKey: 'home.cat.indoor.desc', img: '/assets/images/categories/cat-indoor.jpg' },
+  { id: 'track', titleKey: 'home.cat.track.title', descKey: 'home.cat.track.desc', img: '/assets/images/categories/cat-track.jpg' },
+  { id: 'panel-linear', titleKey: 'home.cat.panel-linear.title', descKey: 'home.cat.panel-linear.desc', img: '/assets/images/categories/cat-panel.jpg' },
+  { id: 'industrial', titleKey: 'home.cat.industrial.title', descKey: 'home.cat.industrial.desc', img: '/assets/images/categories/cat-industrial.jpg' },
+  { id: 'outdoor', titleKey: 'home.cat.outdoor.title', descKey: 'home.cat.outdoor.desc', img: '/assets/images/categories/cat-outdoor.jpg' },
 ];
 
 const testimonials = [
-  { id: 1, badgeKey: 'testimonials.t1.badge', textKey: 'testimonials.t1.text', nameKey: 'testimonials.t1.name', roleKey: 'testimonials.t1.role', image: '/assets/images/testimonials/testimonial-1.jpg' },
-  { id: 2, badgeKey: 'testimonials.t2.badge', textKey: 'testimonials.t2.text', nameKey: 'testimonials.t2.name', roleKey: 'testimonials.t2.role', image: '/assets/images/testimonials/testimonial-2.jpg' },
-  { id: 3, badgeKey: 'testimonials.t3.badge', textKey: 'testimonials.t3.text', nameKey: 'testimonials.t3.name', roleKey: 'testimonials.t3.role', image: '/assets/images/testimonials/testimonial-3.jpg' },
-  { id: 4, badgeKey: 'testimonials.t4.badge', textKey: 'testimonials.t4.text', nameKey: 'testimonials.t4.name', roleKey: 'testimonials.t4.role', image: '/assets/images/testimonials/testimonial-4.jpg' },
-  { id: 5, badgeKey: 'testimonials.t5.badge', textKey: 'testimonials.t5.text', nameKey: 'testimonials.t5.name', roleKey: 'testimonials.t5.role', image: '/assets/images/testimonials/testimonial-5.jpg' },
+  { id: 1, badgeKey: 'testimonials.t1.badge', textKey: 'testimonials.t1.text', nameKey: 'testimonials.t1.name', roleKey: 'testimonials.t1.role' },
+  { id: 2, badgeKey: 'testimonials.t2.badge', textKey: 'testimonials.t2.text', nameKey: 'testimonials.t2.name', roleKey: 'testimonials.t2.role' },
+  { id: 3, badgeKey: 'testimonials.t3.badge', textKey: 'testimonials.t3.text', nameKey: 'testimonials.t3.name', roleKey: 'testimonials.t3.role' },
 ];
 
 const whyItems = [
@@ -42,29 +40,49 @@ const whyItems = [
 ];
 ---
 
-<!-- ===== Hero Section ===== -->
-<section class="relative min-h-[90vh] flex items-center overflow-hidden" style="background: #0a1525;">
-  <div class="absolute inset-0 z-0">
-    <img src="/assets/images/hero/hero-bright-elegant.webp" width="1280" height="960" loading="eager" fetchpriority="high" alt="Yakeen LED commercial lighting solutions for Middle East markets" class="w-full h-full object-cover" />
-  </div>
-  <div class="absolute inset-0 z-0" style="background: rgba(10,21,37,0.82);"></div>
+<!-- ===== Hero Section — redesigned with design flair ===== -->
+<section class="relative overflow-hidden section-padding" style="background: linear-gradient(180deg, rgba(5,11,20,0.45) 0%, rgba(5,11,20,0.20) 35%, rgba(5,11,20,0.55) 100%), url('/assets/images/hero/hero-bright-elegant.webp') center/cover no-repeat;">
 
-  <div class="container-yakeen relative z-20 py-20">
-    <div class="max-w-3xl">
-      <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style="background: rgba(201,169,97,0.15); border: 1px solid rgba(201,169,97,0.3);">
-        <span class="w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
-        <span class="text-gold-500 text-sm font-semibold tracking-wide">{t(locale, 'hero.badge')}</span>
+  <!-- ponytail: decorative gradient orbs for depth — big company feel -->
+  <div class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full opacity-10 blur-3xl pointer-events-none" style="background: radial-gradient(circle, #c9a961 0%, transparent 70%);"></div>
+  <div class="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full opacity-[0.07] blur-3xl pointer-events-none" style="background: radial-gradient(circle, #3a5685 0%, transparent 70%);"></div>
+
+  <div class="container-yakeen relative z-10">
+    <div class="mx-auto max-w-3xl text-center">
+      <!-- Badge — glassmorphism with gold accent lines -->
+      <div class="reveal flex items-center justify-center gap-3 mb-8">
+        <span class="h-px w-8 md:w-12 bg-gradient-to-r from-transparent to-gold-500/50"></span>
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full" style="background: rgba(255,255,255,0.08); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(201,169,97,0.25);">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold-500 animate-pulse"></span>
+          <span class="text-white/90 text-xs font-semibold tracking-widest uppercase">{t(locale, 'hero.badge')}</span>
+        </div>
+        <span class="h-px w-8 md:w-12 bg-gradient-to-l from-transparent to-gold-500/50"></span>
       </div>
 
-      <h1 class="reveal text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-white">
+      <!-- Heading — gradient text with glow, tight tracking -->
+      <h1 class="reveal hero-title-gradient text-4xl md:text-5xl lg:text-[3.5rem] font-bold leading-[1.12] mb-5 tracking-tight px-2">
         {t(locale, 'hero.title')}
       </h1>
 
-      <p class="reveal text-lg md:text-xl text-gray-300 mb-8 max-w-2xl leading-relaxed">
+      <!-- Diamond separator — small design detail -->
+      <div class="reveal flex items-center justify-center gap-2.5 mb-6">
+        <span class="h-px w-10 bg-gold-500/25"></span>
+        <span class="w-1.5 h-1.5 rotate-45 bg-gold-500/40"></span>
+        <span class="h-px w-10 bg-gold-500/25"></span>
+      </div>
+
+      <!-- Subtitle -->
+      <p class="reveal text-lg md:text-xl text-white/75 mb-10 max-w-2xl mx-auto leading-relaxed">
         {t(locale, 'hero.subtitle')}
       </p>
 
-      <div class="reveal flex flex-wrap gap-4">
+      <!-- AI Search — focal point -->
+      <div class="reveal mb-8">
+        <AISearchBar products={products} />
+      </div>
+
+      <!-- CTA buttons -->
+      <div class="reveal flex flex-wrap justify-center gap-4">
         <a href={prefix + '/contact'} class="btn-gold animate-pulse-gold text-base px-8 py-4">
           {t(locale, 'hero.getQuote')}
         </a>
@@ -72,61 +90,51 @@ const whyItems = [
           {t(locale, 'hero.browseProducts')}
         </a>
       </div>
-
-      <div class="reveal grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-white/10">
-        <div>
-          <div class="text-3xl font-bold text-gold-500">10+</div>
-          <div class="text-sm text-gray-400 mt-1">{t(locale, 'hero.stat.products')}</div>
-        </div>
-        <div>
-          <div class="text-3xl font-bold text-gold-500">50°C</div>
-          <div class="text-sm text-gray-400 mt-1">{t(locale, 'hero.stat.heatRated')}</div>
-        </div>
-        <div>
-          <div class="text-3xl font-bold text-gold-500">6</div>
-          <div class="text-sm text-gray-400 mt-1">{t(locale, 'hero.stat.gcc')}</div>
-        </div>
-      </div>
     </div>
   </div>
+
+  <!-- ponytail: scroll-down indicator — animated chevron at hero bottom -->
+  <a href="#trust-bar" class="scroll-indicator absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/60 hover:text-gold-400 transition-colors" aria-label="Scroll down">
+    <span class="text-xs uppercase tracking-widest">{locale === 'ar' ? 'اسحب للأسفل' : 'Scroll'}</span>
+    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </a>
 </section>
 
-<!-- ===== AI Search Bar ===== -->
-<AISearchBar />
-
 <!-- ===== Trust Bar ===== -->
-<TrustBar />
+<div id="trust-bar"><TrustBar /></div>
 
-<!-- ===== Product Categories — warm sand, borderless depth cards ===== -->
+<!-- ===== Product Categories — clean text cards, no images (FAQ-style) ===== -->
 <section class="section-padding" style="background: var(--sand-50);">
   <div class="container-yakeen">
-    {/* Editorial header — left-aligned, magazine feel, not centered PPT */}
-    <div class="mb-16 reveal">
-      <div class="flex items-center gap-3 mb-3">
-        <span class="block w-8 h-px bg-gold-500"></span>
-        <p class="text-gold-600 font-bold tracking-widest uppercase text-xs">{t(locale, 'products.eyebrow')}</p>
-      </div>
+    <!-- Section header — eyebrow + heading + subtitle (FAQ pattern) -->
+    <div class="mb-12 reveal text-center">
+      <p class="text-gold-600 font-bold tracking-widest uppercase text-xs mb-3">{t(locale, 'products.eyebrow')}</p>
       <h2 class="text-3xl md:text-5xl font-bold text-navy-900 leading-tight">{t(locale, 'products.title')}</h2>
-      <p class="text-gray-500 mt-4 max-w-xl text-lg">{t(locale, 'products.subtitle')}</p>
+      <p class="text-gray-500 mt-4 max-w-xl mx-auto text-lg">{t(locale, 'products.subtitle')}</p>
     </div>
 
-    {/* Category tiles — no borders, depth via layered shadow */}
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-16">
+    {/* Category cards — with images, alternating reveal directions */}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
       {categories.map((cat, i) => (
-        <div class="reveal group rounded-2xl overflow-hidden bg-white card-premium" style={`transition-delay: ${i * 60}ms`}>
-          <div class="aspect-[4/3] overflow-hidden bg-sand-100">
-            <img src={cat.image} alt={t(locale, cat.titleKey)} width="400" height="300" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
+        <a
+          href={prefix + '/products?cat=' + cat.id}
+          class={`${i % 2 === 0 ? 'reveal-left' : 'reveal-right'} group relative overflow-hidden rounded-xl aspect-[4/3] card-premium`}
+          style={`transition-delay: ${i * 60}ms`}
+        >
+          <img src={cat.img} alt={t(locale, cat.titleKey)} loading="lazy" width="400" height="300" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-navy-900/20 to-transparent"></div>
+          <div class="relative z-10 p-5 flex flex-col justify-end h-full">
+            <h3 class="font-bold text-white text-sm group-hover:text-gold-400 transition-colors duration-300">{t(locale, cat.titleKey)}</h3>
+            <p class="text-white/70 text-xs mt-1">{t(locale, cat.descKey)}</p>
           </div>
-          <div class="p-5">
-            <h3 class="font-bold text-navy-900 text-base group-hover:text-gold-600 transition-colors duration-300">{t(locale, cat.titleKey)}</h3>
-            <p class="text-gray-500 text-sm mt-1">{t(locale, cat.descKey)}</p>
-          </div>
-        </div>
+        </a>
       ))}
     </div>
 
     {/* Featured products */}
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {products.filter(p => p.featured).map((product) => (
         <ProductCard product={product} />
       ))}
@@ -140,53 +148,44 @@ const whyItems = [
   </div>
 </section>
 
-<!-- ===== Why Choose Yakeen — dark, glassmorphism cards ===== -->
-<section class="section-padding relative overflow-hidden" style="background: #0a1525;">
+<!-- ===== Why Choose Yakeen — light, clean cards ===== -->
+<section class="section-padding relative" style="background: #ffffff;">
   <div class="container-yakeen relative z-10 pt-8">
-    <div class="mb-16 reveal">
-      <div class="flex items-center gap-3 mb-3">
-        <span class="block w-8 h-px bg-gold-500"></span>
-        <p class="text-gold-500 font-bold tracking-widest uppercase text-xs">{t(locale, 'whyYakeen.eyebrow')}</p>
-      </div>
-      <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight">{t(locale, 'whyYakeen.title')}</h2>
+    <div class="mb-16 reveal text-center">
+      <p class="text-gold-600 font-bold tracking-widest uppercase text-xs mb-3">{t(locale, 'whyYakeen.eyebrow')}</p>
+      <h2 class="text-3xl md:text-5xl font-bold text-navy-900 leading-tight">{t(locale, 'whyYakeen.title')}</h2>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {whyItems.map((item, i) => (
-        <div class="reveal card-glass p-8" style={`transition-delay: ${i * 80}ms`}>
+        <div class="reveal-scale card-premium p-8" style={`transition-delay: ${i * 80}ms`}>
           <div class="text-4xl mb-5">{item.icon}</div>
-          <h3 class="text-white font-bold text-lg mb-2">{t(locale, item.titleKey)}</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">{t(locale, item.descKey)}</p>
+          <h3 class="text-navy-900 font-bold text-lg mb-2">{t(locale, item.titleKey)}</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">{t(locale, item.descKey)}</p>
         </div>
       ))}
     </div>
   </div>
 </section>
 
-<!-- ===== Customer Testimonials — warm sand, premium depth cards ===== -->
+<!-- ===== Customer Testimonials — text only, no images (FAQ-style) ===== -->
 <section class="section-padding relative" style="background: var(--sand-50);">
   <div class="container-yakeen relative z-10 pt-8">
-    <div class="mb-16 reveal">
-      <div class="flex items-center gap-3 mb-3">
-        <span class="block w-8 h-px bg-gold-500"></span>
-        <p class="text-gold-600 font-bold tracking-widest uppercase text-xs">{t(locale, 'testimonials.eyebrow')}</p>
-      </div>
+    <div class="mb-16 reveal text-center">
+      <p class="text-gold-600 font-bold tracking-widest uppercase text-xs mb-3">{t(locale, 'testimonials.eyebrow')}</p>
       <h2 class="text-3xl md:text-5xl font-bold text-navy-900 leading-tight">{t(locale, 'testimonials.title')}</h2>
-      <p class="text-gray-500 mt-4 max-w-xl text-lg">{t(locale, 'testimonials.subtitle')}</p>
+      <p class="text-gray-500 mt-4 max-w-xl mx-auto text-lg">{t(locale, 'testimonials.subtitle')}</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {testimonials.map((testimonial, i) => (
-        <div class="reveal card-premium p-8" style={`transition-delay: ${i * 80}ms`}>
+        <div class={`${i % 2 === 0 ? 'reveal-left' : 'reveal-right'} card-premium p-8`} style={`transition-delay: ${i * 80}ms`}>
           <span class="text-gold-500 text-xs font-bold uppercase tracking-widest">{t(locale, testimonial.badgeKey)}</span>
           <div class="text-gold-500 mt-3 text-lg">★★★★★</div>
-          <p class="text-gray-700 mt-4 leading-relaxed">{t(locale, testimonial.textKey)}</p>
-          <div class="mt-6 flex items-center gap-3 pt-5 border-t border-gray-100">
-            <img src={testimonial.image} alt={t(locale, testimonial.nameKey)} width="48" height="48" loading="lazy" class="w-12 h-12 rounded-full object-cover ring-2 ring-gold-500/20" />
-            <div>
-              <div class="font-bold text-navy-900 text-sm">{t(locale, testimonial.nameKey)}</div>
-              <div class="text-xs text-gray-500">{t(locale, testimonial.roleKey)}</div>
-            </div>
+          <p class="text-gray-700 mt-4 leading-relaxed text-sm">{t(locale, testimonial.textKey)}</p>
+          <div class="mt-6 pt-5 border-t border-gray-100">
+            <div class="font-bold text-navy-900 text-sm">{t(locale, testimonial.nameKey)}</div>
+            <div class="text-xs text-gray-500">{t(locale, testimonial.roleKey)}</div>
           </div>
         </div>
       ))}
@@ -196,3 +195,25 @@ const whyItems = [
 
 <!-- ===== CTA Banner ===== -->
 <CTABanner />
+
+<style>
+  /* ponytail: gradient title — white→cream→gold, subtle glow, slow shimmer */
+  .hero-title-gradient {
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #ffffff 0%, #f5ecd9 35%, #d4b576 65%, #c9a961 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 2px 20px rgba(201,169,97,0.15));
+    animation: hero-shimmer 8s ease-in-out infinite;
+  }
+  @keyframes hero-shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  /* ponytail: reduced-motion — disable shimmer for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title-gradient { animation: none; }
+  }
+</style>

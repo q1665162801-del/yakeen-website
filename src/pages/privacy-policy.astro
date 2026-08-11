@@ -1,9 +1,16 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+import { breadcrumbSchema } from '../utils/schema';
 import { getLocale, t } from '../i18n/ui';
 
 const locale = getLocale(Astro.url);
 const prefix = locale === 'ar' ? '/ar' : '';
+
+const crumbs = [
+  { name: t(locale, 'nav.home'), url: prefix + '/' },
+  { name: t(locale, 'privacy.title'), url: prefix + '/privacy-policy' },
+];
+const breadcrumbJsonLd = breadcrumbSchema(crumbs);
 ---
 
 <BaseLayout
@@ -11,6 +18,7 @@ const prefix = locale === 'ar' ? '/ar' : '';
   description={t(locale, 'privacy.intro')}
   canonicalPath={Astro.url.pathname}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <section class="bg-sand-50 py-20 md:py-28">
     <div class="container-yakeen max-w-3xl">
       <nav class="mb-6 text-sm text-navy-500" aria-label={t(locale, 'aria.breadcrumb')}>

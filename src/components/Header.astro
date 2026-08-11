@@ -66,17 +66,18 @@ const quoteHref = prefix + '/contact';
           </a>
         ))}
 
-        <!-- Markets dropdown -->
-        <div class="relative group">
+        <!-- Markets dropdown — JS click toggle + CSS hover fallback -->
+        <div class="relative group" id="markets-dropdown-wrap">
           <button
             type="button"
+            id="markets-dropdown-btn"
             class="nav-link px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200 text-white/90 hover:text-white inline-flex items-center gap-1"
             aria-haspopup="true"
             aria-expanded="false"
           >
             {t(locale, 'nav.markets')}
             <svg
-              class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180"
+              class="w-3.5 h-3.5 transition-transform duration-200 markets-arrow"
               viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
             >
@@ -84,7 +85,8 @@ const quoteHref = prefix + '/contact';
             </svg>
           </button>
           <div
-            class="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-56 opacity-0 invisible
+            id="markets-dropdown-menu"
+            class="markets-dropdown-menu absolute left-1/2 -translate-x-1/2 top-full pt-2 w-56 opacity-0 invisible
                    group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100
                    group-focus-within:visible transition-all duration-200"
           >
@@ -214,7 +216,7 @@ const quoteHref = prefix + '/contact';
   </div>
 </header>
 
-<script>
+<script is:inline>
   // Scroll state — toggle solid background after a small offset
   const header = document.getElementById('site-header');
   const onScroll = () => {
@@ -235,7 +237,7 @@ const quoteHref = prefix + '/contact';
   const labelOpen = toggle?.dataset.labelOpen || 'Open menu';
   const labelClose = toggle?.dataset.labelClose || 'Close menu';
 
-  const setMenu = (open: boolean) => {
+  const setMenu = (open) => {
     if (!menu || !toggle) return;
     menu.classList.toggle('is-open', open);
     toggle.setAttribute('aria-expanded', String(open));
@@ -262,6 +264,40 @@ const quoteHref = prefix + '/contact';
   // Close when resizing back to desktop
   window.addEventListener('resize', () => {
     if (window.innerWidth >= 1024) setMenu(false);
+  });
+
+  // ponytail: Markets dropdown — JS click toggle (CSS group-hover is unreliable)
+  const marketsBtn = document.getElementById('markets-dropdown-btn');
+  const marketsMenu = document.getElementById('markets-dropdown-menu');
+  const marketsArrow = marketsBtn?.querySelector('.markets-arrow');
+  let marketsOpen = false;
+
+  const setMarkets = (open) => {
+    if (!marketsMenu || !marketsBtn) return;
+    marketsOpen = open;
+    marketsMenu.classList.toggle('opacity-0', !open);
+    marketsMenu.classList.toggle('invisible', !open);
+    marketsMenu.classList.toggle('opacity-100', open);
+    marketsMenu.classList.toggle('visible', open);
+    marketsBtn.setAttribute('aria-expanded', String(open));
+    marketsArrow?.classList.toggle('rotate-180', open);
+  };
+
+  marketsBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setMarkets(!marketsOpen);
+  });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (marketsOpen && !e.target.closest('#markets-dropdown-wrap')) {
+      setMarkets(false);
+    }
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && marketsOpen) setMarkets(false);
   });
 </script>
 

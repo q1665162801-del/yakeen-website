@@ -1,0 +1,211 @@
+---
+// ponytail: blog detail page — reuses BaseLayout, CTABanner, breadcrumbSchema
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import { breadcrumbSchema } from '../../utils/schema';
+import { getLocale, t } from '../../i18n/ui';
+import { getCollection, render } from 'astro:content';
+import { siteConfig } from '../../data/site-config';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog');
+  // ponytail: only EN articles at /blog/[slug]; AR articles handled by ar/blog/[slug].astro
+  return allPosts
+    .filter(post => post.data.lang === 'en')
+    .map(post => ({
+      params: { slug: post.id },
+      props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const locale = getLocale(Astro.url);
+const prefix = locale === 'ar' ? '/ar' : '';
+
+// Related posts (same category, same locale, exclude current)
+const allPosts = await getCollection('blog');
+const related = allPosts
+  .filter(p => p.data.lang === locale && p.data.category === post.data.category && p.id !== post.id)
+  .slice(0, 3);
+
+// Breadcrumb
+const crumbs = [
+  { name: t(locale, 'nav.home'), url: prefix + '/' },
+  { name: locale === 'ar' ? 'المدونة' : 'Blog', url: prefix + '/blog' },
+  { name: post.data.title, url: `${prefix}/blog/${post.id}` },
+];
+const breadcrumbJsonLd = breadcrumbSchema(crumbs);
+
+// Article Schema — AI crawler discoverability
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.description,
+  image: siteConfig.url + post.data.image,
+  datePublished: post.data.date,
+  dateModified: post.data.date,
+  author: {
+    '@type': 'Organization',
+    name: post.data.author,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: siteConfig.name,
+    logo: {
+      '@type': 'ImageObject',
+      url: siteConfig.url + '/assets/images/brand/logo.png',
+    },
+  },
+  inLanguage: locale === 'ar' ? 'ar-SA' : 'en-US',
+  keywords: post.data.keywords.join(', '),
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': siteConfig.url + prefix + '/blog/' + post.id,
+  },
+};
+
+// Category label
+const categoryLabels: Record<string, { en: string; ar: string }> = {
+  Certification: { en: 'Certification', ar: 'الشهادات' },
+  'Design Guide': { en: 'Design Guide', ar: 'دليل التصميم' },
+  Procurement: { en: 'Procurement', ar: 'المشتريات' },
+  Technical: { en: 'Technical', ar: 'تقني' },
+};
+const catLabel = categoryLabels[post.data.category]?.[locale] || post.data.category;
+
+// ponytail: estimate reading time from body length
+const wordCount = post.body?.split(/\s+/).length || 500;
+const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+---
+
+<BaseLayout
+  title={`${post.data.title} — Yakeen Lighting`}
+  description={post.data.description}
+  image={post.data.image}
+  canonicalPath={`${prefix}/blog/${post.id}`}
+  type="article"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  {/* === Breadcrumb === */}
+  <section class="pt-28 pb-4" style="background: #0a1525;">
+    <div class="container-yakeen">
+      <nav class="text-sm text-white/60" aria-label={t(locale, 'aria.breadcrumb')}>
+        <a href={prefix + '/'} class="hover:text-gold-400 transition-colors">{t(locale, 'nav.home')}</a>
+        <span class="mx-2 text-white/30">/</span>
+        <a href={prefix + '/blog'} class="hover:text-gold-400 transition-colors">{locale === 'ar' ? 'المدونة' : 'Blog'}</a>
+        <span class="mx-2 text-white/30">/</span>
+        <span class="text-gold-400 font-medium truncate">{post.data.title}</span>
+      </nav>
+    </div>
+  </section>
+
+  {/* === Article Header === */}
+  <section class="relative overflow-hidden pt-8 pb-12 md:pt-12 md:pb-16" style="background: linear-gradient(135deg, #050b14 0%, #0a1525 50%, #1a2744 100%);">
+    <div class="container-yakeen relative z-10 max-w-4xl">
+      <div class="flex items-center gap-3 mb-4 text-sm">
+        <span class="px-3 py-1 rounded-full bg-gold-500/15 text-gold-400 font-medium">{catLabel}</span>
+        <time class="text-white/50" datetime={post.data.date}>{post.data.date}</time>
+        <span class="text-white/30">·</span>
+        <span class="text-white/50">{readingTime} {locale === 'ar' ? 'دقيقة قراءة' : 'min read'}</span>
+      </div>
+      <h1 class="reveal text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">{post.data.title}</h1>
+      <p class="reveal mt-4 text-lg text-white/70 leading-relaxed">{post.data.description}</p>
+      <p class="mt-4 text-sm text-white/40">{locale === 'ar' ? 'بقلم' : 'By'} {post.data.author}</p>
+    </div>
+  </section>
+
+  {/* === Article Body === */}
+  <section class="section-padding bg-white">
+    <div class="container-yakeen max-w-4xl">
+      {/* ponytail: blog cover image from frontmatter */}
+      <div class="rounded-2xl overflow-hidden shadow-xl mb-10 -mt-20 relative z-10 aspect-[16/9]">
+        <img src={post.data.image} alt={post.data.title} loading="lazy" width="1200" height="675" class="w-full h-full object-cover" />
+      </div>
+
+      {/* Markdown content — ponytail: scoped CSS instead of @tailwindcss/typography dependency */}
+      <article class="article-content">
+        <Content />
+      </article>
+
+      {/* Back to blog */}
+      <div class="mt-12 pt-8 border-t border-gray-200">
+        <a href={prefix + '/blog'} class="inline-flex items-center gap-2 text-gold-600 font-semibold hover:text-gold-700 transition-colors">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12"/></svg>
+          {locale === 'ar' ? 'العودة إلى المدونة' : 'Back to Blog'}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* === Related Posts === */}
+  {related.length > 0 && (
+    <section class="section-padding" style="background: #f8f6f1;">
+      <div class="container-yakeen">
+        <h2 class="text-2xl md:text-3xl font-bold text-navy-900 mb-8 text-center">
+          {locale === 'ar' ? 'مقالات ذات صلة' : 'Related Articles'}
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {related.map((rp) => {
+            const slug = rp.id.replace(/^ar\//, '');
+            const cat = categoryLabels[rp.data.category] || { en: rp.data.category, ar: rp.data.category };
+            const catLabel = locale === 'ar' ? cat.ar : cat.en;
+            return (
+              <a href={`${prefix}/blog/${slug}`} class="group rounded-2xl overflow-hidden border border-gray-200 bg-white hover:shadow-xl transition-shadow duration-300">
+                <div class="aspect-[16/9] relative overflow-hidden">
+                  <img src={rp.data.image} alt={rp.data.title} loading="lazy" width="800" height="450" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
+                  <span class="absolute top-3 left-3 px-2 py-1 rounded-full text-xs font-semibold backdrop-blur-sm" style="background: rgba(201,169,97,0.2); color: #c9a961; border: 1px solid rgba(201,169,97,0.3);">{catLabel}</span>
+                </div>
+                <div class="p-5">
+                  <h3 class="font-bold text-navy-900 mb-2 group-hover:text-gold-600 transition-colors line-clamp-2">{rp.data.title}</h3>
+                  <p class="text-sm text-gray-600 line-clamp-2">{rp.data.description}</p>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {/* noscript: article metadata for AI crawlers */}
+  <noscript>
+    <div style="padding: 2rem; font-family: system-ui, sans-serif; max-width: 800px; margin: 0 auto;">
+      <h1>{post.data.title}</h1>
+      <p><strong>{post.data.description}</strong></p>
+      <p>Category: {catLabel} | Published: {post.data.date} | Author: {post.data.author}</p>
+      <p>Keywords: {post.data.keywords.join(', ')}</p>
+    </div>
+  </noscript>
+
+  <CTABanner title={t(locale, 'cta.title')} subtitle={t(locale, 'cta.subtitle')} />
+</BaseLayout>
+
+<style>
+  /* ponytail: article typography — zero dependencies, scoped to this page */
+  .article-content { font-size: 1.0625rem; line-height: 1.8; color: #374151; }
+  .article-content h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.75rem; font-weight: 700; color: #050b14; margin: 2.5rem 0 1rem; }
+  .article-content h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.375rem; font-weight: 700; color: #050b14; margin: 1.5rem 0 0.75rem; }
+  .article-content h4 { font-weight: 700; color: #050b14; margin: 1rem 0 0.5rem; }
+  .article-content p { margin: 1rem 0; }
+  .article-content a { color: #b8964a; text-decoration: none; }
+  .article-content a:hover { text-decoration: underline; }
+  .article-content strong { color: #050b14; font-weight: 700; }
+  .article-content ul, .article-content ol { margin: 1rem 0; padding-left: 1.5rem; }
+  .article-content ul { list-style: disc; }
+  .article-content ol { list-style: decimal; }
+  .article-content li { margin: 0.25rem 0; }
+  .article-content blockquote { border-left: 4px solid #c9a961; background: #faf7f2; padding: 0.25rem 1.5rem; margin: 1.5rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+  .article-content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+  .article-content th { background: #050b14; color: #c9a961; padding: 0.5rem 1rem; text-align: left; font-size: 0.875rem; }
+  .article-content td { padding: 0.5rem 1rem; border: 1px solid #e5e7eb; }
+  .article-content img { border-radius: 0.75rem; margin: 1.5rem 0; }
+  .article-content hr { border: none; border-top: 1px solid #e5e7eb; margin: 2rem 0; }
+  .article-content code { background: #f3f4f6; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.875em; }
+  .article-content pre { background: #050b14; color: #e5e7eb; padding: 1rem 1.5rem; border-radius: 0.75rem; overflow-x: auto; margin: 1.5rem 0; }
+  .article-content pre code { background: none; padding: 0; }
+</style>

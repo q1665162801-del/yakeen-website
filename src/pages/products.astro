@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductCard from '../components/ProductCard.astro';
 import CTABanner from '../components/CTABanner.astro';
 import { getAllProducts } from '../data/products';
-import { productCategories } from '../data/site-config';
+import { productCategories, siteConfig } from '../data/site-config';
 import { breadcrumbSchema } from '../utils/schema';
 import { getLocale, t } from '../i18n/ui';
 
@@ -33,7 +33,7 @@ const breadcrumbJsonLd = breadcrumbSchema(crumbs);
     "@type": "ItemList",
     "name": t(locale, 'products.hero.title'),
     "description": t(locale, 'products.hero.subtitle'),
-    "url": "https://www.yakeenlighting.com/products",
+    "url": `${siteConfig.url}/products`,
     "numberOfItems": products.length,
     "itemListElement": products.map((p, i) => ({
       "@type": "ListItem",
@@ -42,9 +42,9 @@ const breadcrumbJsonLd = breadcrumbSchema(crumbs);
         "@type": "Product",
         name: p.name,
         description: p.metaDescription,
-        url: `https://www.yakeenlighting.com/products/${p.slug}`,
+        url: `${siteConfig.url}/products/${p.slug}`,
         brand: { "@type": "Brand", name: "Yakeen Lighting" },
-        image: `https://www.yakeenlighting.com${p.mainImage}`,
+        image: `${siteConfig.url}${p.mainImage}`,
       },
     })),
   })} />

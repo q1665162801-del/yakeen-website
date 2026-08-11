@@ -1,123 +1,123 @@
 {
-  "mainImage": "/assets/images/products/cold-forged-js006.jpeg",
-  "applications": [
-    {
-      "title": "Retail Stores",
-      "desc": "Precision accent lighting with excellent thermal performance for long operating hours.",
-      "icon": "retail"
-    },
-    {
-      "title": "Hotels",
-      "desc": "Premium spotlight for lobby, corridor, and feature wall illumination.",
-      "icon": "hotel"
-    },
-    {
-      "title": "Restaurants",
-      "desc": "Focused lighting for table and food display areas.",
-      "icon": "restaurant"
-    },
-    {
-      "title": "Showrooms",
-      "desc": "High-quality accent lighting for product showcases.",
-      "icon": "showroom"
-    }
-  ],
-  "ogImage": "/assets/images/products/cold-forged-js006.jpeg",
-  "shortName": "Cold Forged Spotlight",
-  "galleryImages": [
-    "/assets/images/products/cold-forged-js006.jpeg",
-    "/assets/images/products/cold-forged-js006-page.png"
-  ],
-  "name": "Cold Forged LED Spotlight",
-  "slug": "cold-forged-spotlight",
-  "featured": false,
-  "tagline": "Superior thermal management with cold-forged aluminum housing",
-  "sceneImage": "/assets/images/products/downlight-scene-3.jpg",
-  "ar": {
-    "name": "كشافة LED مشكولة على البارد",
-    "shortName": "كشافة مشكولة على البارد",
-    "tagline": "إدارة حرارية فائقة بهيكل ألمنيوم مشكول على البارد",
-    "description": "كشافة LED مشكولة على البارد من Yakeen، 8-30واط بأحجام فتحة من 55مم إلى 95مم. تتميز ببناء ألمنيوم مشكول على البارد لتبديد حراري فائق، مما يطيل عمر LED. معتمدة SASO و G-Mark.",
-    "features": [
-      "هيكل ألمنيوم مشكول على البارد لإدارة حرارية فائقة",
-      "عمر LED ممتد من خلال تبديد حراري فعال",
-      "زوايا الشعاع: 15°/24°/36° لتصميم إضاءة مرن",
-      "خيارات الألوان: أبيض مطفي، أسود مطفي، رمادي معدني، فضي لامع، ذهبي",
-      "نسخ تركيب قياسية ومدمجة مسبقاً",
-      "ارتفاعات متعددة متاحة لأعماق سقف مختلفة"
-    ],
-    "applications": [
-      {
-        "title": "المتاجر",
-        "desc": "إضاءة مميزة دقيقة بأداء حراري ممتاز لساعات تشغيل طويلة."
-      },
-      {
-        "title": "الفنادق",
-        "desc": "كشافة فاخرة لإضاءة البهوات والممرات والجدران المميزة."
-      },
-      {
-        "title": "المطاعم",
-        "desc": "إضاءة مركزة لمناطق الطاولات وعرض الطعام."
-      },
-      {
-        "title": "صالات العرض",
-        "desc": "إضاءة مميزة عالية الجودة لعروض المنتجات."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "لماذا الألمنيوم المشكول على البارد أفضل من المصبوب؟",
-        "answer": "التشكيل على البارد ينتج هيكل ألمنيوم أكثر كثافة مع توصيل حراري أفضل من الصب. هذا يعني تبديد حراري أكثر كفاءة، مما يطيل عمر LED ويحافظ على إخراج الضوء بمرور الوقت."
-      },
-      {
-        "question": "ما خيارات التركيب المتاحة؟",
-        "answer": "كل طراز متوفر بنسخ قياسية (سطحية) ونسخ مدمجة مسبقاً. النسخة المدمجة مسبقاً تتضمن غلافاً يمكن تثبيته في الأسقف الخرسانية أثناء البناء لمظهر أنظف."
-      }
-    ],
-    "caseStudy": {
-      "title": "فندق بوتيك",
-      "location": "الدوحة، قطر"
-    }
-  },
-  "metaDescription": "Yakeen Cold Forged LED Spotlight — 8-30W, cold-forged aluminum, 55-95mm cutout, SASO & G-Mark certified for commercial accent lighting in the Middle East.",
-  "specs": {
-    "ipRating": "IP44",
-    "beamAngle": "15° / 24° / 36°",
-    "lifespan": "L70 > 50,000 hours",
-    "leadTime": "15-25 days",
-    "moq": "100 pieces",
-    "cct": "2700K / 3000K / 4000K / 6000K",
-    "wattage": "8W-30W",
-    "efficacy": "90-110 lm/W",
-    "certifications": "SASO, G-Mark, CE, RoHS",
-    "cri": "Ra>90",
-    "warranty": "5 years",
-    "dimming": "DALI / 0-10V / TRIAC"
-  },
-  "caseStudy": {
-    "title": "Boutique Hotel",
-    "location": "Doha, Qatar",
-    "year": "2024",
-    "image": "/assets/images/products/downlight-scene-3.jpg"
-  },
-  "description": "Yakeen cold forged LED spotlight, 8-30W with cutout sizes from 55mm to 95mm. Features cold-forged aluminum construction for superior heat dissipation, extending LED lifespan. Beam angles 15°/24°/36° with multiple color options. SASO & G-Mark certified for commercial lighting.",
-  "faqs": [
-    {
-      "question": "Why is cold-forged aluminum better than die-cast?",
-      "answer": "Cold forging produces a denser aluminum structure with better thermal conductivity than die-casting. This means more efficient heat dissipation, which directly extends LED lifespan and maintains light output over time. Yakeen Lighting uses cold-forged construction on all premium spotlight models."
-    },
-    {
-      "question": "What installation options are available?",
-      "answer": "Each model is available in standard (surface) and pre-embedded versions. The pre-embedded version includes a housing that can be set into concrete ceilings during construction for a cleaner, flush appearance."
-    }
-  ],
-  "features": [
-    "Cold-forged aluminum housing for superior thermal management",
-    "Extended LED lifespan through efficient heat dissipation",
-    "Beam angles: 15°/24°/36° for flexible lighting design",
-    "Color options: matte white, matte black, gunmetal, bright silver, gold",
-    "Standard and pre-embedded (pre-set) installation versions",
-    "Multiple heights available for different ceiling depths"
-  ],
-  "category": "indoor"
+
+    "mainImage":  "/assets/images/products/cold-forged-js006.jpeg",
+    "applications":  [
+                         {
+                             "title":  "Retail Stores",
+                             "desc":  "Precision accent lighting with excellent thermal performance for long operating hours.",
+                             "icon":  "retail"
+                         },
+                         {
+                             "title":  "Hotels",
+                             "desc":  "Premium spotlight for lobby, corridor, and feature wall illumination.",
+                             "icon":  "hotel"
+                         },
+                         {
+                             "title":  "Restaurants",
+                             "desc":  "Focused lighting for table and food display areas.",
+                             "icon":  "restaurant"
+                         },
+                         {
+                             "title":  "Showrooms",
+                             "desc":  "High-quality accent lighting for product showcases.",
+                             "icon":  "showroom"
+                         }
+                     ],
+    "ogImage":  "/assets/images/products/cold-forged-js006.jpeg",
+    "shortName":  "Cold Forged Spotlight",
+    "galleryImages":  [
+                          "/assets/images/products/cold-forged-js006.jpeg"
+                      ],
+    "name":  "Cold Forged LED Spotlight",
+    "slug":  "cold-forged-spotlight",
+    "featured":  false,
+    "tagline":  "Superior thermal management with cold-forged aluminum housing",
+    "sceneImage":  "/assets/images/products/downlight-scene-3.jpg",
+    "ar":  {
+               "name":  "كشافة LED مشكولة على البارد",
+               "shortName":  "كشافة مشكولة على البارد",
+               "tagline":  "إدارة حرارية فائقة بهيكل ألمنيوم مشكول على البارد",
+               "description":  "كشافة LED مشكولة على البارد من Yakeen، 8-30واط بأحجام فتحة من 55مم إلى 95مم. تتميز ببناء ألمنيوم مشكول على البارد لتبديد حراري فائق، مما يطيل عمر LED. معتمدة SASO و G-Mark.",
+               "features":  [
+                                "هيكل ألمنيوم مشكول على البارد لإدارة حرارية فائقة",
+                                "عمر LED ممتد من خلال تبديد حراري فعال",
+                                "زوايا الشعاع: 15°/24°/36° لتصميم إضاءة مرن",
+                                "خيارات الألوان: أبيض مطفي، أسود مطفي، رمادي معدني، فضي لامع، ذهبي",
+                                "نسخ تركيب قياسية ومدمجة مسبقاً",
+                                "ارتفاعات متعددة متاحة لأعماق سقف مختلفة"
+                            ],
+               "applications":  [
+                                    {
+                                        "title":  "المتاجر",
+                                        "desc":  "إضاءة مميزة دقيقة بأداء حراري ممتاز لساعات تشغيل طويلة."
+                                    },
+                                    {
+                                        "title":  "الفنادق",
+                                        "desc":  "كشافة فاخرة لإضاءة البهوات والممرات والجدران المميزة."
+                                    },
+                                    {
+                                        "title":  "المطاعم",
+                                        "desc":  "إضاءة مركزة لمناطق الطاولات وعرض الطعام."
+                                    },
+                                    {
+                                        "title":  "صالات العرض",
+                                        "desc":  "إضاءة مميزة عالية الجودة لعروض المنتجات."
+                                    }
+                                ],
+               "faqs":  [
+                            {
+                                "question":  "لماذا الألمنيوم المشكول على البارد أفضل من المصبوب؟",
+                                "answer":  "التشكيل على البارد ينتج هيكل ألمنيوم أكثر كثافة مع توصيل حراري أفضل من الصب. هذا يعني تبديد حراري أكثر كفاءة، مما يطيل عمر LED ويحافظ على إخراج الضوء بمرور الوقت."
+                            },
+                            {
+                                "question":  "ما خيارات التركيب المتاحة؟",
+                                "answer":  "كل طراز متوفر بنسخ قياسية (سطحية) ونسخ مدمجة مسبقاً. النسخة المدمجة مسبقاً تتضمن غلافاً يمكن تثبيته في الأسقف الخرسانية أثناء البناء لمظهر أنظف."
+                            }
+                        ],
+               "caseStudy":  {
+                                 "title":  "فندق بوتيك",
+                                 "location":  "الدوحة، قطر"
+                             }
+           },
+    "metaDescription":  "Yakeen Cold Forged LED Spotlight — 8-30W, cold-forged aluminum, 55-95mm cutout, SASO \u0026 G-Mark certified for commercial accent lighting in the Middle East.",
+    "specs":  {
+                  "ipRating":  "IP44",
+                  "beamAngle":  "15° / 24° / 36°",
+                  "lifespan":  "L70 \u003e 50,000 hours",
+                  "leadTime":  "15-25 days",
+                  "moq":  "100 pieces",
+                  "cct":  "2700K / 3000K / 4000K / 6000K",
+                  "wattage":  "8W-30W",
+                  "efficacy":  "90-110 lm/W",
+                  "certifications":  "SASO, G-Mark, CE, RoHS",
+                  "cri":  "Ra\u003e90",
+                  "warranty":  "5 years",
+                  "dimming":  "DALI / 0-10V / TRIAC"
+              },
+    "caseStudy":  {
+                      "title":  "Boutique Hotel",
+                      "location":  "Doha, Qatar",
+                      "year":  "2024",
+                      "image":  "/assets/images/products/downlight-scene-3.jpg"
+                  },
+    "description":  "Yakeen cold forged LED spotlight, 8-30W with cutout sizes from 55mm to 95mm. Features cold-forged aluminum construction for superior heat dissipation, extending LED lifespan. Beam angles 15°/24°/36° with multiple color options. SASO \u0026 G-Mark certified for commercial lighting.",
+    "faqs":  [
+                 {
+                     "question":  "Why is cold-forged aluminum better than die-cast?",
+                     "answer":  "Cold forging produces a denser aluminum structure with better thermal conductivity than die-casting. This means more efficient heat dissipation, which directly extends LED lifespan and maintains light output over time. Yakeen Lighting uses cold-forged construction on all premium spotlight models."
+                 },
+                 {
+                     "question":  "What installation options are available?",
+                     "answer":  "Each model is available in standard (surface) and pre-embedded versions. The pre-embedded version includes a housing that can be set into concrete ceilings during construction for a cleaner, flush appearance."
+                 }
+             ],
+    "features":  [
+                     "Cold-forged aluminum housing for superior thermal management",
+                     "Extended LED lifespan through efficient heat dissipation",
+                     "Beam angles: 15°/24°/36° for flexible lighting design",
+                     "Color options: matte white, matte black, gunmetal, bright silver, gold",
+                     "Standard and pre-embedded (pre-set) installation versions",
+                     "Multiple heights available for different ceiling depths"
+                 ],
+    "category":  "indoor"
 }
