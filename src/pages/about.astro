@@ -141,6 +141,72 @@ const stats = [
     </div>
   </section>
 
+  {/* Packaging & Shipping — ponytail: reuse same grid pattern, 4 unused factory images, bilingual inline */}
+  <section class="section-padding" style="background: var(--sand-50);">
+    <div class="container-yakeen">
+      <div class="text-center mb-12 reveal">
+        <p class="text-gold-600 font-semibold uppercase tracking-wide text-sm mb-2">{locale === 'ar' ? 'التعبئة والشحن' : 'Packaging & Shipping'}</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-navy-900">{locale === 'ar' ? 'من المصنع إلى ميناء الخليج' : 'From Factory to GCC Port'}</h2>
+        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+          {locale === 'ar' ? 'تعبئة تصدير قياسية، تحميل حاويات آمن، وثائق شحن كاملة مع شهادات SASO. شحن بحري إلى موانئ الخليج خلال 20-35 يوماً.' : 'Export-grade packaging, secure container loading, and full shipping documentation with SASO certificates. Sea freight to GCC ports in 20–35 days.'}
+        </p>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div class="reveal rounded-xl overflow-hidden shadow-lg group">
+          <div class="aspect-[4/3] overflow-hidden bg-navy-900">
+            <img src="/assets/images/factory/warehouse-packing.jpg" alt={locale === 'ar' ? 'تعبئة التصدير' : 'Export Packaging'} loading="lazy" width="400" height="300" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-3 bg-white">
+            <p class="font-semibold text-navy-900 text-sm">{locale === 'ar' ? 'تعبئة التصدير' : 'Export Packaging'}</p>
+          </div>
+        </div>
+        <div class="reveal rounded-xl overflow-hidden shadow-lg group">
+          <div class="aspect-[4/3] overflow-hidden bg-navy-900">
+            <img src="/assets/images/factory/warehouse-stock.jpg" alt={locale === 'ar' ? 'المخزون والامتثال' : 'Stock & Fulfillment'} loading="lazy" width="400" height="300" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-3 bg-white">
+            <p class="font-semibold text-navy-900 text-sm">{locale === 'ar' ? 'المخزون والامتثال' : 'Stock & Fulfillment'}</p>
+          </div>
+        </div>
+        <div class="reveal rounded-xl overflow-hidden shadow-lg group">
+          <div class="aspect-[4/3] overflow-hidden bg-navy-900">
+            <img src="/assets/images/factory/shipping-loading.jpg" alt={locale === 'ar' ? 'تحميل الحاويات' : 'Container Loading'} loading="lazy" width="400" height="300" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-3 bg-white">
+            <p class="font-semibold text-navy-900 text-sm">{locale === 'ar' ? 'تحميل الحاويات' : 'Container Loading'}</p>
+          </div>
+        </div>
+        <div class="reveal rounded-xl overflow-hidden shadow-lg group">
+          <div class="aspect-[4/3] overflow-hidden bg-navy-900">
+            <img src="/assets/images/factory/showroom-prep.jpg" alt={locale === 'ar' ? 'الفحص قبل الشحن' : 'Pre-shipment Prep'} loading="lazy" width="400" height="300" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-3 bg-white">
+            <p class="font-semibold text-navy-900 text-sm">{locale === 'ar' ? 'الفحص قبل الشحن' : 'Pre-shipment Prep'}</p>
+          </div>
+        </div>
+      </div>
+      {/* Shipping facts bar — ponytail: reuse stats grid pattern */}
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10 pt-10 border-t border-gray-200">
+        <div class="reveal text-center">
+          <div class="text-3xl font-bold text-gradient-gold">15–30</div>
+          <div class="text-xs text-gray-500 mt-1 uppercase tracking-wide">{locale === 'ar' ? 'يوم إنتاج' : 'Days Production'}</div>
+        </div>
+        <div class="reveal text-center">
+          <div class="text-3xl font-bold text-gradient-gold">20–35</div>
+          <div class="text-xs text-gray-500 mt-1 uppercase tracking-wide">{locale === 'ar' ? 'يوم شحن بحري' : 'Days Sea Freight'}</div>
+        </div>
+        <div class="reveal text-center">
+          <div class="text-3xl font-bold text-gradient-gold">FOB/CIF/DDP</div>
+          <div class="text-xs text-gray-500 mt-1 uppercase tracking-wide">{locale === 'ar' ? 'شروط الشحن' : 'Shipping Terms'}</div>
+        </div>
+        <div class="reveal text-center">
+          <div class="text-3xl font-bold text-gradient-gold">SASO</div>
+          <div class="text-xs text-gray-500 mt-1 uppercase tracking-wide">{locale === 'ar' ? 'وثائق كاملة' : 'Full Docs'}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   {/* Values */}
   <section class="section-padding" style="background: #f8f6f1;">
     <div class="container-yakeen">
