@@ -175,7 +175,7 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 200));
   {/* noscript: article metadata for AI crawlers */}
   <noscript>
     <div style="padding: 2rem; font-family: system-ui, sans-serif; max-width: 800px; margin: 0 auto;">
-      <h1>{post.data.title}</h1>
+      <p style="font-size: 1.5rem; font-weight: 700;">{post.data.title}</p>
       <p><strong>{post.data.description}</strong></p>
       <p>Category: {catLabel} | Published: {post.data.date} | Author: {post.data.author}</p>
       <p>Keywords: {post.data.keywords.join(', ')}</p>
