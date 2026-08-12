@@ -7,10 +7,11 @@
   "tagline": "100-240W with 140-160 lm/W and IP65",
   "description": "Yakeen UFO high bay light, 100-240W, 140-160 lm/W, IP65, 50°C rated, SASO & G-Mark certified for industrial lighting.",
   "metaDescription": "Yakeen UFO High Bay Light — 100-240W, 140-160 lm/W, IP65, 50°C rated, SASO & G-Mark certified for industrial lighting in the Middle East.",
-  "ogImage": "/assets/images/products/highbay-new.webp",
-  "mainImage": "/assets/images/products/highbay-new.webp",
+  "ogImage": "/assets/images/products/highbay-new.jpg",
+  "mainImage": "/assets/images/products/highbay-new.jpg",
   "galleryImages": [
-    "/assets/images/products/highbay-new.webp"
+    "/assets/images/products/highbay-new.jpg",
+    "/assets/images/products/highbay-scene-1.jpg"
   ],
   "sceneImage": "/assets/images/products/highbay-scene-1.jpg",
   "specs": {

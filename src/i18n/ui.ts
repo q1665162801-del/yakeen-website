@@ -286,6 +286,7 @@ const en: Record<string, string> = {
   'projects.cta.desc': 'From DIALux design to SABER registration to delivery — Yakeen Lighting handles the full process for your next installation.',
   'projects.card.cta': 'Start a similar project',
   'projects.card.empty': 'No projects in this category yet.',
+  'projects.card.reference': 'Reference Image',
 
   // ── FAQ Page ──
   'faq.breadcrumb': 'FAQ',
@@ -632,6 +633,7 @@ const ar: Record<string, string> = {
   'projects.cta.desc': 'من تصميم DIALux إلى تسجيل SABER إلى التسليم — تتولى Yakeen Lighting العملية الكاملة لمشروعك القادم.',
   'projects.card.cta': 'ابدأ مشروعاً مماثلاً',
   'projects.card.empty': 'لا توجد مشاريع في هذه الفئة بعد.',
+  'projects.card.reference': 'صورة مرجعية',
   'faq.breadcrumb': 'الأسئلة الشائعة',
   'faq.hero.title': 'الأسئلة الشائعة',
   'faq.hero.subtitle': 'كل ما يحتاج معرفته المشترون في الشرق الأوسط عن الشهادات والتخصيص والتسعير والشحن والجودة.',

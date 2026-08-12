@@ -215,6 +215,7 @@ const projects = [
           const location = locale === 'ar' && project.location_ar ? project.location_ar : project.location;
           const product = locale === 'ar' && project.product_ar ? project.product_ar : project.product;
           const description = locale === 'ar' && project.description_ar ? project.description_ar : project.description;
+          const isReference = project.image.includes('/products/');
           return (
           <article
             data-type={project.type}
@@ -240,6 +241,12 @@ const projects = [
               <span class="absolute top-3 right-3 rounded-full bg-gold-500/90 px-3 py-1 text-xs font-bold text-navy-900 backdrop-blur-sm">
                 {project.year}
               </span>
+              {/* Reference image badge — shown when using product scene photos */}
+              {isReference && (
+                <span class="absolute bottom-3 right-3 rounded-full bg-navy-900/85 px-3 py-1 text-xs font-medium text-white/80 backdrop-blur-sm">
+                  {t(locale, 'projects.card.reference')}
+                </span>
+              )}
             </div>
 
             {/* Card body */}
