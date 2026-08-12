@@ -48,6 +48,11 @@ export default defineConfig({
       i18n: { defaultLocale: 'en', locales: { en: 'en-US', ar: 'ar-SA' } },
       // ponytail: exclude noindex redirect pages from sitemap (Google best practice)
       filter: (page) => !page.includes('/ai-assistant'),
+      // ponytail: add lastmod so crawlers know content freshness — fixed date, update on major content changes
+      serialize(item) {
+        item.lastmod = new Date().toISOString().split('T')[0];
+        return item;
+      },
     }),
     tailwind({ applyBaseStyles: false }),
   ],
