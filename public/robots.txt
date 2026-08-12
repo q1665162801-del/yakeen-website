@@ -42,3 +42,4 @@ User-agent: meta-externalagent
 Allow: /
 
 Sitemap: https://www.yakeenlighting.com/sitemap-index.xml
+LlmsTxt: https://www.yakeenlighting.com/llms.txt
