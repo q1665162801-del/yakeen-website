@@ -43,6 +43,10 @@ jobs:
           mkdir -p dist/studio
           cp -r sanity/dist/* dist/studio/
 
+      # ponytail: Sanity basePath bug — fix asset paths from /static/ to /studio/static/
+      - name: Fix Studio asset paths for sub-path deployment
+        run: sed -i 's|="/static/|="/studio/static/|g' dist/studio/index.html
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
