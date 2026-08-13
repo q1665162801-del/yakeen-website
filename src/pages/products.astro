@@ -170,7 +170,9 @@ const breadcrumbJsonLd = breadcrumbSchema(crumbs);
         var cat = item.getAttribute('data-category');
         var searchText = item.getAttribute('data-search-text') || '';
         var catMatch = (currentFilter === 'all' || cat === currentFilter);
-        var searchMatch = !currentSearch || searchText.indexOf(currentSearch) !== -1;
+        // ponytail: split search into words, OR-match (fixes quick-search chips like "Downlight UGR<19")
+        var searchTerms = currentSearch.split(/\s+/).filter(Boolean);
+        var searchMatch = !currentSearch || searchTerms.some(function(t) { return searchText.indexOf(t) !== -1; });
         if (catMatch && searchMatch) {
           item.classList.remove('hidden');
           visibleCount++;
