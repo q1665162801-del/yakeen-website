@@ -1,4 +1,6 @@
-// ponytail: barrel export — one schema type for now, add more later
+// ponytail: barrel export — product + blog + siteSettings
 import { product } from './product';
+import { blog } from './blog';
+import { siteSettings } from './siteSettings';
 
-export const schemaTypes = [product];
+export const schemaTypes = [product, blog, siteSettings];

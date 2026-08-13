@@ -29,9 +29,8 @@ jobs:
       - run: npm run build
         env:
           NODE_ENV: production
-          # ponytail: SANITY disabled — local JSON is source of truth for product data
-          # SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
-          # SANITY_DATASET: ${{ secrets.SANITY_DATASET || 'production' }}
+          SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
+          SANITY_DATASET: ${{ secrets.SANITY_DATASET || 'production' }}
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
