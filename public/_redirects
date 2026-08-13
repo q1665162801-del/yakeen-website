@@ -1,0 +1,2 @@
+# ponytail: redirect /sitemap.xml → /sitemap-index.xml (Astro generates index, not sitemap.xml)
+/sitemap.xml /sitemap-index.xml 301
