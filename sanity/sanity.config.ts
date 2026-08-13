@@ -44,6 +44,7 @@ export default defineConfig({
   title: 'Yakeen Lighting Studio',
   projectId: 'e2usb7ms',
   dataset: process.env.SANITY_STUDIO_DATASET || 'production',
+  basePath: '/studio',
   plugins: [
     structureTool({
       structure: (S) => S.list().title('Content').items(deskStructure(S)),

@@ -32,6 +32,17 @@ jobs:
           SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
           SANITY_DATASET: ${{ secrets.SANITY_DATASET || 'production' }}
 
+      # ponytail: build Sanity Studio and embed at /studio/
+      - name: Build Sanity Studio
+        run: cd sanity && npm ci && npx sanity build
+        env:
+          SANITY_STUDIO_DATASET: production
+
+      - name: Copy Studio to website output
+        run: |
+          mkdir -p dist/studio
+          cp -r sanity/dist/* dist/studio/
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
