@@ -1,6 +1,10 @@
 User-agent: *
 Allow: /
 
+# ponytail: block CMS/backend paths from indexing
+Disallow: /studio/
+Disallow: /admin/
+
 # AI crawlers — explicit allow for AI search engine discovery
 User-agent: ClaudeBot
 Allow: /

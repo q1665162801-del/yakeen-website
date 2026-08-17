@@ -29,8 +29,9 @@ jobs:
       - run: npm run build
         env:
           NODE_ENV: production
-          SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
-          SANITY_DATASET: ${{ secrets.SANITY_DATASET || 'production' }}
+          # ponytail: disabled Sanity — local JSON is source of truth (prevents product slug mismatch 404s)
+          # SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
+          # SANITY_DATASET: ${{ secrets.SANITY_DATASET || 'production' }}
 
       # ponytail: build Sanity Studio and embed at /studio/
       - name: Build Sanity Studio

@@ -1,2 +1,12 @@
 # ponytail: redirect /sitemap.xml → /sitemap-index.xml (Astro generates index, not sitemap.xml)
 /sitemap.xml /sitemap-index.xml 301
+
+# ponytail: old Decap CMS paths — redirect to homepage instead of 404
+/admin/* / 301
+/admin / 301
+
+# ponytail: missing market index pages — redirect to first market
+/markets /markets/saudi-arabia/ 301
+/markets/ /markets/saudi-arabia/ 301
+/ar/markets /ar/markets/saudi-arabia/ 301
+/ar/markets/ /ar/markets/saudi-arabia/ 301
