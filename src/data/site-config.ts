@@ -19,7 +19,7 @@ export const siteConfig = {
   areaServed: ['SA', 'AE', 'QA', 'KW', 'BH', 'OM'],
   certifications: ['SASO', 'G-Mark', 'CE', 'RoHS', 'ISO 9001:2015'],
   social: {
-    linkedin: 'https://www.linkedin.com/company/yakeenlighting',
+    linkedin: 'https://www.linkedin.com/in/yakeenlighting/',
     facebook: 'https://www.facebook.com/yakeenlighting',
     instagram: 'https://www.instagram.com/yakeen_commercial_lights',
     youtube: 'https://www.youtube.com/@yakeenlighting',
