@@ -10,7 +10,3 @@
 /markets/ /markets/saudi-arabia/ 301
 /ar/markets /ar/markets/saudi-arabia/ 301
 /ar/markets/ /ar/markets/saudi-arabia/ 301
-
-# ponytail: catch-all for old Sanity product slugs — static files take precedence, so only non-existent slugs redirect
-/products/* /products/ 301
-/ar/products/* /ar/products/ 301
