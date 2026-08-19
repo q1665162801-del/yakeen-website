@@ -20,7 +20,7 @@ export const siteConfig = {
   certifications: ['SASO', 'G-Mark', 'CE', 'RoHS', 'ISO 9001:2015'],
   social: {
     linkedin: 'https://www.linkedin.com/in/yakeenlighting/',
-    facebook: 'https://www.facebook.com/yakeenlighting',
+    facebook: 'https://www.facebook.com/profile.php?id=61591335165644',
     instagram: 'https://www.instagram.com/yakeen_commercial_lights',
     youtube: 'https://www.youtube.com/@yakeenlighting',
     alibaba: 'https://yakeenlighting.en.alibaba.com',
