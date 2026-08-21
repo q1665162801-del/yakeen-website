@@ -10,6 +10,7 @@ import ProductCard from '../ProductCard.astro';
 import TrustBar from '../TrustBar.astro';
 import AISearchBar from '../AISearchBar.astro';
 import CTABanner from '../CTABanner.astro';
+import FactoryVideo from './FactoryVideo.astro';
 import { getLocale, t } from '../../i18n/ui';
 
 const locale = getLocale(Astro.url);
@@ -167,6 +168,9 @@ const whyItems = [
     </div>
   </div>
 </section>
+
+<!-- ===== Factory Tour Video ===== -->
+<FactoryVideo />
 
 <!-- ===== Customer Testimonials — text only, no images (FAQ-style) ===== -->
 <section class="section-padding relative" style="background: var(--sand-50);">

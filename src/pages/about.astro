@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTABanner from '../components/CTABanner.astro';
 import TrustBar from '../components/TrustBar.astro';
+import FactoryVideo from '../components/sections/FactoryVideo.astro';
 import { siteConfig } from '../data/site-config';
 import { breadcrumbSchema } from '../utils/schema';
 import { getLocale, t } from '../i18n/ui';
@@ -140,6 +141,9 @@ const stats = [
       </div>
     </div>
   </section>
+
+  {/* Factory Tour Video */}
+  <FactoryVideo />
 
   {/* Packaging & Shipping — ponytail: reuse same grid pattern, 4 unused factory images, bilingual inline */}
   <section class="section-padding" style="background: var(--sand-50);">
