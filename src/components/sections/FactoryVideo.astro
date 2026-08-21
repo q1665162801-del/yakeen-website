@@ -155,6 +155,12 @@ const coverImg = '/assets/images/factory/smt-production-line.jpg';
       iframe.title = 'Yakeen Lighting Factory Tour';
       iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
       iframe.allowFullscreen = true;
+      // Inline styles — necessary because Astro scopes CSS and dynamically created iframes don't get scoped attributes
+      iframe.style.position = 'absolute';
+      iframe.style.inset = '0';
+      iframe.style.width = '100%';
+      iframe.style.height = '100%';
+      iframe.style.border = '0';
       // Hide cover image and overlays
       el.querySelectorAll('img, .absolute').forEach((n) => (n.style.display = 'none'));
       el.appendChild(iframe);
