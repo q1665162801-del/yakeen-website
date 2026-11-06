@@ -4,7 +4,7 @@
   "description": "Yakeen Lighting — architectural lighting engineering. Static site generator for yakeenlighting.com.",
   "main": "index.js",
   "scripts": {
-    "build": "node build/index.js && node build/audit.js && node scripts/audit-build.js",
+    "build": "node build/index.js && node build/audit.js",
     "audit": "node build/audit.js",
     "audit:design": "node scripts/audit-build.js",
     "deep-audit": "node build/deep-audit.js",

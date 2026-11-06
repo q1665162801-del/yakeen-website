@@ -221,7 +221,7 @@ Cloudflare Pages + Cloudflare CDN = 两层缓存。
   - **软警告（WARN）**：已知债务，持续追踪，增量为零——如重复类定义、emoji 图标
 - 新增的代码不允许增加警告数量（增量为零原则）
 
-**当前门禁清单（构建审计 8 项检查）：**
+**当前门禁清单（构建审计 14 项检查，`scripts/audit-build.js`）：**
 1. Missing CSS definitions（HTML 类没对应 CSS）
 2. Dead CSS selectors（死代码）
 3. Broken internal links（内部断链）
@@ -229,7 +229,15 @@ Cloudflare Pages + Cloudflare CDN = 两层缓存。
 5. Inline style tags（**硬错误**，设计系统红线）
 6. Emoji icons in icon containers（警告，应替换为 SVG）
 7. Duplicate CSS class definitions（警告，组件重复定义债务）
-8. Redirect rules（重定向循环检测）
+8. Unreplaced template placeholders（未替换的 `{{占位符}}`）
+9. Dead inline event handlers（内联事件处理器）
+10. Global color specificity leak（全局颜色特异性泄漏）
+11. `-webkit-text-fill-color` usage（**硬错误**）
+12. Inline style attribute budget（**硬错误**，`style="..."` 属性超过 `scripts/style-baseline.json` 基线即失败）
+13. Refinements overlay freeze（**硬错误**，`refinements.css` 规则数不得超过 50）
+14. Redirect rules（重定向循环与 Pretty URL 冲突检测）
+
+**门禁不得静默失效：** `build/index.js` 中门禁脚本自身抛异常时必须 `exit 1`，绝不允许"审计崩了但构建继续"——那会产生假绿灯。
 
 ### 6.5 脚本目录所有权 = 杂物抽屉陷阱
 

@@ -161,7 +161,11 @@ async function build() {
       process.exit(1);
     }
   } catch (e) {
-    console.log(`⚠️  Audit script error: ${e.message} (continuing anyway)`);
+    // A crashing gate must never look like a passing gate. Swallowing this
+    // error once let a broken audit ship silently (PRINCIPLES §6.4).
+    console.log(`\n❌ Audit script crashed: ${e.message}`);
+    console.log('   The design-system gate could not run — refusing to report a green build.');
+    process.exit(1);
   }
 
   return built;

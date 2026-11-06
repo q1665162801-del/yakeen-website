@@ -131,6 +131,17 @@ function buildPage(pagePath, templates, buildAssets = {}) {
 
   // Hreflang + Arabic nav switch
   const normPath = relPath.replace(/\\/g, '/');
+
+  // Every page gets a stable identity class on <body> so page-level overrides
+  // can be scoped (`.page--about .card`) instead of reaching for #id-level
+  // specificity or inline styles. Purely additive — no rule targets page--*
+  // today, so rendering is unchanged.
+  const autoPageClass = 'page--' + (
+    normPath === 'index.html'
+      ? 'home'
+      : normPath.replace(/\/index\.html$/, '').replace(/\.html$/, '').replace(/\//g, '-')
+  );
+
   const { tags: hreflangTags, hasArVersion } = buildHreflang(relPath, lang, canonical);
   const { switchUrl: arSwitchUrl } = buildArSwitch(lang, normPath);
 
@@ -180,7 +191,7 @@ function buildPage(pagePath, templates, buildAssets = {}) {
     lang,
     base,
     content: pageContent.trim(),
-    pageClass: `${fm.pageClass || ''}${fm.type === 'country' ? ' gcc-country-page' : ''}`.trim(),
+    pageClass: `${autoPageClass}${fm.pageClass ? ' ' + fm.pageClass : ''}${fm.type === 'country' ? ' gcc-country-page' : ''}`.trim(),
     canonical,
     hreflangTags,
     pageSchema: buildPageSchema({ ...fm, canonical }, base),
