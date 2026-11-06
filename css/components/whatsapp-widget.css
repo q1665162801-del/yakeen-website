@@ -1,0 +1,73 @@
+/* ============================================================
+   WHATSAPP FLOATING WIDGET
+   Floating WhatsApp chat button
+   ============================================================ */
+
+#yakeen-whatsapp-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 24px;
+  z-index: var(--z-widget);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: #25D366;
+  color: var(--color-white);
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4), 0 2px 8px rgba(0,0,0,0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(20px) scale(0.9);
+  pointer-events: none;
+  animation: ywa-fade-in 0.5s ease-out 1.5s forwards;
+}
+
+#yakeen-whatsapp-btn:hover {
+  background: #128C7E;
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5), 0 4px 12px rgba(0,0,0,0.2);
+}
+
+#yakeen-whatsapp-btn:active {
+  transform: translateY(-1px) scale(0.95);
+}
+
+#yakeen-whatsapp-btn svg {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  color: var(--color-white);
+}
+
+@keyframes ywa-fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+}
+
+@keyframes ywa-pulse {
+  0%, 100% { box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4), 0 2px 8px rgba(0,0,0,0.15); }
+  50% { box-shadow: 0 6px 32px rgba(37, 211, 102, 0.65), 0 2px 8px rgba(0,0,0,0.15); }
+}
+
+#yakeen-whatsapp-btn.show {
+  animation: ywa-fade-in 0.5s ease-out forwards, ywa-pulse 2.5s ease-in-out 2s infinite;
+}
+
+@media (max-width: 768px) {
+  #yakeen-whatsapp-btn {
+    bottom: 20px;
+    right: 16px;
+    width: 50px;
+    height: 50px;
+  }
+  #yakeen-whatsapp-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+}

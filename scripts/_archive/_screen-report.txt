@@ -1,0 +1,290 @@
+modules.css top-level blocks: 96
+
+L8  .section-header-left
+     defs: -
+     pages=17: custom-lighting.html, engineering-hub.html, lighting-design.html, markets/saudi-arabia.html, products/downlights/index.html, products/index.html, products/linear-lighting/index.html, products/track-spotlights/index.html …
+L12  .section-header-right
+     defs: -
+     pages=1: projects.html
+L17  .section-header--center
+     defs: -
+     pages=1: index.html
+L23  .section-kicker
+     defs: -
+     pages=14: custom-lighting.html, engineering-hub.html, lighting-design.html, products/downlights/index.html, products/index.html, products/linear-lighting/index.html, products/track-spotlights/index.html, solutions/hospitality.html …
+L33  .section-sub
+     defs: -
+     pages=1: markets/saudi-arabia.html
+L41  .section-intro
+     defs: -
+     pages=1: projects.html
+L49  .section-light
+     defs: -
+     pages=16: about.html, architectural-lighting-manufacturer.html, bega-alternatives.html, china-vs-european-lighting.html, chinese-lighting-manufacturer-saso.html, custom-lighting-factory-china.html, delta-light-comparison.html, erco-alternatives.html …
+L53  .section-wide .container
+     defs: -
+     pages=0: (none)
+L57  .container-slim
+     defs: -
+     pages=1: projects.html
+L61  .section-sm
+     defs: -
+     pages=2: index.html, studio.html
+L87  .split-section
+     defs: -
+     pages=3: index.html, start-project.html, studio.html
+L94  .split-visual
+     defs: -
+     pages=2: index.html, studio.html
+L102  .split-visual img
+     defs: -
+     pages=2: index.html, studio.html
+L109  .split-visual--decorative
+     defs: -
+     pages=2: index.html, studio.html
+L116  .split-visual__rings
+     defs: -
+     pages=2: index.html, studio.html
+L125  .split-visual__rings::before,
+     defs: -
+     pages=2: index.html, studio.html
+L126  .split-visual__rings::after
+     defs: -
+     pages=2: index.html, studio.html
+L136  .split-visual__rings::before
+     defs: -
+     pages=2: index.html, studio.html
+L142  .split-visual__rings::after
+     defs: -
+     pages=2: index.html, studio.html
+L148  .split-content
+     defs: -
+     pages=2: index.html, studio.html
+L154  .split-content h2
+     defs: -
+     pages=2: index.html, studio.html
+L162  .split-content p
+     defs: -
+     pages=2: index.html, studio.html
+L170 [media]  .split-section
+     defs: -
+     pages=3: index.html, start-project.html, studio.html
+L177  .hero
+     defs: -
+     pages=1: index.html
+L184  .hero-bg
+     defs: -
+     pages=1: index.html
+L192  .hero-bg::after
+     defs: -
+     pages=1: index.html
+L199  .hero-content
+     defs: -
+     pages=2: about.html, index.html
+L205  .hero-text
+     defs: -
+     pages=1: index.html
+L213  .hero-eyebrow
+     defs: -
+     pages=1: index.html
+L224  .hero-visual
+     defs: -
+     pages=1 +JS: index.html
+L234  .hero-visual-shape
+     defs: -
+     pages=1: index.html
+L242  .hero-scroll
+     defs: -
+     pages=1: index.html
+L258  .accordion
+     defs: -
+     pages=1: start-project.html
+L262  .accordion-item
+     defs: -
+     pages=1: start-project.html
+L266  .accordion-header
+     defs: -
+     pages=1: start-project.html
+L278  .accordion-header:hover
+     defs: -
+     pages=1: start-project.html
+L282  .accordion-icon
+     defs: -
+     pages=1: start-project.html
+L290  .accordion-item.open .accordion-icon
+     defs: -
+     pages=1: start-project.html
+L294  .accordion-content
+     defs: -
+     pages=1: start-project.html
+L303  .accordion-item.open .accordion-content
+     defs: -
+     pages=1: start-project.html
+L309  .step-item
+     defs: -
+     pages=1: thank-you.html
+L315  .step-circle
+     defs: -
+     pages=1: index.html
+L329  .step-num, .step-number
+     defs: -
+     pages=1: thank-you.html
+L339  .step-item h4
+     defs: -
+     pages=1: thank-you.html
+L346  .step-item p
+     defs: -
+     pages=1: thank-you.html
+L354  .form-success
+     defs: -
+     pages=3: contact.html, request-sample.html, start-project.html
+L360  .form-success-icon
+     defs: -
+     pages=3: contact.html, request-sample.html, start-project.html
+L365  .form-success h3
+     defs: -
+     pages=3: contact.html, request-sample.html, start-project.html
+L370  .form-success p
+     defs: -
+     pages=3: contact.html, request-sample.html, start-project.html
+L375  .craft-section
+     defs: -
+     pages=1: studio.html
+L379  .section-cta
+     defs: -
+     pages=114: 404.html, about.html, architectural-lighting-manufacturer.html, bega-alternatives.html, blog/architectural-lighting-dubai.html, blog/architectural-lighting-riyadh.html, blog/chandelier-buying-guide.html, blog/cove-lighting-specification-guide.html …
+L388  .cta-banner
+     defs: -
+     pages=114: 404.html, about.html, architectural-lighting-manufacturer.html, bega-alternatives.html, blog/architectural-lighting-dubai.html, blog/architectural-lighting-riyadh.html, blog/chandelier-buying-guide.html, blog/cove-lighting-specification-guide.html …
+L396  .cta-banner-glow
+     defs: -
+     pages=114: 404.html, about.html, architectural-lighting-manufacturer.html, bega-alternatives.html, blog/architectural-lighting-dubai.html, blog/architectural-lighting-riyadh.html, blog/chandelier-buying-guide.html, blog/cove-lighting-specification-guide.html …
+L406  .cta-banner-inner
+     defs: -
+     pages=114: 404.html, about.html, architectural-lighting-manufacturer.html, bega-alternatives.html, blog/architectural-lighting-dubai.html, blog/architectural-lighting-riyadh.html, blog/chandelier-buying-guide.html, blog/cove-lighting-specification-guide.html …
+L415  .cta-banner-text
+     defs: -
+     pages=114: 404.html, about.html, architectural-lighting-manufacturer.html, bega-alternatives.html, blog/architectural-lighting-dubai.html, blog/architectural-lighting-riyadh.html, blog/chandelier-buying-guide.html, blog/cove-lighting-specification-guide.html …
+L420  .cta-banner-eyebrow
+     defs: -
+     pages=114: 404.html, about.html, architectural-lighting-manufacturer.html, bega-alternatives.html, blog/architectural-lighting-dubai.html, blog/architectural-lighting-riyadh.html, blog/chandelier-buying-guide.html, blog/cove-lighting-specification-guide.html …
+L429  .cta-banner-title
+     defs: -
+     pages=114: 404.html, about.html, architectural-lighting-manufacturer.html, bega-alternatives.html, blog/architectural-lighting-dubai.html, blog/architectural-lighting-riyadh.html, blog/chandelier-buying-guide.html, blog/cove-lighting-specification-guide.html …
+L438  .cta-banner-title em
+     defs: -
+     pages=114: 404.html, about.html, architectural-lighting-manufacturer.html, bega-alternatives.html, blog/architectural-lighting-dubai.html, blog/architectural-lighting-riyadh.html, blog/chandelier-buying-guide.html, blog/cove-lighting-specification-guide.html …
+L444  .cta-banner-desc
+     defs: -
+     pages=114: 404.html, about.html, architectural-lighting-manufacturer.html, bega-alternatives.html, blog/architectural-lighting-dubai.html, blog/architectural-lighting-riyadh.html, blog/chandelier-buying-guide.html, blog/cove-lighting-specification-guide.html …
+L451  .cta-banner-action
+     defs: -
+     pages=114: 404.html, about.html, architectural-lighting-manufacturer.html, bega-alternatives.html, blog/architectural-lighting-dubai.html, blog/architectural-lighting-riyadh.html, blog/chandelier-buying-guide.html, blog/cove-lighting-specification-guide.html …
+L459  .cta-banner-sub
+     defs: -
+     pages=114: 404.html, about.html, architectural-lighting-manufacturer.html, bega-alternatives.html, blog/architectural-lighting-dubai.html, blog/architectural-lighting-riyadh.html, blog/chandelier-buying-guide.html, blog/cove-lighting-specification-guide.html …
+L467  .cta-banner-sub::before
+     defs: -
+     pages=114: 404.html, about.html, architectural-lighting-manufacturer.html, bega-alternatives.html, blog/architectural-lighting-dubai.html, blog/architectural-lighting-riyadh.html, blog/chandelier-buying-guide.html, blog/cove-lighting-specification-guide.html …
+L474 [media]  .cta-banner-inner
+     defs: -
+     pages=114: 404.html, about.html, architectural-lighting-manufacturer.html, bega-alternatives.html, blog/architectural-lighting-dubai.html, blog/architectural-lighting-riyadh.html, blog/chandelier-buying-guide.html, blog/cove-lighting-specification-guide.html …
+L481 [media]  .cta-banner-action
+     defs: -
+     pages=114: 404.html, about.html, architectural-lighting-manufacturer.html, bega-alternatives.html, blog/architectural-lighting-dubai.html, blog/architectural-lighting-riyadh.html, blog/chandelier-buying-guide.html, blog/cove-lighting-specification-guide.html …
+L485 [media]  .cta-banner-glow
+     defs: -
+     pages=114: 404.html, about.html, architectural-lighting-manufacturer.html, bega-alternatives.html, blog/architectural-lighting-dubai.html, blog/architectural-lighting-riyadh.html, blog/chandelier-buying-guide.html, blog/cove-lighting-specification-guide.html …
+L492  .feature-check
+     defs: -
+     pages=2: index.html, studio.html
+L500  .feature-check::before
+     defs: -
+     pages=2: index.html, studio.html
+L507  .feature-list
+     defs: -
+     pages=2: index.html, studio.html
+L513  .feature-list li
+     defs: -
+     pages=2: index.html, studio.html
+L520  .case-study-specs
+     defs: -
+     pages=1: markets/saudi-arabia.html
+L530  .case-vs
+     defs: -
+     pages=1: erco-iguzzini-bega-alternatives.html
+L539  .certs-grid
+     defs: -
+     pages=1: studio.html
+L546  .check-icon
+     defs: -
+     pages=1: thank-you.html
+L551  .editorial-visual-caption
+     defs: -
+     pages=1: markets/saudi-arabia.html
+L559  .price-breakdown-wrap
+     defs: -
+     pages=12: bega-alternatives.html, china-vs-european-lighting.html, chinese-lighting-manufacturer-saso.html, custom-lighting-factory-china.html, delta-light-comparison.html, erco-alternatives.html, erco-iguzzini-bega-alternatives.html, flos-alternatives.html …
+L566  .price-row
+     defs: -
+     pages=10: architectural-lighting-manufacturer.html, bega-alternatives.html, delta-light-comparison.html, erco-alternatives.html, erco-iguzzini-bega-alternatives.html, flos-alternatives.html, iguzzini-alternatives.html, louis-poulsen-comparison.html …
+L574  .price-row:last-child
+     defs: -
+     pages=10: architectural-lighting-manufacturer.html, bega-alternatives.html, delta-light-comparison.html, erco-alternatives.html, erco-iguzzini-bega-alternatives.html, flos-alternatives.html, iguzzini-alternatives.html, louis-poulsen-comparison.html …
+L576  .stat-item
+     defs: -
+     pages=1 +JS: index.html
+L581  .stat-number
+     defs: -
+     pages=7: index.html, markets/bahrain.html, markets/kuwait.html, markets/oman.html, markets/qatar.html, markets/uae.html, studio.html
+L589  .sidebar-list
+     defs: -
+     pages=3: contact.html, request-sample.html, start-project.html
+L595  .sidebar-list li
+     defs: -
+     pages=3: contact.html, request-sample.html, start-project.html
+L601  .sidebar-list li a
+     defs: -
+     pages=3: contact.html, request-sample.html, start-project.html
+L607  .sidebar-list li a:hover
+     defs: -
+     pages=3: contact.html, request-sample.html, start-project.html
+L609  .pie-legend-label
+     defs: -
+     pages=7: bega-alternatives.html, china-vs-european-lighting.html, custom-lighting-factory-china.html, erco-alternatives.html, erco-iguzzini-bega-alternatives.html, flos-alternatives.html, iguzzini-alternatives.html
+L618  .pie-legend-pct
+     defs: -
+     pages=7: bega-alternatives.html, china-vs-european-lighting.html, custom-lighting-factory-china.html, erco-alternatives.html, erco-iguzzini-bega-alternatives.html, flos-alternatives.html, iguzzini-alternatives.html
+L625 [media]  .grid-3
+     defs: css\utilities.css:322
+     pages=1: contact.html
+L626 [media]  .featured-grid
+     defs: css\sections\blog.css:335
+     pages=0: (none)
+L627 [media]  .case-study-specs
+     defs: -
+     pages=1: markets/saudi-arabia.html
+L634  .advantage-grid
+     defs: -
+     pages=1: markets/saudi-arabia.html
+L641  .adv-card-link
+     defs: -
+     pages=1: markets/saudi-arabia.html
+L650  .process-step
+     defs: -
+     pages=4: certifications.html, custom-chandeliers.html, engineering-hub.html, index.html
+L658  .process-steps
+     defs: -
+     pages=1: certifications.html
+L665  .resource-link
+     defs: -
+     pages=2: markets/saudi-arabia.html, specification/index.html
+L671  .resource-type
+     defs: -
+     pages=1: markets/saudi-arabia.html
+L681  .sector-card
+     defs: -
+     pages=1: markets/saudi-arabia.html
+L689  .hp-field
+     defs: -
+     pages=2: journal.html, start-project.html

@@ -1,0 +1,431 @@
+/* ============================================================
+   RESPONSIVE
+   Cross-component responsive overrides + mobile readability boost
+   (Component-specific responsive styles live in their own CSS files)
+   ============================================================ */
+
+/* ============================================================
+   IMAGE OPTIMIZATION
+   ============================================================ */
+
+/* ============================================================
+   TABLET (≤ 1024px)
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .journal-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+/* ============================================================
+   TABLET / SMALL (≤ 768px)
+   Mobile readability boost + layout adjustments
+   ============================================================ */
+
+@media (max-width: 768px) {
+  /* --- Base typography --- */
+  body {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* --- Prevent text overflow on mobile (long words, URLs, numbers) --- */
+  body#yakeen-page p,
+  body#yakeen-page li,
+  body#yakeen-page a,
+  body#yakeen-page span,
+  body#yakeen-page h1,
+  body#yakeen-page h2,
+  body#yakeen-page h3,
+  body#yakeen-page h4 {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+  }
+
+  /* --- Container — tighter side padding on mobile --- */
+  .container {
+    --container-padding: 20px;
+  }
+
+  /* --- Grid layouts — collapse to single column on mobile --- */
+  .value-grid,
+  .product-grid,
+  .projects-grid,
+  .team-grid,
+  .resource-grid,
+  .report-data-grid,
+  .quality-pillars,
+  .boom-grid,
+  .process-grid,
+  .differ-grid,
+  .cities-grid,
+  .stats-row,
+  .craft-grid,
+  .product-family-grid,
+  .case-grid,
+  .case-studies-grid,
+  .quote-sidebar,
+  .standards-org-grid,
+  .footer-grid,
+  .why-gcc-grid,
+  .home-products-grid,
+  .capabilities-grid,
+  .home-projects-grid,
+  .home-value-grid,
+  .home-markets-grid,
+  .spec-grid,
+  .spec-advantages,
+  .spec-intro-grid,
+  .tested-grid,
+  .equipment-grid,
+  .component-grid,
+  .solution-link-grid,
+  .deliverables-grid,
+  .market-grid,
+  .luxury-grid,
+  .resource-library-grid,
+  .selector-steps,
+  .qa-grid,
+  .profile-compare,
+  .deep-dive-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* 2-column grids that should stay 2-col on tablet but 1-col on phone
+     are handled below at ≤ 480px */
+
+  /* --- Section rhythm — mobile scale via design tokens (single source of truth) ---
+     Desktop rhythm lives in tokens.css: sm 64 / md 96 / lg 120.
+     Mobile shrinks each tier proportionally — no per-element !important patches. */
+  :root {
+    --section-padding-y-sm: 56px;
+    --section-padding-y:    72px;
+    --section-padding-y-lg: 88px;
+    --hero-pad-top:    100px;
+    --hero-pad-bottom: 72px;
+  }
+
+  /* Country hero — restore mobile title scale over the page-specific
+     desktop override in markets.css (higher specificity) */
+  body#yakeen-page.gcc-country-page .country-hero h1 {
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+  }
+
+  /* --- Logo — prevent overflow on small screens --- */
+  .nav-logo {
+    max-width: 180px;
+  }
+
+  .nav-logo-img {
+    height: 30px;
+  }
+
+  /* --- Dark section text (light theme — dark text on warm light bg) --- */
+  .section-dark p,
+  .section-dark li,
+  .dark-section p,
+  .dark-section li {
+    color: var(--color-text-body);
+  }
+
+  /* --- Eyebrow / small labels --- */
+  body#yakeen-page .page-hero .eyebrow,
+  body#yakeen-page .section-header .eyebrow,
+  body#yakeen-page .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  /* --- Card descriptions --- */
+  .card p,
+  .value-card p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* --- Product cards (image overlay, white text) --- */
+  .product-card p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  body#yakeen-page .product-card h3 {
+    font-size: 18px;
+  }
+
+  /* --- Project cards (white bg, dark text) --- */
+  .project-card p {
+    font-size: 13px;
+    color: var(--color-text-body);
+  }
+
+  .project-card h3 {
+    font-size: 18px;
+  }
+
+  /* --- Hero subtitle shadow for mobile (photo backgrounds) --- */
+  .home-hero .hero-subtitle {
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  /* --- CTA buttons: bigger tap targets + prevent overflow ---
+     The variant classes below are a second, independent button system
+     (components/index.css §11). They were missing from this rule, so their
+     `white-space: nowrap` kept the min-content width and blew past the
+     container on narrow screens. Every variant must be listed here. */
+  .btn-primary,
+  .btn-secondary,
+  .btn--gold,
+  .btn--outline,
+  .btn--outline-light,
+  .btn-accent {
+    min-height: 48px;
+    font-size: 15px;
+    padding: 14px 24px;
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  /* --- Hero / CTA rows — stack full-width on small screens --- */
+  .home-hero-cta,
+  .hero-actions,
+  .cta-actions,
+  .cta-final-actions,
+  .cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .home-hero-cta .btn,
+  .hero-actions .btn,
+  .cta-actions .btn,
+  .cta-final-actions .btn,
+  .cta-buttons .btn,
+  .home-hero-cta .btn--gold,
+  .hero-actions .btn--gold,
+  .cta-actions .btn--gold,
+  .cta-final-actions .btn--gold,
+  .cta-buttons .btn--gold,
+  .home-hero-cta .btn-accent,
+  .hero-actions .btn-accent,
+  .cta-actions .btn-accent,
+  .cta-final-actions .btn-accent,
+  .cta-buttons .btn-accent,
+  .home-hero-cta .btn--outline,
+  .hero-actions .btn--outline,
+  .cta-actions .btn--outline,
+  .cta-final-actions .btn--outline,
+  .cta-buttons .btn--outline,
+  .home-hero-cta .btn--outline-light,
+  .hero-actions .btn--outline-light,
+  .cta-actions .btn--outline-light,
+  .cta-final-actions .btn--outline-light,
+  .cta-buttons .btn--outline-light {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* --- Tables — horizontal scroll on mobile --- */
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-collapse: collapse;
+  }
+
+  /* --- Prevent horizontal page overflow (common mobile layout bug) --- */
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  /* --- Card text — prevent overflow --- */
+  .card h3,
+  .card h4,
+  .product-card h3,
+  .project-card h3,
+  .value-card h3 {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+
+  /* --- Form fields — full width on mobile --- */
+  .form-row {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+
+  /* --- Spec page --- */
+
+
+  /* --- Blog / article body --- */
+  .article-body p,
+  .article-body li {
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  .article-body h2 {
+    font-size: 1.5rem;
+  }
+
+  .article-body h3 {
+    font-size: 1.25rem;
+  }
+
+  /* --- Section titles --- */
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  /* --- Stack hero buttons vertically --- */
+
+
+}
+
+/* ============================================================
+   SMALL MOBILE (≤ 640px)
+   ============================================================ */
+
+@media (max-width: 640px) {
+  .journal-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .blog-filters {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
+  .blog-filter-btn {
+    flex-shrink: 0;
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+}
+
+/* ============================================================
+   EXTRA SMALL MOBILE (≤ 480px)
+   ============================================================ */
+
+@media (max-width: 480px) {
+  /* --- Even tighter container padding on small phones --- */
+  .container {
+    --container-padding: 16px;
+  }
+
+  /* --- Smaller section titles --- */
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .section-desc {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* --- Hero title — ensure it never overflows --- */
+  body#yakeen-page .home-hero-title,
+  body#yakeen-page .home-hero h1 {
+    font-size: 1.6rem;
+    line-height: 1.15;
+  }
+
+  body#yakeen-page .page-hero h1,
+  body#yakeen-page .page-hero .hero-title {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  /* Country hero — small-phone title scale over the desktop override */
+  body#yakeen-page.gcc-country-page .country-hero h1 {
+    font-size: 1.5rem;
+  }
+
+  /* --- Smaller buttons on very small screens --- */
+  .btn-primary,
+  .btn-secondary,
+  .btn {
+    padding: 12px 20px;
+    font-size: 14px;
+    min-height: 44px;
+  }
+}
+
+/* ============================================================
+   STANDARDS / ORGS GRID
+   ============================================================ */
+
+.standards-org-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.std-org-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  border: 1px solid #e8e2d5;
+  transition: all 0.3s ease;
+}
+
+.std-org-card:hover {
+  border-color: var(--color-gold-light);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.std-org-name {
+  font-family: var(--font-sans);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-gold-primary);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.std-org-full {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-gray-light);
+  margin-bottom: 12px;
+}
+
+.std-org-card p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-gray-dark);
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  .standards-org-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .standards-org-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+

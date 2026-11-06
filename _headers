@@ -1,0 +1,85 @@
+# ============================================================
+# Yakeen Lighting — Cloudflare Pages Headers
+# Security + Performance + SEO
+# ============================================================
+
+# --- Security Headers (all pages) ---
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://cloudflareinsights.com https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; frame-ancestors 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
+  # HTML is never edge-cached by Cloudflare Pages: /, /index.html, /blog/ all
+  # return cf-cache-status: DYNAMIC even with s-maxage set (verified against
+  # production). So this stays as a browser-side revalidation instruction only.
+  # Do NOT add s-maxage / stale-while-revalidate here: _headers MERGES the
+  # directives of every matching rule instead of replacing them, so anything
+  # declared on /* leaks into /sw.js, /manifest.webmanifest, /robots.txt and the
+  # immutable asset rules — it stripped "no-cache" from sw.js and duplicated the
+  # Cache-Control on the manifest.
+  Cache-Control: public, no-cache, must-revalidate
+
+# --- Image caching (1 year, immutable) ---
+/images/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*.jpeg
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*.gif
+  Cache-Control: public, max-age=31536000, immutable
+
+# --- CSS & JS (1 year, immutable — content-hashed filenames) ---
+/css/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# --- Fonts (1 year) ---
+/fonts/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*.woff
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*.ttf
+  Cache-Control: public, max-age=31536000, immutable
+
+# --- Favicon & icons ---
+/favicon.ico
+  Cache-Control: public, max-age=2592000, immutable
+
+# --- Service Worker: must never be cached long-term ---
+# If SW gets cached, users can't receive updates/fixes.
+/sw.js
+  Cache-Control: public, no-cache, must-revalidate
+
+# --- PWA Manifest (7 days) ---
+/*.webmanifest
+  Cache-Control: public, max-age=604800, must-revalidate
+
+# --- Sitemap & robots (1 day) ---
+/sitemap.xml
+  Cache-Control: public, max-age=86400, must-revalidate
+
+/sitemap-index.xml
+  Cache-Control: public, max-age=86400, must-revalidate
+
+/robots.txt
+  Cache-Control: public, max-age=86400, must-revalidate
+
+# --- AI/LLM discovery file (1 day) ---
+/llms.txt
+  Cache-Control: public, max-age=86400, must-revalidate

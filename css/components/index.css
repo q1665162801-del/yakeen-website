@@ -1,0 +1,1031 @@
+/* ============================================================
+   COMPONENTS
+   Reusable UI components (buttons, tables, timelines, badges, cards)
+   ============================================================ */
+
+/* ============================================================
+   1. Buttons — Unified button system
+   ============================================================ */
+
+.btn, .btn-primary, .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 30px;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color var(--transition-base), color var(--transition-base),
+    border-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.btn:hover, .btn-primary:hover, .btn-secondary:hover {
+  transform: translateY(var(--lift-xs));
+  box-shadow: var(--shadow-gold);
+}
+
+.btn:active, .btn-primary:active, .btn-secondary:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Primary — Gold fill, warm ink type (best contrast on the brand gold) */
+.btn-primary {
+  background: var(--color-gold-primary);
+  color: var(--color-text-primary);
+  border-color: var(--color-gold-primary);
+}
+
+.btn-primary:hover {
+  background: var(--color-gold-light);
+  border-color: var(--color-gold-light);
+  color: var(--color-text-primary);
+}
+
+/* Outline — gold hairline, transparent fill */
+.btn-secondary {
+  background: transparent;
+  color: var(--color-gold-text);
+  border-color: var(--color-border-gold-strong);
+}
+
+.btn-secondary:hover {
+  background: var(--color-gold-primary);
+  border-color: var(--color-gold-primary);
+  color: var(--color-text-primary);
+}
+
+/* Sizes */
+.btn-sm {
+  padding: 9px 20px;
+  font-size: 0.75rem;
+}
+
+.btn-lg {
+  padding: 16px 40px;
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+}
+
+/* ============================================================
+   2. Eyebrow — shared micro-label
+   Single source of truth for the small uppercase label above every
+   section and page title. Sections override COLOUR only (bright gold
+   on dark surfaces, brand gold on light ones) — never the metrics.
+   ============================================================ */
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--color-gold-text);
+  margin-bottom: 18px;
+}
+
+/* ============================================================
+   16. CARD / LAB CARD
+   ============================================================ */
+
+.card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.price-breakdown-title {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-text-tertiary);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.price-breakdown-sub {
+  font-size: 0.85rem;
+  color: var(--color-text-tertiary);
+  margin-top: 8px;
+}
+
+.price-breakdown-text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.price-breakdown-visual {
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-md);
+  margin: 16px 0;
+}
+
+
+
+.component-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.component-card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  transition: all var(--transition-base);
+}
+
+.component-card:hover {
+  transform: translateY(var(--lift-sm));
+  box-shadow: var(--shadow-sm);
+  border-color: var(--color-border-gold);
+}
+
+.component-icon {
+  font-size: 1.75rem;
+  margin-bottom: 12px;
+}
+
+.component-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 6px;
+}
+
+.component-brand {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-gold-primary);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 900px) {
+  .component-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   19. ENG SECTION
+   ============================================================ */
+
+.eng-section {
+  padding: var(--section-padding-y) 0;
+  background: var(--color-bg-canvas);
+}
+
+.eng-section--alt {
+  background: var(--color-bg-surface);
+}
+
+.eng-section--dark {
+  background: var(--color-bg-dark);
+  color: var(--color-white);
+}
+
+.eng-section--dark .section-title {
+  color: var(--color-white);
+}
+
+.eng-section--dark .section-desc {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* On-page section index (engineering hub) */
+.eng-index {
+  background: var(--color-bg-surface);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.eng-index-inner {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.eng-index-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.eng-index-label {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  white-space: nowrap;
+}
+
+.eng-index a {
+  flex: none;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  white-space: nowrap;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.eng-index a:hover {
+  color: var(--color-gold-primary);
+  border-bottom-color: var(--color-gold-primary);
+}
+
+@media (max-width: 640px) {
+  .eng-index-inner {
+    gap: 20px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .eng-index-label {
+    display: none;
+  }
+}
+
+/* Fixed header is 72px — keep anchor targets clear of it */
+#capabilities, #how-we-work, #by-the-numbers, #resources, #team, #standards, #optical, #thermal, #mechanical, #custom, #prototyping {
+  scroll-margin-top: 92px;
+}
+
+/* ============================================================
+   22. QUICK REF CARD / TABLE
+   ============================================================ */
+
+.quick-ref-card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin: 24px 0;
+}
+
+.quick-ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.quick-ref-table th, .quick-ref-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.quick-ref-table th {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-tertiary);
+  font-weight: 500;
+}
+
+.quick-ref-table td {
+  color: var(--color-text-secondary);
+  vertical-align: top;
+}
+
+.quick-ref-table tr:last-child td {
+  border-bottom: none;
+}
+
+.quick-ref-table td:first-child {
+  font-weight: 600;
+  color: var(--color-gold-dark);
+  width: 60px;
+}
+
+.quick-ref-table th:first-child {
+  width: 60px;
+}
+
+@media (max-width: 600px) {
+  .quick-ref-card {
+    overflow-x: auto;
+  }
+  .quick-ref-table {
+    min-width: 420px;
+  }
+}
+
+/* ============================================================
+   25. COMPARE TABLE (vs competitors)
+   ============================================================ */
+
+.compare-table-section {
+  overflow-x: auto;
+  margin-top: 32px;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.compare-table th, .compare-table td {
+  padding: 14px 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.compare-table th {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-text-tertiary);
+  font-weight: 500;
+  background: var(--color-bg-surface);
+}
+
+.compare-table .row-label {
+  text-align: left;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  background: var(--color-bg-surface);
+  min-width: 180px;
+}
+
+.compare-table .yakeen-col {
+  background: var(--color-gold-pale);
+  color: var(--color-gold-ink);
+  font-weight: 500;
+}
+
+.compare-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.check-mark {
+  color: #0A7A50;
+  font-weight: 600;
+}
+
+.brand-col {
+  color: var(--color-text-secondary);
+}
+
+.vs {
+  font-weight: 600;
+  color: var(--color-gold-primary);
+}
+
+/* ============================================================
+   26. QUALITY PILLARS (studio page)
+   ============================================================ */
+
+.quality-pillars {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.quality-pillar {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  text-align: center;
+  transition: all var(--transition-base);
+}
+
+.quality-pillar:hover {
+  transform: translateY(var(--lift-sm));
+  box-shadow: var(--shadow-sm);
+  border-color: var(--color-border-gold);
+}
+
+.pillar-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-gold-primary);
+  letter-spacing: var(--tracking-wider);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 900px) {
+  .quality-pillars { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .quality-pillars { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   28. ARROW (inline link arrow)
+   ============================================================ */
+
+.arrow {
+  display: inline-block;
+  margin-left: 4px;
+  transition: transform var(--transition-fast);
+}
+
+a:hover .arrow {
+  transform: translateX(4px);
+}
+
+.yakeen {
+  color: var(--color-gold-primary);
+  font-weight: 600;
+}
+
+/* ============================================================
+   34. SOLUTION LINK CARDS
+   ============================================================ */
+
+.solution-link-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.solution-link-card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+}
+
+.solution-link-card:hover {
+  transform: translateY(var(--lift-sm));
+  box-shadow: var(--shadow-sm);
+  border-color: var(--color-border-gold);
+}
+
+.solution-link-card h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 8px;
+}
+
+.solution-link-card p {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: 0 0 16px;
+  flex: 1;
+}
+
+@media (max-width: 900px) {
+  .solution-link-grid { grid-template-columns: 1fr; }
+}
+
+.featured-project {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .project-types-grid { grid-template-columns: 1fr; }
+  .featured-project { grid-template-columns: 1fr; gap: 24px; }
+}
+
+/* ============================================================
+   11. BUTTON VARIANTS
+   One shared spec: squared corners, uppercase micro-type, wide
+   tracking, gold-first hover. Variants differ only by fill/ink.
+   ============================================================ */
+
+.btn--gold, .btn--outline, .btn--outline-light, .btn-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 30px;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--transition-base), color var(--transition-base),
+    border-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+/* Gold fill — warm ink on brand gold for legible contrast */
+.btn--gold {
+  background: var(--color-gold-primary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-gold-primary);
+}
+
+.btn--gold:hover {
+  background: var(--color-gold-light);
+  border-color: var(--color-gold-light);
+  color: var(--color-text-primary);
+  transform: translateY(var(--lift-xs));
+  box-shadow: var(--shadow-gold);
+}
+
+/* Outline — gold hairline on light surfaces */
+.btn--outline {
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-strong);
+}
+
+.btn--outline:hover {
+  border-color: var(--color-gold-primary);
+  color: var(--color-gold-text);
+  transform: translateY(var(--lift-xs));
+}
+
+/* Outline light — for dark surfaces */
+.btn--outline-light {
+  background: transparent;
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn--outline-light:hover {
+  border-color: var(--color-white);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(var(--lift-xs));
+}
+
+/* Accent — brand gold CTA (sole authoritative definition).
+   Ink is HARDCODED (not a var chain) so button text can never
+   resolve to an invisible value, whatever happens upstream. */
+.btn-accent {
+  background: var(--color-gold-primary);
+  color: #1F1A12;
+  border: 1px solid var(--color-gold-primary);
+}
+
+.btn-accent:hover {
+  background: var(--color-gold-light);
+  border-color: var(--color-gold-light);
+  color: #1F1A12;
+  transform: translateY(var(--lift-xs));
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--color-gold-text);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: gap var(--transition-fast), color var(--transition-base);
+}
+
+.btn-arrow:hover {
+  gap: 10px;
+  color: var(--color-gold-primary);
+}
+
+.stat-num {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-text-tertiary);
+  margin-bottom: 8px;
+}
+.alt-hero {
+  padding: var(--hero-pad-top) 0 var(--hero-pad-bottom);
+  background: var(--color-bg-canvas);
+}
+
+.alt-hero-content {
+  max-width: 720px;
+}
+
+.alt-hero h1 {
+  font-family: var(--font-sans);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--color-text-primary);
+  margin: 0 0 20px;
+}
+
+.alt-hero-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.alt-hero-brands {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--color-border);
+}
+
+.alt-hero-brand {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-text-tertiary);
+  margin-bottom: 16px;
+}
+
+.alt {
+  background: var(--color-bg-surface);
+}
+
+.resource-icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.resource-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0 0 16px;
+  flex: 1;
+}
+
+.resource-title {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+
+.resource-action {
+  display: inline-block;
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-gold-primary);
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .resources-grid { grid-template-columns: 1fr; }
+  .documents-grid { grid-template-columns: 1fr; }
+  .report-data-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ============================================================
+   15. CAP / WHY / CAPABILITY / WORKFLOW / PROCESS
+   ============================================================ */
+
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.cap-card--eng, .cap-card--spec {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  transition: all var(--transition-base);
+}
+
+.cap-card--eng:hover, .cap-card--spec:hover {
+  transform: translateY(var(--lift-sm));
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-gold);
+}
+
+.cap-number {
+  font-family: var(--font-mono);
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--color-gold-primary);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.cap-card--eng h3, .cap-card--spec h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 12px;
+}
+
+.cap-card--eng p, .cap-card--spec p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.why-section {
+  padding: var(--section-padding-y) 0;
+}
+
+/* Fix "How It Works" header — was two columns floating apart with giant
+   white space between them. Collapse to a single centered column. */
+.why-section .section-header {
+  display: block;
+  text-align: center;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.why-section .section-header-left {
+  max-width: none;
+  margin-bottom: 16px;
+}
+.why-section .section-header-right {
+  margin-left: 0;
+  text-align: center;
+}
+
+.why-card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  text-align: center;
+  transition: all var(--transition-base);
+}
+
+.why-card:hover {
+  transform: translateY(var(--lift-sm));
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-gold);
+}
+
+.why-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 8px;
+}
+
+.why-card p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.capability-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.capability-card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  transition: all var(--transition-base);
+}
+
+.capability-card:hover {
+  transform: translateY(var(--lift-sm));
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-gold);
+}
+
+.capability-icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.capability-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 8px;
+}
+
+.capability-card p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.workflow-step {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  position: relative;
+  transition: all var(--transition-base);
+}
+
+.workflow-step:hover {
+  transform: translateY(var(--lift-sm));
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-gold);
+}
+
+.workflow-num {
+  font-family: var(--font-mono);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--color-gold-primary);
+  line-height: 1;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.workflow-step h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 8px;
+}
+
+.workflow-step p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.process-section {
+  padding: var(--section-padding-y) 0;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.process-intro {
+  max-width: 600px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.process-num {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--color-gold-primary);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 900px) {
+  .cap-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .capability-grid { grid-template-columns: 1fr; }
+  .workflow-grid { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .process-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   18b. SIDEBAR CONTACT
+   ============================================================ */
+
+.sidebar-contact h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin: 0 0 16px;
+}
+
+/* ============================================================
+   29. UTILITY / HELPER CLASSES
+   ============================================================ */
+
+.text-center, .center {
+  text-align: center;
+}
+
+/* ============================================================
+   SECTION COMPONENTS
+   Reusable section-level components (merged from rebuilt*)
+   ============================================================ */
+
+.card:hover {
+  transform: translateY(var(--lift-sm));
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-gold);
+}
+
+
+
+
+
+/* ============================================================
+   PRICE BREAKDOWN — rows, companion to .price-breakdown-*
+   ============================================================ */
+
+.price-breakdown-wrap {
+  margin-top: 24px;
+  padding: 24px;
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-md);
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+}
+
+.price-row:last-child {
+  border-bottom: none;
+  font-weight: 600;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-gold-primary);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   PROCESS STEP / RESOURCE LINK / RESOURCE TYPE
+   Base definitions live in css/sections/misc.css (later in cascade and
+   therefore authoritative). The duplicates that used to sit here were dead
+   rules — removed 2026-10-19 so there is a single source of truth.
+   ============================================================ */
+

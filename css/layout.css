@@ -1,0 +1,775 @@
+/* ============================================================
+   LAYOUT
+   Nav, footer, mobile menu, skip link — page chrome
+   ============================================================ */
+
+/* ============================================================
+   1. Navigation
+   ============================================================ */
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-nav);
+  background: var(--color-bg-secondary);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  gap: 24px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--color-text-inverse);
+  flex-shrink: 0;
+}
+
+.nav-logo-img {
+  height: 48px;
+  width: auto;
+  display: block;
+  filter: contrast(1.05) saturate(1.1);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-link {
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-radius: 4px;
+  transition: color 0.2s ease;
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: var(--color-gold-primary);
+}
+
+/* ============================================================
+   2. Nav Dropdown
+   ============================================================ */
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  min-width: 220px;
+  padding: 8px;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  z-index: var(--z-nav-hover);
+}
+
+.nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown.is-open .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown-item {
+  display: block;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-dropdown-item:hover {
+  background: var(--color-border-gold);
+  color: var(--color-gold-primary);
+}
+
+.nav-dropdown-item--featured {
+  color: var(--color-gold-primary);
+  font-weight: 500;
+}
+
+/* ============================================================
+   3. Nav CTA Button
+   ============================================================ */
+
+.nav-cta {
+  padding: 10px 22px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  background: var(--color-gold-primary);
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.nav-cta:hover {
+  background: var(--color-gold-light);
+  transform: translateY(-1px);
+}
+
+/* Language switcher */
+/* ============================================================
+   4. Transparent Nav Variant
+   ============================================================ */
+
+.nav--transparent {
+  background: transparent;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease;
+}
+
+/* White text on transparent nav (over dark hero image) */
+body#yakeen-page .nav--transparent .nav-link {
+  color: rgba(255,255,255,0.9);
+}
+body#yakeen-page .nav--transparent .nav-link:hover {
+  color: var(--color-gold-bright);
+}
+
+.nav--transparent.nav--scrolled {
+  background: rgba(250, 248, 243, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom-color: var(--color-border);
+}
+
+/* Revert to dark text when scrolled */
+body#yakeen-page .nav--transparent.nav--scrolled .nav-link {
+  color: var(--color-text-secondary);
+}
+body#yakeen-page .nav--transparent.nav--scrolled .nav-link:hover {
+  color: var(--color-gold-primary);
+}
+
+/* Nav toggle: white on transparent nav, dark when scrolled */
+body#yakeen-page .nav--transparent .nav-toggle span {
+  background: var(--color-white);
+}
+body#yakeen-page .nav--transparent.nav--scrolled .nav-toggle span {
+  background: var(--color-text-heading);
+}
+
+/* ============================================================
+   5. Hamburger Toggle (hidden on desktop)
+   ============================================================ */
+
+.nav-toggle {
+  display: none;
+  width: 48px;
+  height: 44px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  z-index: var(--z-nav-open);
+}
+
+.nav-toggle span {
+  display: block;
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  height: 2px;
+  background: var(--color-text-heading);
+  border-radius: 1px;
+  transition: transform 0.3s ease, opacity 0.2s ease, background 0.3s ease;
+}
+
+.nav-toggle span:nth-child(1) { top: 14px; }
+.nav-toggle span:nth-child(2) { top: 21px; }
+.nav-toggle span:nth-child(3) { top: 28px; }
+
+.nav-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.nav-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ============================================================
+   6. Mobile Menu (off-canvas)
+   ============================================================ */
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 85%;
+  max-width: 320px;
+  height: 100vh;
+  /* Mobile browsers shrink the visible area when the URL bar is shown;
+     100dvh keeps the last menu item above the toolbar. */
+  height: 100dvh;
+  background: var(--color-bg-surface);
+  z-index: var(--z-modal);
+  padding: 80px 24px 32px;
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+  transform: translate3d(100%, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.mobile-menu.is-open {
+  transform: translate3d(0, 0, 0);
+}
+
+.mobile-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  color: var(--color-text-heading);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-link {
+  padding: 14px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.2s ease, color 0.2s ease;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.mobile-link:hover, .mobile-link:active {
+  background: var(--color-border-gold);
+  color: var(--color-gold-primary);
+}
+
+/* Dropdown parents are non-navigable on mobile — rendered as group labels */
+.mobile-group-label {
+  padding: 18px 16px 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.mobile-cta {
+  margin-top: 24px;
+  padding: 16px 24px;
+  text-align: center;
+  background: var(--color-gold-primary);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 14px;
+  justify-content: center;
+}
+
+.mobile-cta:hover {
+  background: var(--color-gold-light);
+  color: var(--color-text-primary);
+}
+
+/* ============================================================
+   7. Menu Backdrop
+   ============================================================ */
+
+.menu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: var(--z-overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  will-change: opacity;
+  -webkit-transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
+}
+
+.menu-backdrop.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ============================================================
+   8. Footer — Light warm theme
+   ============================================================ */
+
+.footer {
+  background: var(--color-bg-paper);
+  padding: 60px 0 28px;
+  border-top: 1px solid rgba(26, 23, 18, 0.06);
+  color: var(--color-text-body);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 36px;
+}
+
+/* Footer brand column */
+.footer-col:first-child {
+  /* brand column */
+}
+
+.footer-logo-img {
+  margin-bottom: 16px;
+}
+
+.footer-logo-img img {
+  max-height: 56px;
+  width: auto;
+  display: block;
+}
+
+.footer-col p {
+  color: var(--color-text-caption);
+  font-size: 14px;
+  line-height: 1.7;
+  margin-top: 12px;
+  max-width: 300px;
+}
+
+.footer-col h4, .footer-col h5 {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 18px;
+  font-family: var(--font-sans);
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col li {
+  margin-bottom: 10px;
+}
+
+.footer-col a {
+  color: var(--color-text-caption);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  display: inline-block;
+}
+
+.footer-col a:hover {
+  color: var(--color-gold-text);
+}
+
+.footer-about {
+  margin-top: 14px;
+}
+
+.footer-bottom {
+  padding-top: 24px;
+  border-top: 1px solid rgba(26, 23, 18, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-bottom p {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  margin: 0;
+}
+
+.footer-brand-name {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-gold-light);
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.footer-copyright {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.footer-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+
+
+
+/* Footer social icons */
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+
+.social-icon-footer {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(26, 23, 18, 0.04);
+  color: var(--color-text-body);
+  transition: all 0.25s ease;
+}
+
+.social-icon-footer:hover {
+  background: var(--color-gold-text);
+  color: var(--color-white);
+  transform: translateY(var(--lift-xs));
+}
+
+/* ============================================================
+   9. Skip to Content (Accessibility)
+   ============================================================ */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-floating);
+  background: var(--color-gold-primary);
+  color: var(--color-text-inverse);
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 8px 8px;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid var(--color-white);
+  outline-offset: -2px;
+}
+
+/* ============================================================
+   10. Grain Overlay
+   ============================================================ */
+
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: var(--z-noise);
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ============================================================
+   11. Responsive
+   ============================================================ */
+
+/* Desktop and up (>= 769px) */
+@media (min-width: 769px) {
+  .mobile-menu {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+}
+
+/* Compact desktop (769-1180px): tighten nav density so 7 items + lang + CTA stay on one line */
+@media (min-width: 769px) and (max-width: 1180px) {
+  .nav-links {
+    gap: 0;
+  }
+
+  .nav-link {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .nav-cta {
+    padding: 10px 18px;
+  }
+}
+
+/* Tablet and below (<= 768px) */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-cta {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-inner {
+    height: 64px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .nav-dropdown-item {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Footer social icons: 44x44px minimum touch target (iOS/Android HIG).
+     Desktop stays at 36x36px to keep the footer visually light. */
+  .social-icon-footer {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* Mobile and below (<= 480px) */
+@media (max-width: 480px) {
+  .nav-inner {
+    height: 56px;
+    gap: 12px;
+  }
+
+  .nav-logo-img {
+    height: 28px;
+  }
+
+  .footer {
+    padding: 56px 0 32px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-dropdown-item {
+    min-height: 44px;
+  }
+
+  .mobile-menu {
+    width: 90%;
+    max-width: none;
+    padding-top: 72px;
+  }
+}
+
+/* ============================================================
+   SECTION PRIMITIVES — Shared section scaffolding
+   ============================================================ */
+
+.section {
+  padding: var(--section-padding-y) 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--section-header-margin);
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gold-muted);
+  margin-bottom: var(--space-5, 20px);
+  font-family: var(--font-sans);
+}
+
+.section-title {
+  font-size: var(--text-display-md);
+  font-weight: 500;
+  font-family: var(--font-display);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.section-title em {
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-gold-dark);
+}
+
+.section-desc {
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Section header alignment variants */
+.section-header-left {
+  max-width: 640px;
+}
+
+.section-header-right {
+  margin-left: auto;
+  text-align: right;
+}
+
+/* A left-variant used alone inside .section-header centers itself: the base
+   .section-header and .section-title are text-align:center, so a 640px block
+   pinned to the left edge rendered its centered text visually off-axis. */
+.section-header-left:only-child {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-header--center {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Section kicker / sub / intro text primitives */
+.section-kicker {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-gold-primary);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.section-sub {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 560px;
+  margin-top: 12px;
+}
+
+.section-intro {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 640px;
+  margin-top: 16px;
+}
+
+/* Section background + spacing modifiers */
+.section-light {
+  background: var(--color-bg-elevated);
+}
+
+.section-sm {
+  padding: var(--section-padding-y-sm) 0;
+}
+
+/* ============================================================
+   ARABIC LANGUAGE SWITCHER (nav)
+   ============================================================ */
+
+.nav-link--ar {
+  font-family: 'Noto Naskh Arabic', 'Scheherazade New', 'Traditional Arabic', serif;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.nav-link--ar.nav-link--ar-partial {
+  opacity: 0.65;
+  position: relative;
+}
+
+.nav-link--ar.nav-link--ar-partial:hover {
+  opacity: 1;
+}

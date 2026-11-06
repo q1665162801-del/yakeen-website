@@ -1,0 +1,745 @@
+﻿/* ============================================================
+   BLOG / JOURNAL — Section Styles
+   Blog index page: hero subtitle, stats, filters, article grid
+   Blog article pages: hero, meta, TOC, body content, CTA
+   Scoped: blog index + blog article pages
+   ============================================================ */
+
+/* ============================================================
+   HERO SUBTITLE (blog index page)
+   ============================================================ */
+
+.page-hero-sub {
+  max-width: 640px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin: 20px auto 0 auto;
+}
+
+/* ============================================================
+   BLOG STATS — Hero statistics row (blog index page)
+   ============================================================ */
+
+.blog-stats {
+  display: flex;
+  gap: 48px;
+  justify-content: center;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--color-border);
+}
+
+.blog-stat {
+  text-align: center;
+}
+
+.blog-stat-num {
+  font-family: var(--font-sans);
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: var(--color-gold-primary);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.blog-stat-label {
+  font-size: 12px;
+  color: #8A8378;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ============================================================
+   ARTICLE HERO (blog article pages)
+   ============================================================ */
+
+.article-hero {
+  padding: var(--hero-pad-top) 0 var(--hero-pad-bottom);
+  background: var(--color-bg-canvas);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.article-breadcrumb {
+  color: var(--color-gold-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.article-breadcrumb:hover {
+  color: var(--color-gold-dark);
+}
+
+.article-dot {
+  color: var(--color-text-muted);
+  opacity: 0.5;
+}
+
+.article-category {
+  color: var(--color-text-tertiary);
+}
+
+.article-read-time {
+  color: var(--color-text-tertiary);
+}
+
+.article-title {
+  font-family: var(--font-sans);
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--color-text-primary);
+  margin: 0 0 20px;
+  max-width: 800px;
+}
+
+.article-subtitle {
+  font-size: var(--font-size-lg);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: 680px;
+}
+
+/* ============================================================
+   ARTICLE BODY — Content + sticky TOC layout
+   ============================================================ */
+
+.article-body {
+  padding: var(--section-padding-y-sm) 0;
+}
+
+.article-container {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.article-toc {
+  position: sticky;
+  top: 120px;
+  font-size: var(--font-size-sm);
+}
+
+.article-toc h4 {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-text-tertiary);
+  margin: 0 0 16px;
+  font-weight: 500;
+}
+
+.article-toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.article-toc li {
+  margin-bottom: 10px;
+}
+
+.article-toc a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  display: block;
+  padding-left: 12px;
+  border-left: 2px solid var(--color-border);
+}
+
+.article-toc a:hover {
+  color: var(--color-gold-primary);
+  border-color: var(--color-gold-primary);
+}
+
+.article-content {
+  min-width: 0;
+}
+
+.article-content h2 {
+  font-family: var(--font-sans);
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin: 48px 0 20px;
+  line-height: 1.25;
+}
+
+.article-content h3 {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin: 32px 0 16px;
+}
+
+.article-content p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+  margin-bottom: 16px;
+}
+
+.article-content ul, .article-content ol {
+  margin: 0 0 20px 0;
+  padding-left: 24px;
+}
+
+.article-content li {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin-bottom: 8px;
+}
+
+.article-content a {
+  color: var(--color-gold-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-border-gold);
+  transition: all var(--transition-fast);
+}
+
+.article-content a:hover {
+  color: var(--color-gold-dark);
+  border-bottom-color: var(--color-gold-dark);
+}
+
+/* ============================================================
+   ARTICLE CTA — End-of-article CTA section
+   ============================================================ */
+
+.article-cta-section {
+  margin-top: 60px;
+  padding-top: 48px;
+  border-top: 1px solid var(--color-border);
+}
+
+.article-cta-inner {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  text-align: center;
+}
+
+.article-cta-inner h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.article-cta-inner p {
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+}
+
+/* ============================================================
+   RESPONSIVE — Tablet (≤ 1024px)
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .blog-stats {
+    gap: 32px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — Small tablet (≤ 640px)
+   ============================================================ */
+
+@media (max-width: 640px) {
+  .blog-stats {
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .blog-stat-num {
+    font-size: 1.8rem;
+  }
+}
+
+/* ============================================================
+   ARTICLE RESPONSIVE — stacked layout (≤ 900px)
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .article-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .article-toc {
+    position: static;
+    order: -1;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--color-border);
+  }
+}
+
+/* ============================================================
+   BLOG FILTER BAR — Category filters (blog index page)
+   ============================================================ */
+
+.blog-filter-bar {
+  margin-bottom: 56px;
+  padding: 20px 24px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border, rgba(26, 23, 18, 0.08));
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 12px rgba(26, 23, 18, 0.03);
+}
+
+.blog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.blog-filter-btn {
+  background: transparent;
+  border: 1px solid var(--color-border, rgba(26, 23, 18, 0.1));
+  color: var(--color-text-secondary, #6B6357);
+  padding: 10px 22px;
+  font-family: var(--font-mono, 'Inter', sans-serif);
+  font-size: 12.5px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.blog-filter-btn:hover {
+  border-color: var(--color-gold-primary);
+  color: var(--color-gold-dark);
+  background: rgba(200, 150, 30, 0.04);
+}
+
+.blog-filter-btn.is-active {
+  background: var(--color-gold-primary);
+  border-color: var(--color-gold-primary);
+  color: var(--color-white);
+  font-weight: 500;
+  box-shadow: 0 4px 14px rgba(200, 150, 30, 0.25);
+}
+
+.blog-filter-count {
+  opacity: 0.5;
+  font-size: 11px;
+  font-family: var(--font-mono, 'Inter', sans-serif);
+  padding: 1px 6px;
+  background: rgba(26, 23, 18, 0.06);
+  border-radius: var(--radius-full);
+  min-width: 20px;
+  text-align: center;
+}
+
+.blog-filter-btn.is-active .blog-filter-count {
+  opacity: 0.8;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================================
+   JOURNAL GRID — Article card grid (blog index / journal pages)
+   ============================================================ */
+
+.journal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.journal-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: visible;
+  text-decoration: none;
+  color: inherit;
+  /* Entrance is owned by the global scroll-reveal system (animations.css).
+     A load-time animation here would fire immediately — before the card is in
+     view — and, because CSS animations outrank declarations, it would silently
+     override the reveal's opacity. */
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  padding: 16px 16px 24px;
+}
+
+.journal-card:hover {
+  border-color: var(--color-gold-primary);
+}
+
+.journal-visual {
+  height: 200px;
+  background: linear-gradient(135deg, var(--color-bg-card) 0%, var(--color-bg-canvas) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  margin-bottom: 20px;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 16px rgba(26, 23, 18, 0.06);
+}
+
+.journal-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.journal-card:hover .journal-visual {
+  transform: translateY(var(--lift-lg));
+  box-shadow: 0 16px 36px rgba(26, 23, 18, 0.14);
+}
+
+.journal-card:hover .journal-visual img {
+  transform: scale(1.06);
+}
+
+.journal-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(26, 23, 18, 0.1) 100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.journal-card:hover .journal-visual::after {
+  opacity: 1;
+}
+
+.journal-category {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-gold-primary);
+  margin-bottom: 10px;
+  font-weight: 600;
+  padding: 0 8px;
+}
+
+.journal-title {
+  font-family: var(--font-sans);
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  margin: 0 0 10px 0;
+  padding: 0 8px;
+  transition: color 0.3s ease;
+}
+
+.journal-card:hover .journal-title {
+  color: var(--color-gold-dark);
+}
+
+.journal-excerpt {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0 0 16px 0;
+  padding: 0 8px;
+  flex: 1;
+}
+
+.journal-meta {
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary);
+  padding: 14px 8px 0;
+  margin: 0;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.journal-meta span:first-child {
+  color: var(--color-gold-primary);
+  font-weight: 500;
+}
+
+/* ============================================================
+   CHECKLIST PRIORITY LABELS (blog articles)
+   ============================================================ */
+
+.checklist-ul {
+  list-style: none;
+  padding: 0;
+}
+
+.checklist-ul li {
+  position: relative;
+  padding: 8px 0 8px 68px;
+  border-bottom: 1px solid #f0f0f0;
+  line-height: 1.5;
+}
+
+.checklist-ul li:last-child {
+  border-bottom: none;
+}
+
+.priority-must,
+.priority-should,
+.priority-nice {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.priority-must {
+  background: #fde8e8;
+  color: #c53030;
+}
+
+.priority-should {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.priority-nice {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+/* ============================================================
+   10. RELATED ARTICLES — 相关文章列表
+   ============================================================ */
+.related-articles {
+  padding: var(--section-padding-y) 0;
+  background: var(--color-bg-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.ra-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.ra-label {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-gold-dark);
+  margin-bottom: 12px;
+}
+
+.ra-title-main {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.ra-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.ra-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  transition: all 0.35s ease;
+}
+
+.ra-card-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(135deg, var(--color-bg-accent) 0%, var(--color-gold-light) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.ra-card-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.3) 0%, transparent 50%);
+}
+
+.ra-card-body {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.ra-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 10px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.ra-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0 0 16px;
+  flex: 1;
+}
+
+.ra-arrow {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-gold-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap var(--transition-fast);
+  margin-top: auto;
+}
+
+.ra-card:hover {
+  border-color: var(--color-gold-primary);
+  transform: translateY(var(--lift-sm));
+  box-shadow: var(--shadow-card-hover);
+}
+
+.ra-card:hover .ra-arrow {
+  gap: 10px;
+}
+
+/* Text-only variant (no thumbnail) */
+.ra-card--text {
+  display: block;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+}
+
+.ra-card--text .ra-title {
+  margin-bottom: 8px;
+}
+
+.ra-card--text .ra-desc {
+  margin-bottom: 16px;
+  flex: none;
+}
+
+.ra-card--text .ra-arrow {
+  margin-top: 0;
+  display: inline-block;
+}
+
+@media (max-width: 900px) {
+  .ra-title-main { font-size: 1.5rem; }
+  .ra-grid { grid-template-columns: 1fr; }
+  .ra-card-thumb { aspect-ratio: 16 / 9; }
+}
+
+.view-all-link {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.view-all-link a {
+  color: var(--color-gold-primary);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-gold-primary);
+  padding-bottom: 2px;
+  transition: all var(--transition-fast);
+}
+
+.view-all-link a:hover {
+  color: var(--color-gold-dark);
+  border-color: var(--color-gold-dark);
+}
+
+/* ── Newsletter ──
+   Single opt-in band at the foot of the journal index. Posts a bare email to
+   the shared /api/lead endpoint with form_type=newsletter, so it reuses the
+   existing form-submit feedback path (no new JS). */
+.newsletter-section {
+  padding: 72px 0;
+  background: var(--color-bg-sunken);
+  border-top: 1px solid var(--color-border-strong);
+}
+
+.newsletter-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.newsletter-inner h2 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.4vw, 38px);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-text-heading);
+  margin: 10px 0 14px;
+}
+
+.newsletter-inner p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin-bottom: 30px;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 10px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.newsletter-form .form-input {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 560px) {
+  .newsletter-section { padding: 56px 0; }
+  .newsletter-form { flex-direction: column; }
+  .newsletter-form .btn-primary { width: 100%; justify-content: center; }
+}

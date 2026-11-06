@@ -1,0 +1,146 @@
+/* ============================================================
+   MARQUEE — Auto-scrolling horizontal strip
+   Used for certification logos + partner brands between product and project sections.
+   Pure CSS animation (no JS needed). Pauses on hover.
+   ============================================================ */
+
+.marquee {
+  position: relative;
+  padding: 48px 0;
+  background: var(--color-bg-surface);
+  overflow: hidden;
+  border-top: 1px solid rgba(26, 23, 18, 0.08);
+  border-bottom: 1px solid rgba(26, 23, 18, 0.08);
+}
+
+.marquee-label {
+  display: block;
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold-text);
+  margin-bottom: 28px;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 40s linear infinite;
+  will-change: transform;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 48px;
+  min-width: 140px;
+  height: 72px;
+  border-right: 1px solid rgba(26, 23, 18, 0.08);
+  gap: 4px;
+}
+
+.marquee-item:last-child {
+  border-right: none;
+}
+
+.marquee-item-icon {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-text-heading);
+  line-height: 1;
+}
+
+.marquee-item-label {
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gold-dusty);
+}
+
+/* Certification badges */
+.marquee-item--cert .marquee-item-icon {
+  color: var(--color-gold-text);
+  font-weight: 700;
+}
+
+.marquee-item--cert .marquee-item-label {
+  color: var(--color-gray);
+}
+
+/* Partner brands — lighter, italic-ish brand feel */
+.marquee-item--partner .marquee-item-icon {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.marquee-item--partner .marquee-item-label {
+  font-size: 0.55rem;
+}
+
+
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* --- Darker surface for the partner-cert section --- */
+.marquee--dark {
+  background: #1a1610;
+  border-top-color: rgba(184, 150, 72, 0.2);
+  border-bottom-color: rgba(184, 150, 72, 0.2);
+}
+
+.marquee--dark .marquee-label {
+  color: var(--color-gold-light);
+}
+
+.marquee--dark .marquee-item {
+  border-right-color: rgba(255, 255, 255, 0.08);
+}
+
+.marquee--dark .marquee-item-icon {
+  color: var(--color-white);
+}
+
+.marquee--dark .marquee-item--cert .marquee-item-icon {
+  color: var(--color-gold-light);
+}
+
+.marquee--dark .marquee-item-label {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* --- Mobile --- */
+@media (max-width: 640px) {
+  .marquee {
+    padding: 36px 0;
+  }
+  .marquee-item {
+    padding: 0 28px;
+    min-width: 110px;
+    height: 60px;
+  }
+  .marquee-item-icon {
+    font-size: 0.7rem;
+  }
+  .marquee-item--partner .marquee-item-icon {
+    font-size: 0.75rem;
+  }
+  .marquee-track {
+    animation-duration: 30s;
+  }
+}

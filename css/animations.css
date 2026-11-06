@@ -1,0 +1,181 @@
+/* ============================================================
+   ANIMATIONS
+   Scroll reveal, stagger children, transition effects
+   ============================================================ */
+
+/* ─── Scroll reveal (driven by js/scroll-reveal.js) ─── */
+/* Default state: visible. This ensures content shows even if JS fails to load.
+   JS adds .reveal-ready to <body> at init time — only then do elements start hidden.
+
+   ONE rule owns the entrance choreography. Scoping it to body#yakeen-page
+   (specificity 1-1-0) lets it outrank the plain card rules in the section
+   stylesheets, so every reveal element on every page moves with the same curve
+   instead of inheriting whatever transition its own card class declared.
+
+   `translate` (not `transform`) carries the entrance motion, so it never fights
+   the hover lift — which keeps `transform` — or any card that already has one. */
+body#yakeen-page .reveal-element {
+  opacity: 1;
+  translate: 0 0;
+  transition: opacity 0.7s var(--ease-lux),
+              translate var(--reveal-duration) var(--ease-lux),
+              transform var(--transition-base),
+              box-shadow var(--transition-base),
+              border-color var(--transition-base),
+              color var(--transition-base),
+              background-color var(--transition-base);
+}
+
+/* JS has initialized — prep elements for the entrance animation */
+body#yakeen-page.reveal-ready .reveal-element {
+  opacity: 0;
+  translate: 0 var(--reveal-distance);
+}
+
+body#yakeen-page .reveal-element.revealed {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* Stagger is applied by js/scroll-reveal.js as an inline transition-delay
+   (sibling index × --stagger-step, capped) — one mechanism that covers every
+   grid on every page, instead of a hand-maintained list of grid class names. */
+
+/* ============================================================
+   LIGHT EFFECTS — for a lighting brand, light is the signature
+   All effects are CSS-only, performance-friendly, progressive.
+   ============================================================ */
+
+/* ─── Shimmer text: slow light sweep across hero title ─── */
+@keyframes shimmer-sweep {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+body#yakeen-page .home-hero-title, body#yakeen-page .hero-title {
+  /* Slow gold shimmer sweep — NO white flash, stays fully readable */
+  background: linear-gradient(
+    110deg,
+    var(--color-gold-pale) 0%,
+    var(--color-gold-light) 35%,
+    var(--color-gold-primary) 50%,
+    var(--color-gold-light) 65%,
+    var(--color-gold-pale) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-sweep 16s ease-in-out infinite;
+}
+
+/* Keep the <em> accent visible too */
+body#yakeen-page .home-hero-title em, body#yakeen-page .hero-title em {
+  -webkit-text-fill-color: inherit;
+  color: inherit;
+}
+
+/* ─── Floating light orbs in hero background ─── */
+@keyframes float-slow {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(30px, -40px) scale(1.1); }
+  66%      { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+@keyframes float-slower {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+  50%      { transform: translate(-40px, 30px) scale(1.15); opacity: 0.6; }
+}
+
+body#yakeen-page .home-hero-inner::before, body#yakeen-page .home-hero-inner::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body#yakeen-page .home-hero-inner::before {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(212,175,55,0.25) 0%, transparent 70%);
+  top: 10%;
+  left: -100px;
+  animation: float-slow 12s ease-in-out infinite;
+}
+
+body#yakeen-page .home-hero-inner::after {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+  bottom: 10%;
+  right: -50px;
+  animation: float-slower 16s ease-in-out infinite;
+}
+
+/* Keep hero content above the orbs */
+body#yakeen-page .home-hero-inner > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Card hover elevation — one system, two tiers ───
+   Each card lifts by a token amount and picks up the same warm shadow with a
+   gold hairline, so hover feedback reads identically site-wide. Tier 1 for
+   feature cards, tier 2 for compact cards and list rows. (Transitions are
+   supplied by the reveal rule above.) */
+body#yakeen-page .product-card:hover, body#yakeen-page .project-card:hover, body#yakeen-page .value-card:hover, body#yakeen-page .market-card:hover, body#yakeen-page .hp-card:hover, body#yakeen-page .journal-card:hover, body#yakeen-page .wgcc-card:hover, body#yakeen-page .cert-card:hover, body#yakeen-page .resource-landing-card:hover, body#yakeen-page .team-card:hover {
+  transform: translateY(var(--lift-lg));
+  box-shadow: var(--shadow-hover);
+}
+
+body#yakeen-page .cap-card:hover, body#yakeen-page .app-card:hover, body#yakeen-page .stat-card:hover, body#yakeen-page .resource-card:hover, body#yakeen-page .hm-card:hover {
+  transform: translateY(var(--lift-sm));
+  box-shadow: var(--shadow-hover-sm);
+}
+
+/* ─── Section title reveal — accent line draws in ─── */
+@keyframes line-draw {
+  from { width: 0; }
+  to   { width: 60px; }
+}
+
+body#yakeen-page .section-header::before, body#yakeen-page .section-header::after {
+  transition: width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+body#yakeen-page .revealed .section-header::before, body#yakeen-page .revealed .section-header::after, body#yakeen-page .section-header.revealed::before, body#yakeen-page .section-header.revealed::after {
+  animation: line-draw 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* ─── Eyebrow / tag slow pulse ─── */
+@keyframes soft-pulse {
+  0%, 100% { opacity: 0.9; }
+  50%      { opacity: 1; }
+}
+
+body#yakeen-page .home-hero-eyebrow {
+  animation: soft-pulse 4s ease-in-out infinite;
+}
+
+/* ─── Reduce motion for users who prefer it ─── */
+@media (prefers-reduced-motion: reduce) {
+  body#yakeen-page .home-hero-title,
+  body#yakeen-page .hero-title,
+  body#yakeen-page .home-hero::before,
+  body#yakeen-page .home-hero::after,
+  body#yakeen-page .home-hero-eyebrow {
+    animation: none;
+  }
+
+  body#yakeen-page .home-hero-title,
+  body#yakeen-page .hero-title {
+    -webkit-text-fill-color: var(--color-text-heading);
+    background: none;
+  }
+}

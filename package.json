@@ -1,0 +1,30 @@
+{
+  "name": "yakeen-site",
+  "version": "1.0.0",
+  "description": "Yakeen Lighting — architectural lighting engineering. Static site generator for yakeenlighting.com.",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build/index.js && node build/audit.js",
+    "audit": "node build/audit.js",
+    "deep-audit": "node build/deep-audit.js",
+    "deploy": "npm run build && npx wrangler pages deploy --branch main && node build/indexnow.js",
+    "deploy:preview": "npx wrangler pages deploy --branch preview",
+    "indexnow": "node build/indexnow.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^8.0.0",
+    "image-size": "^2.0.4",
+    "postcss": "^8.5.30",
+    "postcss-safe-parser": "^7.1.0",
+    "purgecss": "^8.0.0",
+    "sharp": "^0.35.5",
+    "wrangler": "^4.86.0"
+  },
+  "dependencies": {
+    "docx": "^9.13.0"
+  }
+}

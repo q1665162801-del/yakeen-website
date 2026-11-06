@@ -1,0 +1,355 @@
+/* ============================================================
+   THEMES/LIGHT
+   Light theme page overrides (for light-nav pages)
+   ============================================================ */
+
+/* ============================================================
+   BASE — Light page foundation
+   ============================================================ */
+
+body {
+  background: var(--color-bg-canvas);
+  color: var(--color-text-heading);
+}
+
+/* ============================================================
+   NAVIGATION — Light nav override
+   ============================================================ */
+
+.nav.nav--light {
+  background: var(--color-bg-canvas);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.nav.nav--light .nav-logo {
+  color: var(--color-gold-text);
+}
+
+.nav.nav--light .nav-links a {
+  color: var(--color-gray-dark);
+}
+
+.nav.nav--light .nav-links a:hover {
+  color: var(--color-gold-text);
+}
+
+/* ============================================================
+   HERO STATS — Home hero scroll stats (lives here for legacy reasons)
+   ============================================================ */
+
+
+
+
+@keyframes scrollLine {
+  0% { top: -40px; }
+  100% { top: 40px; }
+}
+
+/* ============================================================
+   HOME SECTIONS — Section base & heading
+   ============================================================ */
+
+.home-section {
+  padding: var(--section-padding-y) 0;
+  background: var(--color-bg-soft);  /* 提亮：更温暖的米白色 */
+}
+
+.home-section--alt {
+  background: var(--color-bg-paper);  /* alt 背景提亮，对比更柔和 */
+}
+
+.home-section-head {
+  text-align: center;
+  margin-bottom: 64px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gold-dusty);
+  margin-bottom: 20px;
+}
+
+.home-section-label span {
+  font-family: var(--font-sans);
+  font-style: normal;
+  color: var(--color-gold-text);
+  font-weight: 400;
+}
+
+.home-section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--color-text-heading);
+  margin: 0;
+}
+
+.home-section-title em {
+  font-style: normal;
+  color: var(--color-gold-text);
+  font-weight: 400;
+}
+
+.home-section-more {
+  text-align: center;
+  margin-top: 48px;
+}
+
+/* Section-lead — 提亮文字颜色，增加可读性 */
+body#yakeen-page .section-lead {
+  color: var(--color-text-body);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* ============================================================
+   VALUE PROPS — Home value proposition grid
+   ============================================================ */
+
+.home-value-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.hv-item {
+  background: var(--color-white);
+  padding: 32px 28px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(26, 23, 18, 0.06);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.hv-item::before {
+  content: '';
+  position: absolute;
+  top: 32px;
+  left: 28px;
+  width: 32px;
+  height: 2px;
+  background: var(--color-gold-primary);
+}
+
+.hv-item:hover {
+  transform: translateY(var(--lift-sm));
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(184, 150, 72, 0.2);
+}
+
+.hv-item--wide {
+  grid-column: span 1;
+  background: var(--color-white);
+  border-color: rgba(26, 23, 18, 0.06);
+}
+
+.hv-item h3 {
+  font-family: var(--font-sans);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-text-heading);
+  margin: 20px 0 12px 0;
+  line-height: 1.3;
+}
+
+.hv-item p {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--color-text-body);
+  margin: 0 0 14px 0;
+}
+
+.hv-link {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-gold-text);
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* ============================================================
+   MARKETS — Home markets grid
+   ============================================================ */
+
+.home-markets-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.hm-card {
+  display: block;
+  padding: 28px 24px;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid rgba(26, 23, 18, 0.06);
+  transition: all 0.3s ease;
+}
+
+.hm-card:hover {
+  border-color: rgba(184, 150, 72, 0.3);
+  background: #FDFCF9;
+}
+
+.hm-card h3 {
+  font-family: var(--font-sans);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--color-text-heading);
+  margin: 0 0 8px 0;
+}
+
+.hm-card p {
+  font-size: 0.875rem;
+  color: var(--color-text-body);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   RESPONSIVE — Media queries (largest to smallest)
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .home-value-grid,
+  .home-markets-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .home-section-head {
+    margin-bottom: 48px;
+  }
+
+  .home-value-grid, .home-markets-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* ============================================================
+   DARK SECTIONS — Light-themed + heading overrides
+   NOTE: .section-dark is now light-themed (warm light bg + dark text)
+   ============================================================ */
+
+.section-dark {
+  background: var(--color-bg-surface);
+  color: var(--color-text-secondary);
+}
+
+.section-dark .section-label {
+  color: var(--color-gold-primary);
+}
+
+body#yakeen-page .section-dark h1, body#yakeen-page .section-dark h2, body#yakeen-page .section-dark h3, body#yakeen-page .section-dark h4, body#yakeen-page .section-dark h5 {
+  color: var(--color-text-heading);
+}
+
+body#yakeen-page .section-dark .section-title {
+  color: var(--color-text-heading);
+}
+
+body#yakeen-page .section-dark .section-desc {
+  color: var(--color-text-body);
+}
+
+/* ============================================================
+   GLOBAL LIGHT THEME OVERRIDES
+   Unified warm light backgrounds, improved contrast, cleaner typography
+   Page base: warm off-white (--color-bg-soft)
+   Content sections: --color-white or --color-bg-paper (alt)
+   Borders & dividers: rgba(26, 23, 18, 0.06)
+   ============================================================ */
+
+body#yakeen-page {
+  background: var(--color-bg-soft);
+  color: var(--color-text-heading);
+}
+
+/* Unify all section backgrounds to light theme */
+.hero-global, .section-dark, .cta-section, .section {
+  background: var(--color-bg-soft);
+  color: var(--color-text-heading);
+}
+
+.section--alt {
+  background: var(--color-bg-paper);
+}
+
+/* Text contrast — headings
+   NOTE: deliberately NO -webkit-text-fill-color here. text-fill-color outranks
+   every `color` declaration at paint time, so a global fill-color on
+   .section-title silently defeated each dark-section rule
+   (.eng-section--dark .section-title, .tq-section--dark .section-title, ...)
+   and rendered dark-on-dark headings on every dark band site-wide — no matter
+   how specific the `color: white` override was.
+   Dark-context elements (.hero-global, .cta-section h1/h2) are excluded from
+   this list entirely: they inherit their section's own color instead. */
+.section-title,
+.section-dark h1,
+.section-dark h2,
+.section-dark h3,
+.section-dark h4,
+.section-dark h5,
+.article-hero h1,
+.article-hero h2 {
+  color: var(--color-text-heading);
+  text-shadow: none;
+}
+
+/* Text contrast — body copy (same principle: no text-fill-color; dark
+   contexts inherit their section color) */
+.section-desc,
+.section-dark p,
+.section-dark li,
+.section-dark td,
+.section-dark th,
+.article-hero p,
+.article-hero li {
+  color: var(--color-text-body);
+  text-shadow: none;
+}
+
+/* --- Image Quality --- */
+img {
+  image-rendering: auto;
+}
+
+/* ============================================================
+   HOME SECTION — Decoration
+   ============================================================ */
+
+.home-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.home-section .section-header {
+  position: relative;
+  margin-bottom: 60px;
+}
+
+/* Decorative line above section title */
+.home-section .section-header::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gold-primary), var(--color-gold-primary));
+  margin: 0 auto 24px auto;
+  border-radius: 2px;
+}

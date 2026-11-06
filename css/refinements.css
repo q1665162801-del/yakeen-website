@@ -1,0 +1,412 @@
+/* ============================================================
+   REFINEMENTS — Luxury polish overlay (top of cascade)
+   One authoritative layer that fixes palette drift, standardizes
+   decorative motifs, and elevates micro-interactions across
+   the entire site. Loaded AFTER themes/light.css, BEFORE responsive.css.
+   ============================================================ */
+
+/* ============================================================
+   1. PALETTE CORRECTION — 冷白 → 暖羊皮
+   All card / tile surfaces that were hardcoded to cool white
+   (var(--color-white)) now resolve to warm parchment, aligning
+   with the --color-bg-canvas sand system. Dark-surface white
+   TEXT is intentionally untouched.
+   ============================================================ */
+
+/* Shallow-dip surfaces: cards, tiles, wrappers */
+.card, .component-card, .component-grid, .project-card, .hproj-card, .case-card, .case-study-card, .quality-pillar, .solution-link-card, .solution-link-grid, .cap-card--eng, .cap-card--spec, .capability-card, .capability-grid, .workflow-step, .workflow-grid, .process-grid, .process-num, .why-card, .why-section, .price-breakdown-wrap, .quick-ref-card, .mistake-item, .mistake-list, .resources-grid, .documents-grid, .report-data-grid, .featured-project, .project-category, .project-title, .project-scope, .project-spec-tags, .project-location {
+  background: var(--color-bg-elevated);
+}
+
+/* Markets / about page hardcoded whites */
+.market-card {
+  background: var(--color-bg-elevated);
+}
+
+/* Projects section — hardcoded cool whites */
+.projects-section {
+  background: var(--color-bg-canvas);
+}
+.project-image {
+  background: var(--color-bg-surface);
+}
+
+/* responsive.css L356 — std-org-card white fix */
+.std-org-card {
+  background: var(--color-bg-elevated);
+}
+
+/* Broad wildcard catch — any *-card or *-tile class that somehow
+   wasn't enumerated above (covers blog/product pages we haven't
+   manually visited). Dark-surface uses of --color-white (text
+   on dark CTA/hero) are untouched because we match background. */
+
+/* Blog/product page card backgrounds that blog.css/products.css
+   hardcoded to var(--color-white) */
+.product-card {
+  background: var(--color-bg-elevated);
+}
+
+/* ============================================================
+   2. TYPOGRAPHY ELEVATION
+   ============================================================ */
+
+/* Section title em — italic serif for editorial weight */
+.section-title em, .section-label em, h1 em, h2 em, h3 em {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Card titles — all card h3/h2 titles use display serif
+   High specificity (body#yakeen-page parent) to beat page-specific overrides */
+body#yakeen-page .project-card .project-title, body#yakeen-page .hproj-card .hproj-info h3, body#yakeen-page .hproj-info h3, body#yakeen-page .hproj-card h3, body#yakeen-page .projects-editorial .hproj-card h3, body#yakeen-page .case-card h3, body#yakeen-page .case-study-card h3, body#yakeen-page .cap-card--eng h3, body#yakeen-page .cap-card--spec h3, body#yakeen-page .capability-card h3, body#yakeen-page .workflow-step h3, body#yakeen-page .process-grid h3, body#yakeen-page .why-card h3, body#yakeen-page .solution-link-card h3, body#yakeen-page .quality-pillar h3, body#yakeen-page .component-card h3, body#yakeen-page .mistake-item h3, body#yakeen-page .projects-section-title, body#yakeen-page .market-card h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+}
+
+/* Stat numbers — display serif for large numerals */
+.stat-num, .stat-number, .hero-stat__num, .hero-stat-number, .cap-number, .workflow-num, .process-num, .pillar-num {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+/* ============================================================
+   3. SECTION HEADER GOLD DIVIDER
+   24px gradient gold hairline below every section-title
+   (on the sand/light sections — dark section headers inherit
+   their own treatment)
+   ============================================================ */
+
+.section-header .section-title::after, .section-header-left .section-title::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--gold-gradient);
+  margin: 28px auto 0;
+  opacity: 0.85;
+}
+
+.section-header--center .section-title::after {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.projects-section-title::after {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--gold-gradient);
+  margin: 24px auto 0;
+}
+
+/* ============================================================
+   4. CARD HOVER DIFFERENTIATION — Three tiers
+   ============================================================ */
+
+/* Tier A: editorial/project cards — gold border + subtle gold bottom-line */
+.project-card, .hproj-card, .case-card, .case-study-card, .mistake-item {
+  border-color: var(--color-border);
+}
+.project-card:hover, .hproj-card:hover, .case-card:hover, .case-study-card:hover, .mistake-item:hover {
+  border-color: var(--color-border-gold-strong);
+  box-shadow: 0 18px 48px rgba(50, 40, 25, 0.09), 0 0 0 1px var(--color-border-gold);
+  background: var(--color-bg-elevated);
+}
+
+/* Tier B: capability/why/process cards — gentler lift */
+.why-card, .why-section .why-card, .cap-card--eng, .cap-card--spec, .capability-card, .workflow-step, .quality-pillar, .solution-link-card, .component-card {
+  transition: transform 0.5s var(--ease-lux),
+              box-shadow 0.5s var(--ease-lux),
+              border-color 0.5s var(--ease-lux),
+              background-color 0.5s var(--ease-lux);
+}
+.why-card:hover, .cap-card--eng:hover, .cap-card--spec:hover, .capability-card:hover, .workflow-step:hover, .quality-pillar:hover, .solution-link-card:hover, .component-card:hover {
+  border-color: var(--color-border-gold-strong);
+  box-shadow: 0 14px 40px -12px rgba(50, 40, 25, 0.12),
+              0 0 0 1px rgba(184, 134, 11, 0.15);
+}
+
+/* ============================================================
+   5. BUTTON METAL SHEEN
+   Top highlight + bottom shadow overlay on every gold button
+   ============================================================ */
+
+.btn--gold, .btn-primary, .nav-cta, .mobile-cta, .hero-cta .btn, .hero-cta .btn-accent {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--gold::before, .btn-primary::before, .nav-cta::before, .mobile-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0.22) 0%,
+    rgba(255, 255, 255, 0.04) 40%,
+    transparent 60%);
+  pointer-events: none;
+  transition: opacity var(--transition-base);
+}
+
+.btn--gold::after, .btn-primary::after, .nav-cta::after, .mobile-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg,
+    rgba(0, 0, 0, 0.12) 0%,
+    transparent 50%);
+  pointer-events: none;
+}
+
+.btn--gold:hover::before, .btn-primary:hover::before, .nav-cta:hover::before, .mobile-cta:hover::before {
+  opacity: 0.7;
+}
+
+/* ============================================================
+   6. NAV — Underline-on-hover
+   ============================================================ */
+
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 14px;
+  right: 14px;
+  height: 1px;
+  background: var(--color-gold-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease-lux);
+  opacity: 0.7;
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Under dark transparent nav, underline shifts to bright gold */
+.nav--transparent .nav-link::after {
+  background: var(--color-gold-bright);
+}
+
+/* ============================================================
+   7. FOOTER — Gold top border + social glow
+   ============================================================ */
+
+.footer {
+  border-top: 1px solid var(--color-border-gold-strong);
+}
+
+.footer-social .social-icon-footer {
+  border: 1px solid var(--color-border-light);
+}
+
+.footer-social .social-icon-footer:hover {
+  border-color: var(--color-gold-primary);
+  box-shadow: var(--shadow-gold);
+  background: var(--color-gold-primary);
+  color: var(--color-text-primary);
+}
+
+/* ============================================================
+   8. DARK-SECTION SUBTLE GEOMETRIC TEXTURE
+   2.5% opacity girih-inspired cross-square pattern on deep
+   dark backgrounds — breaks "empty black" without reading as
+   a texture. Only on dark sections and footer.
+   ============================================================ */
+
+.eng-section--dark::before, .footer[style*="dark"]::before, .home-hero::after {
+  /* already handled natively in hero.css — skip */
+}
+
+/* .eng-section--dark gets geometric overlay */
+.eng-section--dark {
+  position: relative;
+}
+.eng-section--dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' stroke='%23B8860B' stroke-width='0.5' opacity='0.06'%3E%3Crect x='20' y='20' width='60' height='60'/%3E%3Crect x='60' y='60' width='60' height='60'/%3E%3Crect x='20' y='60' width='60' height='60'/%3E%3Crect x='60' y='20' width='60' height='60'/%3E%3Ccircle cx='70' cy='70' r='22'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 140px 140px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.footer[data-theme="dark"]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' stroke='%23B8860B' stroke-width='0.5' opacity='0.05'%3E%3Crect x='20' y='20' width='60' height='60'/%3E%3Crect x='60' y='60' width='60' height='60'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================================
+   9. HOME HERO — Sector dividers refined
+   Gold dot bullets instead of plain · between sectors;
+   subtle side gold hairlines on the sector row
+   ============================================================ */
+
+.home-hero-sectors {
+  position: relative;
+}
+
+.hs-separator {
+  color: transparent;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-gold-bright) 1.5px, transparent 2px);
+}
+
+/* ============================================================
+   10. TITLES — H1 in page-hero gets display serif (weight fix)
+   page-hero h1 was using sans-serif bold — should match home-hero
+   which uses Cormorant Garamond light italic em
+   ============================================================ */
+
+body#yakeen-page .page-hero h1, body#yakeen-page .page-hero .hero-title, body#yakeen-page .page-hero .page-hero-title, body#yakeen-page .page-hero .page-hero-inner h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+body#yakeen-page .page-hero h1 em, body#yakeen-page .page-hero .hero-title em {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ============================================================
+   11. FOOTER COLUMNS — Underline on link hover (gold)
+   ============================================================ */
+
+.footer-col a {
+  position: relative;
+  transition: color 0.2s ease;
+}
+.footer-col a:hover {
+  color: var(--color-gold-primary);
+}
+.footer-col a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: var(--color-gold-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease-lux);
+  opacity: 0.5;
+}
+.footer-col a:hover::after {
+  transform: scaleX(1);
+}
+
+/* ============================================================
+   12. RTL (Arabic) OVERRIDES — 4 targeted fixes
+   These run ONLY when <html dir="rtl">. Latin refinements above
+   are suppressed for Arabic text because Cormorant Garamond
+   cannot render Arabic glyphs — we revert to --font-arabic
+   (Tajawal/Amiri) which is already correct.
+   ============================================================ */
+
+/* Bug 2: ALL titles revert to Arabic font in RTL
+   (Cormorant Garamond has no Arabic glyphs) */
+[dir="rtl"] body#yakeen-page .project-card .project-title, [dir="rtl"] body#yakeen-page .hproj-card .hproj-info h3, [dir="rtl"] body#yakeen-page .hproj-info h3, [dir="rtl"] body#yakeen-page .hproj-card h3, [dir="rtl"] body#yakeen-page .projects-editorial .hproj-card h3, [dir="rtl"] body#yakeen-page .case-card h3, [dir="rtl"] body#yakeen-page .case-study-card h3, [dir="rtl"] body#yakeen-page .cap-card--eng h3, [dir="rtl"] body#yakeen-page .cap-card--spec h3, [dir="rtl"] body#yakeen-page .capability-card h3, [dir="rtl"] body#yakeen-page .workflow-step h3, [dir="rtl"] body#yakeen-page .process-grid h3, [dir="rtl"] body#yakeen-page .why-card h3, [dir="rtl"] body#yakeen-page .solution-link-card h3, [dir="rtl"] body#yakeen-page .quality-pillar h3, [dir="rtl"] body#yakeen-page .component-card h3, [dir="rtl"] body#yakeen-page .mistake-item h3, [dir="rtl"] body#yakeen-page .projects-section-title, [dir="rtl"] body#yakeen-page .market-card h3, [dir="rtl"] body#yakeen-page .page-hero h1, [dir="rtl"] body#yakeen-page .page-hero .hero-title, [dir="rtl"] body#yakeen-page .page-hero .page-hero-title, [dir="rtl"] body#yakeen-page .page-hero .page-hero-inner h1, [dir="rtl"] body#yakeen-page h1, [dir="rtl"] body#yakeen-page h2 {
+  font-family: var(--font-arabic);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.4;
+}
+
+/* Stat numbers — keep Tajawal, it handles numerals fine */
+[dir="rtl"] .stat-num, [dir="rtl"] .stat-number, [dir="rtl"] .cap-number, [dir="rtl"] .workflow-num, [dir="rtl"] .process-num, [dir="rtl"] .pillar-num {
+  font-family: var(--font-arabic);
+  font-weight: 500;
+}
+
+/* Bug 3: Nav underline scales from RIGHT in RTL */
+[dir="rtl"] .nav-link::after {
+  transform-origin: right;
+  left: 14px;
+  right: 14px;
+}
+
+/* Bug 3b: Footer underline also mirrors */
+[dir="rtl"] .footer-col a::after {
+  transform-origin: right;
+}
+
+/* Bug 4: Market page cert-card / qa-item / knowledge-card warm bg
+   (markets.css hardcodes var(--color-white) on these) */
+[dir="rtl"] .cert-card, [dir="rtl"] .qa-item, [dir="rtl"] .knowledge-card, [dir="rtl"] .city-card {
+  background: var(--color-bg-elevated);
+}
+
+/* Bug 5: Section title gold divider — margin:auto works in RTL too
+   but we explicitly center it to guard against text-align:right
+   bleeding through */
+[dir="rtl"] .section-header .section-title::after, [dir="rtl"] .section-header-left .section-title::after {
+  margin-left: auto;
+  margin-right: auto;
+}
+[dir="rtl"] .projects-section-title::after {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* HERO — sector dots in RTL: radial-gradient stays fine
+   (no transform, just color) — no override needed */
+
+/* BUTTONS — metal sheen is geometric, mirrors automatically
+   (overlay gradient has no direction dependency) */
+
+/* ============================================================
+   13. VISIBLE LUXURY PASS — gold signature accents
+   Feedback: previous pass read as too subtle. This adds the
+   three highest-visibility gold signatures sitewide, still
+   inside the token system (zero new colors).
+   ============================================================ */
+
+/* 13a — Section title <em> in gold italic serif.
+   The signature editorial move: "Not sure which downlight?
+   <em>Start here.</em>" — every section headline accent
+   across all 146 pages now carries brand gold. */
+body#yakeen-page .section-title em, body#yakeen-page .projects-section-title em {
+  color: var(--color-gold-primary);
+}
+
+/* 13b — Eyebrow / kicker / label in gold.
+   The small uppercase label above every section title
+   ("How to choose", "Engineering Deep Dive") becomes gold. */
+body#yakeen-page .eyebrow, body#yakeen-page .section-kicker, body#yakeen-page .section-label {
+  color: var(--color-gold-primary);
+}
+
+/* Dark surfaces keep gold but switch to bright gold for
+   contrast (must carry the body#yakeen-page prefix to beat
+   the rule above) */
+body#yakeen-page .section-dark .eyebrow, body#yakeen-page .section-dark .section-label, body#yakeen-page .section-dark .section-kicker, body#yakeen-page .dark-section .eyebrow, body#yakeen-page .dark-section .section-label, body#yakeen-page .dark-section .section-kicker, body#yakeen-page .cta-dark .section-kicker, body#yakeen-page .eng-section--dark .section-kicker {
+  color: var(--color-gold-light);
+}
+
+/* 13c — RTL: Arabic never gets synthetic italic. The gold
+   accent survives, but em renders in Tajawal upright. */
+[dir="rtl"] body#yakeen-page .section-title em, [dir="rtl"] body#yakeen-page .projects-section-title em {
+  font-family: var(--font-arabic);
+  font-style: normal;
+  color: var(--color-gold-primary);
+}

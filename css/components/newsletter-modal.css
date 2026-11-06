@@ -1,0 +1,219 @@
+/* ============================================================
+   NEWSLETTER MODAL — Newsletter signup popup
+   Triggered by scroll depth > 35%. Session-only (once per browser session).
+   Matches design: left image + right black panel + close X.
+   ============================================================ */
+
+.nl-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 22, 16, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.nl-modal-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nl-modal {
+  width: min(92vw, 720px);
+  max-height: 88vh;
+  background: var(--color-white);
+  border-radius: 12px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+  transform: scale(0.96) translateY(12px);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+}
+
+.nl-modal-backdrop.is-open .nl-modal {
+  transform: scale(1) translateY(0);
+}
+
+/* Close button — top-right corner */
+.nl-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 50%;
+  color: var(--color-white);
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.2s ease;
+  line-height: 1;
+}
+
+.nl-modal-close:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* Left: image */
+.nl-modal-image {
+  position: relative;
+  overflow: hidden;
+  min-height: 320px;
+  /* Grid items default to min-width:auto — the image's intrinsic width
+     would push this track past the modal and get clipped. */
+  min-width: 0;
+}
+
+.nl-modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Right: black panel */
+.nl-panel {
+  background: #111;
+  color: var(--color-white);
+  padding: 48px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Same grid min-width trap as the image column. */
+  min-width: 0;
+}
+
+.nl-panel-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 0 0 16px;
+  color: var(--color-white);
+}
+
+.nl-panel-title em {
+  font-style: normal;
+  color: var(--color-gold-light);
+}
+
+.nl-panel-desc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 28px;
+}
+
+.nl-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nl-form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.nl-form input[type="email"] {
+  flex: 1;
+  /* Without this the input keeps its intrinsic ~20-char width and the
+     row overflows the modal on 375px screens. */
+  min-width: 0;
+  padding: 13px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+  color: var(--color-white);
+  font-size: 1rem; /* ≥16px — stops iOS from zooming the page on focus */
+  transition: border-color 0.2s ease, background 0.2s ease;
+  outline: none;
+}
+
+.nl-form input[type="email"]::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.nl-form input[type="email"]:focus {
+  border-color: var(--color-gold-light);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.nl-form button[type="submit"] {
+  padding: 13px 24px;
+  background: var(--color-white);
+  color: #111;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+
+.nl-form button[type="submit"]:hover {
+  background: var(--color-gold-light);
+  color: #111;
+}
+
+.nl-form .form-feedback {
+  margin-top: 8px;
+}
+
+.nl-note {
+  margin-top: 14px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.5;
+}
+
+/* Hidden honeypot */
+.nl-form .hp-field {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* --- Mobile --- */
+@media (max-width: 640px) {
+  .nl-modal {
+    grid-template-columns: 1fr;
+    max-height: 94vh;
+    width: 95vw;
+  }
+  .nl-modal-image {
+    min-height: 180px;
+    max-height: 200px;
+  }
+  .nl-panel {
+    padding: 32px 24px 28px;
+  }
+  .nl-panel-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* --- Hide when JS disabled --- */
+.nl-no-modal {
+  display: none !important;
+}

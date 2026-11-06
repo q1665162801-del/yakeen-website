@@ -1,0 +1,716 @@
+/* ============================================================
+   SECTIONS / PROJECTS
+   Project sections — expertise grid, editorial layout, preview
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. Project Expertise Grid
+      (projects.html 主页面的 6 个专业领域卡片)
+   ------------------------------------------------------------ */
+
+.projects-section {
+  padding: var(--section-padding-y) 0;
+  background: #F8F6F1;
+}
+
+.projects-section-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 56px;
+}
+
+.projects-section-title {
+  font-family: var(--font-sans);
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: var(--color-text-heading);
+  margin: 16px 0 16px;
+  line-height: 1.15;
+}
+
+.projects-section-subtitle {
+  font-size: 1rem;
+  color: var(--color-text-caption);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+/* 项目卡片 — 白底 + 圆角 + 阴影 + hover 上浮 */
+.project-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(26, 23, 18, 0.06);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(26, 23, 18, 0.04);
+}
+
+.project-card:hover {
+  border-color: rgba(184, 150, 72, 0.25);
+}
+
+/* 图片容器 */
+.project-image {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #E8E4DC;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.06);
+}
+
+/* large 卡片有两张图 — 主图 + 小副图 */
+.project-card.large .project-image {
+  aspect-ratio: 16 / 10;
+}
+
+.project-card.large .project-image .secondary {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  width: 32%;
+  aspect-ratio: 4 / 3;
+  height: auto;
+  border-radius: var(--radius-lg);
+  border: 3px solid var(--color-white);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  object-fit: cover;
+}
+
+/* 叠加在图片上的分类标签 — 带半透明黑底保证可读性 */
+.project-index {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  background: rgba(26, 23, 18, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 6px 12px;
+  border-radius: 4px;
+  z-index: var(--z-raised);
+}
+
+/* 卡片内容区域 */
+.project-card > .project-category, .project-card > .project-title, .project-card > .project-location, .project-card > .project-scope, .project-card > .project-spec-tags {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.project-category {
+  font-size: 0.75rem;
+  color: var(--color-gold-text);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.project-title {
+  font-family: var(--font-sans);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--color-text-heading);
+  margin: 0 0 6px 0;
+  line-height: 1.25;
+}
+
+.project-location {
+  font-size: 0.8rem;
+  color: var(--color-gray);
+  margin-bottom: 14px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.project-scope {
+  font-size: 0.875rem;
+  color: var(--color-text-body);
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+/* 规格标签 */
+.project-spec-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-bottom: 24px;
+}
+
+.project-spec-tags span {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--color-text-body);
+  background: var(--color-bg-paper);
+  padding: 4px 10px;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+}
+
+/* ------------------------------------------------------------
+   2. Projects Preview — Editorial Layout
+   (large featured + small side projects)
+   ------------------------------------------------------------ */
+
+.projects-editorial.home-projects-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* Featured project (left, large) */
+.projects-editorial .hproj-card.featured-project {
+  grid-column: 1 / 2;
+  min-height: 480px;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.projects-editorial .hproj-card.featured-project .hproj-image {
+  height: 100%;
+  min-height: 480px;
+  aspect-ratio: auto;
+}
+
+.projects-editorial .hproj-card.featured-project .hproj-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 60px 32px 32px;
+  background: linear-gradient(to top, rgba(12, 10, 8, 0.85) 0%, rgba(12, 10, 8, 0) 100%);
+  color: #fff;
+}
+
+.projects-editorial .hproj-card.featured-project .hproj-tag {
+  color: var(--color-gold-light);
+}
+
+.projects-editorial .hproj-card.featured-project h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.projects-editorial .hproj-card.featured-project .hproj-location {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Side projects (right, stacked) */
+.projects-editorial .side-projects {
+  grid-column: 2 / 3;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.projects-editorial .side-projects .hproj-card {
+  flex: 1;
+  min-height: 230px;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.projects-editorial .side-projects .hproj-image {
+  min-height: 230px;
+  aspect-ratio: auto;
+  height: 100%;
+}
+
+.projects-editorial .side-projects .hproj-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px 24px 20px;
+  background: linear-gradient(to top, rgba(12, 10, 8, 0.8) 0%, rgba(12, 10, 8, 0) 100%);
+  color: #fff;
+}
+
+.projects-editorial .side-projects .hproj-tag {
+  color: var(--color-gold-light);
+  font-size: 0.625rem;
+  margin-bottom: 6px;
+}
+
+.projects-editorial .side-projects h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+
+.projects-editorial .side-projects .hproj-location {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.8rem;
+}
+
+/* ------------------------------------------------------------
+   3. Responsive
+   ------------------------------------------------------------ */
+
+/* Tablet (≤ 900px) */
+@media (max-width: 900px) {
+  .projects-editorial.home-projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-editorial .hproj-card.featured-project {
+    grid-column: 1;
+    min-height: 320px;
+  }
+
+  .projects-editorial .hproj-card.featured-project .hproj-image {
+    min-height: 320px;
+    aspect-ratio: auto;
+  }
+
+  .projects-editorial .side-projects {
+    grid-column: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .projects-editorial .side-projects .hproj-card {
+    flex: 1 1 calc(50% - 10px);
+    min-height: 200px;
+  }
+
+  .projects-editorial .side-projects .hproj-image {
+    min-height: 200px;
+    aspect-ratio: auto;
+    height: 100%;
+  }
+}
+
+/* Mobile (≤ 480px) */
+@media (max-width: 480px) {
+  .projects-editorial .side-projects .hproj-card {
+    flex: 1 1 100%;
+  }
+}
+
+/* ------------------------------------------------------------
+   4. Project Expertise Grid — Responsive
+   ------------------------------------------------------------ */
+
+@media (max-width: 1024px) {
+  .projects-section-title {
+    font-size: 2rem;
+  }
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .project-card.large {
+    grid-column: span 2;
+  }
+  .project-card.large .project-image {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 640px) {
+  .projects-section-title {
+    font-size: 1.6rem;
+  }
+  .projects-section-subtitle {
+    font-size: 0.9rem;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .project-card.large {
+    grid-column: span 1;
+  }
+  .project-title {
+    font-size: 1.2rem;
+  }
+  .project-card.large .project-image {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+
+/* ============================================================
+   Home Projects Grid — Home page project showcase
+   ============================================================ */
+
+.home-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.hproj-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.hproj-card:hover {
+  transform: translateY(var(--lift-sm));
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+}
+
+.hproj-image {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #E8E4DC;
+}
+
+.hproj-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.hproj-card:hover .hproj-image img {
+  transform: scale(1.05);
+}
+
+.hproj-info {
+  padding: 24px 28px;
+  background: var(--color-bg-elevated);
+}
+
+.hproj-tag {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gold-text);
+  margin-bottom: 10px;
+}
+
+.hproj-info h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.hproj-location {
+  font-size: 0.875rem;
+  color: var(--color-text-tertiary);
+  margin: 0;
+}
+
+/* Home Projects responsive — 1024px */
+@media (max-width: 1024px) {
+  .home-projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Home Projects responsive — 768px */
+@media (max-width: 768px) {
+  .home-projects-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* ============================================================
+   Guest Journey Timeline (Hospitality)
+   Sole owner of the .journey-* family.
+   ============================================================ */
+
+.journey-timeline {
+  position: relative;
+  max-width: 720px;
+  margin: 40px auto 0;
+  padding-left: 80px;
+}
+
+.journey-timeline::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--color-gold-primary) 0%, var(--color-gold-warm) 50%, #f0ebe0 100%);
+}
+
+.journey-item {
+  position: relative;
+  margin-bottom: 32px;
+  padding-bottom: 8px;
+}
+
+.journey-item:last-child {
+  margin-bottom: 0;
+}
+
+.journey-item::before {
+  content: '';
+  position: absolute;
+  left: -58px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-white);
+  border: 3px solid var(--color-gold-primary);
+  z-index: var(--z-raised);
+}
+
+.journey-time {
+  font-family: var(--font-sans);
+  font-size: 22px;
+  color: var(--color-gold-primary);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.journey-content h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 6px;
+  font-family: var(--font-sans, 'Inter', sans-serif);
+}
+
+.journey-content p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* ============================================================
+   Mistake List (Luxury Residential)
+   ============================================================ */
+
+.mistake-list {
+  max-width: 720px;
+  margin: 40px auto 0;
+}
+
+.mistake-item {
+  background: var(--color-white);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-left: 3px solid var(--color-gold-primary);
+  padding: 24px 28px;
+  margin-bottom: 16px;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  transition: all 0.3s ease;
+}
+
+.mistake-item:hover {
+  border-left-color: var(--color-gold-primary);
+  background: #fefdfb;
+}
+
+.mistake-item:nth-child(2) {
+  border-left-color: var(--color-border-strong);
+}
+
+.mistake-num {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-gold-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.mistake-item h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+
+.mistake-item p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Journey timeline responsive */
+@media (max-width: 768px) {
+  .journey-timeline {
+    padding-left: 56px;
+  }
+}
+
+@media (max-width: 600px) {
+  .journey-timeline::before {
+    left: 18px;
+  }
+  .journey-item::before {
+    left: -42px;
+  }
+}
+
+/* ============================================================
+   12. CASE STUDIES — 案例研究卡片
+   ============================================================ */
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.case-card {
+  display: block;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  transition: all var(--transition-base);
+}
+
+.case-card:hover {
+  border-color: var(--color-gold-primary);
+  transform: translateY(var(--lift-sm));
+  box-shadow: var(--shadow-md);
+}
+
+.case-image {
+  aspect-ratio: 16 / 10;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.case-body {
+  padding: 28px;
+}
+
+.case-tag {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-gold-primary);
+  margin-bottom: 10px;
+}
+
+.case-card h3 {
+  font-family: var(--font-sans);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin: 0 0 10px;
+  line-height: 1.3;
+}
+
+.case-card p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0 0 16px;
+}
+
+
+
+
+
+/* Case studies section (市场页变体) */
+.case-studies-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.case-study-card {
+  display: block;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  transition: all var(--transition-base);
+}
+
+.case-study-card:hover {
+  border-color: var(--color-gold-primary);
+  transform: translateY(var(--lift-sm));
+  box-shadow: var(--shadow-md);
+}
+
+.case-study-image {
+  aspect-ratio: 16 / 9;
+  background-size: cover;
+  background-position: center;
+}
+
+.case-study-body {
+  padding: 24px;
+}
+
+.case-study-body h3 {
+  font-family: var(--font-sans);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin: 0 0 8px;
+  line-height: 1.35;
+}
+
+.case-study-meta {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-text-tertiary);
+}
+
+.case-studies-section {
+  padding: var(--section-padding-y) 0;
+}
+
+@media (max-width: 768px) {
+  .case-grid, .case-studies-grid { grid-template-columns: 1fr; }
+}

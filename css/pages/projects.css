@@ -1,0 +1,99 @@
+/* ============================================================
+   Projects — Page-specific styles
+   Extracted from inline styles on projects.html & projects-ar.html
+   ============================================================ */
+
+/* --- Project card cursor fix (cards are not clickable links) --- */
+body#yakeen-page .project-card--static {
+  cursor: default;
+}
+
+/* --- Project category index label --- */
+body#yakeen-page .project-index-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+}
+
+/* --- Bottom spacer helper --- */
+body#yakeen-page .projects-bottom-spacer {
+  margin-top: 24px;
+}
+
+/* --- Footer note (tertiary text) --- */
+body#yakeen-page .projects-footer-note {
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--color-text-tertiary);
+}
+
+body#yakeen-page .projects-footer-link {
+  color: var(--color-text-primary);
+}
+
+/* ============================================================
+   10. PROJECT TYPES / FEATURED PROJECTS
+   ============================================================ */
+
+.project-types-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.project-type-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.project-type-image {
+  position: absolute;
+  inset: 0;
+}
+
+.project-type-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.project-type-card:hover .project-type-image img {
+  transform: scale(1.05);
+}
+
+.project-type-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  color: var(--color-white);
+}
+
+.project-type-tag {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-gold-primary);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.project-type-content h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0 0 6px;
+  color: var(--color-white);
+}
+
+.project-type-challenge {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}

@@ -1,0 +1,733 @@
+﻿﻿﻿﻿/* ============================================================
+   SECTIONS / FEATURES
+   Value cards, capabilities, glance, QA, resource library
+   ============================================================ */
+
+/* --- Value Grid (used by market pages with .value-item cards) --- */
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 48px;
+}
+
+/* NOTE: .value-card (editorial style) was removed — was dead code, never used in HTML.
+   Market pages use .value-item inside .value-grid. About page uses its own .value-card. */
+
+/* Wide value card variant */
+.hv-item--wide {
+  grid-column: span 2;
+}
+
+.hv-item--wide h3 {
+  font-size: 20px;
+}
+
+.hv-item--wide p {
+  font-size: 15px;
+  max-width: 520px;
+}
+
+/* Featured market card */
+.hm-card--featured {
+  grid-row: span 2;
+  background: linear-gradient(145deg, rgba(184, 144, 74, 0.12) 0%, var(--color-bg-elevated) 100%);
+  border-color: var(--color-border-strong);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hm-card--featured h3 {
+  font-size: 26px;
+  font-family: var(--font-sans);
+  color: var(--color-gold-primary);
+}
+
+.hm-card--featured p {
+  font-size: 15px;
+  margin-top: 8px;
+}
+
+/* --- Capabilities Grid (spec + engineering) --- */
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 960px;
+  margin: 32px auto 0;
+}
+
+/* Compact section variant for shorter content */
+.compact-section.home-section {
+  padding: var(--section-padding-y-sm) 0;
+}
+
+.compact-section.home-section .home-section-head {
+  margin-bottom: 40px;
+}
+
+.cap-card, .app-card {
+  display: block;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border, rgba(26,23,18,0.06));
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  text-decoration: none;
+  color: inherit;
+  transition: all var(--transition-base, 0.35s ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.cap-card::before, .app-card::before, .resource-link-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 24px;
+  width: 32px;
+  height: 2px;
+  background: var(--color-gold-primary);
+}
+
+.cap-card:hover, .app-card:hover {
+  border-color: var(--color-border-gold, rgba(158,124,58,0.16));
+}
+
+.cap-card:hover::before, .app-card:hover::before, .resource-link-item:hover::before {
+  width: 48px;
+  transition: width var(--transition-base, 0.35s ease);
+}
+
+.cap-card h3, .app-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 20px 0 10px 0;
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  line-height: 1.3;
+}
+
+.cap-card p, .app-card p {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--color-text-secondary,#3D3730);
+  margin: 0;
+}
+
+/* Applications grid — 2-up variant (custom chandeliers page) */
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* Resource link cards (custom chandeliers page) */
+.resource-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.resource-link-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border, rgba(26,23,18,0.06));
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  text-decoration: none;
+  transition: all var(--transition-base, 0.35s ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.resource-link-item:hover {
+  transform: translateY(var(--lift-sm));
+  border-color: var(--color-border-gold, rgba(158,124,58,0.16));
+}
+
+.resource-link-item h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 6px 0;
+  font-family: var(--font-sans, 'Inter', sans-serif);
+}
+
+.resource-link-item p {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary, #3D3730);
+  margin: 0;
+}
+
+.rli-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.rli-arrow {
+  margin-left: auto;
+  align-self: center;
+  color: var(--color-gold-primary);
+  font-size: 1.1rem;
+}
+
+.cap-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-gold-primary);
+  display: inline-block;
+  transition: transform var(--transition-fast, 0.2s ease);
+}
+
+.cap-card:hover .cap-link {
+  transform: translateX(4px);
+}
+
+/* Icon sizing — desktop */
+.cap-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold-primary);
+  margin-bottom: 4px;
+}
+
+.cap-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke-width: 1.5;
+}
+
+
+
+
+
+.spec-defined-content .eyebrow {
+  color: var(--color-gold-text);
+  margin-bottom: 20px;
+}
+
+.spec-defined-content .section-title {
+  font-family: var(--font-sans);
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-bg-dark);
+  margin: 0 0 24px 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- Quick Answers / QA Grid --- */
+.ksa-quick-answers {
+  padding: var(--section-padding-y) 0;
+  background: var(--color-bg-elevated);
+}
+
+.qa-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.qa-item {
+  background: var(--color-bg-accent,#F9F5ED);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  border-left: 3px solid var(--color-border-strong);
+  transition: all var(--transition-base, 0.35s ease);
+}
+
+.qa-item:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(26,23,18,0.03));
+}
+
+.qa-item h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 10px 0;
+  line-height: 1.4;
+  font-family: var(--font-sans, 'Inter', sans-serif);
+}
+
+.qa-item p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--color-text-secondary,#3D3730);
+  margin: 0;
+}
+
+/* --- Resource Library --- */
+.resource-library-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.res-lib-card {
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  border: 1px solid var(--color-border, rgba(26,23,18,0.06));
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-base, 0.35s ease);
+}
+
+.res-lib-card:hover {
+  border-color: var(--color-border-gold, rgba(158,124,58,0.16));
+  box-shadow: var(--shadow-md, 0 4px 16px rgba(26,23,18,0.05));
+  transform: translateY(var(--lift-xs));
+}
+
+.res-lib-icon {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.res-lib-card h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 8px 0;
+  font-family: var(--font-sans, 'Inter', sans-serif);
+}
+
+.res-lib-card p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-text-secondary,#3D3730);
+  margin: 0 0 16px 0;
+  flex: 1;
+}
+
+.res-lib-cta a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-gold-primary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition-fast, 0.2s ease);
+}
+
+.res-lib-cta a:hover {
+  border-bottom-color: var(--color-gold-primary);
+}
+
+/* ============================================================
+   RESPONSIVE — Tablet (≤ 900px)
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .value-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px;
+  }
+
+  .resource-library-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — Tablet (≤ 768px)
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .hv-item--wide {
+    grid-column: span 1;
+  }
+
+  .hm-card--featured {
+    grid-row: span 1;
+  }
+
+  .hm-card--featured h3 {
+    font-size: 20px;
+  }
+
+  .capabilities-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .cap-card,
+  .app-card {
+    padding: 24px;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .app-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .resource-links {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .cap-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .cap-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .qa-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — Mobile (≤ 560px)
+   ============================================================ */
+
+@media (max-width: 560px) {
+  .value-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .resource-library-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   11. DIFF / DIFFERENTIATORS — 差异化对比卡片
+   ============================================================ */
+.diff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+
+.diff-card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  transition: all var(--transition-base);
+}
+
+.diff-card:hover {
+  border-color: var(--color-gold-primary);
+  transform: translateY(var(--lift-sm));
+  box-shadow: var(--shadow-md);
+}
+
+.diff-icon {
+  font-size: 2rem;
+  color: var(--color-gold-primary);
+  margin-bottom: 16px;
+  line-height: 1;
+}
+
+.diff-label {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-text-tertiary);
+  margin-bottom: 8px;
+}
+
+.diff-card h3 {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin: 0 0 10px;
+  line-height: 1.3;
+}
+
+.diff-card p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Diff compare (卡片内纵向对比：标准工厂 vs Yakeen) */
+.diff-compare {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+/* differ (竞品对比页用) */
+.differ-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.differ-card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  text-align: center;
+  transition: all var(--transition-base);
+}
+
+.differ-card:hover {
+  border-color: var(--color-gold-primary);
+  transform: translateY(-3px);
+}
+
+.differ-icon {
+  font-size: 1.75rem;
+  margin-bottom: 12px;
+}
+
+.differ-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-gold-primary);
+  margin-bottom: 8px;
+}
+
+.differ-card h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .diff-grid { grid-template-columns: 1fr; }
+  .differ-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* --- Diff Side (custom-lighting 对比卡) --- */
+.diff-side {
+  padding: 14px 16px;
+  border-radius: var(--radius-md, 8px);
+}
+
+.diff-side.standard {
+  background: var(--color-bg-canvas);
+  border: 1px solid var(--color-border);
+}
+
+.diff-side.yakeen {
+  background: var(--color-gold-pale);
+  border: 1px solid var(--color-border-gold);
+}
+
+.diff-side.yakeen .diff-label {
+  color: var(--color-gold-text);
+}
+
+.diff-vs {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold-primary);
+  font-weight: 600;
+  padding: 0;
+}
+
+.diff-vs::before, .diff-vs::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.diff-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.standard {
+  color: var(--color-text-secondary);
+}
+
+/* ============================================================
+   Feature Check / Feature List — inline ✓ bullet lists
+   ============================================================ */
+
+.feature-check {
+  display: flex;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.feature-check::before {
+  content: '✓';
+  color: var(--color-gold-primary);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+}
+
+.feature-list li {
+  padding: 8px 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+/* ============================================================
+   APPLICATION CARD — PHOTO VARIANT
+   Full-bleed image with a bottom gradient so white copy stays legible.
+   ============================================================ */
+
+.app-card--photo {
+  padding: 0;
+  min-height: 340px;
+  display: flex;
+  /* Column + justify-content, not align-items: the 600px breakpoint sets
+     flex-direction: column on .app-card, which turns align-items into a
+     horizontal axis and pushes the copy to the top on phones. */
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: stretch;
+}
+
+.app-card--photo picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  z-index: 0;
+}
+
+.app-card--photo .app-card-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.app-card--photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(16, 13, 8, 0.95) 0%,
+    rgba(16, 13, 8, 0.86) 28%,
+    rgba(16, 13, 8, 0.5) 62%,
+    rgba(16, 13, 8, 0.08) 100%
+  );
+}
+
+/* Keep the gold rule above the photo, inset from the top edge */
+.app-card--photo::before {
+  top: 24px;
+  left: 24px;
+  z-index: 3;
+}
+
+.app-card--photo .app-card-body {
+  position: relative;
+  z-index: 2;
+  padding: 28px 26px;
+  width: 100%;
+}
+
+.app-card--photo h3 {
+  color: #F8F4E8;
+  font-size: 1.3rem;
+  margin: 0 0 10px;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45);
+}
+
+.app-card--photo p {
+  color: rgba(248, 244, 232, 0.9);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+}
+
+.app-card--photo:hover .app-card-media {
+  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .app-card--photo {
+    padding: 0;
+    min-height: 300px;
+  }
+  .app-card--photo .app-card-body {
+    padding: 24px 22px;
+  }
+}

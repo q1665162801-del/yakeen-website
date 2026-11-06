@@ -1,0 +1,171 @@
+---
+title: "Photometric Testing & IES Files for Specifiers | Yakeen"
+description: "Why photometric testing matters, what IES files actually contain, and how to verify that the data you are given matches real-world performance."
+navVariant: "transparent"
+lang: "en"
+ogImage: "https://www.yakeenlighting.com/images/blog/photometric-testing-ies.jpg"
+canonical: "https://www.yakeenlighting.com/blog/photometric-testing-ies-files.html"
+type: "article"
+datePublished: "2026-04-20"
+dateModified: "2026-04-20"
+---
+<!-- Article Hero -->
+  <section class="article-hero">
+    <div class="container">
+      <div class="article-meta">
+        <a href="index.html" class="article-breadcrumb">Insights</a>
+        <span class="article-dot">&middot;</span>
+        <span class="article-category">Specification</span>
+        <span class="article-dot">&middot;</span>
+        <span class="article-read-time">8 min read</span>
+      </div>
+      <h1 class="article-title">Understanding Photometric Data & IES Files: A Specifier's Guide</h1>
+      <p class="article-subtitle">If a provider can't give you IES files, stop the conversation. Here's what they are, what to look for, and why they matter.</p>
+    </div>
+  </section>
+
+  <!-- Article Body -->
+  <article class="article-body">
+    <div class="container article-container">
+      
+      <!-- Table of Contents -->
+      <aside class="article-toc">
+        <h4>In this article</h4>
+        <ul>
+    <li><a href="#what-is">What is photometric data?</a></li>
+    <li><a href="#ies-format">The IES file format</a></li>
+    <li><a href="#parameters">Key photometric parameters explained</a></li>
+    <li><a href="#verify">How to verify photometric data</a></li>
+    <li><a href="#software">Using IES files in design software</a></li>
+    <li><a href="#pitfalls">Common pitfalls and red flags</a></li>
+  </ul>
+      </aside>
+
+      <!-- Article Content -->
+      <div class="article-content">
+        
+<h2 id="what-is">What is photometric data?</h2>
+
+<p>Photometric data is the quantitative measurement of how a light fixture distributes light in space. It tells you exactly how much light goes in which direction, at what intensity, and with what distribution pattern.</p>
+
+<p>Without photometric data, specifying a lighting fixture is like specifying a paint color based on a description rather than a sample. You can be confident in the result only if you have measured data.</p>
+
+<p>For professional lighting design and specification, photometric data is not optional. It is the foundation of every lighting calculation, every energy code compliance check, and every design review.</p>
+
+<h2 id="ies-format">The IES file format</h2>
+
+<p>The standard format for photometric data in North America and most of the world is the IES file &mdash; named after the Illuminating Engineering Society. The format (LM-63-1995, updated as LM-63-02 and TM-24-19) defines a structured text file that contains all the measured data from a photometric test.</p>
+
+<p>An IES file contains:</p>
+
+<ul>
+  <li>Fixture identification and product information</li>
+  <li>Lamp type and rated lumens</li>
+  <li>Number of lamps and lumens per lamp</li>
+  <li>Measurement laboratory and test date</li>
+  <li>Photometric type (Type A, B, or C)</li>
+  <li>Unit dimensions and luminous opening size</li>
+  <li>Vertical angle data (0&deg; to 90&deg; or 180&deg;)</li>
+  <li>Horizontal angle data (0&deg; to 360&deg;)</li>
+  <li>Candela values at each angle point</li>
+</ul>
+
+<p>When a product company provides an IES file, you have the raw data you need to calculate exactly how the fixture will perform in any space.</p>
+
+<h2 id="parameters">Key photometric parameters explained</h2>
+
+<p>Beyond the raw data in the IES file, several derived parameters are commonly used in specification.</p>
+
+<div class="spec-box">
+  <h3 id="key-photometric-parameters-explained">Key photometric parameters</h3>
+  
+  <div class="spec-metric">
+    <div class="spec-metric-item">
+      <div class="spec-metric-label">Total Light Output</div>
+      <div class="spec-metric-value">Lumens (lm)</div>
+    </div>
+    <div class="spec-metric-item">
+      <div class="spec-metric-label">Efficacy</div>
+      <div class="spec-metric-value">lm/W</div>
+    </div>
+  </div>
+  
+  <p><strong>Beam Angle</strong> &mdash; The angle between the two directions in which the intensity is 50% of the maximum intensity (the half-peak points). Narrow beam = spotlight. Wide beam = flood.</p>
+  
+  <p><strong>Field Angle</strong> &mdash; The angle where intensity drops to 10% of maximum. Defines the outer edge of the light distribution. The difference between beam angle and field angle determines how "soft" the edge of the beam is.</p>
+  
+  <p><strong>CBCP</strong> &mdash; Center Beam Candlepower. The intensity (in candelas) at the center of the beam. Important for calculating throw distance.</p>
+  
+  <p><strong>LOR / LOR</strong> &mdash; Light Output Ratio. The percentage of lamp lumens that actually exit the fixture. A measure of optical efficiency.</p>
+  
+  <p><strong>UGR</strong> &mdash; Unified Glare Rating. A measure of how much discomfort glare the fixture produces in a standard room. Lower = less glare. UGR < 19 is general office standard.</p>
+</div>
+
+<h2 id="verify">How to verify photometric data</h2>
+
+<p>Not all photometric data is equally reliable. Manufacturers self-publish IES files, and quality varies enormously. Some are measured in accredited laboratories. Some are calculated by simulation. Some are simply made up.</p>
+
+<p>How to verify:</p>
+
+<ul>
+  <li><strong>Check the test lab.</strong> Is the IES file from an independent, accredited photometric laboratory? Look for NVLAP, ILAC, or similar accreditation.</li>
+  <li><strong>Check the date.</strong> Photometric data should be current (within the last few years). Older data may not reflect current production.</li>
+  <li><strong>Verify with a goniophotometer report.</strong> Request the full goniophotometer test report, not just the IES file. The report includes methodology and calibration information.</li>
+  <li><strong>Compare similar products.</strong> If one product company claims dramatically higher efficacy than competitors with similar specifications, be skeptical.</li>
+  <li><strong>Test a sample.</strong> For large projects, test a sample fixture in a laboratory or on site to verify performance.</li>
+  <li><strong>Use your judgment.</strong> If the beam looks too perfect, the efficacy too high, or the data too clean, it may be simulated rather than measured.</li>
+</ul>
+
+<h2 id="software">Using IES files in design software</h2>
+
+<p>IES files are the input format for all major lighting calculation programs:</p>
+
+<ul>
+  <li><strong>DIALux</strong> &mdash; The most widely used software in Europe and the Middle East. Free, powerful, and industry-standard.</li>
+  <li><strong>Relux</strong> &mdash; Popular in Europe, especially for indoor and roadway lighting.</li>
+  <li><strong>AGi32</strong> &mdash; Widely used in North America. Very powerful but more expensive.</li>
+  <li><strong>Visual</strong> &mdash; From the Lighting Research Center at RPI. Good for educational use and basic calculations.</li>
+</ul>
+
+<p>When using IES files in calculations, always:</p>
+
+<ul>
+  <li>Verify the IES file matches the exact fixture model and options being specified</li>
+  <li>Use the correct mounting height and orientation</li>
+  <li>Apply appropriate maintenance factors</li>
+  <li>Cross-check calculations with hand calculations for critical areas</li>
+  <li>Document all assumptions</li>
+</ul>
+
+<p>At Yakeen, we provide IES files for every product in our catalog. All photometric testing is conducted in accredited laboratories, and we provide full goniophotometer reports on request. Our engineering team also supports DIALux calculations for projects &mdash; send us your plans and we will add our fixtures, run the calculations, and return the completed model.</p>
+
+<h2 id="pitfalls">Common pitfalls and red flags</h2>
+
+<p>Watch for these common problems with photometric data:</p>
+
+<ol>
+  <li><strong>Generic IES files.</strong> One IES file used for an entire product family with different wattages and beam angles. Each variant should have its own IES file.</li>
+  <li><strong>Simulated only.</strong> "Simulated" or "calculated" photometric data has not been measured on an actual product. Treat it as approximate at best.</li>
+  <li><strong>Luminous flux vs. delivered lumens.</strong> Manufacturers often quote LED chip lumens, not fixture delivered lumens. The difference can be 20-40%.</li>
+  <li><strong>Missing optical accessories.</strong> Lenses, louvers, and diffusers change the distribution. Make sure the IES file includes the actual accessories being specified.</li>
+  <li><strong>Outdated data.</strong> LED technology evolves quickly. Data from five years ago may not match current production.</li>
+  <li><strong>Incorrect photometric type.</strong> Most fixtures use Type C photometry. Using the wrong type will give incorrect calculation results.</li>
+</ol>
+
+<p>The rule is simple: if a product company cannot or will not provide IES files and test reports, their products are not specification-grade. Move on.</p>
+    
+      </div>
+    </div>
+  </article>
+
+  <!-- CTA Section -->
+  <section class="article-cta-section">
+    <div class="container article-cta-inner">
+      <h2>Specifying a project?</h2>
+      <p>Send us your plans &mdash; our engineering team will add our fixtures, run DIALux calculations, and return a completed specification package with IES files and Revit families.</p>
+      <a href="../start-project.html" class="btn btn-primary">Start Your Specification &rarr;</a>
+    </div>
+  </section>
+
+<!-- Footer -->
+

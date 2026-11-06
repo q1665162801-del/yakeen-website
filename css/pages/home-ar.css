@@ -1,0 +1,30 @@
+/* ============================================================
+   Home (Arabic) — Page-specific styles
+   Extracted from inline styles on index-ar.html
+   ============================================================ */
+
+/* --- Alt section style (secondary bg + top/bottom borders) --- */
+
+body#yakeen-page .section--alt {
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Strong text in feature list items (override inherited secondary color) */
+body#yakeen-page .feature-strong {
+  color: var(--color-text-primary);
+}
+
+/* --- Studio page (AR) shared styles --- */
+
+body#yakeen-page .studio-section-bordered {
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+body#yakeen-page .studio-awards-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+

@@ -1,0 +1,16 @@
+
+.iga/
+
+# Secrets — never commit
+.dev.vars
+.secrets.json
+
+# Dependencies
+node_modules/
+
+# Build output — fully reproducible from src/ via `npm run build`
+dist/
+
+# Local caches
+.wrangler/
+.verify/

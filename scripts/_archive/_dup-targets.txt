@@ -1,0 +1,39 @@
+.cta-desc
+.cta-section--dark .cta-desc
+.metric-value
+.metric-item
+.metric-label
+.mistake-item
+.mistake-item:hover
+.mistake-item:nth-child(2)
+.mistake-num
+.mistake-item h3
+.mistake-item p
+.journey-timeline
+.journey-timeline::before
+.journey-item
+.journey-item:last-child
+.journey-item::before
+.journey-time
+.journey-content h3
+.journey-content p
+.section-title
+.section-title.center
+.section-title em
+.section-title h2
+.section-title h2 em
+.section-title p
+.section-title .eyebrow
+.stat-label
+.profile-compare
+.tested-link
+.tested-cta
+.tested-cta:hover
+.quick-ref-card
+.quick-ref-table
+.quick-ref-table th
+.quick-ref-table td
+.quick-ref-table tr:last-child td
+.quick-ref-table td:first-child
+.quick-ref-table th:first-child
+.blog-stat-label

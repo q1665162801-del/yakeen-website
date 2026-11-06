@@ -1,0 +1,833 @@
+/* ============================================================
+   HERO — Unified dark full-width image design
+   所有内页 hero 统一为：全宽背景大图 + 左侧深色渐变遮罩 + 白字
+   不再有浅色模式，不再需要 body class 触发。
+   所有按钮类名都有样式，不会出现"看不见的按钮"。
+   ============================================================ */
+
+/* ============================================================
+   Home Hero — 全宽大图 + 左对齐文字
+   ============================================================ */
+
+body#yakeen-page .home-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  background: #120E08;
+  overflow: hidden;
+}
+
+body#yakeen-page .home-hero-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-size: cover;
+  background-position: center center;
+  z-index: var(--z-base);
+  filter: saturate(0.85) brightness(0.95);
+}
+
+body#yakeen-page .home-hero-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    linear-gradient(105deg, rgba(26, 20, 12, 0.65) 0%, rgba(26, 20, 12, 0.5) 20%, rgba(26, 20, 12, 0.3) 40%, rgba(26, 20, 12, 0.12) 60%, rgba(26, 20, 12, 0.04) 80%, rgba(26, 20, 12, 0) 100%),
+    linear-gradient(180deg, rgba(26, 20, 12, 0.25) 0%, rgba(26, 20, 12, 0) 25%, rgba(26, 20, 12, 0) 65%, rgba(26, 20, 12, 0.35) 100%);
+  z-index: var(--z-raised);
+}
+
+body#yakeen-page .home-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 65% 75% at 15% 55%, rgba(184, 134, 11, 0.22), transparent 60%),
+    radial-gradient(ellipse 45% 55% at 75% 25%, rgba(200, 150, 50, 0.08), transparent 70%);
+  z-index: var(--z-raised);
+  pointer-events: none;
+}
+
+/* 底部装饰金线 — 奢华感细节 */
+body#yakeen-page .home-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(184, 134, 11, 0.5) 30%, rgba(232, 200, 114, 0.8) 50%, rgba(184, 134, 11, 0.5) 70%, transparent 100%);
+  z-index: var(--z-raised);
+  pointer-events: none;
+}
+
+body#yakeen-page .home-hero-inner {
+  position: relative;
+  z-index: var(--z-raised);
+  max-width: 100%;
+  margin: 0;
+  padding: var(--hero-pad-top) 40px var(--hero-pad-bottom);
+  text-align: left;
+}
+
+body#yakeen-page .home-hero-copy {
+  position: relative;
+  z-index: var(--z-raised);
+  max-width: 680px;
+  text-align: left;
+}
+
+body#yakeen-page .home-hero-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold-bright);
+  margin-bottom: 28px;
+  display: block;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  position: relative;
+  padding-left: 40px;
+}
+
+body#yakeen-page .home-hero-eyebrow::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 28px;
+  height: 1px;
+  background: var(--color-gold-bright);
+  transform: translateY(-50%);
+  opacity: 0.7;
+}
+
+body#yakeen-page .home-hero-title, body#yakeen-page .home-hero h1, body#yakeen-page .home-hero h2 {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 7vw, 5.8rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  color: #F8F4E8;
+  margin: 0 0 32px 0;
+  max-width: 720px;
+  margin-left: 0;
+  margin-right: 0;
+  text-shadow: 0 2px 40px rgba(0, 0, 0, 0.6), 0 0 80px rgba(184, 134, 11, 0.1);
+}
+
+body#yakeen-page .home-hero-title em, body#yakeen-page .home-hero h1 em {
+  font-style: italic;
+  color: var(--color-gold-bright);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 30px rgba(184, 134, 11, 0.3);
+}
+
+body#yakeen-page .home-hero-desc, body#yakeen-page .home-hero .home-hero-copy p, body#yakeen-page .home-hero > .home-hero-inner p {
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 520px;
+  margin: 0 0 40px 0;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
+}
+
+body#yakeen-page .home-hero-sectors {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  margin: 0 0 28px 0;
+  font-family: var(--font-sans);
+  font-size: clamp(0.85rem, 1.3vw, 0.95rem);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+}
+
+body#yakeen-page .hs-sector {
+  white-space: nowrap;
+}
+
+body#yakeen-page .hs-separator {
+  color: var(--color-accent-gold);
+  font-weight: 700;
+}
+
+body#yakeen-page .home-hero-cta {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Metrics come from .btn / .btn-lg — only the dark-surface treatment lives here */
+body#yakeen-page .home-hero-cta .btn, body#yakeen-page .home-hero-cta .btn-accent, body#yakeen-page .home-hero-cta a {
+  background: var(--gold-gradient);
+  color: #1A1610;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  text-shadow: none;
+  text-decoration: none;
+  position: relative;
+  box-shadow: 
+    0 4px 20px rgba(184, 134, 11, 0.25),
+    0 1px 0 rgba(255, 255, 255, 0.2) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.2) inset;
+}
+
+body#yakeen-page .home-hero-cta .btn:hover, body#yakeen-page .home-hero-cta .btn-accent:hover, body#yakeen-page .home-hero-cta a:hover {
+  background: var(--gold-gradient-strong);
+  transform: translateY(var(--lift-xs));
+  box-shadow: 
+    0 8px 32px rgba(184, 134, 11, 0.35),
+    0 1px 0 rgba(255, 255, 255, 0.25) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.15) inset;
+}
+
+body#yakeen-page .home-hero-cta .btn-secondary, body#yakeen-page .home-hero-cta .btn--outline {
+  background: transparent;
+  color: var(--color-text-inverse);
+  border: 1px solid rgba(245, 240, 224, 0.35);
+  box-shadow: none;
+}
+
+body#yakeen-page .home-hero-cta .btn-secondary:hover, body#yakeen-page .home-hero-cta .btn--outline:hover {
+  background: rgba(245, 240, 224, 0.08);
+  border-color: rgba(245, 240, 224, 0.6);
+  color: var(--color-text-inverse);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================================
+   Page Hero — DEFAULT: 深色全宽大图模式
+   所有内页默认就是这个样式，不再需要额外的 class 或 body class
+   ============================================================ */
+
+body#yakeen-page .page-hero {
+  position: relative;
+  min-height: 680px;
+  padding: var(--hero-pad-top) 0 var(--hero-pad-bottom);
+  background: var(--color-bg-darker); /* 深棕黑底色，图片加载失败时也能看清白字 */
+  color: var(--color-white);
+  overflow: hidden;
+  border-bottom: none;
+}
+
+/* 背景图容器 — 居中全宽展示，完整呈现大图 */
+body#yakeen-page .page-hero .page-hero-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-size: cover;
+  background-position: center center;
+  z-index: var(--z-base);
+}
+
+/* 整体暗化 + 文字区加强 — 保证所有背景下文字清晰可读 */
+body#yakeen-page .page-hero .page-hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 70% at 22% 45%, rgba(10, 8, 5, 0.55), transparent 65%),
+    linear-gradient(180deg, rgba(10, 8, 5, 0.3) 0%, rgba(10, 8, 5, 0.2) 30%, rgba(10, 8, 5, 0.25) 60%, rgba(10, 8, 5, 0.5) 100%);
+}
+
+/* 温暖光效 — 微妙的金色氛围，不影响图片完整性 */
+body#yakeen-page .page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 40% at 50% 35%, rgba(220, 180, 100, 0.06), transparent 70%);
+  pointer-events: none;
+  z-index: var(--z-raised);
+}
+
+body#yakeen-page .page-hero .container, body#yakeen-page .page-hero .page-hero-inner {
+  position: relative;
+  z-index: var(--z-raised);
+  max-width: 100%;
+  margin: 0;
+  padding: 0 40px;
+  text-align: left;
+}
+
+/* 面包屑 */
+body#yakeen-page .page-hero .hero-breadcrumb {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #E8D590;
+  margin-bottom: 28px;
+}
+
+body#yakeen-page .page-hero .hero-breadcrumb a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+body#yakeen-page .page-hero .hero-breadcrumb a:hover {
+  color: var(--color-gold-bright);
+}
+
+/* ============================================================
+   标题 — 统一所有标题类名
+   ============================================================ */
+
+body#yakeen-page .page-hero h1, body#yakeen-page .page-hero .hero-title, body#yakeen-page .page-hero .page-hero-title, body#yakeen-page .page-hero .page-hero-inner h1, body#yakeen-page .page-hero h2 {
+  font-family: var(--font-sans);
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+  margin: 0 0 20px 0;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6), 0 0 50px rgba(0, 0, 0, 0.3);
+  max-width: 780px;
+}
+
+body#yakeen-page .page-hero h1 em, body#yakeen-page .page-hero .hero-title em, body#yakeen-page .page-hero .page-hero-title em, body#yakeen-page .page-hero h2 em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--color-gold-bright);
+}
+
+/* ============================================================
+   副标题 / 描述文字 — 统一所有 p / subtitle 类名
+   ============================================================ */
+
+body#yakeen-page .page-hero p, body#yakeen-page .page-hero .hero-subtitle, body#yakeen-page .page-hero .hero-sub, body#yakeen-page .page-hero .page-hero-subtitle, body#yakeen-page .page-hero .country-hero-subtitle, body#yakeen-page .page-hero .cr-hero-subtitle {
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  font-weight: 400;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 600px;
+  margin: 0 0 32px 0;
+  text-shadow: 0 1px 15px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================================
+   Eyebrow / Kicker 小标签
+   ============================================================ */
+
+/* Metrics come from .eyebrow — only the dark-surface colour lives here */
+body#yakeen-page .page-hero .eyebrow, body#yakeen-page .page-hero .hero-kicker, body#yakeen-page .page-hero .page-hero-eyebrow {
+  color: var(--color-gold-bright);
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   按钮 — 统一所有按钮类名，深色背景上必须清晰可见
+   主按钮：金色底深字
+   次按钮：透明底白边白字
+   ============================================================ */
+
+body#yakeen-page .page-hero .hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+/* 所有可能出现的主按钮类名 */
+/* Metrics come from .btn — only the bright-gold dark-surface fill lives here */
+body#yakeen-page .page-hero .btn, body#yakeen-page .page-hero .btn-primary, body#yakeen-page .page-hero .btn-accent, body#yakeen-page .page-hero .btn--gold, body#yakeen-page .page-hero .hero-actions a:first-child {
+  background: var(--color-gold-bright);
+  color: var(--color-bg-dark);
+  border: 1px solid var(--color-gold-bright);
+  text-shadow: none;
+  box-shadow: 0 4px 20px rgba(232, 200, 104, 0.2);
+}
+
+body#yakeen-page .page-hero .btn:hover, body#yakeen-page .page-hero .btn-primary:hover, body#yakeen-page .page-hero .btn-accent:hover, body#yakeen-page .page-hero .btn--gold:hover {
+  background: var(--color-accent-gold-hover);
+  border-color: var(--color-accent-gold-hover);
+  color: var(--color-bg-dark);
+  transform: translateY(var(--lift-xs));
+  box-shadow: 0 8px 28px rgba(232, 200, 104, 0.3);
+}
+
+/* 所有可能出现的次按钮/描边按钮类名 */
+body#yakeen-page .page-hero .btn-secondary, body#yakeen-page .page-hero .btn--outline {
+  background: transparent;
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  text-shadow: none;
+  box-shadow: none;
+}
+
+body#yakeen-page .page-hero .btn-secondary:hover, body#yakeen-page .page-hero .btn--outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-white);
+  color: var(--color-white);
+  transform: translateY(var(--lift-xs));
+}
+
+/* ============================================================
+   数据统计 / Spec Stats
+   ============================================================ */
+
+body#yakeen-page .page-hero .hero-spec-stats {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+body#yakeen-page .page-hero .hero-spec-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+body#yakeen-page .page-hero .hero-spec-stat strong {
+  font-family: var(--font-sans);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 400;
+  color: var(--color-gold-bright);
+}
+
+body#yakeen-page .page-hero .hero-spec-stat span {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ============================================================
+   Country Badge
+   ============================================================ */
+
+body#yakeen-page .page-hero .country-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  background: rgba(232, 200, 104, 0.12);
+  border: 1px solid rgba(232, 200, 104, 0.35);
+  border-radius: var(--radius-sm);
+  color: var(--color-gold-bright);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  backdrop-filter: blur(8px);
+}
+
+body#yakeen-page .page-hero .country-badge .flag {
+  font-size: 1.1em;
+  line-height: 1;
+}
+
+/* ============================================================
+   Hero meta items
+   ============================================================ */
+
+body#yakeen-page .page-hero .hero-meta-item {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* ============================================================
+   各种老的 hero class — 统一走深色大图模式
+   country-hero, studio-hero, alt-hero, cr-hero
+   ============================================================ */
+
+body#yakeen-page .country-hero, body#yakeen-page .studio-hero, body#yakeen-page .alt-hero, body#yakeen-page .cr-hero {
+  min-height: 700px;
+  background: var(--color-bg-darker);
+  color: var(--color-white);
+}
+
+/* ============================================================
+   hero-global — 也统一为深色模式
+   ============================================================ */
+
+body#yakeen-page .hero-global {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  background: var(--color-bg-darker);
+  color: var(--color-white);
+  overflow: hidden;
+}
+
+body#yakeen-page .hero-global-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-size: cover;
+  background-position: center center;
+  z-index: var(--z-base);
+}
+
+body#yakeen-page .hero-global-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 17, 12, 0.6) 0%, rgba(20, 17, 12, 0.2) 30%, rgba(20, 17, 12, 0.3) 60%, rgba(20, 17, 12, 0.75) 100%);
+}
+
+body#yakeen-page .hero-global > .container {
+  position: relative;
+  z-index: var(--z-raised);
+}
+
+/* ============================================================
+   统计数据行 — 保证在深色背景上清晰可见
+   ============================================================ */
+
+body#yakeen-page .page-hero .hero-stat-row, body#yakeen-page .page-hero .hero-stats-row {
+  position: relative;
+  z-index: var(--z-raised);
+}
+
+body#yakeen-page .page-hero .hero-stat .stat-num, body#yakeen-page .page-hero .hero-stats .stat-num, body#yakeen-page .page-hero .hero-stat-number {
+  color: var(--color-white);
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
+}
+
+body#yakeen-page .page-hero .hero-stat .stat-label, body#yakeen-page .page-hero .hero-stats .stat-label, body#yakeen-page .page-hero .hero-stat-label {
+  color: rgba(255, 255, 255, 0.75);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* hero-stats-row — projects 页等 page-hero 内的数据行，必须横排 */
+body#yakeen-page .page-hero .hero-stats-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 36px;
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+body#yakeen-page .page-hero .hero-stats-row .hero-stat {
+  padding: 0;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+body#yakeen-page .page-hero .hero-stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+  font-weight: 600;
+  color: var(--color-gold-light);
+  line-height: 1;
+}
+
+body#yakeen-page .page-hero .hero-stats-row .hero-stat-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+body#yakeen-page .page-hero .hero-stats-row .hero-stat-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* ============================================================
+   响应式
+   ============================================================ */
+
+@media (max-width: 768px) {
+  body#yakeen-page .page-hero {
+    min-height: 560px;
+  }
+
+  /* 40px gutters cost 21% of a 375px screen — tighten them on mobile. */
+  body#yakeen-page .page-hero .container,
+  body#yakeen-page .page-hero .page-hero-inner {
+    padding: 0 20px;
+  }
+
+  body#yakeen-page .page-hero h1,
+  body#yakeen-page .page-hero .hero-title,
+  body#yakeen-page .page-hero .page-hero-title {
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+    margin-bottom: 20px;
+  }
+
+  body#yakeen-page .page-hero p,
+  body#yakeen-page .page-hero .hero-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 28px;
+  }
+
+  body#yakeen-page .page-hero .hero-actions {
+    margin-bottom: 36px;
+    gap: 12px;
+  }
+
+  body#yakeen-page .page-hero .btn,
+  body#yakeen-page .page-hero .btn-primary,
+  body#yakeen-page .page-hero .btn-accent,
+  body#yakeen-page .page-hero .btn--gold,
+  body#yakeen-page .page-hero .btn--outline,
+  body#yakeen-page .page-hero .btn--outline-light,
+  body#yakeen-page .page-hero .btn-secondary {
+    padding: 12px 24px;
+  }
+
+  body#yakeen-page .page-hero .hero-spec-stats {
+    gap: 24px;
+  }
+
+  body#yakeen-page .home-hero,
+  body#yakeen-page .hero-global {
+    min-height: auto;
+  }
+
+  body#yakeen-page .home-hero-inner,
+  body#yakeen-page .hero-global > .container {
+    padding: var(--hero-pad-top) 20px var(--hero-pad-bottom);
+  }
+
+  body#yakeen-page .home-hero-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    margin-bottom: 24px;
+    padding-left: 32px;
+  }
+
+  body#yakeen-page .home-hero-eyebrow::before {
+    width: 22px;
+  }
+
+  body#yakeen-page .home-hero-title,
+  body#yakeen-page .home-hero h1 {
+    font-size: clamp(2.2rem, 10vw, 3.2rem);
+    line-height: 0.95;
+    margin-bottom: 24px;
+  }
+
+  body#yakeen-page .home-hero-sectors {
+    font-size: 0.8rem;
+    gap: 8px 12px;
+    margin-bottom: 24px;
+  }
+
+  body#yakeen-page .home-hero-desc {
+    font-size: 0.9rem;
+    margin-bottom: 36px;
+    line-height: 1.7;
+  }
+
+  body#yakeen-page .home-hero-cta {
+    gap: 12px;
+  }
+
+  body#yakeen-page .home-hero-cta .btn,
+  body#yakeen-page .home-hero-cta .btn-accent,
+  body#yakeen-page .home-hero-cta a {
+    padding: 15px 32px;
+    flex: 1;
+    text-align: center;
+  }
+
+}
+
+@media (max-width: 480px) {
+  body#yakeen-page .home-hero-title, body#yakeen-page .home-hero h1 {
+    font-size: 1.75rem;
+  }
+
+  body#yakeen-page .page-hero .hero-spec-stats {
+    gap: 20px;
+  }
+
+  body#yakeen-page .page-hero .hero-spec-stat strong {
+    font-size: 1.4rem;
+  }
+}
+
+/* ============================================================
+   12. HERO / PAGE HERO / HOME HERO
+   ============================================================ */
+
+.page-hero-content {
+  max-width: 720px;
+  padding: 0;
+}
+
+.page-hero-subtitle {
+  font-size: var(--font-size-lg);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.page-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  background: var(--color-gold-pale);
+  color: var(--color-gold-ink);
+  border-radius: var(--radius-full);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-family: var(--font-sans);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--color-text-primary);
+  margin: 0 0 20px;
+}
+
+.hero-title em {
+  font-style: italic;
+  font-family: var(--font-sans);
+  color: var(--color-gold-primary);
+  font-weight: 300;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 48px;
+  padding: 32px 0;
+  flex-wrap: wrap;
+}
+
+.hero-stat-divider {
+  width: 1px;
+  background: var(--color-border);
+  align-self: stretch;
+}
+
+.hero-stat-row {
+  border-top: 1px solid var(--color-border);
+  margin-top: 48px;
+}
+
+/* --- Page Hero Inner (centered variant) --- */
+.page-hero--inner {
+  position: relative;
+  z-index: var(--z-raised);
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  text-align: center;
+}
+
+/* Metrics come from .eyebrow — light-surface colour only */
+.page-hero--inner .eyebrow {
+  color: var(--color-gold-text);
+  margin-bottom: 20px;
+}
+
+.page-hero--inner h1 {
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  margin: 0 0 20px;
+}
+
+.page-hero--inner p {
+  font-size: var(--font-size-lg);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* --- Page Hero Blog --- */
+.page-hero--blog {
+  position: relative;
+  padding: var(--hero-pad-top) 0 var(--hero-pad-bottom);
+  background: var(--color-bg-canvas);
+  overflow: hidden;
+}
+
+.page-hero--blog .page-hero-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: var(--z-base);
+  /* background-image set per-page via inline style + build-time WebP injection */
+}
+
+.page-hero--blog .page-hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(250, 245, 235, 0.94) 0%, rgba(250, 245, 235, 0.82) 40%, rgba(250, 245, 235, 0.3) 70%, transparent 100%);
+}
+
+/* --- Alternative Hero --- */
+.alt-hero-kicker {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-gold-primary);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.alt-hero-sub {
+  font-size: var(--font-size-lg);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  max-width: 560px;
+  margin-top: 20px;
+}
+
+.alt-hero-brands-label {
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-tertiary);
+  margin-bottom: 16px;
+}
+
+/* ============================================================
+   STANDALONE HERO — no .page-hero wrapper (home page)
+   ============================================================ */
+
+.hero {
+  position: relative;
+  padding: var(--hero-pad-top) 0 var(--hero-pad-bottom);
+  background: var(--color-bg-canvas);
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: var(--z-raised);
+  max-width: 680px;
+}
+
+.hero-visual {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45%;
+  height: 80%;
+  z-index: var(--z-raised);
+}

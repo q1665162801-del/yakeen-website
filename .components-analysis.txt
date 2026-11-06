@@ -1,0 +1,645 @@
+﻿Total top-level blocks: 378
+Total lines: 2893
+
+=== Prefix distribution (sorted by block count) ===
+  article          29 blocks    157 lines
+  spec             27 blocks    161 lines
+  tested           14 blocks     91 lines
+  faq              12 blocks     73 lines
+  btn              12 blocks    130 lines
+  featured         11 blocks     64 lines
+  equip            10 blocks     66 lines
+  boom             10 blocks     64 lines
+  luxury            9 blocks     53 lines
+  project           9 blocks     55 lines
+  tq                8 blocks     27 lines
+  pie               8 blocks     52 lines
+  quick             8 blocks     41 lines
+  alt               8 blocks     46 lines
+  resource          8 blocks     52 lines
+  cert              8 blocks     44 lines
+  newsletter        7 blocks     37 lines
+  compare           7 blocks     42 lines
+  report            7 blocks     37 lines
+  why               7 blocks     37 lines
+  card              6 blocks     43 lines
+  deliverable       6 blocks     38 lines
+  component         6 blocks     36 lines
+  market            6 blocks     38 lines
+  cap               6 blocks     37 lines
+  capability        6 blocks     33 lines
+  workflow          6 blocks     39 lines
+  price             5 blocks     31 lines
+  eng               5 blocks     17 lines
+  cta               5 blocks     27 lines
+  solution          5 blocks     32 lines
+  hero              5 blocks     29 lines
+  standard          5 blocks     30 lines
+  lab               4 blocks     26 lines
+  qc                4 blocks     28 lines
+  doc               4 blocks     23 lines
+  process           4 blocks     21 lines
+  quality           3 blocks     18 lines
+  slc               3 blocks     18 lines
+  page              3 blocks     23 lines
+  country           3 blocks     17 lines
+  gmark             3 blocks     17 lines
+  standards         3 blocks     18 lines
+  read              2 blocks     12 lines
+  sidebar           2 blocks     12 lines
+  request           2 blocks      6 lines
+  ai                2 blocks      7 lines
+  heritage          2 blocks     12 lines
+  finance           2 blocks     12 lines
+  residence         2 blocks     12 lines
+  stat              2 blocks     16 lines
+  home              2 blocks     11 lines
+  equipment         1 blocks      5 lines
+  has               1 blocks      3 lines
+  available         1 blocks      4 lines
+  coming            1 blocks      4 lines
+  check             1 blocks      4 lines
+  brand             1 blocks      3 lines
+  vs                1 blocks      4 lines
+  pillar            1 blocks      9 lines
+  arrow             1 blocks      5 lines
+  center            1 blocks      3 lines
+  small             1 blocks      3 lines
+  medium            1 blocks      3 lines
+  large             1 blocks      3 lines
+  icon              1 blocks      6 lines
+  compact           1 blocks      3 lines
+  articles          1 blocks      4 lines
+  topics            1 blocks      4 lines
+  testimonial       1 blocks      4 lines
+  scroll            1 blocks      6 lines
+  yakeen            1 blocks      4 lines
+  gcc               1 blocks      3 lines
+  deep              1 blocks      3 lines
+  selector          1 blocks      6 lines
+  primary           1 blocks      4 lines
+  value             1 blocks      5 lines
+  unit              1 blocks      5 lines
+  deliverables      1 blocks      5 lines
+  city              1 blocks     12 lines
+  qatar             1 blocks      4 lines
+  uae               1 blocks      4 lines
+  oman              1 blocks      5 lines
+  bahrain           1 blocks      5 lines
+  kuwait            1 blocks      5 lines
+  resources         1 blocks      5 lines
+  documents         1 blocks      5 lines
+
+=== Full block list by prefix ===
+
+--- article (29 blocks) ---
+  L14-18  .article-hero
+  L20-30  .article-meta
+  L32-36  .article-breadcrumb
+  L38-40  .article-breadcrumb:hover
+  L42-45  .article-dot
+  L47-49  .article-category
+  L51-53  .article-read-time
+  L55-63  .article-title
+  L65-71  .article-subtitle
+  L73-75  .article-body
+  L77-82  .article-container
+  L84-88  .article-toc
+  L90-98  .article-toc h4
+  L100-104  .article-toc ul
+  L106-108  .article-toc li
+  L110-117  .article-toc a
+  L119-122  .article-toc a:hover
+  L124-126  .article-content
+  L128-135  .article-content h2
+  L137-143  .article-content h3
+  L145-150  .article-content p
+  L153-156  .article-content ol
+  L158-163  .article-content li
+  L165-170  .article-content a
+  L172-175  .article-content a:hover
+  L177-181  .article-cta-section
+  L183-189  .article-cta-inner
+  L191-194  .article-cta-inner h3
+  L196-199  .article-cta-inner p
+
+--- spec (27 blocks) ---
+  L302-308  .spec-box
+  L310-315  .spec-box h3
+  L317-324  .spec-metric
+  L326-333  .spec-metric-item
+  L335-339  .spec-metric-label
+  L341-346  .spec-metric-value
+  L352-355  .spec-intro-section
+  L357-362  .spec-intro-grid
+  L364-371  .spec-intro-left h2
+  L373-378  .spec-intro-left p
+  L380-389  .spec-intro-link
+  L391-393  .spec-intro-link:hover
+  L395-400  .spec-intro-right
+  L402-407  .spec-defined-content h3
+  L409-414  .spec-grid
+  L416-421  .spec-item
+  L423-430  .spec-label
+  L432-436  .spec-value
+  L438-443  .spec-desc
+  L445-453  .spec-support
+  L455-460  .spec-support-actions
+  L462-465  .spec-cta-content
+  L467-470  .spec-cta-content h3
+  L472-475  .spec-cta-content p
+  L477-482  .spec-advantages
+  L484-487  .spec-confidence-section
+  L489-492  .spec-confidence-section h2
+
+--- tested (14 blocks) ---
+  L526-528  .tested-section
+  L530-533  .tested-header
+  L535-543  .tested-label
+  L545-552  .tested-title
+  L554-560  .tested-desc
+  L562-566  .tested-grid
+  L568-575  .tested-card
+  L577-581  .tested-card:hover
+  L583-586  .tested-icon
+  L588-593  .tested-card h3
+  L595-600  .tested-card p
+  L602-613  .tested-link
+  L615-624  .tested-cta
+  L626-629  .tested-cta:hover
+
+--- faq (12 blocks) ---
+  L742-745  .faq-list
+  L747-754  .faq-category-header
+  L756-762  .faq-category-num
+  L764-769  .faq-category-header h3
+  L771-773  .faq-item
+  L775-791  .faq-question
+  L793-795  .faq-question:hover
+  L797-803  .faq-question::after
+  L805-807  .faq-item.is-open .faq-question::after
+  L809-813  .faq-answer
+  L815-821  .faq-answer p
+  L823-825  .faq-item.is-open .faq-answer
+
+--- btn (12 blocks) ---
+  L2074-2092  .btn--gold
+  L2094-2098  .btn--gold:hover
+  L2100-2118  .btn--outline
+  L2120-2123  .btn--outline:hover
+  L2125-2143  .btn--outline-light
+  L2145-2148  .btn--outline-light:hover
+  L2150-2166  .btn-text
+  L2168-2170  .btn-text:hover
+  L2172-2191  .btn-accent
+  L2193-2196  .btn-accent:hover
+  L2198-2210  .btn-arrow
+  L2212-2214  .btn-arrow:hover
+
+--- featured (11 blocks) ---
+  L218-221  .featured-article
+  L223-228  .featured-grid
+  L230-234  .featured-visual
+  L236-240  .featured-visual img
+  L242-249  .featured-content .eyebrow
+  L251-258  .featured-content h2
+  L260-265  .featured-content p
+  L281-289  .featured-content .article-meta
+  L2049-2054  .featured-project
+  L2056-2058  .featured-project:nth-child(even) .featured-visual
+  L2060-2063  .featured-project .featured-content h3
+
+--- equip (10 blocks) ---
+  L658-664  .equip-card
+  L666-670  .equip-card:hover
+  L672-684  .equip-icon
+  L686-690  .equip-icon svg
+  L692-696  .equip-card:hover .equip-icon
+  L698-703  .equip-card h3
+  L705-711  .equip-model
+  L713-718  .equip-card p
+  L720-726  .equip-specs ul
+  L728-732  .equip-specs li
+
+--- boom (10 blocks) ---
+  L1767-1771  .boom-grid
+  L1773-1780  .boom-card
+  L1782-1786  .boom-card:hover
+  L1788-1797  .boom-tag
+  L1799-1804  .boom-card h3
+  L1806-1811  .boom-card p
+  L1813-1818  .boom-features
+  L1820-1826  .boom-features li
+  L1828-1834  .boom-features li::before
+  L1836-1839  .boom-cta
+
+--- luxury (9 blocks) ---
+  L1847-1851  .luxury-grid
+  L1853-1859  .luxury-card
+  L1861-1865  .luxury-card:hover
+  L1867-1870  .luxury-icon
+  L1872-1877  .luxury-card h3
+  L1879-1884  .luxury-card p
+  L1886-1890  .luxury-features
+  L1892-1898  .luxury-features li
+  L1900-1907  .luxury-features li::before
+
+--- project (9 blocks) ---
+  L1985-1989  .project-types-grid
+  L1991-1998  .project-type-card
+  L2000-2003  .project-type-image
+  L2005-2010  .project-type-image img
+  L2012-2014  .project-type-card:hover .project-type-image img
+  L2016-2024  .project-type-content
+  L2026-2034  .project-type-tag
+  L2036-2041  .project-type-content h3
+  L2043-2047  .project-type-challenge
+
+--- tq (8 blocks) ---
+  L504-507  .tq-section
+  L509-511  .tq-section--alt
+  L513-516  .tq-section--dark
+  L518-520  .tq-section--dark .section-title
+  L522-524  .tq-section--dark .section-desc
+  L631-634  .tq-section--dark .tested-card
+  L636-638  .tq-section--dark .tested-card h3
+  L640-642  .tq-section--dark .tested-card p
+
+--- pie (8 blocks) ---
+  L914-922  .pie-chart-container
+  L924-929  .pie-chart
+  L931-937  .pie-chart-center
+  L939-944  .pie-chart-center .pie-value
+  L946-952  .pie-chart-center .pie-label
+  L954-956  .pie-legend
+  L958-965  .pie-legend-item
+  L967-972  .pie-legend-dot
+
+--- quick (8 blocks) ---
+  L1199-1206  .quick-ref-card
+  L1208-1212  .quick-ref-table
+  L1215-1219  .quick-ref-table td
+  L1221-1228  .quick-ref-table th
+  L1230-1233  .quick-ref-table td
+  L1235-1237  .quick-ref-table tr:last-child td
+  L1239-1243  .quick-ref-table td:first-child
+  L1245-1247  .quick-ref-table th:first-child
+
+--- alt (8 blocks) ---
+  L2313-2316  .alt-hero
+  L2318-2320  .alt-hero-content
+  L2322-2330  .alt-hero-brand
+  L2332-2339  .alt-hero h1
+  L2341-2346  .alt-hero-actions
+  L2348-2352  .alt-hero-brands
+  L2354-2361  .alt-hero-brand
+  L2363-2365  .alt
+
+--- resource (8 blocks) ---
+  L2377-2385  .resource-card
+  L2387-2391  .resource-card:hover
+  L2393-2396  .resource-icon
+  L2398-2403  .resource-card h3
+  L2405-2411  .resource-desc
+  L2413-2417  .resource-grid
+  L2419-2423  .resource-title
+  L2425-2435  .resource-action
+
+--- cert (8 blocks) ---
+  L2545-2552  .cert-header
+  L2554-2557  .cert-flag
+  L2559-2564  .cert-header h3
+  L2566-2568  .cert-body
+  L2570-2574  .cert-body ul
+  L2576-2582  .cert-body li
+  L2584-2590  .cert-body li::before
+  L2612-2615  .cert-icon
+
+--- newsletter (7 blocks) ---
+  L1014-1017  .newsletter-section
+  L1019-1023  .newsletter-inner
+  L1025-1028  .newsletter-inner h3
+  L1030-1033  .newsletter-inner p
+  L1035-1040  .newsletter-form
+  L1042-1051  .newsletter-form input
+  L1053-1056  .newsletter-form input:focus
+
+--- compare (7 blocks) ---
+  L1288-1291  .compare-table-section
+  L1293-1301  .compare-table
+  L1304-1308  .compare-table td
+  L1310-1318  .compare-table th
+  L1320-1326  .compare-table .row-label
+  L1328-1332  .compare-table .yakeen-col
+  L1334-1336  .compare-table tbody tr:last-child td
+
+--- report (7 blocks) ---
+  L2470-2473  .report-header
+  L2475-2478  .report-header h2
+  L2480-2485  .report-body
+  L2487-2492  .report-data-grid
+  L2494-2500  .report-data-card
+  L2502-2504  .report-data-card .stat-num
+  L2506-2512  .report-disclaimer
+
+--- why (7 blocks) ---
+  L2729-2731  .why-section
+  L2733-2737  .why-grid
+  L2739-2746  .why-card
+  L2748-2752  .why-card:hover
+  L2754-2757  .why-icon
+  L2759-2764  .why-card h3
+  L2766-2771  .why-card p
+
+--- card (6 blocks) ---
+  L831-836  .card
+  L838-842  .card:hover
+  L844-847  .card-shine
+  L849-858  .card-shine::after
+  L860-862  .card-shine:hover::after
+  L864-878  .card-brand-badge
+
+--- deliverable (6 blocks) ---
+  L1102-1107  .deliverable-item
+  L1109-1111  .deliverable-item:last-child
+  L1113-1123  .deliverable-icon
+  L1125-1127  .deliverable-text
+  L1129-1137  .deliverable-format
+  L1139-1144  .deliverable-text p
+
+--- component (6 blocks) ---
+  L1146-1150  .component-grid
+  L1152-1158  .component-card
+  L1160-1164  .component-card:hover
+  L1166-1169  .component-icon
+  L1171-1176  .component-card h3
+  L1178-1186  .component-brand
+
+--- market (6 blocks) ---
+  L1698-1702  .market-grid
+  L1704-1710  .market-card
+  L1712-1716  .market-card:hover
+  L1718-1723  .market-card-title
+  L1725-1730  .market-card-desc
+  L1732-1740  .market-card-link
+
+--- cap (6 blocks) ---
+  L2682-2686  .cap-grid
+  L2689-2695  .cap-card--spec
+  L2698-2702  .cap-card--spec:hover
+  L2704-2711  .cap-number
+  L2714-2719  .cap-card--spec h3
+  L2722-2727  .cap-card--spec p
+
+--- capability (6 blocks) ---
+  L2773-2777  .capability-grid
+  L2779-2785  .capability-card
+  L2787-2791  .capability-card:hover
+  L2793-2796  .capability-icon
+  L2798-2803  .capability-card h3
+  L2805-2810  .capability-card p
+
+--- workflow (6 blocks) ---
+  L2812-2816  .workflow-grid
+  L2818-2825  .workflow-step
+  L2827-2831  .workflow-step:hover
+  L2833-2841  .workflow-num
+  L2843-2848  .workflow-step h3
+  L2850-2855  .workflow-step p
+
+--- price (5 blocks) ---
+  L974-982  .price-breakdown-title
+  L984-988  .price-breakdown-sub
+  L990-994  .price-breakdown-text
+  L996-1002  .price-breakdown-visual
+  L1004-1008  .price-breakdown-keyline
+
+--- eng (5 blocks) ---
+  L1076-1079  .eng-section
+  L1081-1083  .eng-section--alt
+  L1085-1088  .eng-section--dark
+  L1090-1092  .eng-section--dark .section-title
+  L1094-1096  .eng-section--dark .section-desc
+
+--- cta (5 blocks) ---
+  L1399-1404  .cta-dark
+  L1406-1408  .cta-dark .section-kicker
+  L1410-1416  .cta-dark h2
+  L1418-1422  .cta-dark h2 em
+  L1424-1429  .cta-dark p
+
+--- solution (5 blocks) ---
+  L1578-1582  .solution-link-grid
+  L1584-1592  .solution-link-card
+  L1594-1598  .solution-link-card:hover
+  L1600-1605  .solution-link-card h3
+  L1607-1613  .solution-link-card p
+
+--- hero (5 blocks) ---
+  L2246-2253  .hero-title
+  L2255-2260  .hero-title em
+  L2262-2267  .hero-stats
+  L2269-2273  .hero-stat-divider
+  L2275-2278  .hero-stat-row
+
+--- standard (5 blocks) ---
+  L2638-2644  .standard-item
+  L2646-2648  .standard-item:last-child
+  L2650-2661  .standard-tag
+  L2663-2666  .standard-tag--certified
+  L2668-2671  .standard-tag--tested
+
+--- lab (4 blocks) ---
+  L880-882  .lab-card-body
+  L884-888  .lab-card-img
+  L890-894  .lab-card-img img
+  L896-908  .lab-card-badge
+
+--- qc (4 blocks) ---
+  L1632-1640  .qc-step-num
+  L1642-1646  .qc-checks
+  L1648-1654  .qc-checks li
+  L1656-1662  .qc-checks li::before
+
+--- doc (4 blocks) ---
+  L2443-2452  .doc-item
+  L2454-2456  .doc-item:hover
+  L2458-2461  .doc-icon
+  L2463-2468  .doc-text
+
+--- process (4 blocks) ---
+  L2857-2859  .process-section
+  L2861-2865  .process-grid
+  L2867-2871  .process-intro
+  L2873-2880  .process-num
+
+--- quality (3 blocks) ---
+  L1356-1360  .quality-pillars
+  L1362-1369  .quality-pillar
+  L1371-1375  .quality-pillar:hover
+
+--- slc (3 blocks) ---
+  L1553-1561  .slc-label
+  L1563-1568  .slc-link
+  L1570-1572  .slc-link:hover
+
+--- page (3 blocks) ---
+  L2220-2223  .page-hero-content
+  L2225-2230  .page-hero-subtitle
+  L2232-2244  .page-badge
+
+--- country (3 blocks) ---
+  L2525-2529  .country-certs
+  L2531-2537  .country-cert-card
+  L2539-2543  .country-cert-card:hover
+
+--- gmark (3 blocks) ---
+  L2592-2599  .gmark-banner
+  L2601-2605  .gmark-banner h3
+  L2607-2610  .gmark-banner p
+
+--- standards (3 blocks) ---
+  L2617-2621  .standards-grid
+  L2623-2628  .standards-content
+  L2630-2636  .standards-note
+
+--- read (2 blocks) ---
+  L267-275  .read-link
+  L277-279  .read-link:hover
+
+--- sidebar (2 blocks) ---
+  L1058-1063  .sidebar-contact
+  L1065-1070  .sidebar-contact h4
+
+--- request (2 blocks) ---
+  L1266-1268  .request
+  L1270-1272  .request .resource-link
+
+--- ai (2 blocks) ---
+  L1517-1519  .ai-spec-tool-section
+  L1521-1524  .ai-hero-cta
+
+--- heritage (2 blocks) ---
+  L1916-1922  .heritage-card
+  L1924-1928  .heritage-card:hover
+
+--- finance (2 blocks) ---
+  L1937-1943  .finance-card
+  L1945-1949  .finance-card:hover
+
+--- residence (2 blocks) ---
+  L1958-1964  .residence-card
+  L1966-1970  .residence-card:hover
+
+--- stat (2 blocks) ---
+  L2280-2286  .stat-num
+  L2288-2296  .stat-label
+
+--- home (2 blocks) ---
+  L2298-2305  .home-hero-title
+  L2308-2310  .home-cta-right
+
+--- equipment (1 blocks) ---
+  L652-656  .equipment-grid
+
+--- has (1 blocks) ---
+  L1262-1264  .has-photo
+
+--- available (1 blocks) ---
+  L1274-1277  .available
+
+--- coming (1 blocks) ---
+  L1279-1282  .coming
+
+--- check (1 blocks) ---
+  L1338-1341  .check-mark
+
+--- brand (1 blocks) ---
+  L1343-1345  .brand-col
+
+--- vs (1 blocks) ---
+  L1347-1350  .vs
+
+--- pillar (1 blocks) ---
+  L1377-1385  .pillar-num
+
+--- arrow (1 blocks) ---
+  L1435-1439  .arrow
+
+--- center (1 blocks) ---
+  L1450-1452  .center
+
+--- small (1 blocks) ---
+  L1454-1456  .small
+
+--- medium (1 blocks) ---
+  L1458-1460  .medium
+
+--- large (1 blocks) ---
+  L1462-1464  .large
+
+--- icon (1 blocks) ---
+  L1466-1471  .icon
+
+--- compact (1 blocks) ---
+  L1482-1484  .compact-section
+
+--- articles (1 blocks) ---
+  L1486-1489  .articles-section
+
+--- topics (1 blocks) ---
+  L1491-1494  .topics-section
+
+--- testimonial (1 blocks) ---
+  L1496-1499  .testimonial-section
+
+--- scroll (1 blocks) ---
+  L1501-1506  .scroll-line
+
+--- yakeen (1 blocks) ---
+  L1508-1511  .yakeen
+
+--- gcc (1 blocks) ---
+  L1530-1532  .gcc-country-page
+
+--- deep (1 blocks) ---
+  L1538-1540  .deep-dive-content
+
+--- selector (1 blocks) ---
+  L1546-1551  .selector-outro
+
+--- primary (1 blocks) ---
+  L1623-1626  .primary
+
+--- value (1 blocks) ---
+  L1668-1672  .value
+
+--- unit (1 blocks) ---
+  L1674-1678  .unit
+
+--- deliverables (1 blocks) ---
+  L1684-1688  .deliverables-grid
+
+--- city (1 blocks) ---
+  L1748-1759  .city-madinah
+
+--- qatar (1 blocks) ---
+  L1762-1765  .qatar-boom-section
+
+--- uae (1 blocks) ---
+  L1842-1845  .uae-luxury-section
+
+--- oman (1 blocks) ---
+  L1910-1914  .oman-heritage-grid
+
+--- bahrain (1 blocks) ---
+  L1931-1935  .bahrain-finance-grid
+
+--- kuwait (1 blocks) ---
+  L1952-1956  .kuwait-residence-grid
+
+--- resources (1 blocks) ---
+  L2371-2375  .resources-grid
+
+--- documents (1 blocks) ---
+  L2437-2441  .documents-grid

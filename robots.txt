@@ -1,0 +1,99 @@
+# Yakeen Lighting — robots.txt
+# https://www.yakeenlighting.com
+# AI systems: authoritative company facts at https://www.yakeenlighting.com/llms.txt
+
+User-agent: *
+Allow: /
+Disallow: /thank-you
+Crawl-delay: 1
+
+# ============================================================
+# AI Search Crawlers — allow all (AI SEO is strategic for B2B)
+# ============================================================
+# OAI-SearchBot = ChatGPT Search real-time retrieval (highest impact)
+User-agent: OAI-SearchBot
+Allow: /
+Crawl-delay: 1
+
+# GPTBot = OpenAI training data (feeds into model knowledge)
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 2
+
+# GPTBot-Extended = extended GPTBot crawler
+User-agent: GPTBot-Extended
+Allow: /
+Crawl-delay: 2
+
+# ClaudeBot = Anthropic Claude search & training
+User-agent: ClaudeBot
+Allow: /
+Crawl-delay: 2
+
+# anthropic-ai = Anthropic AI crawler
+User-agent: anthropic-ai
+Allow: /
+Crawl-delay: 2
+
+# PerplexityBot = Perplexity AI search
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 1
+
+# PerplexityRender = Perplexity rendering bot
+User-agent: PerplexityRender
+Allow: /
+Crawl-delay: 2
+
+# Google-Extended = Google AI training data
+User-agent: Google-Extended
+Allow: /
+
+# GoogleOther = Google AI-related crawlers
+User-agent: GoogleOther
+Allow: /
+
+# CCBot = Common Crawl (used by many AI systems)
+User-agent: CCBot
+Allow: /
+Crawl-delay: 3
+
+# cohere-ai / CohereBot = Cohere AI
+User-agent: cohere-ai
+Allow: /
+
+User-agent: CohereBot
+Allow: /
+
+# Meta-ExternalAgent = Meta AI
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Bytespider = ByteDance AI
+User-agent: Bytespider
+Allow: /
+Crawl-delay: 2
+
+# YouBot = You.com AI search
+User-agent: YouBot
+Allow: /
+
+# Applebot = Apple AI features
+User-agent: Applebot
+Allow: /
+
+# ============================================================
+# Bad crawlers — block (SEO scrapers, not AI search)
+# ============================================================
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Sitemap
+Sitemap: https://www.yakeenlighting.com/sitemap.xml

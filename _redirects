@@ -1,0 +1,528 @@
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿# ============================================================
+# Yakeen Lighting — URL Redirects (Cloudflare Pages)
+# Phase 4 URL Architecture Migration
+# ============================================================
+# IMPORTANT: Source files for these old URLs have been moved to _archive/legacy-pages/
+# DO NOT recreate source files for redirected URLs — they cause duplicate content
+# via Cloudflare Pretty URL feature and can create redirect loops.
+# ============================================================
+
+# --- Country Pages -> /markets/ ---
+/saudi-arabia.html                             /markets/saudi-arabia                                301
+/uae.html                                      /markets/uae                                         301
+/qatar.html                                    /markets/qatar                                       301
+/kuwait.html                                   /markets/kuwait                                      301
+/oman.html                                     /markets/oman                                        301
+/bahrain.html                                  /markets/bahrain                                     301
+
+# Also redirect without .html extension (if accessed that way)
+/saudi-arabia                                  /markets/saudi-arabia                                301
+/uae                                           /markets/uae                                         301
+/qatar                                         /markets/qatar                                       301
+/kuwait                                        /markets/kuwait                                      301
+/oman                                          /markets/oman                                        301
+/bahrain                                       /markets/bahrain                                     301
+
+# --- Specification consolidation ---
+# specification/ is a directory with index.html (Lighting Lab)
+# Old specification.html was a legacy page — redirects to the lab
+/specification.html                            /specification/                                      301
+
+# Lighting Lab — users may expect it under /specification/ path
+/specification/lighting-lab.html               /testing-quality                                     301
+/specification/lighting-lab                    /testing-quality                                     301
+
+# --- Engineering Hub ---
+# Renamed from engineering.html to engineering-hub.html to avoid Pretty URL conflicts
+/engineering.html                              /engineering-hub                                     301
+/engineering                                   /engineering-hub                                     301
+/engineering/                                  /engineering-hub                                     301
+
+# --- Collections -> Products ---
+/collections.html                              /products/downlights/                                301
+/collections                                   /products/downlights/                                301
+
+# --- Custom Design -> Custom Lighting ---
+/custom-design.html                            /custom-lighting                                     301
+/custom-design                                 /custom-lighting                                     301
+
+# --- Product Pages -> /products/xxx/ ---
+/product-downlights.html                       /products/downlights/                                301
+/product-downlights                            /products/downlights/                                301
+
+# --- Old Product URL patterns (from old catalog) ---
+# Note: Cloudflare Pages _redirects does not match query strings.
+# These old catalog URLs are handled server-side only if directly accessed.
+# Kept for documentation of the URL mapping.
+
+# --- Service Process -> Engineering Hub ---
+# (process.html never existed; service process content is in engineering-hub)
+/service-process.html                          /engineering-hub                                     301
+/service-process                               /engineering-hub                                     301
+
+# --- Old Solution Pages -> /solutions/xxx.html ---
+# NOTE: solutions pages are .html files (not directories), matching nav links
+/hotel-lighting.html                           /solutions/hospitality                               301
+/hotel-lighting                                /solutions/hospitality                               301
+/hotel-lighting-services.html                  /solutions/hospitality                               301
+/hotel-lighting-services                       /solutions/hospitality                               301
+/retail-lighting.html                          /solutions/retail                                    301
+/retail-lighting                               /solutions/retail                                    301
+/villa-lighting-design.html                    /solutions/luxury-residential                        301
+/villa-lighting-design                         /solutions/luxury-residential                        301
+/mosque-lighting-design.html                   /solutions/hospitality                               301
+/mosque-lighting-design                        /solutions/hospitality                               301
+
+# --- Misc Legacy Pages ---
+/why-yakeen.html                               /about                                               301
+/why-yakeen                                    /about                                               301
+/lighting-specification-guide.html             /specification/                                      301
+/lighting-specification-guide                  /specification/                                      301
+
+# --- Journal → Blog (consolidated blog index) ---
+/journal.html                                  /blog/                                               301
+/journal                                       /blog/                                               301
+/journal-ar.html                               /blog/index-ar                                      301
+/journal-ar                                    /blog/index-ar                                      301
+
+# ============================================================
+# Phase 5 — Brand Identity Consolidation
+# Edge market pages removed — non-GCC markets dilute brand positioning
+# All redirected directly to /studio (single hop — /markets itself redirects there)
+# ============================================================
+
+# --- Edge Market Pages → /studio (DELETE + 301) ---
+/indonesia.html                                /studio                                              301
+/indonesia                                     /studio                                              301
+/malaysia.html                                 /studio                                              301
+/malaysia                                      /studio                                              301
+/vietnam.html                                  /studio                                              301
+/vietnam                                       /studio                                              301
+/kazakhstan.html                               /studio                                              301
+/kazakhstan                                    /studio                                              301
+/uzbekistan.html                               /studio                                              301
+/uzbekistan                                    /studio                                              301
+/russia.html                                   /studio                                              301
+/russia                                        /studio                                              301
+/russia-ru.html                                /studio                                              301
+/russia-ru                                     /studio                                              301
+
+# --- Redundant Landing Pages → MERGE + 301 ---
+# Saudi city/sector landing pages — consolidated into Saudi Arabia market hub
+/saudi-hospitality-lighting.html               /markets/saudi-arabia                                301
+/saudi-hospitality-lighting                    /markets/saudi-arabia                                301
+/saudi-retail-lighting.html                    /markets/saudi-arabia                                301
+/saudi-retail-lighting                         /markets/saudi-arabia                                301
+/jeddah-lighting.html                          /markets/saudi-arabia                                301
+/jeddah-lighting                               /markets/saudi-arabia                                301
+/riyadh-lighting.html                          /markets/saudi-arabia                                301
+/riyadh-lighting                               /markets/saudi-arabia                                301
+# Office lighting — consolidated into Solutions hub
+/office-lighting.html                          /solutions/                                          301
+/office-lighting                               /solutions/                                          301
+# SASO certification — consolidated into Specification hub
+/saso-certification.html                       /specification/                                      301
+/saso-certification                            /specification/                                      301
+
+# --- markets.html → studio.html (content consolidated) ---
+/markets.html                                  /studio                                              301
+/markets                                       /studio                                              301
+
+# ============================================================
+# Phase 6 — 404 Recovery (GSC: 251 not found)
+# Plugging all known old URL patterns that are bleeding link equity
+# ============================================================
+
+# --- Arabic: /ar/ prefix → -ar.html suffix migration ---
+# Old site used /ar/ subdirectory; new site uses -ar.html suffix
+/ar/index.html                                 /index-ar                                            301
+/ar/                                           /index-ar                                            301
+/ar/about.html                                 /about-ar                                            301
+/ar/contact.html                               /contact-ar                                          301
+/ar/faq.html                                   /faq-ar                                              301
+/ar/about.html                                 /about-ar                                            301
+/ar/start-project.html                         /start-project-ar                                    301
+/ar/request-sample.html                        /request-sample-ar                                   301
+/ar/custom-lighting.html                       /custom-lighting-ar                                  301
+/ar/custom-chandeliers.html                    /custom-lighting-ar                                  301
+/ar/engineering-hub.html                       /engineering-hub-ar                                  301
+/ar/studio.html                                /studio-ar                                           301
+/ar/testing-quality.html                       /testing-quality-ar                                  301
+/ar/lighting-design.html                       /lighting-design-ar                                  301
+/ar/certifications.html                        /certifications-ar                                   301
+/ar/projects.html                              /projects-ar                                         301
+/ar/blog/                                      /blog/index-ar                                       301
+/ar/blog/index.html                            /blog/index-ar                                       301
+/ar/products/                                  /products/index-ar                                   301
+/ar/products/index.html                        /products/index-ar                                   301
+/ar/products/downlights/                       /products/downlights/index-ar                        301
+/ar/products/linear-lighting/                  /products/linear-lighting/index-ar                   301
+/ar/products/track-spotlights/                 /products/track-spotlights/index-ar                  301
+/ar/specification/                             /specification/index-ar                              301
+/ar/resources/                                 /resources/index-ar                                  301
+/ar/solutions/                                 /solutions/index-ar                                  301
+/ar/solutions/hospitality.html                 /solutions/hospitality-ar                            301
+/ar/solutions/retail.html                      /solutions/retail-ar                                 301
+/ar/solutions/luxury-residential.html          /solutions/luxury-residential-ar                     301
+/ar/solutions/restaurants-fnb.html             /solutions/restaurants-fnb-ar                        301
+/ar/markets/saudi-arabia.html                  /markets/saudi-arabia-ar                             301
+/ar/markets/uae.html                           /markets/uae-ar                                      301
+/ar/markets/qatar.html                         /markets/qatar-ar                                    301
+/ar/markets/kuwait.html                        /markets/kuwait-ar                                   301
+/ar/markets/oman.html                          /markets/oman-ar                                     301
+/ar/markets/bahrain.html                       /markets/bahrain-ar                                  301
+/ar/architectural-lighting-manufacturer.html   /architectural-lighting-supplier-ar                  301
+
+# --- Identity slug migration: manufacturer → supplier ---
+# 页面身份是"供应商"，URL 不应继续自称制造商。旧地址永久跳转，保留外链权重。
+/architectural-lighting-manufacturer.html      /architectural-lighting-supplier                      301
+/architectural-lighting-manufacturer           /architectural-lighting-supplier                      301
+/architectural-lighting-manufacturer-ar.html   /architectural-lighting-supplier-ar                   301
+/architectural-lighting-manufacturer-ar        /architectural-lighting-supplier-ar                   301
+/chinese-lighting-manufacturer-saso.html       /chinese-lighting-supplier-saso                       301
+/chinese-lighting-manufacturer-saso            /chinese-lighting-supplier-saso                       301
+
+# --- Old product URL pattern: /product-xxx.html → /products/xxx/ ---
+# Existing products (3 active lines)
+/product-track-spotlights.html                 /products/track-spotlights/                          301
+/product-track-spotlights                      /products/track-spotlights/                          301
+/product-linear-lighting.html                  /products/linear-lighting/                           301
+/product-linear-lighting                       /products/linear-lighting/                           301
+/product-downlights.html                       /products/downlights/                                301
+/product-downlights                            /products/downlights/                                301
+
+# Discontinued products → closest live product line (preserve traffic, let user self-serve)
+/product-exterior-facade.html                  /products/outdoor-landscape/                         301
+/product-exterior-facade                       /products/outdoor-landscape/                         301
+/product-flood-light.html                      /products/outdoor-landscape/                         301
+/product-flood-light                           /products/outdoor-landscape/                         301
+/product-garden-bollard.html                   /products/outdoor-landscape/                         301
+/product-garden-bollard                        /products/outdoor-landscape/                         301
+/product-garden-light.html                     /products/outdoor-landscape/                         301
+/product-garden-light                          /products/outdoor-landscape/                         301
+/product-landscape-light.html                  /products/outdoor-landscape/                         301
+/product-landscape-light                       /products/outdoor-landscape/                         301
+/product-inground-light.html                   /products/outdoor-landscape/                         301
+/product-inground-light                        /products/outdoor-landscape/                         301
+/product-outdoor-spotlight.html                /products/outdoor-landscape/                         301
+/product-outdoor-spotlight                     /products/outdoor-landscape/                         301
+/product-underwater-light.html                 /products/outdoor-landscape/                         301
+/product-underwater-light                      /products/outdoor-landscape/                         301
+
+/product-wall-washers.html                     /products/wall-step/                                 301
+/product-wall-washers                          /products/wall-step/                                 301
+/product-under-cabinet.html                    /products/wall-step/                                 301
+/product-under-cabinet                         /products/wall-step/                                 301
+
+/product-surface-downlight.html                /products/surface-ceiling/                           301
+/product-surface-downlight                     /products/surface-ceiling/                           301
+/product-grille-light.html                     /products/surface-ceiling/                           301
+/product-grille-light                          /products/surface-ceiling/                           301
+/product-ufo-high-bay.html                     /products/surface-ceiling/                           301
+/product-ufo-high-bay                          /products/surface-ceiling/                           301
+
+/product-recessed-linear.html                  /products/linear-lighting/                           301
+/product-recessed-linear                       /products/linear-lighting/                           301
+/product-linear-high-bay.html                  /products/linear-lighting/                           301
+/product-linear-high-bay                       /products/linear-lighting/                           301
+/product-tri-proof.html                        /products/linear-lighting/                           301
+/product-tri-proof                             /products/linear-lighting/                           301
+/product-strip-light.html                      /products/linear-lighting/                           301
+/product-strip-light                           /products/linear-lighting/                           301
+/product-cove-lighting.html                    /products/linear-lighting/                           301
+/product-cove-lighting                         /products/linear-lighting/                           301
+/product-led-profile.html                      /products/linear-lighting/                           301
+/product-led-profile                           /products/linear-lighting/                           301
+/product-neon-flex.html                        /products/linear-lighting/                           301
+/product-neon-flex                             /products/linear-lighting/                           301
+
+/product-magnetic-track.html                   /products/track-spotlights/                          301
+/product-magnetic-track                        /products/track-spotlights/                          301
+/product-downlight-spotlight.html              /products/track-spotlights/                          301
+/product-downlight-spotlight                   /products/track-spotlights/                          301
+
+/product-chandelier.html                       /products/custom-chandeliers/                        301
+/product-chandelier                            /products/custom-chandeliers/                        301
+/product-pendant-light.html                    /products/custom-chandeliers/                        301
+/product-pendant-light                         /products/custom-chandeliers/                        301
+
+# No equivalent product line — bulbs, controls, street and grow lighting
+/product-control-systems.html                  /products/                                           301
+/product-control-systems                       /products/                                           301
+/product-grow-light.html                       /products/                                           301
+/product-grow-light                            /products/                                           301
+/product-street-light.html                     /products/                                           301
+/product-street-light                          /products/                                           301
+/product-solar-street.html                     /products/                                           301
+/product-solar-street                          /products/                                           301
+/product-filament-bulb.html                    /products/                                           301
+/product-filament-bulb                         /products/                                           301
+/product-smart-bulb.html                       /products/                                           301
+/product-smart-bulb                            /products/                                           301
+
+# --- Old project pages → projects hub (all individual projects consolidated) ---
+# NOTE: Cloudflare Pages _redirects doesn't support partial filename wildcards.
+# Known project URLs listed explicitly; long-tail ones naturally fall to 404.
+/project-villa-palm-jumeirah.html              /projects                                            301
+/project-villa-palm-jumeirah                   /projects                                            301
+/project-villa-palm-jumeirah-ar.html           /projects-ar                                         301
+/project-villa-palm-jumeirah-ar                /projects-ar                                         301
+
+# --- Discontinued /blog articles → blog index ---
+# Common naming pattern changes and removed articles
+/blog/hotel-lighting-design-middle-east.html   /blog/hotel-lighting-middle-east                     301
+/blog/lighting-budget-estimation-guide.html    /blog/                                               301
+
+# --- Downloads page → resources hub (consolidated) ---
+/downloads/                                    /resources/                                          301
+/downloads.html                                /resources/                                          301
+/downloads                                     /resources/                                          301
+
+# --- Custom Lighting Factory China (legacy OEM positioning) → Engineering-led Custom Lighting ---
+/custom-lighting-factory-china.html            /custom-lighting                                     301
+/custom-lighting-factory-china                 /custom-lighting                                     301
+
+# ============================================================
+# Phase 7 — GSC 272 404 + 2 重定向错误 + 2 重复网页 修复
+# 数据采集日期：2026-10-23
+# ============================================================
+
+# --- 重定向错误 2 条（GSC 报 CF 自动 308，改为可控 301） ---
+/blog/custom-chandelier-villa-guide.html       /blog/custom-chandelier-villa-guide                 301
+/blog/villa-lighting-design-guide.html          /blog/villa-lighting-design-guide                    301
+
+# --- 重复网页 2 条 ---
+/project-riyadh-luxury-retail                  /projects                                             301
+/markets/middle-east                           /markets/saudi-arabia                                 301
+
+# --- /ar/ar/ 双重前缀旧路径（旧站 bug，批量修正） ---
+/ar/ar/downloads                                /index-ar                                             301
+/ar/ar/products                                /products/index-ar                                    301
+/ar/ar/certifications                           /certifications-ar                                    301
+/ar/ar/contact                                 /contact-ar                                           301
+/ar/ar/projects-cases                          /projects-ar                                          301
+/ar/ar/blog                                    /blog/index-ar                                        301
+/ar/ar/ai-assistant                            /index-ar                                             301
+/ar/ar/high-temperature-led/                   /index-ar                                             301
+/ar/ar/g-mark-certification                    /blog/g-mark-certification-guide.html                 301
+/ar/ar/led-purchasing-guide                    /blog/index-ar                                        301
+/ar/ar/products/garden-post                    /products/index-ar                                    301
+/ar/ar/products/mini-recessed-downlight        /products/downlights/index-ar                         301
+/ar/ar/products/led-strip                     /products/linear-lighting/index-ar                    301
+/ar/ar/products/high-lumen-track-light         /products/track-spotlights/index-ar                   301
+
+# --- 旧首页版本（index-v*）---
+/index-v2                                      /                                                     301
+/index-v2.html                                 /                                                     301
+/index-v3                                      /                                                     301
+/index-v3.html                                 /                                                     301
+
+# --- privacy-policy/* 旧路径 ---
+/privacy-policy/                               /privacy                                              301
+/privacy-policy/product-linear-systems.html    /products/linear-lighting/                            301
+/privacy-policy/product-wall-washers.html      /products/wall-step/                                  301
+/privacy-policy/start-project.html             /start-project                                        301
+
+# --- 项目页旧格式（补充 Phase 6 漏掉的）---
+/project-riyadh-luxury-retail.html             /projects                                             301
+/project-dubai-hotel                           /projects                                             301
+/project-dubai-hotel.html                      /projects                                             301
+/project-jeddah-flagship                       /projects                                             301
+/project-jeddah-flagship.html                  /projects                                             301
+/project-jeddah-flagship-ar.html               /projects-ar                                          301
+/project-riyadh-boutique                       /projects                                             301
+/project-riyadh-boutique.html                  /projects                                             301
+/project-moscow-office                         /projects                                             301
+/project-moscow-office.html                    /projects                                             301
+/project-villa-palm-jumeirah-ar.html           /projects-ar                                          301
+
+# --- 阿语旧项目 URL ---
+/ar/project-makkah-palace.html                 /projects-ar                                          301
+/ar/project-riyadh-luxury-retail.html          /projects-ar                                          301
+
+# --- FAQ + Cases + Blogs 的 .html → 无后缀（覆盖 CF 自动 308）---
+# FAQ
+/faq/collections.html                          /faq                                                  301
+/faq/index.html                                 /faq                                                  301
+/faq/g-mark-certification-lighting.html        /faq                                                  301
+/faq/commercial-led-lifespan.html              /faq                                                  301
+/faq/commercial-vs-residential-led.html        /faq                                                  301
+/faq/project-references-middle-east.html       /faq                                                  301
+/faq/best-led-downlight-dubai.html             /faq                                                  301
+/faq/beam-angle-track-lighting.html            /faq                                                  301
+/faq/color-temperature-hotel-lighting.html     /faq                                                  301
+/faq/supermarket-lighting-design.html          /faq                                                  301
+/faq/high-bay-lights-warehouse.html            /faq                                                  301
+/faq/cri-clothing-store-lighting.html          /faq                                                  301
+/faq/jewelry-store-lighting.html               /faq                                                  301
+/faq/moq-commercial-led-lighting.html          /faq                                                  301
+/faq/saso-certification-process-led.html       /faq                                                  301
+/faq/mosque-lighting-requirements.html        /faq                                                  301
+/faq/ecas-certification-uae-led.html           /faq                                                  301
+/faq/oem-odm-custom-lighting.html              /faq                                                  301
+/faq/ip-rating-outdoor-lighting-saudi.html     /faq                                                  301
+/faq/custom-lighting-design-project.html       /faq                                                  301
+/faq/quotation-lighting-project.html           /faq                                                  301
+/faq/beam-angle-track-lighting                 /faq                                                  301
+/faq/commercial-vs-residential-led             /faq                                                  301
+/faq/cri-clothing-store-lighting               /faq                                                  301
+/faq/custom-lighting-design-project            /faq                                                  301
+/faq/ecas-certification-uae-led                /faq                                                  301
+/faq/high-bay-lights-warehouse                 /faq                                                  301
+/faq/mosque-lighting-requirements              /faq                                                  301
+/faq/moq-commercial-led-lighting                /faq                                                  301
+/faq/oem-odm-custom-lighting                   /faq                                                  301
+/faq/quotation-lighting-project                /faq                                                  301
+
+# Cases
+/cases/case-dubai-retail-store.html            /projects                                             301
+/cases/case-dubai-retail-store                 /projects                                             301
+/cases/case-kuwait-restaurant.html             /projects                                             301
+/cases/case-kuwait-restaurant                  /projects                                             301
+/cases/case-oman-landscape.html                /projects                                             301
+/cases/case-oman-landscape                     /projects                                             301
+/cases/case-saudi-warehouse.html               /projects                                             301
+/cases/case-saudi-warehouse                    /projects                                             301
+/cases/case-saudi-office-project.html          /projects                                             301
+/cases/case-saudi-office-project               /projects                                             301
+/cases/case-saudi-shopping-mall.html           /projects                                             301
+/cases/case-saudi-shopping-mall                /projects                                             301
+/cases/case-saudi-office-project               /projects                                             301
+/cases/case-qatar-mosque.html                  /projects                                             301
+/cases/case-qatar-mosque                       /projects                                             301
+/cases/case-bahrain-hospital.html              /projects                                             301
+/cases/case-bahrain-hospital                   /projects                                             301
+/cases/case-saudi-shopping-mall                /projects                                             301
+
+# --- 旧产品 URL 格式补充 ---
+/product-control-systems.html                   /products/                                            301
+/product-control-systems                        /products/                                            301
+/product-wall-washers.html                      /products/                                            301
+/product-wall-washers                           /products/                                            301
+/product-exterior-facade.html                   /products/                                            301
+/product-exterior-facade                        /products/                                            301
+/product-track-spotlights.html                  /products/track-spotlights/                            301
+/product-track-spotlights                       /products/track-spotlights/                            301
+
+# --- 旧项目列表页 ---
+/projects.html                                 /projects                                             301
+/projects-cases.html                           /projects                                             301
+/projects-cases                                /projects                                             301
+
+# --- 阿语旧产品 URL（query string 版本）---
+/ar/start-project.html?product=track-spotlights /start-project-ar                                    301
+/ar/start-project.html?product=downlights      /start-project-ar                                    301
+/ar/start-project.html?product=exterior-facade  /start-project-ar                                    301
+/ar/start-project.html?product=linear-systems   /start-project-ar                                    301
+
+# --- 博客旧文章补充 ---
+/blog/custom-lighting-cost-timeline.html       /blog/                                               301
+/blog/custom-lighting.html                     /custom-lighting                                     301
+/blog/custom-lighting-manufacturing-process.html /custom-lighting                                    301
+/blog/custom-chandeliers.html                  /custom-lighting                                     301
+/blog/custom-vs-standard-lighting.html         /blog/                                               301
+/blog/certifications.html                      /specification/                                      301
+/blog/chandelier-custom-design-guide.html      /custom-lighting                                     301
+/blog/dubai-retail-lighting-guide.html         /solutions/retail                                    301
+/blog/dubai-hotel-lighting-design.html         /solutions/hospitality                               301
+/blog/hospitality-lighting-design-trends.html  /solutions/hospitality                               301
+/blog/kuwait-lighting-design-guide.html        /markets/kuwait                                      301
+/blog/luxury-retail-lighting-guide.html        /solutions/retail                                    301
+/blog/markets/kuwait.html                      /markets/kuwait                                      301
+/blog/qatar-hotel-lighting-lusail.html         /markets/qatar                                       301
+/blog/lighting-roi-business-case.html          /blog/                                               301
+/blog/project-riyadh-luxury-retail.html        /projects                                             301
+/blog/saudi-hotel-resort-lighting.html         /solutions/hospitality                               301
+/blog/track-lighting-systems-comparison.html   /products/track-spotlights/                           301
+/blog/warehouse-lighting-gcc-logistics.html    /solutions/                                          301
+/blog/office-lighting-design-saudi-productivity.html /solutions/                                      301
+/blog/high-temperature-led.html                /blog/                                               301
+/blog/led-driver-quality-guide.html             /products/linear-lighting/                            301
+/blog/led-high-bay-light-buyer-guide-middle-east.html /solutions/                                  301
+/blog/led-flood-light-buyer-guide-middle-east.html /products/                                         301
+/blog/retail-mall-lighting-design-middle-east.html /solutions/retail                                301
+/blog/lighting-budget-estimation-guide.html    /blog/                                               301
+
+# --- 杂项旧 URL ---
+/about.html                                     /about                                               301
+/ar/index.html                                  /index-ar                                            301
+/ar                                             /index-ar                                            301
+/ar/                                            /index-ar                                            301
+/ar/product-wall-washers.html                  /products/wall-step/index-ar                         301
+/ar/product-exterior-facade.html                /products/outdoor-landscape/index-ar                 301
+/ar/custom-chandeliers.html                     /custom-lighting-ar                                   301
+/ar/custom-lighting.html                        /custom-lighting-ar                                   301
+/ar/lighting-design.html                        /lighting-design-ar                                   301
+/ar/ar                                          /index-ar                                            301
+/ar/ar/                                         /index-ar                                            301
+/ar/led-lighting-supplier-guide/               /index-ar                                            301
+/ar/blog/saber-registration-guide-led-lighting/ /index-ar                                            301
+/ar/china-commercial-lighting/                 /index-ar                                            301
+/ar/blog/saudi-vision-2030-lighting-opportunities/ /index-ar                                        301
+/ar/blog/mosque-led-lighting-design-guide/     /index-ar                                            301
+/ar/blog/why-cheap-led-lighting-costs-more/    /index-ar                                            301
+/ar/blog/china-commercial-lighting-manufacturer-guide/ /index-ar                                        301
+/ar/blog/how-to-verify-chinese-led-factory/    /about                                               301
+/ar/blog/smart-led-lighting-trends-gcc-2026/   /index-ar                                            301
+/ar/blog/saso-certification-guide/             /blog/saso-certification-guide.html                  301
+/ar/blog/ar/g-mark-certification-guide         /blog/g-mark-certification-guide.html                 301
+/ar/blog/ar/led-procurement-guide-middle-east  /blog/                                               301
+/ar/blog/ar/hotel-lighting-design-guide        /blog/hotel-lighting-middle-east.html                 301
+/ar/blog/ar/high-temperature-led-lighting      /blog/                                               301
+/ar/downloads                                   /resources/                                          301
+/ar/downloads/                                  /resources/                                          301
+/ar/compare/                                    /faq                                                  301
+
+# --- 旧产品列表页 ---
+/products.html                                  /products/                                            301
+/products.html?cat=solar                        /products/                                            301
+/products/df-downlight/collections.html         /products/downlights/                                 301
+/products/led-driver-controller/                /products/                                            301
+/products/led-driver-controller                 /products/                                            301
+/products/led-strip/saudi-arabia.html           /products/linear-lighting/                            301
+/products/mini-recessed-downlight               /products/downlights/                                 301
+/products/garden-bollard/                       /products/outdoor-landscape/                         301
+/products/garden-post                           /products/outdoor-landscape/                         301
+/products/garden-post/                          /products/outdoor-landscape/                         301
+/products/wall-light                            /products/wall-step/                                 301
+/products/adjustable-gimbal-downlight            /products/downlights/                                 301
+/products/high-lumen-track-light                /products/track-spotlights/                            301
+/products/solar-street/markets/uae.html         /products/                                            301
+
+# --- 旧市场页面 ---
+/uae-commercial-lighting-solutions/             /markets/uae                                          301
+/saudi-arabia-commercial-lighting/              /markets/saudi-arabia                                301
+/middle-east-lighting-solutions/                /markets/saudi-arabia                                301
+/middle-east-lighting-solutions/?lang=ar        /markets/saudi-arabia-ar                              301
+
+# --- 工厂参观 + AI 助手旧页面 ---
+/factory-tour                                   /about                                               301
+/ai-assistant.html                              /faq                                                  301
+
+# --- 其他零散旧 URL ---
+/search.html                                    /faq                                                  301
+/engineering/index.html                         /engineering-hub                                      301
+/saudi-arabia-ar.html                           /markets/saudi-arabia-ar                              301
+/saudi-arabia-ar                                /markets/saudi-arabia-ar                              301
+/kuwait-ar.html                                 /markets/kuwait-ar                                   301
+/oman-ar.html                                   /markets/oman-ar                                     301
+/russia.html                                    /studio                                              301
+/products/Yakeen-Portfolio-2025.pdf             /resources/                                          301
+/cdn-cgi/l/email-protection                     /                                                     301
+
+# --- ar/ 产品旧 URL 补充 ---
+/ar/products/wall-washer/                       /products/                                            301
+/ar/products/linear-lighting/index.html         /products/linear-lighting/index-ar                    301
+/ar/products/track-spotlights/index.html        /products/track-spotlights/index-ar                   301
+/ar/products/mini-recessed-downlight            /products/downlights/index-ar                         301
+/ar/products/garden-post                        /products/index-ar                                    301
+/ar/products/led-strip                          /products/linear-lighting/index-ar                    301
+/ar/products/high-lumen-track-light             /products/track-spotlights/index-ar                   301
+/ar/products/certifications.html                /certifications-ar                                   301
+/ar/products/certifications                     /certifications-ar                                   301
+
+# --- Bing 2026-10 新发现 404 ---
+/compare                                        /faq                                                  301
+/qatar-ar.html                                  /markets/qatar-ar                                     301
+/project-doha-hospitality.html                  /projects                                             301
+/product-high-bay                                /products/                                            301

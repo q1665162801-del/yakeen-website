@@ -1,0 +1,438 @@
+/* ============================================================
+   Specification / Lighting Lab — Page-specific styles
+   Extracted from inline styles on specification/index.html
+   ============================================================ */
+
+/* --- AI Spec Tool Section --- */
+body#yakeen-page .spec-ai-section {
+  padding: var(--section-padding-y-sm) 0;
+}
+
+body#yakeen-page .spec-ai-header {
+  margin-bottom: 32px;
+}
+
+/* --- Resource Library Section --- */
+body#yakeen-page .spec-library-bg {
+  background: var(--color-bg-surface);
+}
+
+body#yakeen-page .spec-library-footer {
+  text-align: center;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-text-primary);
+}
+
+body#yakeen-page .spec-library-footer-text {
+  color: var(--color-gray);
+  font-size: 14px;
+  margin: 0 0 8px;
+}
+
+body#yakeen-page .spec-library-footer-link {
+  color: var(--color-gold-primary);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-gold-light);
+  padding-bottom: 2px;
+}
+
+/* --- Free Resources Section --- */
+body#yakeen-page .spec-free-section {
+  background: linear-gradient(180deg, var(--color-bg-elevated) 0%, var(--color-bg-canvas) 100%);
+}
+
+/* Grid reuses .resource-more-grid from resources.css */
+
+body#yakeen-page .spec-free-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+body#yakeen-page .spec-free-card-inner {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-text-primary);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  height: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+body#yakeen-page .spec-free-card:hover .spec-free-card-inner {
+  transform: translateY(var(--lift-xs));
+  box-shadow: var(--shadow-card-hover);
+}
+
+body#yakeen-page .spec-free-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-gold-primary);
+  color: var(--color-white);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+body#yakeen-page .spec-free-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+body#yakeen-page .spec-free-title {
+  font-size: 20px;
+  margin: 0 0 8px 0;
+  font-weight: 600;
+}
+
+body#yakeen-page .spec-free-desc {
+  font-size: 14px;
+  color: var(--color-gray-mid);
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+}
+
+body#yakeen-page .spec-free-cta {
+  font-size: 13px;
+  color: var(--color-gold-primary);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* --- Spec Confidence CTA --- */
+body#yakeen-page .spec-confidence-cta {
+  text-align: center;
+  margin-top: 48px;
+}
+
+/* ============================================================
+   4. SPEC BOX / SPEC METRIC
+   ============================================================ */
+
+.spec-box {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin: 24px 0;
+}
+
+.spec-box h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 20px;
+}
+
+.spec-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--color-border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.spec-metric-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  background: var(--color-bg-elevated);
+  gap: 20px;
+}
+
+.spec-metric-label {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.spec-metric-value {
+  font-size: 0.9rem;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  text-align: right;
+}
+
+/* ============================================================
+   5. SPECIFICATION PAGE (spec-*)
+   ============================================================ */
+
+.spec-intro-section {
+  padding: var(--section-padding-y) 0;
+  background: var(--color-bg-canvas);
+}
+
+.spec-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.spec-intro-left h2 {
+  font-family: var(--font-sans);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+  margin: 0 0 20px;
+}
+
+.spec-intro-left p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+}
+
+.spec-intro-link {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-gold-primary);
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  transition: color var(--transition-fast);
+}
+
+.spec-intro-link:hover {
+  color: var(--color-gold-dark);
+}
+
+.spec-intro-right {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+}
+
+
+
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.spec-item {
+  background: var(--color-bg-canvas);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.spec-label {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-text-tertiary);
+  margin-bottom: 8px;
+}
+
+.spec-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.spec-desc {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+.spec-support {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-gold-pale);
+  border-radius: var(--radius-md);
+  margin-top: 16px;
+}
+
+.spec-support-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.spec-cta-content {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.spec-cta-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+.spec-cta-content p {
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+}
+
+.spec-advantages {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.spec-confidence-section {
+  padding: var(--section-padding-y) 0;
+  background: var(--color-bg-surface);
+}
+
+.spec-confidence-section h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 900px) {
+  .spec-intro-grid { grid-template-columns: 1fr; gap: 32px; }
+  .spec-grid { grid-template-columns: 1fr; }
+  .spec-advantages { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   30. AI SPEC TOOL SECTION
+   ============================================================ */
+
+.ai-spec-tool-section {
+  padding: var(--section-padding-y-sm) 0;
+}
+
+.ai-hero-cta {
+  /* Inline button variant for hero */
+  display: inline-flex;
+}
+
+/* ============================================================
+   38. VALUE / UNIT (spec metrics)
+   ============================================================ */
+
+.value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.unit {
+  font-size: 0.85rem;
+  color: var(--color-text-tertiary);
+  margin-left: 2px;
+}
+
+/* ============================================================
+   SPEC ADVANTAGE — Advantage icon sizing
+   ============================================================ */
+
+.spec-advantage-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.spec-advantage-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .spec-advantage-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+  }
+}
+
+/* --- Spec Series --- */
+.spec-intro-title {
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+}
+
+.spec-intro-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+}
+
+.spec-list-title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-gold-primary);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.spec-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+}
+
+.spec-list li {
+  display: flex;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.spec-list-icon {
+  color: var(--color-gold-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.spec-resources-section {
+  padding: var(--section-padding-y-sm) 0;
+}
+
+.spec-support-content {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 48px;
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-lg);
+  /* It's a flex item of .spec-support — without these it refused to shrink
+     below its 48px-padded content width and hung off the right edge. */
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .spec-support {
+    padding: 0;
+    background: transparent;
+  }
+
+  .spec-support-content {
+    padding: 28px 20px;
+  }
+}

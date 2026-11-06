@@ -1,0 +1,91 @@
+﻿[dir="rtl"] .mobile-menu
+[dir="rtl"] .mobile-menu.is-open
+[dir="rtl"] .mobile-close
+[dir="rtl"] .mobile-link
+[dir="rtl"] .section-subtitle
+[dir="rtl"] .feature-card
+[dir="rtl"] .quote-card
+[dir="rtl"] .quote-text::before
+[dir="rtl"] .arrow-link svg
+[dir="rtl"] .breadcrumb
+[dir="rtl"] .breadcrumb li::before
+[dir="rtl"] ul.check-list li::before
+[dir="rtl"] ul.check-list li
+[dir="rtl"] .cta-list
+[dir="rtl"] .cta-list li
+[dir="rtl"] .cta-list li::before
+.mobile-menu
+.mobile-menu.is-open
+.mobile-close
+.mobile-link
+.mobile-link:hover
+.mobile-link:active
+.mobile-cta
+.mobile-cta:hover
+.menu-backdrop
+.menu-backdrop.is-visible
+.footer-brand p
+.mt-0
+.form-feedback
+.form-feedback.show
+.form-feedback--success
+.form-feedback--error
+.form-feedback-icon
+.form-feedback-title
+.form-feedback-text
+.card-shine
+.card-brand-badge
+.card-brand-badge img
+.reveal-element
+.reveal-element.revealed
+.gcc-market-grid .reveal-element:nth-child(1)
+.gcc-market-grid .reveal-element:nth-child(2)
+.gcc-market-grid .reveal-element:nth-child(3)
+.gcc-market-grid .reveal-element:nth-child(4)
+.gcc-market-grid .reveal-element:nth-child(5)
+.gcc-market-grid .reveal-element:nth-child(6)
+.quote-form
+.featured-grid
+.feature-card
+.feature-card:hover
+.quote-info h2
+.quote-info p
+.articles-grid
+.article-card
+.article-card:hover
+.article-card-image
+.article-card-image img
+.article-card:hover .article-card-image img
+.article-card-body
+.article-card-category
+.article-card-body h3
+.article-card-body p
+.article-card-footer
+.article-card-footer .read-time
+.featured-article
+.featured-visual
+.featured-visual img
+.featured-content h2
+.featured-content p
+.read-link
+.read-link:hover
+.author
+.author-avatar
+.cert-icon
+.card-shine::after
+.card-shine:hover::after
+.journal-categories
+.journal-categories-inner
+.cat-pill
+.cat-pill:hover
+.cat-pill.active
+.text-left
+.text-right
+.articles-section
+.topics-section
+.topics-grid
+.topic-card
+.topic-card:hover
+.topic-icon
+.topic-card h4
+.feature-card p

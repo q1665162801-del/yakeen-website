@@ -1,0 +1,234 @@
+/* ============================================================
+   Home (English) — Page-specific styles
+   Extracted from inline styles on index.html
+   ============================================================ */
+
+/* --- Section lead variants (centered with auto side margins) --- */
+
+body#yakeen-page .section-lead--home {
+  margin: 16px auto 0;
+  color: var(--color-gray);
+  font-size: 15px;
+}
+
+body#yakeen-page .section-lead--home-lg {
+  margin: 16px auto 0;
+  color: var(--color-gray);
+  font-size: 16px;
+}
+
+body#yakeen-page .section-lead--home-light {
+  margin: 16px auto 0;
+  color: var(--color-gray-light);
+  font-size: 15px;
+}
+
+/* ============================================================
+   24. HAS PHOTO / REQUEST
+   ============================================================ */
+
+.testimonial-section {
+  padding: var(--section-padding-y) 0;
+  background: var(--color-bg-canvas);
+}
+
+/* ============================================================
+   36. PRIMARY UTILITY
+   ============================================================ */
+
+.primary {
+  color: var(--color-gold-primary);
+  font-weight: 600;
+}
+
+/* ============================================================
+   HOME HERO
+   ============================================================ */
+
+.home-hero-title {
+  font-family: var(--font-sans);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.home-cta-left, .home-cta-right {
+  flex: 1;
+}
+
+
+
+.home-faq .section-title {
+  margin-bottom: var(--space-8);
+}
+
+.home-faq .faq-list {
+  max-width: 860px;
+}
+
+/* ============================================================
+   B3 DESIGN FINISHES — 6 micro-design flourishes
+   1. Hero stats bar (inline at hero bottom)
+   2. Hero bottom gold rule + dot
+   3. Section numbered labels (01 · 02 · 03)
+   4. Gold accent line upgrade (2px primary gold)
+   5. Project card tag gold dot
+   6. Product card hover gold bottom border
+   ============================================================ */
+
+/* 1. Hero stats bar — bottom of hero, inline overlay */
+.hero-stats-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-top: 48px;
+  padding: 20px 0 0;
+  border-top: 1px solid rgba(245, 240, 227, 0.18);
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 36px;
+  gap: 2px;
+}
+
+.hero-stat__num {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 600;
+  color: var(--color-gold-light);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.hero-stat__label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 227, 0.65);
+}
+
+.hero-stat-divider {
+  width: 1px;
+  height: 28px;
+  background: rgba(245, 240, 227, 0.22);
+}
+
+/* 2. Hero bottom gold rule + centered dot */
+.home-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-gold-primary) 50%, transparent 100%);
+}
+
+/* 3+4. Section numbered labels + gold accent line upgrade */
+.home-section-label, .section-label {
+  position: relative;
+  padding-top: 18px; /* space for the number + line above */
+}
+
+.home-section-label::before, .section-label::before {
+  content: attr(data-num);
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  color: var(--color-gold-text);
+  text-transform: none;
+  background: transparent;
+}
+
+.home-section-label::after, .section-label::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gold-muted) 0%, var(--color-gold-primary) 50%, var(--color-gold-muted) 100%);
+  border-radius: 1px;
+}
+
+/* Center-aligned section headers also get numbered label */
+.section-header--center .home-section-label::before, .section-header--center .section-label::before {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 5. Project card tag — gold dot on left */
+.hproj-tag {
+  position: relative;
+  padding-left: 12px;
+}
+
+.hproj-tag::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: var(--color-gold-primary);
+  border-radius: 50%;
+}
+
+/* 6. Product card hover — gold bottom border animates in */
+.hp-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.hp-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gold-muted) 0%, var(--color-gold-primary) 50%, var(--color-gold-muted) 100%);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hp-card:hover::after {
+  transform: scaleX(1);
+}
+
+/* --- Mobile adjustments for hero stats --- */
+@media (max-width: 640px) {
+  .hero-stats-bar {
+    margin-top: 32px;
+    padding: 16px 0 0;
+    gap: 8px;
+  }
+  .hero-stat {
+    padding: 0 14px;
+  }
+  .hero-stat__num {
+    font-size: 1.15rem;
+  }
+  .hero-stat__label {
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+  }
+  .hero-stat-divider {
+    height: 20px;
+  }
+}

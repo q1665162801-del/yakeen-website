@@ -1,0 +1,14 @@
+# Cloudflare Pages configuration
+name = "yakeen-lighting"
+pages_build_output_dir = "dist"
+
+# KV namespace for HTML edge cache
+kv_namespaces = [
+  { binding = "HTML_CACHE", id = "58612d51f6de4235afa068cf1ec616be" },
+  { binding = "LEADS", id = "c741412faf32492fb92376824e279951" }
+]
+
+# Customer auto-reply on form submit (functions/api/lead.js).
+# Non-secret feature flag; secrets (RESEND_API_KEY etc.) stay in the dashboard.
+[vars]
+LEAD_CUSTOMER_CONFIRMATION = "true"

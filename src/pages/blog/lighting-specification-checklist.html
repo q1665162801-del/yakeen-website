@@ -1,0 +1,203 @@
+---
+title: "Lighting Specification Checklist: 12 Points | Yakeen"
+description: "The 12-point lighting specification checklist our engineering team uses before signing off on every project — with priority levels and red flags to watch for."
+navVariant: "transparent"
+lang: "en"
+ogImage: "https://www.yakeenlighting.com/images/blog/lighting-specification-checklist.jpg"
+canonical: "https://www.yakeenlighting.com/blog/lighting-specification-checklist.html"
+type: "article"
+datePublished: "2026-06-30"
+dateModified: "2026-06-30"
+---
+<!-- Article Hero -->
+  <section class="article-hero">
+    <div class="container">
+      <div class="article-meta">
+        <a href="index.html" class="article-breadcrumb">Insights</a>
+        <span class="article-dot">&middot;</span>
+        <span class="article-category">Specification</span>
+        <span class="article-dot">&middot;</span>
+        <span class="article-read-time">8 min read</span>
+      </div>
+      <h1 class="article-title">The lighting spec checklist we use on every project</h1>
+      <p class="article-subtitle">12 things we check before we sign off &mdash; in the order we check them, with priority levels and the red flags that kill a submission stone dead.</p>
+    </div>
+  </section>
+
+  <!-- Article Body -->
+  <article class="article-body">
+    <div class="container article-container">
+      
+      <!-- Table of Contents -->
+      <aside class="article-toc">
+        <h4>In this article</h4>
+        <ul>
+    <li><a href="#how-to-use">Why proper specification matters</a></li>
+    <li><a href="#photometric">Photometric and optical data</a></li>
+    <li><a href="#color">Color quality and consistency</a></li>
+    <li><a href="#electrical">Electrical and control</a></li>
+    <li><a href="#mechanical">Mechanical and thermal</a></li>
+    <li><a href="#certification">Certification and compliance</a></li>
+    <li><a href="#warranty">Warranty and support</a></li>
+    <li><a href="#mockup">The pre-installation mockup</a></li>
+  </ul>
+      </aside>
+
+      <!-- Article Content -->
+      <div class="article-content">
+        
+<h2 id="how-to-use">How to use this checklist</h2>
+
+<p>Lighting gets value-engineered more than almost anything else in a building. A contractor swaps in a "similar" fixture from a lower-cost brand, the CAD block looks the same, and nobody notices until the lights turn on.</p>
+
+<p>This checklist is our defense &mdash; the exact thing we run through before we sign off on a product submission. Not in theory. In practice, on real projects, for every fixture.</p>
+
+<p>Priority levels:</p>
+
+<ul>
+  <li><strong class="priority-must">MUST</strong> &mdash; non-negotiable. Fails this, we reject the submission.</li>
+  <li><strong class="priority-should">SHOULD</strong> &mdash; we expect it, and we'll ask why it's missing.</li>
+  <li><strong class="priority-nice">NICE</strong> &mdash; good to have, differentiates good from great.</li>
+</ul>
+
+<p>Use it to evaluate submissions, write performance specs, or call out a contractor who's trying to substitute something low-quality.</p>
+
+<h2 id="photometric">1. Photometric data</h2>
+
+<p>This is where we start. No IES file = no consideration. Doesn't matter how good the renderings look.</p>
+
+<div class="spec-box">
+  <h3>Photometric checklist</h3>
+  <ul class="checklist-ul mb-0">
+    <li><span class="priority-must">MUST</span> LM-63 IES file for every fixture variant</li>
+    <li><span class="priority-must">MUST</span> Tested in an accredited lab (not just self-reported data)</li>
+    <li><span class="priority-should">SHOULD</span> Beam angle and field angle both defined</li>
+    <li><span class="priority-should">SHOULD</span> Center beam candlepower (CBCP) specified</li>
+    <li><span class="priority-should">SHOULD</span> Light output ratio (LOR) documented</li>
+    <li><span class="priority-nice">NICE</span> UGR tables for interior fixtures</li>
+    <li><span class="priority-nice">NICE</span> Spill light and upward light ratio</li>
+  </ul>
+</div>
+
+<p><strong>Red flag:</strong> Photometric data that looks "too clean" &mdash; perfectly smooth curves, no variation, efficiency above 90%. Real fixtures don't look like that. Always load the IES into DIALux and check it against the stated numbers.</p>
+
+<h2 id="color">2. Color quality &amp; consistency</h2>
+
+<p>Color is where low-quality fixtures are most obviously wrong. Two "3000K" products from different brands can look completely different side by side. On a project with 200 downlights from two different batches? You'll see stripes in the ceiling.</p>
+
+<div class="spec-box">
+  <h3>Color specification checklist</h3>
+  <ul class="checklist-ul mb-0">
+    <li><span class="priority-must">MUST</span> CCT specified in Kelvin (not "warm white")</li>
+    <li><span class="priority-must">MUST</span> CRI &ge; 80 general, &ge; 90 for high-end interiors</li>
+    <li><span class="priority-must">MUST</span> R9 value specified (red rendering &mdash; skin tones and food)</li>
+    <li><span class="priority-should">SHOULD</span> MacAdam ellipse: 3-step or better</li>
+    <li><span class="priority-should">SHOULD</span> Color shift over life: &le; 200K over rated life</li>
+    <li><span class="priority-nice">NICE</span> TM-30-15 data available</li>
+    <li><span class="priority-nice">NICE</span> Single-bin or tightly controlled binning</li>
+  </ul>
+</div>
+
+<p><strong>Rule of thumb:</strong> For commercial projects with &gt;50 of the same fixture, specify 3-step MacAdam minimum. Anything above 5-step and you'll see color variation between adjacent units. For retail and hospitality, 90+ CRI is not optional &mdash; people look wrong under CRI 80.</p>
+
+<h2 id="electrical">3. Electrical &amp; control</h2>
+
+<p>Control compatibility is where projects go sideways. You spec DALI, the contractor supplies 0-10V drivers, and suddenly nothing dims correctly. Check this early &mdash; it's much harder to fix after the walls are up.</p>
+
+<ul class="checklist-ul">
+  <li><span class="priority-must">MUST</span> Dimming protocol: 0-10V, DALI, DMX, TRIAC, or DALI-2? Write it down exactly.</li>
+  <li><span class="priority-must">MUST</span> Dimming range &mdash; minimum dimming level? 1% is good. 10% is not.</li>
+  <li><span class="priority-should">SHOULD</span> Dimming curve matches the control system (linear / log / square law)</li>
+  <li><span class="priority-should">SHOULD</span> Power factor &ge; 0.9 for commercial projects</li>
+  <li><span class="priority-should">SHOULD</span> THD &lt; 20%</li>
+  <li><span class="priority-should">SHOULD</span> No visible flicker at any dimming level (IEEE 1789)</li>
+  <li><span class="priority-nice">NICE</span> Inrush current documented (for circuit breaker sizing)</li>
+</ul>
+
+<p><strong>Red flag:</strong> "DALI compatible" but no DALI-2 certification. DALI-2 is the current standard &mdash; plain DALI means the driver is old and may have compatibility issues with modern control systems.</p>
+
+<h2 id="mechanical">4. Mechanical &amp; thermal</h2>
+
+<p>Heat kills LEDs. A fixture with bad thermal management will lose 30% of its output in three years and shift color. The housing isn't just for looks &mdash; it's the heatsink.</p>
+
+<ul class="checklist-ul">
+  <li><span class="priority-must">MUST</span> Die-cast aluminum housing (plastic = not architectural grade)</li>
+  <li><span class="priority-must">MUST</span> IP rating appropriate for the location (IP20 / IP44 / IP65+)</li>
+  <li><span class="priority-should">SHOULD</span> Junction temperature at rated output documented</li>
+  <li><span class="priority-should">SHOULD</span> All mounting options available (recessed, surface, suspended, track)</li>
+  <li><span class="priority-should">SHOULD</span> Weight specified (matters for ceiling structure)</li>
+  <li><span class="priority-nice">NICE</span> Adjustable fixtures: 360&deg; rotation + tilt range stated</li>
+  <li><span class="priority-nice">NICE</span> Custom finishes available with lead time</li>
+</ul>
+
+<p><strong>Rule of thumb:</strong> If a fixture feels light for its size, it probably is. And it will probably fail early. Heavier = more aluminum = better heat dissipation = longer life.</p>
+
+<h2 id="certification">5. Certification &amp; compliance</h2>
+
+<p>For GCC projects, this isn't optional &mdash; it's required for customs clearance and project sign-off. No certificate = your shipment gets stuck at the port.</p>
+
+<div class="spec-box">
+  <h3>GCC certification checklist</h3>
+  <ul class="checklist-ul mb-0">
+    <li><span class="priority-must">MUST</span> SASO IECEE recognition certificate (Saudi Arabia)</li>
+    <li><span class="priority-must">MUST</span> G-Mark certification (GCC standard)</li>
+    <li><span class="priority-must">MUST</span> Certificate covers the exact model, not just "similar"</li>
+    <li><span class="priority-should">SHOULD</span> MOIAT certification (UAE)</li>
+    <li><span class="priority-should">SHOULD</span> CB test report (IECEE)</li>
+    <li><span class="priority-should">SHOULD</span> Local energy efficiency registration</li>
+    <li><span class="priority-nice">NICE</span> RoHS compliance</li>
+  </ul>
+</div>
+
+<p><strong>Red flag:</strong> A product company with "certificates" for one model that they apply to their whole product line. The certificate has to match the exact model number and wattage. If it doesn't, it won't pass inspection &mdash; and we've seen projects held up for months over this.</p>
+
+<h2 id="warranty">6. Warranty &amp; support</h2>
+
+<p>Warranty isn't just about replacing dead fixtures. It's about whether the provider will answer the phone when something goes wrong on site.</p>
+
+<ul class="checklist-ul">
+  <li><span class="priority-must">MUST</span> 5 years minimum for specification-grade fixtures</li>
+  <li><span class="priority-must">MUST</span> Driver included in warranty (80% of failures are drivers)</li>
+  <li><span class="priority-should">SHOULD</span> L70 lumen maintenance warranty at 50,000 hours</li>
+  <li><span class="priority-should">SHOULD</span> Color warranty (replacement for bin shift)</li>
+  <li><span class="priority-should">SHOULD</span> Local support or regional representative</li>
+  <li><span class="priority-nice">NICE</span> Spare parts available 10+ years post-discontinuation</li>
+  <li><span class="priority-nice">NICE</span> Remote commissioning support</li>
+</ul>
+
+<p><strong>Rule of thumb:</strong> If a provider only offers 2 years warranty, that's a clue. They don't expect their product to last much longer than that.</p>
+
+<h2 id="mockup">7. The mockup (don't skip this)</h2>
+
+<p>No specification is complete without seeing it installed. Perfect numbers on a datasheet don't tell you what it actually looks like in that specific ceiling, with that specific paint, at that specific time of day.</p>
+
+<p>For any project above a certain size, we insist on:</p>
+
+<ul class="checklist-ul">
+  <li><span class="priority-must">MUST</span> Mockup of key fixture types in actual ceiling conditions</li>
+  <li><span class="priority-should">SHOULD</span> Side-by-side comparison if substitutions are proposed</li>
+  <li><span class="priority-should">SHOULD</span> Sign-off by architect + lighting designer + client</li>
+  <li><span class="priority-nice">NICE</span> Night-time review for exterior and facade fixtures</li>
+</ul>
+
+<p>Mockups cost a few thousand dollars and a week of time. Finding out you hate the light after 500 fixtures are installed? That costs way more. Just do the mockup.</p>
+
+<p>—</p>
+
+<p>That's the full list. We use this internally at Yakeen before we sign off on any product that goes out the door. If you're evaluating a submission and want a second opinion, send it over &mdash; we'll tell you what's missing, what's fine, and what's a hard pass.</p>
+    
+      </div>
+    </div>
+  </article>
+
+  <!-- CTA Section -->
+  <section class="article-cta-section">
+    <div class="container article-cta-inner">
+      <h2>Specifying a project?</h2>
+      <p>Send us your plans &mdash; our engineering team will add our fixtures, run DIALux calculations, and return a completed specification package with IES files and Revit families.</p>
+      <a href="../start-project.html" class="btn btn-primary">Start Your Specification &rarr;</a>
+    </div>
+  </section>
+
+<!-- Footer -->
+

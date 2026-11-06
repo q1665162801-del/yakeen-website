@@ -1,0 +1,296 @@
+<meta charset="UTF-8">
+  <script>
+  /* SW purge — legacy PWA service workers kept serving stale pages.
+     Unregister ANY service worker + clear Cache Storage on every load;
+     one auto-reload (session-guarded) so the first visit is already fresh. */
+  (function(){
+    if(!('serviceWorker' in navigator)) return;
+    navigator.serviceWorker.getRegistrations().then(function(rs){
+      if(!rs.length) return;
+      Promise.all(rs.map(function(r){ return r.unregister(); })).then(function(){
+        if(window.caches && caches.keys){ caches.keys().then(function(ks){ ks.forEach(function(k){ caches.delete(k); }); }); }
+        try{
+          if(sessionStorage.getItem('swPurged')!=='1'){
+            sessionStorage.setItem('swPurged','1');
+            location.reload();
+          }
+        }catch(e){}
+      });
+    }).catch(function(){});
+  })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <meta name="author" content="Yakeen Lighting">
+  <meta name="robots" content="{{robots}}">
+
+  <!-- Cloudflare Turnstile site key — read by js/form-submit.js to mount the
+       challenge on every lead form. Removing this disables the widget only. -->
+  <meta name="turnstile-sitekey" content="0x4AAAAAAF0NpNmDuKkzKr5h">
+  
+  <link rel="canonical" href="{{canonical}}">
+  <link rel="sitemap" type="application/xml" title="XML Sitemap" href="{{base}}sitemap.xml">
+  
+  {{hreflangTags}}
+  
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:image" content="{{ogImage}}">
+  <meta property="og:url" content="{{canonical}}">
+  <meta property="og:site_name" content="Yakeen Lighting">
+  <meta property="og:locale" content="{{ogLocale}}">
+  <meta property="og:locale:alternate" content="{{ogLocaleAlternate}}">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{title}}">
+  <meta name="twitter:description" content="{{description}}">
+  <meta name="twitter:image" content="{{ogImage}}">
+  
+  <!-- Organization Schema JSON-LD -->
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://www.yakeenlighting.com/#organization",
+  "name": "Yakeen Lighting",
+  "alternateName": "Yakeen",
+  "legalName": "Taiyuan Yakeen Trading Co., Ltd.",
+  "disambiguatingDescription": "Yakeen Lighting's registered legal entity is Taiyuan Yakeen Trading Co., Ltd. The entity name reflects the registration category used when the company was originally incorporated, not its current business model. Yakeen operates as a specification-grade architectural lighting supplier for GCC projects: every fixture is engineered, specified, certified and quality-controlled by Yakeen, and manufacturing is carried out through vetted manufacturing partners in Guangdong, China.",
+  "url": "https://www.yakeenlighting.com",
+  "logo": "https://www.yakeenlighting.com/images/logo-yakeen.png",
+  "description": "Yakeen Lighting is a specification-grade architectural lighting supplier serving GCC projects. We engineer and specify every fixture, manage certification requirements, and oversee quality control throughout production. Manufacturing is carried out through our vetted manufacturing partners in Guangdong, China. Core expertise includes SASO 2902, G-Mark, MOIAT, and SABER certification for Saudi Arabia, UAE, Qatar, Kuwait, Oman, and Bahrain. Our engineering team brings 10+ years of hands-on experience across hospitality, retail, residential, and public sector projects.",
+  "slogan": "Specification-grade architectural lighting supplier for GCC projects.",
+  "industry": "Architectural Lighting Supply & Engineering",
+  "naics": "335129",
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "certification",
+      "name": "SASO 2902 Energy Efficiency Certification",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Saudi Standards, Metrology and Quality Organization (SASO)",
+        "url": "https://www.saso.gov.sa"
+      }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "certification",
+      "name": "GCC G-Mark Conformity Mark",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Gulf Standardization Organization (GSO)",
+        "url": "https://www.gso.org.sa"
+      }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "certification",
+      "name": "CE Marking (LVD + EMC)",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "European Union"
+      }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "certification",
+      "name": "MOIAT/ECAS Compliance",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Ministry of Industry and Advanced Technology (MOIAT, formerly ESMA)",
+        "url": "https://moiat.gov.ae"
+      }
+    }
+  ],
+  "knowsAbout": [
+    "Architectural lighting engineering",
+    "Specification-grade lighting",
+    "Lighting specification for GCC projects",
+    "Anti-glare downlight design (UGR<19)",
+    "LED track lighting systems",
+    "Linear and cove lighting systems",
+    "Wall washers and grazing fixtures",
+    "Exterior and facade lighting",
+    "SASO certification process",
+    "SABER product registration",
+    "G-Mark conformity assessment",
+    "Custom lighting engineering",
+    "Photometric design (IES files)",
+    "DALI and 0-10V dimming systems",
+    "High CRI LED lighting (CRI 90+, R9>50)",
+    "IP65 rated exterior fixtures",
+    "LM-79 photometric testing",
+    "LM-80 LED lifetime testing",
+    "Thermal management for LED fixtures",
+    "Optical design with TIR lenses",
+    "Mosque and Islamic lighting design",
+    "Retail lighting specification",
+    "Hospitality lighting design",
+    "Saudi Arabia lighting market",
+    "UAE lighting market"
+  ],
+  "areaServed": [
+    {"@type": "Country", "name": "Saudi Arabia"},
+    {"@type": "Country", "name": "United Arab Emirates"},
+    {"@type": "Country", "name": "Qatar"},
+    {"@type": "Country", "name": "Kuwait"},
+    {"@type": "Country", "name": "Oman"},
+    {"@type": "Country", "name": "Bahrain"}
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Architectural Lighting Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Custom Architectural Lighting Engineering",
+          "description": "End-to-end custom lighting engineering: optical design, mechanical engineering, thermal analysis, prototyping, and production quality control.",
+          "url": "https://www.yakeenlighting.com/engineering-hub",
+          "provider": { "@type": "Organization", "name": "Yakeen Lighting" },
+          "areaServed": ["Saudi Arabia", "United Arab Emirates", "Qatar", "Kuwait", "Oman", "Bahrain"]
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Lighting Specification Support",
+          "description": "Specification-grade support for architects and lighting designers: photometric calculations (DIALux/Relux), IES file generation, specification writing, and submittal packages.",
+          "url": "https://www.yakeenlighting.com/specification/",
+          "provider": { "@type": "Organization", "name": "Yakeen Lighting" },
+          "areaServed": ["Saudi Arabia", "United Arab Emirates", "Qatar", "Kuwait", "Oman", "Bahrain"]
+        }
+      }
+    ]
+  },
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "telephone": "{{PHONE_DISPLAY}}",
+      "email": "{{EMAIL}}",
+      "contactOption": "WhatsApp",
+      "availableLanguage": ["English", "Arabic"],
+      "areaServed": "GCC & Middle East",
+      "hoursAvailable": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+        "opens": "09:00",
+        "closes": "18:00",
+        "timeZone": "Asia/Shanghai"
+      }
+    },
+    {
+      "@type": "ContactPoint",
+      "contactType": "specification support",
+      "telephone": "{{PHONE_DISPLAY}}",
+      "email": "{{EMAIL}}",
+      "availableLanguage": ["English", "Arabic"],
+      "areaServed": "GCC & Middle East"
+    },
+    {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "telephone": "{{PHONE_DISPLAY}}",
+      "email": "{{EMAIL}}",
+      "availableLanguage": ["English", "Arabic"],
+      "areaServed": "GCC & Middle East"
+    }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Taiyuan",
+    "addressRegion": "Shanxi",
+    "addressCountry": "CN"
+  },
+  "location": {
+    "@type": "Place",
+    "name": "Production & QC base (partner facility)",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Guangdong",
+      "addressCountry": "CN"
+    }
+  },
+  "telephone": "{{PHONE_DISPLAY}}",
+  "email": "{{EMAIL}}",
+  "foundingLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Taiyuan",
+      "addressRegion": "Shanxi",
+      "addressCountry": "CN"
+    }
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/yakeenlighting/",
+    "https://www.instagram.com/yakeen_commercial_lights/",
+    "https://www.youtube.com/@yakeenlighting",
+    "https://www.facebook.com/profile.php?id=61591335165644",
+    "https://wa.me/{{WHATSAPP_NUMBER}}"
+  ],
+  "subjectOf": [
+    {
+      "@type": "Organization",
+      "name": "Yakeen Lighting Lab",
+      "description": "Partner photometric laboratory and quality control at our partner production facilities. LM-79 testing, integrating sphere, thermal chamber, goniophotometer, and 100% final inspection.",
+      "url": "https://www.yakeenlighting.com/testing-quality"
+    }
+  ]
+}</script>
+  
+  <!-- WebSite Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Yakeen Lighting",
+    "url": "https://www.yakeenlighting.com",
+    "description": "Yakeen Lighting — specification-grade architectural lighting engineering for GCC projects. Vetted manufacturing partners, full certification support.",
+    "inLanguage": ["en", "ar"]
+  }
+  </script>
+  
+  <!-- Page-specific schema (auto-generated by build) -->
+  {{pageSchema}}
+  {{breadcrumbSchema}}
+  {{faqSchema}}
+  
+  <link rel="icon" type="image/svg+xml" href="{{base}}favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{base}}favicon-32.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="{{base}}icon-192.png">
+  
+  <meta name="theme-color" content="#EDE6D6">
+  <meta name="color-scheme" content="light only">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-title" content="Yakeen Lighting">
+  <link rel="manifest" href="{{base}}manifest.webmanifest">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  <!-- Primary Font: Inter — clean, modern, specification-grade feel -->
+  <!-- Display Font: Cormorant Garamond — elegant serif for luxury headings -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Preload hero image: set per-page via front-matter -->
+  {{heroPreload}}
+  <!-- Preload critical font weights for fast first paint -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap">
+  </noscript>
+  
+  {{arabicFont}}
+  {{rtlCss}}
+  
+  <link rel="stylesheet" href="{{base}}css/{{cssFile}}">
+
+  {{analyticsHead}}
+
+

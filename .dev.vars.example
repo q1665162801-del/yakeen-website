@@ -1,0 +1,86 @@
+# ============================================================
+#  Yakeen — 生产环境凭证模板
+#
+#  使用方法：
+#    1. 复制本文件为 .dev.vars（同目录），填入真实值
+#    2. 告诉我「填好了」，我会一次性上传到 Cloudflare 并重新部署
+#
+#  .dev.vars 已在 .gitignore 中，不会被提交、不会进入源码。
+#  本模板文件（.dev.vars.example）可以安全提交，里面只有占位符。
+#
+#  ⚠️ 下面所有 REPLACE_ME 都必须替换成真实值，
+#     否则该功能会被自动跳过（不会报错，但也不生效）。
+# ============================================================
+
+
+# ------------------------------------------------------------
+#  1. 邮件发送 — Resend
+#     注册：https://resend.com  →  Domains → 添加 yakeenlighting.com
+#     加完域名后，Resend 会给你 3 条 DNS 记录，去 Cloudflare DNS 添加
+#     验证通过后：API Keys → Create API Key（权限选 Sending access）
+#
+#     ⚠️ DNS 注意事项（关系到中东客户能不能收到信）：
+#       · Resend 会给一条 SPF（TXT）和一条 DKIM（TXT/CNAME）。
+#       · 如果 yakeenlighting.com 已经有一条 SPF 记录
+#         （形如 v=spf1 ...），不要新建第二条 —— 一个域名只能有一条 SPF。
+#         正确做法是把 Resend 的 include: 段合并进原有那条 SPF。
+#       · 建议再加一条 DMARC（TXT，主机名 _dmarc）：
+#         v=DMARC1; p=none; rua=mailto:alan@yakeenlighting.com
+#         先 p=none 观察，稳定后再收紧。中东邮箱服务商对 SPF/DKIM/DMARC
+#         校验严格，缺了容易进垃圾箱。
+# ------------------------------------------------------------
+
+# Resend API Key，形如 re_xxxxxxxxxxxx
+RESEND_API_KEY=REPLACE_ME
+
+# 发信人地址。域名必须已在 Resend 验证通过。
+# 格式必须是：显示名 <邮箱@已验证域名>
+LEAD_FROM_EMAIL=Yakeen Lighting <leads@yakeenlighting.com>
+
+# 内部提醒邮件的收件人（你自己收询盘通知的邮箱）
+LEAD_NOTIFY_EMAIL=alan@yakeenlighting.com
+
+
+# ------------------------------------------------------------
+#  2. 线索入库 — Zoho CRM Web-to-Lead
+#
+#     获取方式：Zoho CRM → 设置 → 渠道 → Web Forms
+#               → 新建或打开一个 Web Form → 「复制 HTML」
+#               在生成的 HTML 里找这两个隐藏字段的值：
+#
+#     <input type="hidden" name="xnQsjsdp" value="【这里就是 ZOHO_XNQSJSDP】">
+#     <input type="hidden" name="xmIwtLD"  value="【这里就是 ZOHO_XMIWTLD】">
+#
+#     这两个值都是加密串，不是明文，直接整段复制过来即可。
+# ------------------------------------------------------------
+
+# Zoho Web Form 的 xnQsjsdp 值
+ZOHO_XNQSJSDP=REPLACE_ME
+
+# Zoho Web Form 的 xmIwtLD 值
+ZOHO_XMIWTLD=REPLACE_ME
+
+# ⚠️ 数据中心必须匹配！你的 CRM 在 zoho.jp（日本区）。
+# 表单提交到错误的数据中心会被 Zoho 拒绝。
+# 可选值：
+#   日本区   https://crm.zoho.jp/crm/WebToLeadForm
+#   美国区   https://crm.zoho.com/crm/WebToLeadForm（默认）
+#   欧洲区   https://crm.zoho.eu/crm/WebToLeadForm
+#   印度区   https://crm.zoho.in/crm/WebToLeadForm
+ZOHO_ENDPOINT=https://crm.zoho.jp/crm/WebToLeadForm
+
+# 下面两个一般不用改，除非你在 Zoho 后台动过默认设置
+# 默认 actionType=TGVhZHM=（Leads 模块）
+ZOHO_ACTION_TYPE=TGVhZHM=
+# 提交后 Zoho 跳转地址（我们的表单走 AJAX，其实不会真正跳转）
+ZOHO_RETURN_URL=https://www.yakeenlighting.com/thank-you
+
+
+# ------------------------------------------------------------
+#  3. 降级通道 — FormSubmit
+#
+#     在 Zoho 凭证填好之前，线索走这条通道，保证迁移期不断流。
+#     Zoho 生效后这个值只是兜底，可以不改。
+# ------------------------------------------------------------
+
+LEAD_FALLBACK_EMAIL=alan@yakeenlighting.com

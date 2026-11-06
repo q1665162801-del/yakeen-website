@@ -1,0 +1,50 @@
+/* ============================================================
+   Offline Page — Page-specific styles
+   Extracted from inline styles on offline.html
+   ============================================================ */
+
+body#yakeen-page .offline-hero {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body#yakeen-page .offline-hero-inner {
+  text-align: center;
+  position: relative;
+  z-index: var(--z-raised);
+}
+
+body#yakeen-page .offline-eyebrow {
+  color: var(--color-gold-light);
+  margin-bottom: 24px;
+}
+
+body#yakeen-page .offline-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--color-white);
+  margin-bottom: 24px;
+  font-weight: 400;
+}
+
+body#yakeen-page .offline-desc {
+  font-size: 1.125rem;
+  color: rgba(255,255,255,0.7);
+  max-width: 540px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+}
+
+body#yakeen-page .offline-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+body#yakeen-page .offline-btn-ghost {
+  color: var(--color-white);
+  border-color: rgba(255,255,255,0.3);
+}

@@ -1,0 +1,478 @@
+/* ============================================================
+   RESOURCE PAGES (Lighting Lab resources)
+   Shared styles for resource detail pages:
+   - dialux-lighting-calculation-guide.html
+   - lighting-specification-template.html
+   - saso-2902-compliance-checklist.html
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. Resource Hero
+   ------------------------------------------------------------ */
+
+body#yakeen-page .resource-hero {
+  background: linear-gradient(180deg, var(--color-bg-canvas) 0%, var(--color-bg-elevated) 100%);
+  padding: var(--hero-pad-top) 0 var(--hero-pad-bottom);
+}
+
+body#yakeen-page .resource-hero-inner {
+  max-width: 720px;
+}
+
+body#yakeen-page .resource-hero-badge {
+  display: inline-block;
+  background: var(--color-gold-primary);
+  color: var(--color-white);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 20px;
+}
+
+body#yakeen-page .resource-hero-emoji {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+body#yakeen-page .resource-hero-title {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  margin: 0 0 16px 0;
+}
+
+body#yakeen-page .resource-hero-subtitle {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--color-gray-dark);
+  margin: 0 0 24px 0;
+}
+
+body#yakeen-page .resource-hero-meta {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--color-gray);
+}
+
+body#yakeen-page .resource-content-section {
+  padding-top: 40px;
+}
+
+/* ------------------------------------------------------------
+   2. Resource Layout (content + sidebar)
+   ------------------------------------------------------------ */
+
+body#yakeen-page .resource-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 60px;
+  align-items: start;
+}
+
+body#yakeen-page .resource-content {
+  /* left column, no special styles */
+}
+
+body#yakeen-page .resource-sidebar {
+  position: sticky;
+  top: 100px;
+}
+
+body#yakeen-page .resource-form-card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-text-primary);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+body#yakeen-page .resource-form-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 0 8px 0;
+  color: var(--color-text-primary);
+}
+
+body#yakeen-page .resource-form-desc {
+  font-size: 14px;
+  color: var(--color-gray-mid);
+  margin: 0 0 24px 0;
+  line-height: 1.5;
+}
+
+body#yakeen-page .resource-form-group {
+  margin-bottom: 16px;
+}
+
+body#yakeen-page .resource-form-group--last {
+  margin-bottom: 20px;
+}
+
+body#yakeen-page .resource-form-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-gray-dark);
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+body#yakeen-page .resource-form-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--color-border-raw);
+  border-radius: var(--radius-md);
+  font-size: 16px; /* ≥16px — an ID-level rule here ties with base.css and wins on order */
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+body#yakeen-page .resource-form-submit {
+  width: 100%;
+  padding: 14px;
+  background: var(--color-gold-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+body#yakeen-page .resource-form-submit:hover {
+  background: var(--color-gold-light);
+}
+
+body#yakeen-page .resource-form-note {
+  font-size: 11px;
+  color: var(--color-gray-light);
+  text-align: center;
+  margin: 12px 0 0 0;
+  line-height: 1.4;
+}
+
+/* Mobile / tablet: the sidebar was a fixed 380px track, so the grid demanded
+   440px (380 + 60px gap) and pushed a 375px viewport wide on resource detail
+   pages — rightward on EN, leftward on AR (RTL mirrors the overflow). Stack
+   the sidebar under the content and let it flow normally. */
+@media (max-width: 900px) {
+  body#yakeen-page .resource-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  body#yakeen-page .resource-sidebar {
+    position: static;
+    top: auto;
+  }
+
+  body#yakeen-page .resource-form-card {
+    padding: 24px;
+  }
+}
+
+/* ------------------------------------------------------------
+   3. Resource Content Elements
+   ------------------------------------------------------------ */
+
+body#yakeen-page .resource-lead {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--color-gray-dark);
+  margin-bottom: 32px;
+}
+
+body#yakeen-page .resource-section-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 500;
+  margin: 40px 0 20px;
+}
+
+body#yakeen-page .resource-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+}
+
+body#yakeen-page .resource-checklist--bordered li {
+  padding: 10px 0 10px 28px;
+  position: relative;
+  border-bottom: 1px solid var(--color-border-raw);
+  font-size: 15px;
+  color: var(--color-gray-dark);
+}
+
+body#yakeen-page .resource-checklist--plain li {
+  padding: 10px 0 10px 28px;
+  position: relative;
+  font-size: 15px;
+  color: var(--color-gray-dark);
+}
+
+body#yakeen-page .resource-checklist-icon {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  color: var(--color-gold-primary);
+}
+
+body#yakeen-page .resource-callout {
+  margin-top: 48px;
+  padding: 24px;
+  background: var(--color-bg-canvas);
+  border-radius: var(--radius-lg);
+  border-left: 3px solid var(--color-border-strong);
+}
+
+body#yakeen-page .resource-callout p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-gray-dark);
+  line-height: 1.6;
+}
+
+body#yakeen-page .resource-callout strong {
+  color: var(--color-text-primary);
+}
+
+/* ------------------------------------------------------------
+   4. More Resources Section
+   ------------------------------------------------------------ */
+
+body#yakeen-page .resource-more {
+  background: var(--color-bg-canvas);
+}
+
+body#yakeen-page .resource-more-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+body#yakeen-page .resource-more-eyebrow {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-gold-primary);
+}
+
+body#yakeen-page .resource-more-title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 500;
+  margin: 12px 0 0 0;
+}
+
+body#yakeen-page .resource-more-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+body#yakeen-page .resource-card {
+  text-decoration: none;
+  color: inherit;
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-text-primary);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: block;
+}
+
+body#yakeen-page .resource-card-body {
+  padding: 24px;
+}
+
+body#yakeen-page .resource-card-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+body#yakeen-page .resource-card-title {
+  font-size: 18px;
+  margin: 0 0 8px 0;
+}
+
+body#yakeen-page .resource-card-desc {
+  font-size: 14px;
+  color: var(--color-gray-mid);
+  margin: 0;
+  line-height: 1.5;
+}
+
+body#yakeen-page .resource-back {
+  text-align: center;
+  margin-top: 40px;
+}
+
+body#yakeen-page .resource-back-link {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-gold-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-gold-primary);
+  padding-bottom: 2px;
+}
+
+/* ------------------------------------------------------------
+   11. Resources Landing Page (index.html)
+   ------------------------------------------------------------ */
+
+body#yakeen-page .resource-landing-container {
+  max-width: 960px;
+}
+
+body#yakeen-page .resource-landing-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Resource landing card (note: uses legacy var names from original inline styles) */
+body#yakeen-page .resource-landing-card {
+  text-decoration: none;
+  color: inherit;
+  padding: 28px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-paper);
+  transition: all 0.2s;
+  display: block;
+}
+
+body#yakeen-page .resource-landing-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+body#yakeen-page .resource-landing-title {
+  margin: 0 0 8px 0;
+  font-size: 1.15rem;
+}
+
+body#yakeen-page .resource-landing-desc {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* CTA section on landing page */
+body#yakeen-page .resource-landing-cta {
+  max-width: 720px;
+  text-align: center;
+}
+
+body#yakeen-page .resource-landing-cta-title {
+  margin-bottom: 16px;
+}
+
+body#yakeen-page .resource-landing-cta-desc {
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+}
+
+/* ============================================================
+   REQUEST / AVAILABILITY STATES
+   ============================================================ */
+
+.request {
+  background: var(--color-gold-pale);
+}
+
+.available {
+  color: #0A7A50;
+  font-weight: 600;
+}
+
+.coming {
+  color: var(--color-gold-primary);
+  font-weight: 600;
+}
+
+/* ============================================================
+   13. RESOURCE / DOCUMENT / REPORT
+   ============================================================ */
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.documents-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* ============================================================
+   REPORT
+   ============================================================ */
+
+.report-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.report-header h2 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  margin-bottom: 12px;
+}
+
+.report-body {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+}
+
+.report-data-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.report-data-card {
+  background: var(--color-bg-canvas);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  text-align: center;
+}
+
+.report-data-card .stat-num {
+  font-size: 1.5rem;
+}
+
+.report-disclaimer {
+  font-size: 0.8rem;
+  color: var(--color-text-tertiary);
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border-light);
+}
+
+/* ============================================================
+   REQUEST LINK OVERRIDE
+   ============================================================ */
+
+.request .resource-link {
+  color: var(--color-gold-dark);
+}

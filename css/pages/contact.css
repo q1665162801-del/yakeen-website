@@ -1,0 +1,49 @@
+/* ============================================================
+   Contact — Page-specific styles
+   Extracted from inline styles on contact.html
+   ============================================================ */
+
+/* --- Contact Info Section Layout --- */
+.contact-info-section {
+  padding-top: 20px;
+}
+
+.contact-info-section .container {
+  max-width: 900px;
+}
+
+.contact-info-section .section-header {
+  margin-bottom: 40px;
+}
+
+/* --- Contact Info Cards (3-column grid) --- */
+.contact-info-card {
+  text-align: center;
+}
+
+.contact-info-card-icon {
+  font-size: 36px;
+  margin-bottom: 16px;
+}
+
+.contact-info-card h3 {
+  font-size: 16px;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.contact-info-card p {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.contact-info-card a {
+  color: var(--color-gold-primary);
+}
+
+/* --- Gold text link helper (for sidebar contact info) --- */
+.contact-gold-link {
+  color: var(--color-gold-primary);
+}

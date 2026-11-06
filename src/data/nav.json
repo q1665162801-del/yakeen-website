@@ -1,0 +1,97 @@
+{
+  "logo": {
+    "href": "index.html",
+    "hrefAr": "index-ar.html",
+    "ariaLabel": "Yakeen Lighting — Home",
+    "ariaLabelAr": "ياكين للإضاءة — الصفحة الرئيسية"
+  },
+  "items": [
+    {
+      "type": "dropdown",
+      "label": "Products",
+      "labelAr": "المنتجات",
+      "children": [
+        { "label": "Downlights", "labelAr": "الإضاءة المدمجة", "href": "products/downlights/index.html", "hrefAr": "products/downlights/index-ar.html" },
+        { "label": "Linear Lighting", "labelAr": "الإضاءة الخطية", "href": "products/linear-lighting/index.html", "hrefAr": "products/linear-lighting/index-ar.html" },
+        { "label": "Track & Spotlights", "labelAr": "أضواء المسار والسبوت", "href": "products/track-spotlights/index.html", "hrefAr": "products/track-spotlights/index-ar.html" },
+        { "label": "Outdoor & Landscape", "labelAr": "الخارجي واللاندسكيب", "href": "products/outdoor-landscape/index.html", "hrefAr": "products/outdoor-landscape/index-ar.html" },
+        { "label": "Wall & Step", "labelAr": "الجدران والدرجات", "href": "products/wall-step/index.html", "hrefAr": "products/wall-step/index-ar.html" },
+        { "label": "Surface & Ceiling", "labelAr": "السطحية والسقفية", "href": "products/surface-ceiling/index.html", "hrefAr": "products/surface-ceiling/index-ar.html" },
+        { "label": "Custom & Bespoke", "labelAr": "مخصص وطلب خاص", "href": "products/custom-chandeliers/index.html", "hrefAr": "products/custom-chandeliers/index-ar.html" }
+      ]
+    },
+    {
+      "type": "dropdown",
+      "label": "Solutions",
+      "labelAr": "الحلول",
+      "children": [
+        { "label": "Whole-Villa Lighting", "labelAr": "إضاءة الفيلا الكاملة", "href": "solutions/luxury-residential.html", "hrefAr": "solutions/luxury-residential-ar.html" },
+        { "label": "Hospitality", "labelAr": "الضيافة والفنادق", "href": "solutions/hospitality.html", "hrefAr": "solutions/hospitality-ar.html" },
+        { "label": "Retail", "labelAr": "المتاجر والتجزئة", "href": "solutions/retail.html", "hrefAr": "solutions/retail-ar.html" },
+        { "label": "Restaurants & F&B", "labelAr": "المطاعم والمقاهي", "href": "solutions/restaurants-fnb.html", "hrefAr": "solutions/restaurants-fnb-ar.html" }
+      ]
+    },
+    {
+      "type": "link",
+      "label": "Projects",
+      "labelAr": "المشاريع",
+      "href": "projects.html",
+      "hrefAr": "projects-ar.html"
+    },
+    {
+      "type": "dropdown",
+      "label": "Engineering",
+      "labelAr": "الهندسة",
+      "children": [
+        { "label": "Engineering Hub", "labelAr": "مركز الهندسة", "href": "engineering-hub.html", "hrefAr": "engineering-hub-ar.html" },
+        { "label": "Specification Hub", "labelAr": "مركز المواصفات", "href": "specification/", "hrefAr": "specification/index-ar.html" },
+        { "label": "Lighting Lab", "labelAr": "مختبر الإضاءة", "href": "testing-quality.html", "hrefAr": "testing-quality-ar.html", "featured": true },
+        { "label": "Certifications & Compliance", "labelAr": "الشهادات والامتثال", "href": "certifications.html", "hrefAr": "certifications-ar.html" },
+        { "label": "Spec Resources", "labelAr": "مصادر المواصفات", "href": "resources/", "hrefAr": "resources/index-ar.html" },
+        { "label": "Custom Engineering", "labelAr": "الهندسة المخصصة", "href": "custom-lighting.html", "hrefAr": "custom-lighting-ar.html" }
+      ]
+    },
+    {
+      "type": "dropdown",
+      "label": "GCC",
+      "labelAr": "دول الخليج",
+      "children": [
+        { "label": "Saudi Arabia", "labelAr": "المملكة العربية السعودية", "href": "markets/saudi-arabia.html", "hrefAr": "markets/saudi-arabia-ar.html" },
+        { "label": "UAE", "labelAr": "الإمارات العربية المتحدة", "href": "markets/uae.html", "hrefAr": "markets/uae-ar.html" },
+        { "label": "Qatar", "labelAr": "قطر", "href": "markets/qatar.html", "hrefAr": "markets/qatar-ar.html" },
+        { "label": "Kuwait", "labelAr": "الكويت", "href": "markets/kuwait.html", "hrefAr": "markets/kuwait-ar.html" },
+        { "label": "Oman", "labelAr": "عُمان", "href": "markets/oman.html", "hrefAr": "markets/oman-ar.html" },
+        { "label": "Bahrain", "labelAr": "البحرين", "href": "markets/bahrain.html", "hrefAr": "markets/bahrain-ar.html" }
+      ]
+    },
+    {
+      "type": "link",
+      "label": "About",
+      "labelAr": "من نحن",
+      "href": "about.html",
+      "hrefAr": "about-ar.html"
+    },
+    {
+      "type": "link",
+      "label": "Journal",
+      "labelAr": "المجلة",
+      "href": "blog/index.html",
+      "hrefAr": "blog/index-ar.html"
+    },
+    {
+      "type": "lang",
+      "label": "العربية",
+      "labelAr": "English",
+      "hreflang": "ar",
+      "hreflangAr": "en",
+      "ariaLabel": "العربية - Arabic version",
+      "ariaLabelAr": "English - English version"
+    }
+  ],
+  "cta": {
+    "label": "Specify Yakeen",
+    "labelAr": "حدد ياكين",
+    "href": "start-project.html",
+    "hrefAr": "start-project-ar.html"
+  }
+}

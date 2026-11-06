@@ -1,0 +1,197 @@
+/* ============================================================
+   FAQ — Page-specific styles
+   Extracted from inline styles on faq.html
+   ============================================================ */
+
+/* --- Hero / Intro section --- */
+
+body#yakeen-page .faq-intro {
+  padding-top: 40px;
+}
+
+body#yakeen-page .faq-container {
+  max-width: 900px;
+}
+
+/* --- FAQ group (each category block) --- */
+
+body#yakeen-page .faq-group {
+  margin-bottom: 52px;
+}
+
+/* --- Gold link helper --- */
+
+body#yakeen-page .faq-gold-link {
+  color: var(--color-gold-primary);
+}
+
+/* --- Bottom CTA section --- */
+
+body#yakeen-page .faq-cta-section {
+  text-align: center;
+}
+
+body#yakeen-page .faq-cta-container {
+  max-width: 680px;
+}
+
+body#yakeen-page .faq-cta-title {
+  margin-bottom: 16px;
+}
+
+body#yakeen-page .faq-cta-text {
+  color: var(--color-text-inverse);
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+
+body#yakeen-page .faq-cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+
+/* ============================================================
+   8. FAQ CATEGORIES
+   ============================================================ */
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-category-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 40px 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faq-category-num {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-gold-primary);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wider);
+}
+
+.faq-category-header h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  padding: 20px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  transition: color var(--transition-fast);
+}
+
+.faq-question:hover {
+  color: var(--color-gold-primary);
+}
+
+.faq-question::after {
+  content: '+';
+  font-size: 1.25rem;
+  color: var(--color-gold-primary);
+  transition: transform var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.faq-item.is-open .faq-question::after {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-base);
+}
+
+.faq-answer p {
+  padding: 0 0 20px;
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.faq-item.is-open .faq-answer {
+  max-height: 500px;
+}
+
+/* ============================================================
+   9. FAQ CARD GRID — question/answer cards
+   Used by the Start Project, Request Sample and Alternatives
+   pages. `.faq-item-h` is the Alternatives-page variant of the
+   same card (same pattern, different class name).
+   ============================================================ */
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: 48px auto 0;
+}
+
+.faq-grid .faq-item, .faq-grid .faq-item-h {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.faq-grid .faq-item:hover, .faq-grid .faq-item-h:hover {
+  border-color: var(--color-border-gold, rgba(158, 124, 58, 0.16));
+  transform: translateY(var(--lift-xs));
+}
+
+.faq-grid h3, .faq-grid h4 {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-text-primary);
+  margin: 0 0 10px;
+}
+
+.faq-grid p {
+  font-size: var(--font-size-sm);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .faq-grid .faq-item, .faq-grid .faq-item-h {
+    padding: 22px 20px;
+  }
+}

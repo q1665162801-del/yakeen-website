@@ -1,0 +1,17 @@
+/* ============================================================
+   Request Sample — Page-specific styles
+   Extracted from inline styles on request-sample.html
+   ============================================================ */
+
+body#yakeen-page .sample-cta-center {
+  text-align: center;
+}
+
+body#yakeen-page .sample-cta-title {
+  font-size: 36px;
+}
+
+body#yakeen-page .sample-cta-desc {
+  margin: 0 auto 28px;
+  max-width: 480px;
+}

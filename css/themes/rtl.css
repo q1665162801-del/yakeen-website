@@ -1,0 +1,923 @@
+/* ============================================================
+   RTL — Arabic / Right-to-Left layout
+   Mirrors padding, margins, text-align, float, flex-direction
+   for [dir="rtl"] pages.
+   ============================================================ */
+
+/* ============================================================
+   BASE OVERRIDES
+   ============================================================ */
+
+[dir="rtl"] body {
+  font-family: 'Tajawal', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: 0; /* Arabic doesn't use letter-spacing */
+  line-height: 1.7;
+}
+
+[dir="rtl"] body#yakeen-page h1,
+[dir="rtl"] body#yakeen-page h2,
+[dir="rtl"] body#yakeen-page h3,
+[dir="rtl"] body#yakeen-page h4,
+[dir="rtl"] body#yakeen-page h5,
+[dir="rtl"] body#yakeen-page h6 {
+  font-family: 'Tajawal', 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.25;
+}
+
+[dir="rtl"] em,
+[dir="rtl"] i {
+  font-style: normal;
+  font-family: 'Tajawal', 'Inter', sans-serif;
+}
+
+[dir="rtl"] p,
+[dir="rtl"] li,
+[dir="rtl"] span {
+  letter-spacing: 0;
+  line-height: 1.8;
+}
+
+/* Micro-labels: Arabic is a connected script — uppercase and tracking break
+   the joins, so both must be neutralised on every RTL micro-label.
+   The matchers use naming-convention substrings (eyebrow / -label / -tag)
+   instead of an enumerated list of classes, so a newly added label variant
+   can never slip through again. `!important` is required: scoped page rules
+   such as `body#yakeen-page .home-hero-eyebrow` (1,1,1) or
+   `.gcc-country-page .knowledge-tag` (0,2,0) otherwise outrank these resets
+   and silently re-apply tracking. */
+[dir="rtl"] [class*="eyebrow"],
+[dir="rtl"] [class*="-label"],
+[dir="rtl"] [class*="-tag"] {
+  font-family: var(--font-arabic) !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+/* ============================================================
+   CONTRAST BOOST — Arabic text is more detailed, needs higher contrast
+   (Principle 2.4: 对比度是底线)
+   ============================================================ */
+
+/* Dark backgrounds — raise opacity for better legibility */
+[dir="rtl"] .hero-subtitle,
+[dir="rtl"] .home-cta-desc {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+/* Small eyebrow / label text on dark — use brighter gold */
+[dir="rtl"] .home-cta-left .home-section-label {
+  color: #F0D68A !important;
+}
+/* Gold text on dark — slow shimmer for Arabic, no white flash */
+[dir="rtl"] .home-cta-title {
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-pale) 0%,
+    var(--color-gold-light) 25%,
+    var(--color-gold-bright) 50%,
+    var(--color-gold-light) 75%,
+    var(--color-gold-pale) 100%
+  ) !important;
+  background-size: 200% auto !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  animation: cta-title-shimmer 16s ease-in-out infinite !important;
+}
+
+/* Tertiary/muted text — boost contrast for Arabic detail */
+[dir="rtl"] .stat-label,
+[dir="rtl"] .journal-meta {
+  color: var(--color-text-secondary) !important;
+}
+
+/* Form placeholder — lighter but still readable */
+[dir="rtl"] .form-input::placeholder,
+[dir="rtl"] .form-textarea::placeholder {
+  color: rgba(61, 58, 51, 0.6) !important;
+  opacity: 1;
+}
+
+/* Hero title — ensure minimum weight */
+[dir="rtl"] .hero-title {
+  font-weight: 800 !important;
+}
+
+/* Nav links on transparent nav — slightly bolder for readability */
+[dir="rtl"] body#yakeen-page .nav--transparent .nav-link {
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+
+/* `direction: rtl` already mirrors a flex `row` (first child → right edge).
+   The old `row-reverse` here flipped it a second time, so the Arabic nav
+   rendered as LTR: logo stranded on the left, CTA on the right. */
+[dir="rtl"] .nav-inner {
+  flex-direction: row;
+}
+
+[dir="rtl"] .nav-links {
+  flex-direction: row;
+}
+
+[dir="rtl"] .nav-logo {
+  flex-direction: row;
+}
+
+[dir="rtl"] .nav-dropdown-menu {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%) translateY(8px);
+  text-align: right;
+}
+
+[dir="rtl"] .nav-dropdown:hover .nav-dropdown-menu,
+[dir="rtl"] .nav-dropdown.is-open .nav-dropdown-menu {
+  transform: translateX(50%) translateY(0);
+}
+
+[dir="rtl"] .nav-dropdown-item {
+  text-align: right;
+}
+
+[dir="rtl"] .nav-dropdown-item--featured::before {
+  left: auto;
+  right: 0;
+}
+
+/* ============================================================
+   MOBILE MENU (RTL)
+   ============================================================ */
+
+[dir="rtl"] .mobile-menu {
+  right: auto;
+  left: 0;
+  transform: translateX(-100%);
+}
+
+[dir="rtl"] .mobile-menu.is-open {
+  transform: translateX(0);
+}
+
+[dir="rtl"] .mobile-close {
+  right: auto;
+  left: 20px;
+}
+
+[dir="rtl"] .mobile-link,
+[dir="rtl"] .mobile-group-label {
+  text-align: right;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+[dir="rtl"] .hero-content {
+  text-align: right;
+}
+
+[dir="rtl"] .hero-actions {
+  justify-content: flex-start;
+}
+
+/* ============================================================
+   SECTION HEADERS
+   ============================================================ */
+
+[dir="rtl"] .eyebrow {
+  text-align: right;
+}
+
+[dir="rtl"] .section-title {
+  text-align: right;
+}
+
+[dir="rtl"] .section-header {
+  text-align: right;
+}
+
+[dir="rtl"] .section-header.center {
+  text-align: center;
+}
+
+/* ============================================================
+   SPLIT SECTIONS — swap visual and content sides
+   ============================================================ */
+
+/* `.split-section` is a two-column CSS grid, not a flex row — `flex-direction`
+   had no effect at all, and grid already flows right-to-left under
+   `direction: rtl`, so column one starts at the right edge by itself. */
+[dir="rtl"] .split-content {
+  text-align: right;
+}
+
+/* ============================================================
+   BUTTONS — flip arrow direction
+   ============================================================ */
+
+[dir="rtl"] .btn span {
+  transform: scaleX(-1);
+  display: inline-block;
+}
+
+/* ============================================================
+   FEATURE LIST — mirror checkmarks
+   ============================================================ */
+
+[dir="rtl"] .feature-list {
+  text-align: right;
+}
+
+[dir="rtl"] .feature-check {
+  margin-left: 12px;
+  margin-right: 0;
+}
+
+/* ============================================================
+   CARDS & GRIDS
+   ============================================================ */
+
+[dir="rtl"] .value-card,
+[dir="rtl"] .product-card,
+[dir="rtl"] .project-card,
+[dir="rtl"] .journal-card,
+[dir="rtl"] .wgcc-card,
+[dir="rtl"] .philosophy-item,
+[dir="rtl"] .team-member,
+[dir="rtl"] .cert-card,
+[dir="rtl"] .process-step {
+  text-align: right;
+}
+
+/* Cap card — flip golden accent bar */
+[dir="rtl"] .cap-card::before,
+[dir="rtl"] .app-card::before,
+[dir="rtl"] .resource-link-item::before {
+  left: auto;
+  right: 24px;
+}
+
+/* Value cards (`hv-item`) draw the same gold accent bar at `left: 28px`.
+   It was missing from the mirror list, so on Arabic pages the bar sat on the
+   trailing (left) edge and every card read as an English-layout card. */
+[dir="rtl"] .hv-item::before {
+  left: auto;
+  right: 28px;
+}
+
+[dir="rtl"] .cap-card:hover .cap-link {
+  transform: translateX(-4px);
+}
+
+/* Philosophy number — flip from right to left */
+[dir="rtl"] .philosophy-number {
+  right: auto;
+  left: 0;
+}
+
+/* Project index / tag position */
+[dir="rtl"] .project-index {
+  left: auto;
+  right: 16px;
+}
+
+/* `.hproj-tag` reserves 12px on the left and pins its gold dot at `left: 0`.
+   Unmirrored, the dot drifted to the trailing edge, detached from the text. */
+[dir="rtl"] .hproj-tag {
+  padding-left: 0;
+  padding-right: 12px;
+}
+
+[dir="rtl"] .hproj-tag::before {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .project-category,
+[dir="rtl"] .project-title,
+[dir="rtl"] .project-location,
+[dir="rtl"] .project-scope {
+  text-align: right;
+}
+
+/* ============================================================
+   PROCESS TIMELINE
+   ============================================================ */
+
+[dir="rtl"] .process-timeline {
+  direction: rtl;
+}
+
+/* ============================================================
+   STATS
+   ============================================================ */
+
+[dir="rtl"] .stat-number {
+  text-align: right;
+}
+
+/* ============================================================
+   FORMS
+   ============================================================ */
+
+[dir="rtl"] .form-label {
+  text-align: right;
+}
+
+[dir="rtl"] .form-input,
+[dir="rtl"] .form-select,
+[dir="rtl"] .form-textarea {
+  text-align: right;
+  direction: rtl;
+}
+
+[dir="rtl"] .form-input::placeholder,
+[dir="rtl"] .form-select::placeholder,
+[dir="rtl"] .form-textarea::placeholder {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] select {
+  text-align: right;
+  direction: rtl;
+}
+
+/* The select arrow is painted at the physical right by cta.css. With RTL
+   right-aligned text the chevron would sit against the first character, so
+   mirror it to the leading (left) edge and swap the padding with it. */
+[dir="rtl"] .form-select {
+  background-position: left 16px center;
+  padding-right: 16px;
+  padding-left: 40px;
+}
+
+[dir="rtl"] .form-row {
+  direction: rtl;
+}
+
+[dir="rtl"] .ar-form-title {
+  text-align: right;
+}
+
+[dir="rtl"] .ar-form-input-rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .ar-form-note {
+  text-align: right;
+}
+
+[dir="rtl"] .ar-steps-item {
+  text-align: right;
+}
+
+[dir="rtl"] .ar-steps-content {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+[dir="rtl"] .ar-contact-item {
+  text-align: right;
+}
+
+/* Uppercase is meaningless for Arabic script */
+[dir="rtl"] .ar-contact-label {
+  text-transform: none;
+  letter-spacing: 0;
+  font-family: 'Tajawal', sans-serif;
+}
+
+/* ============================================================
+   ACCORDION
+   ============================================================ */
+
+/* Source order is [question, +/− icon]. Under `direction: rtl` a plain `row`
+   already puts the question at the right edge and the icon at the left — the
+   previous `row-reverse` pushed the question to the left, i.e. English order. */
+[dir="rtl"] .accordion-header {
+  text-align: right;
+  flex-direction: row;
+}
+
+[dir="rtl"] .accordion-icon {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+[dir="rtl"] .accordion-content {
+  text-align: right;
+}
+
+/* ============================================================
+   HOME HERO — RTL
+   The hero is a flex row. Under `direction: rtl` the start edge is the
+   RIGHT, so `justify-content: flex-end` (the old value) parked the whole
+   copy block in the left half and left ~700px of dead space on the right.
+   ============================================================ */
+
+[dir="rtl"] body#yakeen-page .home-hero {
+  text-align: right;
+  justify-content: flex-start;
+}
+
+/* The inner box is a flex item: with `width: auto` it shrinks to the
+   copy's 680px, so the copy's auto margin has no slack to push against
+   and the block stays left. Full width restores that slack. */
+[dir="rtl"] body#yakeen-page .home-hero-inner {
+  width: 100%;
+  text-align: right;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+[dir="rtl"] body#yakeen-page .home-hero-copy {
+  text-align: right;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* The LTR scrim darkens the LEFT third of the photo. Mirrored, it has to
+   darken the RIGHT third instead — otherwise the gold headline lands on
+   the brightest part of the ceiling shot and loses all contrast. */
+[dir="rtl"] .home-hero-overlay {
+  background:
+    linear-gradient(100deg,
+      rgba(16, 12, 8, 0) 0%,
+      rgba(16, 12, 8, 0.14) 30%,
+      rgba(16, 12, 8, 0.56) 54%,
+      rgba(16, 12, 8, 0.84) 76%,
+      rgba(16, 12, 8, 0.93) 100%),
+    linear-gradient(180deg,
+      rgba(16, 12, 8, 0.42) 0%,
+      rgba(16, 12, 8, 0.10) 22%,
+      rgba(16, 12, 8, 0) 58%,
+      rgba(16, 12, 8, 0.42) 100%) !important;
+}
+
+/* Warm light pool stays on the open left side, away from the copy. */
+[dir="rtl"] body#yakeen-page .home-hero::before {
+  background:
+    radial-gradient(ellipse 52% 62% at 20% 50%, rgba(200, 160, 90, 0.16), transparent 65%),
+    radial-gradient(ellipse 30% 40% at 72% 26%, rgba(180, 140, 70, 0.06), transparent 70%) !important;
+}
+
+/* ── Arabic hero type scale ──
+   The Latin display serif/tracking values do not survive translation:
+   Arabic glyphs are wider, carry descenders, and have no italic form.
+   Values below are measured for two headline lines at 1440px. */
+[dir="rtl"] body#yakeen-page .home-hero .home-hero-title,
+[dir="rtl"] body#yakeen-page .home-hero h1 {
+  font-family: var(--font-arabic);
+  font-size: clamp(2rem, 3.8vw, 3.4rem);
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.32;
+  letter-spacing: 0;
+  max-width: 640px;
+  margin: 0 0 26px 0;
+}
+
+[dir="rtl"] body#yakeen-page .home-hero .home-hero-title em,
+[dir="rtl"] body#yakeen-page .home-hero h1 em {
+  font-family: var(--font-arabic);
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+/* Inter ships no Arabic glyphs — every one of these fell back to whatever
+   serif the OS picked, next to Tajawal in the headline. */
+[dir="rtl"] body#yakeen-page .home-hero .home-hero-desc,
+[dir="rtl"] body#yakeen-page .home-hero .home-hero-sectors,
+[dir="rtl"] body#yakeen-page .home-hero .home-hero-eyebrow,
+[dir="rtl"] body#yakeen-page .home-hero .home-hero-cta .btn,
+[dir="rtl"] body#yakeen-page .hero-stats-bar {
+  font-family: var(--font-arabic);
+}
+
+[dir="rtl"] body#yakeen-page .home-hero .home-hero-desc {
+  font-size: clamp(1rem, 1.4vw, 1.1rem);
+  line-height: 1.9;
+  max-width: 560px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+[dir="rtl"] body#yakeen-page .home-hero .home-hero-sectors {
+  font-size: clamp(0.9rem, 1.3vw, 1rem);
+  line-height: 1.6;
+}
+
+[dir="rtl"] body#yakeen-page .hero-stat__num,
+[dir="rtl"] body#yakeen-page .hero-stat__label {
+  font-family: var(--font-arabic);
+}
+
+[dir="rtl"] body#yakeen-page .hero-stat__label {
+  font-size: 0.78rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+@media (max-width: 900px) {
+  [dir="rtl"] body#yakeen-page .home-hero .home-hero-title,
+  [dir="rtl"] body#yakeen-page .home-hero h1 {
+    font-size: clamp(1.85rem, 7vw, 2.7rem);
+    line-height: 1.45;
+    max-width: 100%;
+  }
+
+  [dir="rtl"] body#yakeen-page .home-hero .home-hero-desc {
+    max-width: 100%;
+  }
+}
+
+/* Hero eyebrow with line decoration — RTL mirror.
+   In RTL the text starts at the right edge, so the gold rule must sit on
+   the right and the 40px offset must move with it; the previous value
+   zeroed both paddings, which left the rule stranded at the far left,
+   detached from the text. */
+[dir="rtl"] .home-hero-eyebrow {
+  padding-left: 0 !important;
+  padding-right: 40px !important;
+}
+
+[dir="rtl"] .home-hero-eyebrow::before {
+  left: auto !important;
+  right: 0 !important;
+}
+
+/* ============================================================
+   SECTION HEADINGS — RTL
+   ============================================================ */
+
+/* The label holds a single text node, so this rule never did anything. Any
+   future multi-part label is already laid out right-to-left by `direction`. */
+
+/* ============================================================
+   PRODUCTS BENTO — RTL
+   ============================================================ */
+
+[dir="rtl"] .products-bento .hp-card-content {
+  text-align: right;
+}
+
+/* Arrow direction is the only thing to flip here; item order is handled by
+   `direction: rtl` (the old `row-reverse` sent the text back to the left). */
+[dir="rtl"] .products-bento .hp-card-link::after {
+  content: '\2190';
+}
+
+[dir="rtl"] .products-bento .hp-card-link span {
+  display: none;
+}
+
+/* ============================================================
+   PROJECTS EDITORIAL — RTL
+   ============================================================ */
+
+[dir="rtl"] .projects-editorial.home-projects-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .projects-editorial .hproj-card.featured-project .hproj-info {
+  text-align: right;
+}
+
+[dir="rtl"] .projects-editorial .side-projects .hproj-info {
+  text-align: right;
+}
+
+/* Arabic home section heads. English centres them (light.css: 640px column +
+   auto side margins). Arabic reads right-to-left, so keep the same measure but
+   anchor the column to the right edge and align the text right — this rule used
+   to force `text-align: center` and silently beat the `[dir="rtl"]
+   .section-header { text-align: right }` reset above. */
+[dir="rtl"] .home-section-head {
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
+}
+
+/* The leads carry `margin: 16px auto 0` (home.css); their auto side margins
+   would re-centre the narrower text column inside the right-anchored head. */
+[dir="rtl"] body#yakeen-page .section-lead--home,
+[dir="rtl"] body#yakeen-page .section-lead--home-lg,
+[dir="rtl"] body#yakeen-page .section-lead--home-light {
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
+}
+
+/* ============================================================
+   TEAM
+   ============================================================ */
+
+[dir="rtl"] .team-avatar {
+  margin: 0 auto 16px auto;
+}
+
+[dir="rtl"] .team-member h3,
+[dir="rtl"] .team-role,
+[dir="rtl"] .team-member p {
+  text-align: center;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+[dir="rtl"] .footer-col {
+  text-align: right;
+}
+
+[dir="rtl"] .footer-col ul {
+  padding-right: 0;
+}
+
+[dir="rtl"] .footer-bottom {
+  text-align: right;
+}
+
+/* ============================================================
+   CTA SECTION
+   ============================================================ */
+
+[dir="rtl"] .cta-section {
+  text-align: right;
+}
+
+[dir="rtl"] .cta-actions {
+  justify-content: flex-start;
+}
+
+/* ============================================================
+   ARTICLE / BLOG
+   ============================================================ */
+
+[dir="rtl"] .article-body {
+  text-align: right;
+}
+
+[dir="rtl"] .article-body ul,
+[dir="rtl"] .article-body ol {
+  padding-right: 24px;
+  padding-left: 0;
+}
+
+[dir="rtl"] .article-meta {
+  text-align: right;
+}
+
+/* ============================================================
+   JOURNAL PAGE
+   ============================================================ */
+
+[dir="rtl"] .journal-category {
+  text-align: right;
+}
+
+[dir="rtl"] .journal-meta {
+  text-align: right;
+}
+
+/* ============================================================
+   PAGE HERO (sub-pages)
+   ============================================================ */
+
+/* hero.css pins `text-align: left` on the page-hero container / inner at
+   (1,1,2) specificity. The old `[dir="rtl"] .page-hero-inner` reset (0,2,0)
+   lost that fight, so every Arabic sub-page hero stayed flush left. Match the
+   same specificity here and mirror it — one rule then covers h1, hero-title,
+   hero-sub and plain paragraphs without patching each child. */
+[dir="rtl"] body#yakeen-page .page-hero .container,
+[dir="rtl"] body#yakeen-page .page-hero .page-hero-inner {
+  text-align: right;
+}
+
+[dir="rtl"] .page-hero .hero-actions {
+  justify-content: flex-start;
+}
+
+/* ============================================================
+   HERO STATS BAR — RTL mirror (added 2026-10-21)
+   EN: 4产品 | 100%终检 | 6市场 | 48h回复
+   AR: 48h回复 | 6市场 | 100%终检 | 4产品  (right-to-left)
+   ============================================================ */
+
+/* Item order is mirrored by `direction: rtl` itself; `row-reverse` flipped it
+   back to the English order and rewound the separators. */
+[dir="rtl"] .hero-stats-bar {
+  flex-direction: row;
+}
+
+[dir="rtl"] .hero-stats-bar .hero-stat-divider {
+  /* Dividers are plain flex items — `row` places them between the stats in
+     reversed (right-to-left) order automatically. No rule needed. */
+}
+
+/* ============================================================
+   MARQUEE — reverse scroll direction for RTL (added 2026-10-21)
+   EN: scrolls left → right... no wait EN is translateX(0) to translateX(-50%)
+   meaning it scrolls from right edge to left edge (seamless loop).
+   For RTL we flip: from left edge to right edge (translateX(0) to translateX(50%)).
+   ============================================================ */
+
+[dir="rtl"] .marquee-track {
+  animation-direction: reverse;
+}
+
+/* ============================================================
+   SUBMIT BUTTON ARROW — flip to ← in RTL
+   HTML wraps arrow in <span class="btn-arrow">&rarr;</span>.
+   ============================================================ */
+
+[dir="rtl"] .submit-btn .btn-arrow {
+  transform: scaleX(-1);
+  display: inline-block;
+}
+
+/* ============================================================
+   HERO STAT NUMBERS — Arabic-Indic digits
+   GCC readers expect ٠١٢٣٤٥٦٧٨٩, not Western digits. The conversion
+   belongs to the counter script (`data-digits="ar"`), which writes
+   the whole value — suffix included — as one text node. The earlier
+   `color: transparent` + `::after` override left the original string
+   occupying space behind the pseudo-element, so "١٠٠٪" was split into
+   two detached glyphs. One source of truth now: the markup.
+   ============================================================ */
+
+/* ============================================================
+   TEXT-ALIGN GAPS — audit 2026-10-21
+   Components that hard-code text-align in LTR files and were never
+   mirrored. Rule of thumb: LTR `left` → RTL `right`, and the few
+   deliberate right-aligned blocks (section-header-right / spec-metric)
+   flip to `left`.
+   ============================================================ */
+
+[dir="rtl"] .faq-question {
+  text-align: right;
+}
+
+/* Deliberately right-aligned in LTR → mirrors to the leading edge (left) */
+[dir="rtl"] .section-header-right {
+  text-align: left;
+}
+
+[dir="rtl"] .quick-ref-table th,
+[dir="rtl"] .quick-ref-table td {
+  text-align: right;
+}
+
+[dir="rtl"] .product-tested-section .tested-card {
+  text-align: right;
+}
+
+/* Deliberately right-aligned in LTR → mirrors to the leading edge (left) */
+[dir="rtl"] .spec-metric-value {
+  text-align: left;
+}
+
+[dir="rtl"] .boom-features {
+  text-align: right;
+}
+
+[dir="rtl"] .beam-table th {
+  text-align: right;
+}
+
+[dir="rtl"] .qc-note {
+  text-align: right;
+}
+
+/* About page: mirror gold accent borders for RTL */
+[dir="rtl"] .about-intro .about-lede {
+  border-left: none;
+  border-right: 3px solid var(--color-gold-primary);
+  padding-left: 0;
+  padding-right: 24px;
+}
+
+[dir="rtl"] .founder-quote {
+  border-left: none;
+  border-right: 3px solid var(--color-gold-primary);
+  padding-left: 0;
+  padding-right: 20px;
+}
+
+[dir="rtl"] .founder-info,
+[dir="rtl"] .about-intro {
+  text-align: right;
+}
+
+[dir="rtl"] .section-cta {
+  text-align: right;
+}
+
+[dir="rtl"] body#yakeen-page .hero-global {
+  text-align: right;
+}
+
+[dir="rtl"] .compare-table .row-label {
+  text-align: right;
+}
+
+[dir="rtl"] .quote-hero-inner {
+  text-align: right;
+}
+
+/* ============================================================
+   COUNTRY & SOLUTION MODULES — trailing-edge decorations
+   Every rule below pins a marker to the LEFT edge: a checkmark,
+   a city label, a timeline rail, an accent border. `direction: rtl`
+   reverses inline flow, but it never moves `left`/`right` offsets
+   or physical border sides — so each one has to be mirrored by hand.
+   ============================================================ */
+
+/* Saudi country page — the city name sits at `left: 20px` over the skyline. */
+[dir="rtl"] .gcc-country-page .city-label {
+  left: auto;
+  right: 20px;
+}
+
+/* Spec lists on country pages — ✓ glyph at `left: 0`, 18px gutter. */
+[dir="rtl"] .gcc-country-page .mp-spec-list li {
+  padding-left: 0;
+  padding-right: 18px;
+}
+
+[dir="rtl"] .gcc-country-page .mp-spec-list li::before {
+  left: auto;
+  right: 0;
+}
+
+/* Qatar market page — same ✓ marker, 16px gutter. */
+[dir="rtl"] .boom-features li {
+  padding-left: 0;
+  padding-right: 16px;
+}
+
+[dir="rtl"] .boom-features li::before {
+  left: auto;
+  right: 0;
+}
+
+/* UAE market page — ✦ marker instead of ✓, identical geometry. */
+[dir="rtl"] .luxury-features li {
+  padding-left: 0;
+  padding-right: 16px;
+}
+
+[dir="rtl"] .luxury-features li::before {
+  left: auto;
+  right: 0;
+}
+
+/* Hospitality page — guest-journey rail. Three coordinates move as a set
+   (80px gutter, 2px rail at 28px, 14px node at -58px); mirror only one and
+   the dots detach from the rail. */
+[dir="rtl"] .journey-timeline {
+  padding-left: 0;
+  padding-right: 80px;
+}
+
+[dir="rtl"] .journey-timeline::before {
+  left: auto;
+  right: 28px;
+}
+
+[dir="rtl"] .journey-item::before {
+  left: auto;
+  right: -58px;
+}
+
+/* Luxury-residential page — mistake cards carry a 3px gold border on the
+   left and a squared top-left / rounded top-right corner. */
+[dir="rtl"] .mistake-item {
+  border-left: 0;
+  border-right: 3px solid var(--color-gold-primary);
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+}
+
+[dir="rtl"] .mistake-item:nth-child(2) {
+  border-right-color: var(--color-border-strong);
+}
+
+/* ============================================================
+   MOBILE RTL ADJUSTMENTS (≤ 768px)
+   ============================================================ */
+
+@media (max-width: 768px) {
+  /* Journey rail gutter narrows with the viewport, same as LTR. */
+  [dir="rtl"] .journey-timeline {
+    padding-left: 0;
+    padding-right: 56px;
+  }
+}

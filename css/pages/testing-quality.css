@@ -1,0 +1,444 @@
+/* ============================================================
+   Testing & Quality — Page-specific styles
+   Extracted from inline styles on testing-quality.html
+   ============================================================ */
+
+/* --- Section desc with custom tertiary color --- */
+
+body#yakeen-page .section-desc--test {
+  color: var(--color-gray-dark);
+}
+
+/* --- Standards note block --- */
+
+body#yakeen-page .standards-note--center {
+  text-align: center;
+  margin-top: 24px;
+}
+
+body#yakeen-page .standards-note-text {
+  color: var(--color-gray);
+  font-size: 13px;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* --- Hero actions centered --- */
+
+body#yakeen-page .hero-actions--center {
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+
+/* ============================================================
+   39. DELIVERABLES GRID
+   ============================================================ */
+
+.deliverables-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .deliverables-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ============================================================
+   6. TESTED-* / TQ SECTION
+   ============================================================ */
+
+.tq-section {
+  padding: var(--section-padding-y) 0;
+  background: var(--color-bg-canvas);
+}
+
+.tq-section--alt {
+  background: var(--color-bg-surface);
+}
+
+.tq-section--dark {
+  background: var(--color-bg-darkest);
+  color: var(--color-white);
+}
+
+.tq-section--dark .section-title {
+  color: var(--color-white);
+}
+
+.tq-section--dark .section-desc {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.tested-section {
+  padding: var(--section-padding-y) 0;
+}
+
+.tested-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.tested-label {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-gold-primary);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.tested-title {
+  font-family: var(--font-sans);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+  margin: 0 0 16px;
+}
+
+.tested-desc {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.tested-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.tested-card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  text-align: center;
+  transition: all var(--transition-base);
+}
+
+.tested-card:hover {
+  transform: translateY(var(--lift-sm));
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-gold);
+}
+
+.tested-icon {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.tested-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 8px;
+}
+
+.tested-card p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.tested-link {
+  display: inline-block;
+  text-align: center;
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-gold-primary);
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.tested-cta {
+  display: inline-block;
+  text-align: center;
+  margin-top: 40px;
+  color: var(--color-gold-primary);
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.tested-cta:hover {
+  color: var(--color-gold-dark);
+  transform: translateX(4px);
+}
+
+.tq-section--dark .tested-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.tq-section--dark .tested-card h3 {
+  color: var(--color-white);
+}
+
+.tq-section--dark .tested-card p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 900px) {
+  .tested-grid { grid-template-columns: 1fr; gap: 20px; }
+}
+
+/* ============================================================
+   7. EQUIPMENT CARD
+   ============================================================ */
+
+.equipment-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.equip-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  transition: all var(--transition-base);
+}
+
+.equip-card:hover {
+  transform: translateY(var(--lift-sm));
+  border-color: var(--color-gold-primary);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.equip-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background: rgba(200, 160, 90, 0.1);
+  border: 1px solid rgba(200, 160, 90, 0.2);
+  color: var(--color-gold-primary, #C8A05A);
+  transition: all 0.35s ease;
+}
+
+.equip-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 1.5;
+}
+
+.equip-card:hover .equip-icon {
+  background: rgba(200, 160, 90, 0.18);
+  border-color: rgba(200, 160, 90, 0.4);
+  transform: scale(1.05);
+}
+
+.equip-card h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-white);
+  margin: 0 0 6px;
+}
+
+.equip-model {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-gold-primary);
+  letter-spacing: var(--tracking-wide);
+  margin-bottom: 12px;
+}
+
+.equip-card p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 16px;
+}
+
+.equip-specs ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 12px;
+}
+
+.equip-specs li {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 4px 0;
+}
+
+@media (max-width: 900px) {
+  .equipment-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   LAB / QC COMPONENTS
+   ============================================================ */
+
+.lab-card-body {
+  padding: 24px;
+}
+
+.lab-card-img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.lab-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lab-card-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  background: var(--color-gold-pale);
+  color: var(--color-gold-ink);
+  border-radius: var(--radius-full);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* ============================================================
+   20. DELIVERABLES / COMPONENT GRID
+   ============================================================ */
+
+.deliverable-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.deliverable-item:last-child {
+  border-bottom: none;
+}
+
+.deliverable-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-gold-pale);
+  border-radius: var(--radius-md);
+}
+
+.deliverable-text {
+  flex: 1;
+}
+
+.deliverable-format {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-gold-primary);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.deliverable-text p {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   37. QC STEPS / QC CHECKS
+   ============================================================ */
+
+.qc-step-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-gold-primary);
+  letter-spacing: var(--tracking-wider);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.qc-checks {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+}
+
+.qc-checks li {
+  padding: 6px 0;
+  padding-left: 24px;
+  position: relative;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.qc-checks li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #0A7A50;
+  font-weight: 600;
+}
+
+/* --- Report / Case Study --- */
+.report-id {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-gold-primary);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.report-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+}
+
+.report-meta-item {
+  font-size: 0.8rem;
+  color: var(--color-text-tertiary);
+}
+
+.report-meta-item strong {
+  display: block;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.report-sample {
+  padding: 28px;
+  margin-top: 24px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}

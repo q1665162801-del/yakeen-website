@@ -1,0 +1,236 @@
+/* ============================================================
+   DESIGN TOKENS — Design System Foundation
+   YAKEEN LIGHTING — Luxury Middle Eastern
+   Warm Desert Sand + Deep Bronze Gold + Editorial Serif
+   ============================================================ */
+:root {
+  /* ── Gold Ramp ──────────────────────────────────────────────
+     One continuous ramp, seven stops, ordered by luminance.
+     Every gold token in the system resolves into this ramp.
+     Inspired by brass lanterns, damascene steel, gilded mosques.
+     Not bright yellow-gold — deep, warm, aged, bronze undertone. */
+  --gold-050:  #E8DCC0;  /* pale sand-gold — quiet fills on light */
+  --gold-300:  #E8C872;  /* bright warm gold — dark surfaces ONLY */
+  --gold-500:  #D4A84B;  /* light gold — hover, highlight, hairlines */
+  --gold-600:  #A07D3A;  /* bronze — body-size text on light */
+  --gold-700:  #B8860B;  /* BRAND — the identity gold */
+  --gold-900:  #8B6914;  /* dark bronze — active state, borders */
+  --gold-950:  #6B5210;  /* deep gold-brown — ink, max contrast */
+
+  /* Semantic gold tokens — read this layer, not the ramp */
+  --color-gold-primary:   var(--gold-700);
+  --color-gold-light:     var(--gold-500);
+  --color-gold-dark:      var(--gold-900);
+  --color-gold-bright:    var(--gold-300);
+  --color-gold-pale:      var(--gold-050);
+  --color-gold-text:      var(--gold-600);
+  --color-gold-ink:       var(--gold-950);
+
+  /* Legacy gold names — kept as aliases so nothing falls back
+     silently. Prefer the semantic tokens above in new CSS. */
+  --color-gold-muted:     var(--gold-500);
+  --color-gold-deep:      var(--gold-950);
+  --color-gold-warm:      var(--gold-050);
+  --color-gold-dusty:     var(--gold-600);
+  --color-gold-metallic:  var(--gold-500);
+
+  /* Referenced by pages/certifications.css but never defined — now real */
+  --color-gold-tint:      rgba(184, 134, 11, 0.08);
+
+  /* ── Accent gold aliases (semantic shortcuts) ── */
+  --color-accent-gold:        var(--color-gold-primary);
+  --color-accent-gold-hover: var(--color-gold-light);
+
+  /* ── Backgrounds (Warm Desert Sand — 5-layer depth) ──
+     Not white. Not beige. Warm sand with depth. */
+  --color-bg-canvas:      #EDE6D6;  /* Warm sand — page base */
+  --color-bg-surface:     #E3DBC8;  /* Slightly deeper sand — section alt */
+  --color-bg-elevated:    #F5F0E3;  /* Warm parchment — cards, raised surfaces */
+  --color-bg-sunken:      #D8CFBA;  /* Deep sand — inset, footer */
+  --color-bg-accent:      #E8DFC9;  /* Accent sand — highlighted blocks */
+  --color-bg-dark:        #1A1610;  /* Deep warm black — hero, CTA */
+  --color-bg-deep:        #14110C;  /* Very deep warm black — footer */
+
+  /* Legacy aliases */
+  --color-bg-secondary:   var(--color-bg-surface);
+  --color-bg-card:        var(--color-bg-elevated);
+  /* "Alt band" used by the market related-articles / product tested-to-spec
+     sections. It was referenced but never defined, so those sections fell back
+     to a cool near-white that broke the warm palette AND erased the cards
+     sitting on top of it (cards are --color-bg-elevated). Resolves to the
+     deeper sand band so the section reads as a distinct stripe. */
+  --color-bg-canvas-alt:  var(--color-bg-surface);
+
+  /* ── Text (warm ink scale) ── */
+  --color-text-primary:   #1F1A12;  /* Deep warm ink — headings */
+  --color-text-secondary: #3D3528;  /* Dark warm brown — body */
+  --color-text-tertiary:  #5A4F3D;  /* Mid warm brown — meta, captions */
+  --color-text-muted:     #7A6E58;  /* Warm gray-brown — fine print */
+  --color-text-inverse:   #F5F0E0;  /* Warm cream — text on dark */
+
+  /* ── Borders & Dividers ── */
+  --color-border:         rgba(50, 40, 25, 0.09);
+  --color-border-light:   rgba(50, 40, 25, 0.05);
+  --color-border-strong:  rgba(50, 40, 25, 0.16);
+  --color-border-gold:    rgba(184, 134, 11, 0.25);
+  --color-border-gold-strong: rgba(184, 134, 11, 0.4);
+  --color-divider:        rgba(50, 40, 25, 0.07);
+
+  /* ── Shadows (warm-toned — not just black) ── */
+  --shadow-sm:   0 2px 6px rgba(50, 40, 25, 0.04), 0 1px 2px rgba(50, 40, 25, 0.03);
+  --shadow-md:   0 8px 24px rgba(50, 40, 25, 0.07), 0 2px 6px rgba(50, 40, 25, 0.04);
+  --shadow-lg:   0 24px 70px rgba(50, 40, 25, 0.12), 0 8px 20px rgba(50, 40, 25, 0.06);
+
+  --shadow-gold: 0 4px 18px rgba(184, 134, 11, 0.15);
+  --shadow-gold-hover: 0 8px 32px rgba(184, 134, 11, 0.28);
+  --glow-gold: rgba(184, 134, 11, 0.18);
+  --glow-gold-strong: rgba(184, 134, 11, 0.3);
+
+  /* ── Typography ── */
+  --font-sans:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:     'Inter', 'SF Mono', Consolas, monospace;
+  --font-display:  'Cormorant Garamond', 'Times New Roman', Georgia, serif;  /* Luxury editorial serif */
+  --font-arabic:   'Tajawal', 'Amiri', 'Scheherazade New', sans-serif;       /* Arabic display */
+
+  /* Static scale — UI text, captions, labels */
+  --font-size-xs:    0.75rem;   /* 12px */
+  --font-size-sm:    0.875rem;  /* 14px */
+  --font-size-base:  1rem;      /* 16px */
+  --font-size-lg:    1.125rem;  /* 18px */
+  --font-size-xl:    1.375rem;  /* 22px */
+  --font-size-2xl:   1.75rem;   /* 28px */
+  --font-size-3xl:   2.25rem;   /* 36px */
+  --font-size-4xl:   3rem;      /* 48px */
+  --font-size-5xl:   4rem;      /* 64px */
+  --font-size-6xl:   5.5rem;    /* 88px — hero display */
+
+  /* Fluid display scale — the single source for page and section
+     titles. Every page should use these instead of ad-hoc clamp(). */
+  --text-display-xl: clamp(2.75rem, 6.4vw, 5.25rem);  /* hero H1 */
+  --text-display-lg: clamp(2.25rem, 4.4vw, 3.75rem);  /* page hero H1 */
+  --text-display-md: clamp(1.85rem, 3.1vw, 2.6rem);   /* section H2 */
+  --text-display-sm: clamp(1.45rem, 2.2vw, 1.95rem);  /* subsection H3 */
+
+  --line-height-tight:     1.15;  /* Display headings */
+  --line-height-snug:      1.35;  /* Subheadings */
+  --line-height-relaxed:   1.75;  /* Body text */
+
+  /* ── Letter Spacing ── */
+  --tracking-tight:   -0.02em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.05em;
+  --tracking-wider:   0.1em;
+  --tracking-widest:  0.18em;
+
+  /* ── Spacing (8px base, generous for luxury feel) ── */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-30:  120px;
+  --space-40:  160px;
+
+  /* Section spacing — generous, editorial rhythm */
+  --section-padding-y-sm:   64px;
+  --section-padding-y:      96px;
+  --section-padding-y-lg:   120px;
+  --section-header-margin:  56px;
+
+  /* Page-hero rhythm — top offset clears the fixed nav */
+  --hero-pad-top:    150px;
+  --hero-pad-bottom: 90px;
+
+  /* ── Radius — squared, architectural. Nothing above 8px except pills. ── */
+  --radius-xs:   1px;
+  --radius-sm:   2px;    /* Refined — small elements */
+  --radius-md:   4px;    /* Standard — inputs, tiles */
+  --radius-lg:   8px;    /* Cards, panels */
+  --radius-xl:   8px;    /* Kept for compatibility — resolves to lg */
+  --radius-2xl:  8px;    /* Kept for compatibility — resolves to lg */
+  --radius-full: 9999px; /* Pills, circles */
+
+  /* ── Transitions ── */
+  --ease-lux:          cubic-bezier(0.16, 1, 0.3, 1);  /* Overshoot-free luxury curve */
+  --transition-fast:  0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base:  0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow:  0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-lux:   0.8s var(--ease-lux);
+
+  /* ── Motion choreography — scroll reveal (single source for every page) ── */
+  --reveal-duration:  0.8s;   /* entrance duration (transform/translate) */
+  --reveal-distance:  28px;   /* entrance travel */
+  --stagger-step:     0.06s;  /* per-item delay inside a group */
+
+  /* ── Hover elevation — two tiers, applied by animations.css ── */
+  --lift-lg:          -6px;   /* feature cards */
+  --lift-sm:          -4px;   /* compact cards and list rows */
+  --lift-xs:          -2px;   /* buttons, links, small elements */
+  --shadow-hover:     0 18px 42px -14px rgba(50, 40, 25, 0.14), 0 0 0 1px var(--color-border-gold);
+  --shadow-hover-sm:  0 8px 24px -8px rgba(50, 40, 25, 0.12), 0 0 0 1px var(--color-border-gold);
+  --shadow-card-hover: 0 12px 32px rgba(26, 23, 18, 0.05);  /* page-scoped compact card hover */
+
+  /* ── Layout ── */
+  --container-max:   1280px;
+  --container-padding: 40px;
+
+  /* ── Decorative Gradients — built from the gold ramp ── */
+  --gold-gradient: linear-gradient(135deg, var(--gold-500) 0%, var(--gold-700) 45%, var(--gold-900) 100%);
+  --gold-gradient-strong: linear-gradient(135deg, var(--gold-300) 0%, var(--gold-700) 100%);
+  --gold-gradient-soft: linear-gradient(180deg, rgba(184, 134, 11, 0.08) 0%, rgba(184, 134, 11, 0.02) 100%);
+
+  /* ── Extended palette — legacy layer ──
+     Values kept as-is on purpose: themes/light.css depends on these
+     exact values for its surface overrides. Do not convert to aliases
+     without auditing themes/light.css first. */
+  --color-white:          #ffffff;
+  --color-text-heading:   #1F1A12;
+  --color-text-body:      #3D3528;
+  --color-text-caption:   #5A4F3D;
+  --color-bg-paper:       #EDE6D6;
+  --color-bg-soft:        #F5F0E3;
+  --color-bg-warm-light:  #F8F3E6;
+  --color-bg-darker:      #110E09;
+  --color-bg-darkest:     #0C0A06;
+  --color-bg-warm-dark:   #252018;
+  --color-gray:           #8B7E68;
+  --color-gray-dark:      #5A4F3D;
+  --color-gray-mid:       #7A6E58;
+  --color-gray-light:     #A89C85;
+  --color-border-raw:     #E0D8C4;
+
+  /* ── Z-index layers ── */
+  --z-base:       0;
+  --z-raised:     2;
+  --z-sticky:     50;
+  --z-nav:        1000;
+  --z-nav-hover:  1001;
+  --z-nav-open:   1002;
+  --z-overlay:    1500;
+  --z-modal:      2000;
+  --z-noise:      9999;
+  --z-widget:     99998;
+  --z-floating:   100000;
+}
+
+/* Dark mode override (for specific dark sections) */
+[data-theme="dark"] {
+  --color-bg-canvas:    #0F0D09;
+  --color-bg-surface:   #1A1610;
+  --color-bg-elevated:  #252018;
+  --color-bg-sunken:    #0C0A06;
+  --color-text-primary: #F5F0E0;
+  --color-text-secondary: rgba(245, 240, 224, 0.85);
+  --color-text-tertiary: rgba(245, 240, 224, 0.65);
+  --color-border:       rgba(245, 240, 224, 0.12);
+  --shadow-sm:   0 2px 8px rgba(0,0,0,0.35);
+  --shadow-md:   0 8px 24px rgba(0,0,0,0.45);
+  --shadow-lg:   0 24px 70px rgba(0,0,0,0.55);
+}

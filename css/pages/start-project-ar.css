@@ -1,0 +1,152 @@
+/* ============================================================
+   Start Project (AR) — Page-specific styles
+   Extracted from inline styles on start-project-ar.html
+   ============================================================ */
+
+/* --- Form Section Layout --- */
+.ar-form-section {
+  padding-top: 40px;
+}
+
+.ar-form-split {
+  gap: 60px;
+  align-items: start;
+}
+
+.ar-form-title {
+  margin-bottom: 32px;
+  font-size: clamp(24px, 3vw, 36px);
+}
+
+/* --- RTL Form Helpers --- */
+.ar-form-label-req {
+  color: var(--color-gold-primary);
+}
+
+.ar-form-input-rtl {
+  text-align: right;
+}
+
+.ar-form-btn-full {
+  justify-content: center;
+}
+
+.ar-form-note {
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* --- Steps Card ("What happens next") --- */
+.ar-steps-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+  margin-bottom: 32px;
+}
+
+.ar-steps-card h3 {
+  font-family: 'Tajawal', sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 28px;
+  color: var(--color-text-primary);
+}
+
+.ar-steps-item {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.ar-steps-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.ar-steps-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-gold-pale);
+  border: 1px solid var(--color-border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 16px;
+  color: var(--color-gold-primary);
+  flex-shrink: 0;
+}
+
+.ar-steps-content h4 {
+  font-family: 'Tajawal', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--color-text-primary);
+}
+
+.ar-steps-content p {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --- Contact Card ("Or contact us directly") --- */
+.ar-contact-card {
+  background: linear-gradient(135deg, rgba(201, 169, 98, 0.08) 0%, transparent 100%);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+}
+
+.ar-contact-card h3 {
+  font-family: 'Tajawal', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: var(--color-text-primary);
+}
+
+.ar-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.ar-contact-item:last-of-type {
+  margin-bottom: 20px;
+}
+
+.ar-contact-label {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-bottom: 4px;
+}
+
+.ar-contact-value {
+  color: var(--color-text-primary);
+  font-size: 14px;
+}
+
+.ar-contact-card .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* --- FAQ Section --- */
+.ar-faq-section {
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}

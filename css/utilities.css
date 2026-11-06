@@ -1,0 +1,367 @@
+/* ============================================================
+   UTILITIES
+   Accessibility, focus states, selection, scrollbar, utility classes
+   ============================================================ */
+
+/* ============================================================
+   FOCUS STATES — Keyboard navigation outlines
+   ============================================================ */
+
+/* Global focus-visible — gold outline for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--color-gold-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Remove default focus ring for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Button focus styles */
+button:focus-visible, .btn:focus-visible, .nav-cta:focus-visible, .submit-btn:focus-visible {
+  outline: 2px solid var(--color-gold-primary);
+  outline-offset: 3px;
+}
+
+/* Card/link focus styles */
+.product-card:focus-visible, .project-card:focus-visible, .resource-card:focus-visible {
+  outline: 2px solid var(--color-gold-primary);
+  outline-offset: 4px;
+}
+
+/* Form input focus styles */
+input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid var(--color-gold-primary);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   TEXT SELECTION — Gold on dark
+   ============================================================ */
+
+::selection {
+  background: var(--color-border-gold);
+  color: var(--color-text-primary);
+}
+
+::-moz-selection {
+  background: var(--color-border-gold);
+  color: var(--color-text-primary);
+}
+
+/* ============================================================
+   CUSTOM SCROLLBAR — Subtle gold
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-canvas);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-gold);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 188, 138, 0.5);
+}
+
+/* ============================================================
+   UTILITY CLASSES — Reusable helpers
+   ============================================================ */
+
+/* Text alignment */
+.text-center { text-align: center; }
+
+/* Spacing utilities — zero margins */
+.mb-0 { margin-bottom: 0; }
+
+/* Button / CTA row — centered, wrapping flex */
+.btn-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Gold text link */
+.link-gold {
+  color: var(--color-gold-primary);
+}
+
+/* Tabular numerals for smooth number counters */
+[data-count] {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+}
+
+/* Button press effect */
+.btn:active, .nav-cta:active, .submit-btn:active {
+  transform: scale(0.98);
+}
+
+/* ============================================================
+   SUBMIT BUTTON — Premium gold gradient
+   ============================================================ */
+.submit-btn {
+  width: 100%;
+  padding: 16px 28px;
+  background: var(--gold-gradient-strong);
+  color: var(--color-text-heading);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
+  box-shadow: var(--shadow-gold);
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-btn:hover {
+  transform: translateY(var(--lift-xs));
+  box-shadow: var(--shadow-gold-hover);
+  background: var(--gold-gradient);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit-btn .btn-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(26, 26, 26, 0.3);
+  border-top-color: var(--color-text-heading);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Form success / error messages */
+.form-feedback {
+  display: none;
+  padding: 20px 24px;
+  border-radius: var(--radius-lg);
+  margin-top: 16px;
+  text-align: center;
+  animation: fadeInUp 0.4s ease;
+}
+
+.form-feedback.show { display: block; }
+
+.form-feedback--success {
+  background: rgba(34, 139, 34, 0.08);
+  border: 1px solid rgba(34, 139, 34, 0.2);
+  color: #1B5E20;
+}
+
+.form-feedback--error {
+  background: rgba(220, 20, 60, 0.08);
+  border: 1px solid rgba(220, 20, 60, 0.2);
+  color: #B71C1C;
+}
+
+.form-feedback-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.form-feedback-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 1rem;
+}
+
+.form-feedback-text {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Form card title (accessibility) */
+.form-card-title {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  margin: 0 0 24px 0;
+  line-height: 1.3;
+}
+
+/* ============================================================
+   ACCESSIBILITY MEDIA QUERIES
+   ============================================================ */
+
+/* Reduced motion — respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+  body {
+    --color-text-primary: var(--color-text-heading);
+    --color-text-secondary: var(--color-text-heading);
+    --color-text-tertiary: var(--color-gray-dark);
+    --color-gold-primary: var(--color-gold-ink);
+    --color-border: rgba(0, 0, 0, 0.3);
+    --color-border-strong: rgba(0, 0, 0, 0.5);
+    --color-border-light: rgba(0, 0, 0, 0.15);
+  }
+
+  .btn,
+  .nav-cta {
+    border-width: 2px;
+  }
+}
+
+/* Ripple animation for button click effect */
+@keyframes ripple { to { transform: scale(4); opacity: 0; } }
+
+/* Product card image container — clips the background image */
+.product-card-img { position: relative; overflow: hidden; }
+
+/* Smooth image load fade-in */
+img { opacity: 0; transition: opacity 0.4s ease; }
+img.img-loaded { opacity: 1; }
+img[loading="lazy"] { opacity: 1; }
+
+/* ============================================================
+   FONT SIZE HELPERS
+   ============================================================ */
+
+.small {
+  font-size: var(--font-size-sm);
+}
+
+.large {
+  font-size: var(--font-size-lg);
+}
+
+/* Global SVG icon sizing — scales with font-size for backward compat */
+[class$="-icon"] svg, [class*="-icon "] svg {
+  width: 1em;
+  height: 1em;
+  stroke-width: 1.5;
+  display: block;
+}
+
+/* --- Misc Utility Classes --- */
+.highlight {
+  color: var(--color-gold-primary);
+  font-weight: 500;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .grid-3 { grid-template-columns: 1fr; }
+}
+
+.last-updated {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+
+.next-steps {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+}
+
+.back-btn, .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: color var(--transition-base);
+}
+
+.back-btn:hover, .back-link:hover {
+  color: var(--color-gold-primary);
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Inline gold check glyph (used inside copy/benefit rows) */
+.check-icon {
+  color: var(--color-gold-primary);
+  margin-right: 8px;
+}
+
+/* Honeypot field — anti-spam, hidden from users */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+
+/* Footnote reference marker — used after table cells that carry a disclaimer */
+.note-ref {
+  font-size: 0.7rem;
+  line-height: 0;
+  vertical-align: super;
+  color: var(--color-text-tertiary, #888);
+  margin-left: 2px;
+  font-weight: 600;
+}

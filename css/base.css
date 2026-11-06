@@ -1,0 +1,117 @@
+/* ============================================================
+   BASE
+   Reset, typography, utility classes, base elements
+   ============================================================ */
+
+/* --- Reset & Base --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+body#yakeen-page {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  background: var(--color-bg-canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Subtle paper-grain texture — breaks the "flat white" feel */
+body#yakeen-page::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+body#yakeen-page p, body#yakeen-page span, body#yakeen-page li, body#yakeen-page a, body#yakeen-page div {
+  font-family: var(--font-sans);
+}
+
+body#yakeen-page h1, body#yakeen-page h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+body#yakeen-page h3, body#yakeen-page h4, body#yakeen-page h5 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0;
+}
+
+/* 标题颜色用低优先级标签选择器，方便组件级样式覆盖
+   （如果放在 body#yakeen-page 里，优先级 0101 会导致所有深色区块标题颜色被覆盖） */
+h1, h2, h3, h4, h5 {
+  color: var(--color-text-primary);
+}
+
+body#yakeen-page em {
+  font-style: normal;
+  color: var(--color-gold-primary);
+}
+
+body#yakeen-page a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body#yakeen-page img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.container-slim {
+  max-width: 860px;
+}
+
+/* ============================================================
+   RESPONSIVE — Mobile form elements (touch targets + iOS zoom fix)
+   ============================================================ */
+
+@media (max-width: 480px) {
+  /* ID-level specificity on purpose: component rules such as
+     .hcf-field input and .nl-form input[type=email] re-declare a smaller
+     font-size and would otherwise beat a plain element selector, bringing
+     back the iOS focus-zoom. */
+  body#yakeen-page input[type="text"],
+  body#yakeen-page input[type="email"],
+  body#yakeen-page input[type="tel"],
+  body#yakeen-page textarea,
+  body#yakeen-page select {
+    min-height: 44px;
+    font-size: 16px; /* prevents iOS zoom on focus */
+  }
+
+  body#yakeen-page textarea {
+    min-height: 100px;
+  }
+}
+
