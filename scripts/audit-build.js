@@ -215,7 +215,13 @@ function checkRedirectRules() {
     const fromHtml = rule.from.replace(/^\//, '').replace(/\/$/, '') + '.html';
     const fromHtmlFile = path.join(DIST, fromHtml);
     
-    if (isFile(fromFile) || isFile(fromHtmlFile)) {
+    // `/about.html → /about` is standard canonicalization: Cloudflare Pages
+    // serves /about from about.html with a 200, so the chain is a single hop.
+    // Verified in production — only flag redirects to a genuinely different page.
+    const isSelfCanonical =
+      rule.from.endsWith('.html') && rule.to === rule.from.slice(0, -5);
+
+    if (!isSelfCanonical && (isFile(fromFile) || isFile(fromHtmlFile))) {
       // The source file actually exists — check if it redirects to a different path
       const toPath = rule.to.replace(/^\//, '').replace(/\/$/, '/index.html');
       if (fromPath !== toPath && fromHtml !== rule.to.replace(/^\//, '')) {
@@ -860,6 +866,48 @@ function runAudit() {
     console.log(`\n   ❌ ${fillErrors} fill-color violation(s) — BLOCKED.`);
   } else {
     log('OK', 'All -webkit-text-fill-color uses are on the whitelist (gradient text only)');
+  }
+
+  // --- Check 12: Inline style attribute budget (ratchet) ---
+  // Historical debt is frozen per page. Any page that adds new style=""
+  // attributes above its recorded budget fails the build (incremental-zero
+  // rule, PRINCIPLES §6.4). Lower a budget only after actually removing styles.
+  console.log('\n🔍 Check 12: Inline style attribute budget');
+  const styleBudgetPath = path.join(ROOT, 'scripts', 'style-baseline.json');
+  const styleBudget = fs.existsSync(styleBudgetPath)
+    ? JSON.parse(fs.readFileSync(styleBudgetPath, 'utf-8').replace(/^\uFEFF/, ''))
+    : null;
+
+  if (!styleBudget) {
+    log('WARN', 'No scripts/style-baseline.json — inline style budget not enforced');
+  } else {
+    const styleCurrent = {};
+    for (const file of htmlFiles) {
+      const html = fs.readFileSync(file, 'utf-8');
+      const matches = html.match(/\sstyle="/g);
+      if (matches && matches.length) {
+        styleCurrent[path.relative(DIST, file).replace(/\\/g, '/')] = matches.length;
+      }
+    }
+
+    const regressions = [];
+    for (const [relPath, count] of Object.entries(styleCurrent)) {
+      const budget = styleBudget[relPath] || 0;
+      if (count > budget) regressions.push(`${relPath}: ${count} > budget ${budget}`);
+    }
+
+    const totalCurrent = Object.values(styleCurrent).reduce((a, b) => a + b, 0);
+    const totalBudget = Object.values(styleBudget).reduce((a, b) => a + b, 0);
+
+    if (regressions.length > 0) {
+      log('ERROR', `${regressions.length} page(s) exceeded their inline-style budget:`);
+      for (const r of regressions.slice(0, 15)) console.log(`     ${r}`);
+      if (regressions.length > 15) console.log(`     ... and ${regressions.length - 15} more`);
+    } else if (totalCurrent < totalBudget) {
+      log('WARN', `Inline styles reduced ${totalBudget} → ${totalCurrent}. Lower scripts/style-baseline.json to lock the gain.`);
+    } else {
+      log('OK', `Inline style attributes within budget (${totalCurrent}/${totalBudget})`);
+    }
   }
 
   // --- Check 8: Redirect rules ---

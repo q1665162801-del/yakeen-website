@@ -4,8 +4,9 @@
   "description": "Yakeen Lighting — architectural lighting engineering. Static site generator for yakeenlighting.com.",
   "main": "index.js",
   "scripts": {
-    "build": "node build/index.js && node build/audit.js",
+    "build": "node build/index.js && node build/audit.js && node scripts/audit-build.js",
     "audit": "node build/audit.js",
+    "audit:design": "node scripts/audit-build.js",
     "deep-audit": "node build/deep-audit.js",
     "deploy": "npm run build && npx wrangler pages deploy --branch main && node build/indexnow.js",
     "deploy:preview": "npx wrangler pages deploy --branch preview",
