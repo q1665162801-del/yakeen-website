@@ -17,11 +17,16 @@
 
 **验证方法（部署后必做）：**
 ```
-# 确认正式域名和生产 alias 是同一个版本
-# 对比 CSS hash（每个 build 唯一）
-https://www.yakeenlighting.com/  ==  https://production.yakeen-lighting.pages.dev/
+# 1) wrangler 输出里那条 "Deployment complete! ... https://<id>.yakeen-lighting.pages.dev"
+#    拿这个本次部署 ID 的 URL，对比它和正式域名的 CSS hash（每个 build 唯一）
+https://<deployment-id>.yakeen-lighting.pages.dev/  ==  https://www.yakeenlighting.com/
 ```
 不一致就是部署没生效，立刻查。
+
+**别用 `production.<project>.pages.dev` 做对比（2026-11-06 更正）：**
+那个域名是 `--branch production` 事故留下的**旧 preview 部署残留**，永远停在 10-14 的版本、也不走 Functions。
+`yakeen-lighting.pages.dev`（项目别名）会被 `functions/_middleware.js` 301 到正式域名，同样不能直接比。
+唯一可信的比对基准是**本次部署 ID 的 URL**。
 
 ### 1.2 部署后必须验证正式域名
 
@@ -39,15 +44,16 @@ https://www.yakeenlighting.com/  ==  https://production.yakeen-lighting.pages.de
 - 是就加 `--skip-caching` 强制重新上传：`npx wrangler pages deploy dist --branch main --skip-caching`
 - 部署后用唯一参数 `?v=随机值` 绕过缓存验证
 
-### 1.4 边缘缓存 + CSS hash = 移动端裸奔风险
+### 1.4 边缘缓存 + CSS hash = 移动端裸奔风险（已失效，保留备查）
 
 **惨痛教训（2026-10-14）：** 每次部署后，KV 边缘缓存里的旧 HTML 引用的是旧 CSS hash（如 `yakeen.abc123.css`），而新部署把旧 CSS 文件替换了。移动端浏览器如果命中旧 HTML 缓存，就会去请求不存在的旧 CSS → 404 → 页面完全没有样式（裸奔）。
 
+**现状（2026-11-06 核实）：** `functions/_middleware.js` 现在**只做域名 301 规范化**，KV HTML 缓存中间件已移除（`wrangler.toml` 里的 `HTML_CACHE` 绑定已无代码使用）。全站 HTML 靠 `_headers` 的 `no-cache, must-revalidate` 保证每次回源，CSS/JS 靠 content hash 做不可变缓存，裸奔路径已不存在。
+
 **规则：**
-- 每次部署后 **必须升级 `CACHE_VERSION`**（在 `functions/_middleware.js` 里），强制所有 KV 缓存失效
-- 不要只改 CSS 不改 CACHE_VERSION，否则移动端用户会看到裸奔页面
-- CACHE_VERSION 命名格式：`yk-v1`, `yk-v2`, `yk-v3`... 每次 +1
-- 部署后用 `?nocache=1` 参数强制绕过 KV 缓存验证效果
+- 历史规则"每次部署必须升级 `CACHE_VERSION`"**已作废**——代码里没有这个变量，写了也没用，别照着旧文档去做无效动作
+- 若将来重新引入任何 HTML 缓存层，必须先恢复 CACHE_VERSION 机制再上线
+- 部署后用 `?v=随机值` 绕过 CDN 缓存验证效果
 
 ### 1.4b Pages Function 构造的响应会绕过 _headers
 
@@ -130,14 +136,16 @@ https://www.yakeenlighting.com/  ==  https://production.yakeen-lighting.pages.de
 
 ## 3. 构建原则
 
-### 3.1 0 error / 0 warning 才能上线
+### 3.1 0 error 是硬线；warning 只能持平或减少
 
-`npm run build` 输出必须是：
+`npm run build` 输出：
 ```
-Errors:   0
-Warnings: 0
+Errors:   0        ← 必须为 0，否则不许部署
+Warnings: 1        ← 已知债务基线，只许持平或下降
 ```
-有任何错误或警告，修复后再部署。
+- **ERROR 一律不许上线**（设计系统红线）
+- **WARNING 是已冻结的历史债务**（当前 1 条，对应 4 个跨文件重复的组件类），不要求清零，但**新增代码不许让它变大**——加了一条警告就算回归
+- 债务清理完成、警告数下降时，同步更新基线数字，让门禁永远钉在真实水位上
 
 ### 3.2 构建检查项
 
@@ -267,10 +275,10 @@ Cloudflare Pages + Cloudflare CDN = 两层缓存。
 
 | 类别 | 核心原则 | 章节 |
 |------|----------|------|
-| **部署** | 生产 = main 分支，部署后必验正式域名，每次升级 CACHE_VERSION | 1.1, 1.2, 1.4 |
+| **部署** | 生产 = main 分支，部署后必验正式域名，比对本次部署 ID 的 URL | 1.1, 1.2, 1.4 |
 | **部署** | HTML 缓存必须 no-cache，Pages Function 会绕过 _headers，无痕模式 ≠ 无缓存 | 1.4b, 1.4c, 1.6 |
 | **视觉** | 拒绝 AI 味，图片不重复，颜色用变量，对比度达标 | 2.1 - 2.4 |
-| **构建** | 0 error / 0 warning 才能上线，8 项审计全过 | 3.1, 3.2 |
+| **构建** | 0 error 硬线，warning 只许持平或下降，14 项审计全过 | 3.1, 3.2 |
 | **调试** | 先看网络再看代码，区分源站问题和缓存问题 | 4.1, 4.2 |
 | **设计系统** | 内联 style 零容忍，一个组件一个权威定义 | 6.1, 6.2 |
 | **设计系统** | CSS 加载顺序是陷阱，清理债务加门禁 | 6.3, 6.4 |
