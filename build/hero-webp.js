@@ -33,7 +33,7 @@ function findHeroBgImages(html) {
 function mobileWebpExists(jpgUrl) {
   // Hero-specific 768px render first, then the generic -768.webp sibling
   // that build/responsive-images.js creates for content images.
-  const base = jpgUrl.replace(/\.jpg$/, '');
+  const base = jpgUrl.replace(/\.(jpg|jpeg|png|webp)$/i, '');
   for (const candidate of [`${base}-mobile.webp`, `${base}-768.webp`]) {
     const rel = candidate.startsWith('/') ? candidate.slice(1) : candidate;
     if (fs.existsSync(path.join(DIST, rel))) return candidate;
@@ -41,15 +41,32 @@ function mobileWebpExists(jpgUrl) {
   return null;
 }
 
+/**
+ * Bento card backgrounds: `.hp-card-bg` divs carry the image in an inline
+ * `style="background-image: url(...)"`. build/bg-lazy.js adds data-bg-mobile
+ * for them, but the inline declaration still makes the browser fetch the
+ * 1600px original on phones before the lazy loader ever runs — the fallback
+ * is downloaded first and the mobile 768px variant is downloaded second.
+ * Moving the URL into a media-queried CSS rule removes the double download
+ * and lets the phone pick the small file without any JS.
+ */
+function findCardBgImages(html) {
+  const re = /<div([^>]*class="[^"]*\bhp-card-bg\b[^"]*"[^>]*style="[^"]*background-image:\s*url\(['"]?([^'")]+\.(?:webp|jpe?g))['"]?\)[^"]*"[^>]*)>/gi;
+  const results = [];
+  let m;
+  while ((m = re.exec(html)) !== null) {
+    results.push({ fullMatch: m[0], attrs: m[1], url: m[2] });
+  }
+  return results;
+}
+
 function processFile(filePath) {
   let html = fs.readFileSync(filePath, 'utf8');
   let changed = false;
 
-  const heroBgs = findHeroBgImages(html);
-  if (heroBgs.length === 0) return false;
-
   // Build CSS rules and update each div
   const cssRules = [];
+  const heroBgs = findHeroBgImages(html);
   let heroIndex = 0;
   let firstHeroWebp = null;
   let firstHeroMobileWebp = null;
@@ -109,11 +126,38 @@ function processFile(filePath) {
     }
   }
 
+  // Bento card backgrounds — same treatment, but no preload: they are all
+  // below the hero and must not compete with the LCP image.
+  findCardBgImages(html).forEach((bg, i) => {
+    const mobileUrl = mobileWebpExists(bg.url);
+    // No 768px variant means the inline style is already the smallest file we
+    // have; leave it alone so no-JS visitors still see the image.
+    if (!mobileUrl) return;
+
+    const desktopUrl = /\.jpe?g$/i.test(bg.url)
+      ? bg.url.replace(/\.jpe?g$/i, '.webp')
+      : bg.url;
+    const cls = `bento-bg-${i}`;
+    cssRules.push(
+      `.${cls} { background-image: url('${desktopUrl}'); }\n` +
+      `@media (max-width: ${MOBILE_BREAKPOINT}) { .${cls} { background-image: url('${mobileUrl}'); } }`
+    );
+
+    const newAttrs = bg.attrs
+      .replace(/(class="[^"]*)/, `$1 ${cls}`)
+      .replace(/background-image:\s*url\(['"]?[^'")]+['"]?\)\s*;?\s*/, '')
+      .replace(/style="\s*"/, '');
+    html = html.replace(bg.fullMatch, `<div${newAttrs}>`);
+    changed = true;
+  });
+
   if (!changed) return false;
 
   // Inject <style> block before </head>
-  const styleBlock = `<style data-hero-styles="1">\n${cssRules.join('\n')}\n</style>`;
-  html = html.replace('</head>', `  ${styleBlock}\n</head>`);
+  if (cssRules.length) {
+    const styleBlock = `<style data-hero-styles="1">\n${cssRules.join('\n')}\n</style>`;
+    html = html.replace('</head>', `  ${styleBlock}\n</head>`);
+  }
 
   // Inject preload for first hero WebP
   if (firstHeroWebp && !html.includes('data-hero-preload')) {

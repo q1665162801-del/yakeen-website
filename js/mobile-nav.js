@@ -89,14 +89,14 @@
       // on hover. Cloned as-is into the flat mobile list it became a dead
       // tap target that closed the menu and jumped to the top. Render it as
       // a non-interactive group label instead; its children follow below.
+      // Use a <span>, not an <a> with href stripped: an anchor without an
+      // href is still exposed as a link to crawlers and audit tools
+      // (Lighthouse "Links are not crawlable").
       if (cloned.getAttribute('href') === '#') {
-        cloned.classList.remove('nav-link');
-        cloned.classList.add('mobile-group-label');
-        cloned.removeAttribute('href');
-        cloned.removeAttribute('role');
-        cloned.removeAttribute('aria-haspopup');
-        cloned.removeAttribute('aria-expanded');
-        fragment.appendChild(cloned);
+        var label = document.createElement('span');
+        label.className = 'mobile-group-label';
+        label.textContent = cloned.textContent.trim();
+        fragment.appendChild(label);
         return;
       }
 

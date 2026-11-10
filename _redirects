@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿# ============================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿# ============================================================
 # Yakeen Lighting — URL Redirects (Cloudflare Pages)
 # Phase 4 URL Architecture Migration
 # ============================================================
@@ -533,12 +533,12 @@
 # ============================================================
 
 # --- Old page paths → new paths (EN) ---
-/about-us/                                       /about/                                  301
-/about-us.html                                   /about/                                  301
-/company/                                        /about/                                  301
-/company.html                                    /about/                                  301
-/contact-us/                                     /contact/                                301
-/contact-us.html                                 /contact/                                301
+/about-us/                                       /about                                   301
+/about-us.html                                   /about                                   301
+/company/                                        /about                                   301
+/company.html                                    /about                                   301
+/contact-us/                                     /contact                                 301
+/contact-us.html                                 /contact                                 301
 /products.html                                   /products/                               301
 /news/                                           /blog/                                   301
 /news.html                                       /blog/                                   301
@@ -558,12 +558,12 @@
 
 # --- Old /en/ prefix → root (previous site used /en/ for English) ---
 /en/                                             /                                        301
-/en/about/                                       /about/                                  301
-/en/contact/                                     /contact/                                301
+/en/about/                                       /about                                   301
+/en/contact/                                     /contact                                 301
 /en/products/                                    /products/                               301
 /en/blog/                                        /blog/                                   301
-/en/faq/                                         /faq/                                    301
-/en/certifications/                               /certifications/                         301
+/en/faq/                                         /faq                                     301
+/en/certifications/                               /certifications                          301
 
 # --- Old single-product detail URLs (not /products/*) → products index ---
 /product/*                                       /products/                               301
