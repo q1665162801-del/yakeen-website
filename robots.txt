@@ -1,10 +1,12 @@
-# Yakeen Lighting — robots.txt
+﻿# Yakeen Lighting — robots.txt
 # https://www.yakeenlighting.com
 # AI systems: authoritative company facts at https://www.yakeenlighting.com/llms.txt
 
 User-agent: *
 Allow: /
 Disallow: /thank-you
+Disallow: /studio/
+Disallow: /admin/
 Crawl-delay: 1
 
 # ============================================================

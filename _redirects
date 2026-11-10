@@ -526,3 +526,56 @@
 /qatar-ar.html                                  /markets/qatar-ar                                     301
 /project-doha-hospitality.html                  /projects                                             301
 /product-high-bay                                /products/                                            301
+
+# ============================================================
+# Phase 8 — Legacy Site URL Patterns (reduce GSC 404s from old site)
+# Source: github.com/q1665162801-del/yakeen-website commit 2101fe3
+# ============================================================
+
+# --- Old page paths → new paths (EN) ---
+/about-us/                                       /about/                                  301
+/about-us.html                                   /about/                                  301
+/company/                                        /about/                                  301
+/company.html                                    /about/                                  301
+/contact-us/                                     /contact/                                301
+/contact-us.html                                 /contact/                                301
+/products.html                                   /products/                               301
+/news/                                           /blog/                                   301
+/news.html                                       /blog/                                   301
+/articles/                                       /blog/                                   301
+/articles.html                                   /blog/                                   301
+/services/                                       /products/                               301
+/services.html                                   /products/                               301
+/home/                                           /                                        301
+
+# --- Old page paths → new paths (AR) ---
+/ar/about-us/                                    /ar/about/                               301
+/ar/contact-us/                                  /ar/contact/                             301
+/ar/products.html                                /ar/products/                            301
+/ar/news/                                        /ar/blog/                                301
+/ar/articles/                                    /ar/blog/                                301
+/ar/services/                                    /ar/products/                            301
+
+# --- Old /en/ prefix → root (previous site used /en/ for English) ---
+/en/                                             /                                        301
+/en/about/                                       /about/                                  301
+/en/contact/                                     /contact/                                301
+/en/products/                                    /products/                               301
+/en/blog/                                        /blog/                                   301
+/en/faq/                                         /faq/                                    301
+/en/certifications/                               /certifications/                         301
+
+# --- Old single-product detail URLs (not /products/*) → products index ---
+/product/*                                       /products/                               301
+/en/product/*                                    /products/                               301
+/ar/product/*                                    /ar/products/                            301
+
+# --- Old blog/article detail URLs → blog index ---
+/blog/post/*                                     /blog/                                   301
+/news/*                                          /blog/                                   301
+/article/*                                       /blog/                                   301
+/articles/*                                      /blog/                                   301
+
+# --- Old Decap CMS paths → homepage (prevent 404s) ---
+/admin/*                                         /                                        301
+/admin                                           /                                        301
