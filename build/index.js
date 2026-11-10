@@ -142,6 +142,15 @@ async function build() {
   const { injectLazyLoader } = require('./bg-lazy-inject');
   injectLazyLoader();
 
+  // Content-hashed image filenames — MUST run after every HTML transform above,
+  // so no later step can reintroduce an un-hashed /images/ reference.
+  console.log('\n🔑  Hashing image filenames...');
+  const { hashAssets } = require('./hash-assets');
+  const hashStats = hashAssets();
+  console.log(
+    `   ✅ ${hashStats.renamed} 个图片改名，${hashStats.rewrote} 个文件引用已改写（${hashStats.orphans} 个未被引用）`
+  );
+
   // Stats
   const distSize = walkDir(DIST).reduce((sum, f) => sum + fs.statSync(f).size, 0);
 

@@ -935,7 +935,98 @@ function runAudit() {
     }
   }
 
-  // --- Check 14: Redirect rules ---
+  // --- Check 14: Image reference integrity ---
+  // 图片改成内容哈希命名后，任何一处漏改写都会变成线上 404 且只在用户侧暴露。
+  // 这里把「HTML/CSS 里引用的每个 images/* 是否真实存在」变成构建期的硬门禁。
+  console.log('\n🔍 Check 14: Image reference integrity');
+  {
+    const imagesDir = path.join(DIST, 'images');
+    const missing = new Map(); // 引用路径 → 出现在哪些文件
+    if (fs.existsSync(imagesDir)) {
+      for (const file of htmlFiles) {
+        const html = fs.readFileSync(file, 'utf-8');
+        for (const m of html.matchAll(/images\/([A-Za-z0-9_./\-]+\.[A-Za-z0-9]{2,5})/g)) {
+          const target = path.join(imagesDir, m[1]);
+          if (!fs.existsSync(target)) {
+            const rel = path.relative(DIST, file);
+            if (!missing.has(m[1])) missing.set(m[1], new Set());
+            missing.get(m[1]).add(rel);
+          }
+        }
+      }
+    }
+    if (missing.size) {
+      for (const [ref, files] of missing) {
+        log('ERROR', `引用的图片不存在：images/${ref}（${[...files].slice(0, 3).join(', ')}${files.size > 3 ? ' …' : ''}）`);
+      }
+    } else {
+      log('OK', '所有 HTML 中引用的图片文件都存在');
+    }
+  }
+
+  // --- Check 15: Hashed filename must match file content ---
+  // 防止「手改文件名骗过缓存」或「改了图但忘了重新构建」。
+  console.log('\n🔍 Check 15: Hashed image filename ↔ content');
+  {
+    const imagesDir = path.join(DIST, 'images');
+    const hashedName = /^(.*)\.([0-9a-f]{8})\.(jpg|jpeg|png|webp|svg|gif)$/i;
+    let bad = 0;
+    let total = 0;
+    if (fs.existsSync(imagesDir)) {
+      const stack = [imagesDir];
+      while (stack.length) {
+        const dir = stack.pop();
+        for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+          const p = path.join(dir, e.name);
+          if (e.isDirectory()) { stack.push(p); continue; }
+          const m = e.name.match(hashedName);
+          if (!m) {
+            log('ERROR', `图片文件名缺少内容哈希：${path.relative(DIST, p)}`);
+            bad++;
+            continue;
+          }
+          total++;
+          const actual = require('crypto').createHash('sha256').update(fs.readFileSync(p)).digest('hex').slice(0, 8);
+          if (actual !== m[2]) {
+            log('ERROR', `图片哈希与内容不符：${path.relative(DIST, p)}（文件名 ${m[2]}，实际 ${actual}）`);
+            bad++;
+          }
+        }
+      }
+    }
+    if (!bad) log('OK', `${total} 个图片文件名与内容哈希一致`);
+  }
+
+  // --- Check 16: Orphan images (report only) ---
+  console.log('\n🔍 Check 16: Unreferenced images');
+  {
+    const imagesDir = path.join(DIST, 'images');
+    if (fs.existsSync(imagesDir)) {
+      const referenced = new Set();
+      for (const file of htmlFiles) {
+        const html = fs.readFileSync(file, 'utf-8');
+        for (const m of html.matchAll(/images\/([A-Za-z0-9_./\-]+\.[A-Za-z0-9]{2,5})/g)) referenced.add(m[1]);
+      }
+      let orphans = 0;
+      let bytes = 0;
+      const stack = [imagesDir];
+      while (stack.length) {
+        const dir = stack.pop();
+        for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+          const p = path.join(dir, e.name);
+          if (e.isDirectory()) { stack.push(p); continue; }
+          if (!referenced.has(path.relative(imagesDir, p).split(path.sep).join('/'))) {
+            orphans++;
+            bytes += fs.statSync(p).size;
+          }
+        }
+      }
+      if (orphans) log('WARN', `${orphans} 个图片未被任何 HTML 引用（约 ${(bytes / 1024 / 1024).toFixed(1)} MB）`);
+      else log('OK', '没有未被引用的图片');
+    }
+  }
+
+  // --- Check 17: Redirect rules ---
   checkRedirectRules();
   
   // --- Summary ---

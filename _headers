@@ -63,6 +63,12 @@
 
 # --- Service Worker: must never be cached long-term ---
 # If SW gets cached, users can't receive updates/fixes.
+# VERIFIED IN PRODUCTION: Cloudflare Pages ignores this rule for .js assets and
+# ships `max-age=14400, must-revalidate`; a Functions middleware that rewrote
+# the header was also overridden by the asset layer. Mitigation lives in the
+# page itself: templates/head.html unregisters every SW and clears Cache
+# Storage on each load, and sw.js is a self-unregistering kill switch, so a
+# stale copy can only delay cleanup, never serve stale pages.
 /sw.js
   Cache-Control: public, no-cache, must-revalidate
 

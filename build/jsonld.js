@@ -3,10 +3,13 @@
  * Handles: WebPage, TechArticle, Product, Service schemas
  */
 const { SITE_BASE } = require('./config');
+const { buildPlatformVariants } = require('./fixture-platforms');
 
 // Ensure image/logo URLs are absolute (JSON-LD requires full URLs)
 function absUrl(url) {
-  if (!url) return SITE_BASE + 'images/og-default.jpg';
+  // 与 build/page.js 的 ogImage 默认值保持一致；og-default.jpg 从未存在过，
+  // 会让 JSON-LD 的 image 指向 404（Check 14 已能拦住这类问题）。
+  if (!url) return SITE_BASE + 'images/logo-yakeen.png';
   if (/^https?:\/\//i.test(url)) return url;
   // Remove leading ./ or / and any ../ segments for clean absolute URL
   let clean = url.replace(/^\.\//, '').replace(/^\//, '');
@@ -31,7 +34,7 @@ const ARABIC_FAQ_MAIN_ENTITY = [
     name: 'هل منتجاتكم معتمدة للسعودية والشرق الأوسط؟',
     acceptedAnswer: {
       '@type': 'Answer',
-      text: 'نعم. خطوط منتجاتنا الأساسية حاصلة على شهادة كفاءة الطاقة SASO 2902 وشهادة العلامة الخليجية G-Mark بالكامل. نوفر دعماً كاملاً لتسجيل سابر/IECEE، وامتثال MOIAT/ECAS لدولة الإمارات، وحزم وثائق كاملة لتخليص جمركي سلس في جميع دول مجلس التعاون الخليجي.',
+      text: 'نعم. خطوط منتجاتنا الأساسية حاصلة على شهادة كفاءة الطاقة SASO 2902 وشهادة علامة الخليج G-Mark بالكامل. نوفر دعماً كاملاً لتسجيل سابر/IECEE، وامتثال MOIAT/ECAS لدولة الإمارات، وحزم وثائق كاملة لتخليص جمركي سلس في جميع دول مجلس التعاون الخليجي.',
     },
   },
   {
@@ -208,6 +211,17 @@ function buildPageSchema(fm, base) {
     };
     if (props.length > 0) product.additionalProperty = props;
     schemas.push(product);
+
+    // Model-level entities. A category-only Product ("Architectural COB Downlights")
+    // gives an AI nothing concrete to cite, so it substitutes another brand's
+    // catalogue entry. Each reference platform is therefore published as its own
+    // Product nested under the family via isVariantOf — the same physical fixture,
+    // still priced per project (no offers, no price).
+    // Arabic pages stay variant-free until the Arabic platform table ships, so
+    // the structured data never describes models that are not visible on that page.
+    if (fm.lang !== 'ar') {
+      for (const variant of buildPlatformVariants(fm.canonical)) schemas.push(variant);
+    }
     }
   }
 

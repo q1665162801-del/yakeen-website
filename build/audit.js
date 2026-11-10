@@ -130,12 +130,18 @@ function checkIdentityClaims() {
       if (/manufacturer/i.test(e.name)) hits.push(rel + ' → 文件名含 manufacturer');
       const c = html.match(/<link rel="canonical" href="([^"]+)"/);
       if (c && /manufacturer/i.test(c[1])) hits.push(rel + ' → canonical 含 manufacturer: ' + c[1]);
+      // 8c. 正文第三人称身份标签 — "Yakeen ... manufacturer" / "manufacturer ... Yakeen"
+      // 近距离同现即视为身份声明：AI 抽取不会区分语境、对比对象与引号归属。
+      const bodyText = html.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ');
+      for (const m of bodyText.matchAll(/\byakeen\b[^<>\n]{0,40}\bmanufacturers?\b|\bmanufacturers?\b[^<>\n]{0,20}\byakeen\b/gi)) {
+        hits.push(rel + ' → 正文: "' + m[0].replace(/\s+/g, ' ').trim().slice(0, 90) + '"');
+      }
     }
   })(DIST);
   return {
     name: '身份声明',
     ok: hits.length === 0,
-    detail: hits.length ? `${hits.length} 处仍以 manufacturer 声明身份: ${hits.slice(0, 3).join('; ')}` : '结构化数据与 URL 均未把 Yakeen 声明为制造商',
+    detail: hits.length ? `${hits.length} 处仍以 manufacturer 声明身份: ${hits.slice(0, 3).join('; ')}` : '结构化数据、URL 与正文均未把 Yakeen 声明为制造商',
   };
 }
 

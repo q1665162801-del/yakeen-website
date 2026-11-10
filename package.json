@@ -8,8 +8,8 @@
     "audit": "node build/audit.js",
     "audit:design": "node scripts/audit-build.js",
     "deep-audit": "node build/deep-audit.js",
-    "deploy": "npm run build && npx wrangler pages deploy --branch main && node build/indexnow.js",
-    "deploy:preview": "npx wrangler pages deploy --branch preview",
+    "deploy": "node scripts/deploy.js",
+    "deploy:preview": "npm run build && npx wrangler pages deploy --branch preview",
     "indexnow": "node build/indexnow.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -9,6 +9,7 @@ const path = require('path');
 const { PAGES, DIST, ROOT, SITE_BASE } = require('./config');
 const { readFile, writeFile, parseFrontMatter, getBasePath, render } = require('./utils');
 const { buildPageSchema, buildBreadcrumbSchema, extractFaqSchema } = require('./jsonld');
+const { renderPlatformTables } = require('./fixture-platforms');
 const { buildAnalyticsHead } = require('./analytics');
 const { renderNav } = require('./nav');
 const { optimizeImages } = require('./images');
@@ -191,6 +192,10 @@ function buildPage(pagePath, templates, buildAssets = {}) {
     lang,
     base,
     content: pageContent.trim(),
+    // Reference-platform tables. Rendered from build/fixture-platforms.js so the
+    // visible table and the JSON-LD model entities stay in lockstep. Pages with
+    // no registered platform family get an empty string.
+    platformTables: renderPlatformTables(canonical),
     pageClass: `${autoPageClass}${fm.pageClass ? ' ' + fm.pageClass : ''}${fm.type === 'country' ? ' gcc-country-page' : ''}`.trim(),
     canonical,
     hreflangTags,

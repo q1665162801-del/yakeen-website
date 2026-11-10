@@ -32,5 +32,12 @@ export async function onRequest(context) {
 
   // ── Case 4: everything else → serve normally ──
   //    context.next() passes through to _redirects, static files, api/*
+  //
+  //    NOTE: do NOT try to rewrite Cache-Control here for static assets.
+  //    Verified in production: a middleware that set
+  //    `Cache-Control: no-cache` on /sw.js still shipped
+  //    `max-age=14400, must-revalidate` — Cloudflare Pages re-applies the
+  //    asset-layer header policy after the Function returns, so Function
+  //    headers cannot override `_headers`/defaults for static files.
   return context.next();
 }
