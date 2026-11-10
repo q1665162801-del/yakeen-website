@@ -66,7 +66,12 @@ async function processImage(file) {
 }
 
 async function generateMobileHeroes() {
-  const files = fs.readdirSync(IMG_DIR).filter(isHeroImage);
+  // Only heroes that a page actually renders as a hero background. A
+  // hero-*.jpg kept around solely for og:image must not spawn a -mobile.webp
+  // that nothing can ever request.
+  const { collectImageRefs } = require('./utils');
+  const refs = collectImageRefs();
+  const files = fs.readdirSync(IMG_DIR).filter(isHeroImage).filter((f) => refs.hero.has(f));
   console.log(`   Found ${files.length} hero images`);
 
   let created = 0;

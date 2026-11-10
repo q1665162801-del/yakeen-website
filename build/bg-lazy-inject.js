@@ -51,6 +51,11 @@ const LAZY_LOADER_JS = `
       if(!e.isIntersecting)return;
       var el=e.target;
       var src=el.dataset.bg;
+      // Phones get the 768px variant: the card is only a few hundred px wide
+      // there, so the full-size original is pure bandwidth waste.
+      if(src&&el.dataset.bgMobile&&window.matchMedia('(max-width: 768px)').matches){
+        src=el.dataset.bgMobile;
+      }
       if(!src){io.unobserve(el);return;}
       // Resolve URL
       var fullSrc=resolveUrl(el,src);

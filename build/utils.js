@@ -88,6 +88,55 @@ function render(template, vars) {
   });
 }
 
+// ─── Image references in src/ ───
+/**
+ * Which images the source templates actually reference, split by usage.
+ *
+ * The image generators used to walk images/ and emit a variant for every
+ * file, which produced derivatives nobody could request (a 768px sibling
+ * for an og:image, a -mobile.webp for a hero that is no longer a hero).
+ * Those showed up in the orphan gate forever and could not be deleted —
+ * the next build recreated them. Generating only what is referenced fixes
+ * the cause instead of the symptom.
+ *
+ * - img:  used by <img src> (build/images.js can emit a mobile <source>)
+ * - bg:   used by inline background-image (wired via data-bg-mobile)
+ * - hero: subset of bg on page-hero-bg / home-hero-bg (hero pipelines)
+ */
+function collectImageRefs() {
+  const srcDir = path.join(__dirname, '..', 'src');
+  const img = new Set();
+  const bg = new Set();
+  const hero = new Set();
+
+  const strip = (url) => url.replace(/[?#].*$/, '');
+  const toRel = (url) => {
+    const i = url.indexOf('images/');
+    return i === -1 ? null : strip(url.slice(i + 'images/'.length));
+  };
+
+  for (const file of walkDir(srcDir, '.html')) {
+    const text = readFile(file);
+
+    for (const m of text.matchAll(/<img\b[^>]*>/gi)) {
+      const src = (m[0].match(/\ssrc\s*=\s*["']([^"']+)["']/i) || [])[1];
+      const rel = src && toRel(src);
+      if (rel) img.add(rel);
+    }
+
+    for (const m of text.matchAll(/<div\b[^>]*>/gi)) {
+      const tag = m[0];
+      const url = (tag.match(/background-image\s*:\s*url\(\s*["']?([^"')]+)/i) || [])[1];
+      const rel = url && toRel(url);
+      if (!rel) continue;
+      bg.add(rel);
+      if (/page-hero-bg|home-hero-bg/.test(tag)) hero.add(rel);
+    }
+  }
+
+  return { img, bg, hero };
+}
+
 module.exports = {
   readFile,
   writeFile,
@@ -96,4 +145,5 @@ module.exports = {
   parseFrontMatter,
   getBasePath,
   render,
+  collectImageRefs,
 };

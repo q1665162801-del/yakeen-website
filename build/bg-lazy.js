@@ -39,6 +39,21 @@ function webpTwin(bgUrl, filePath) {
   return fs.existsSync(absPath) ? candidate : null;
 }
 
+/**
+ * Return the 768px WebP variant for a background image, or null.
+ * Content cards are full-size URLs on desktop but only ~400-700px wide on
+ * phones; without this the phone downloads the 1600px original.
+ */
+function mobileTwin(bgUrl, filePath) {
+  const base = bgUrl.replace(/\.(jpg|jpeg|png|webp)$/i, '');
+  if (/-(mobile|768|480)$/i.test(base)) return null;
+  const candidate = `${base}-768.webp`;
+  const absPath = candidate.startsWith('/')
+    ? path.join(DIST, candidate.slice(1))
+    : path.resolve(path.dirname(filePath), candidate);
+  return fs.existsSync(absPath) ? candidate : null;
+}
+
 function processFile(filePath) {
   let html = fs.readFileSync(filePath, 'utf8');
   let count = 0;
@@ -76,6 +91,11 @@ function processFile(filePath) {
     // clients (which can decode WebP) ever request the WebP file.
     const lazyUrl = webpTwin(bgUrl, filePath) || bgUrl;
     newAttrs = newAttrs + ` data-bg="${lazyUrl}"`;
+
+    // Phone-sized variant, applied by the lazy loader when the viewport is
+    // ≤768px. Falls back to data-bg on wider screens.
+    const mobileUrl = mobileTwin(lazyUrl, filePath);
+    if (mobileUrl) newAttrs = newAttrs + ` data-bg-mobile="${mobileUrl}"`;
 
     const newTag = `<${tag}${newAttrs}>`;
     html = html.substring(0, m.index) + newTag + html.substring(m.index + fullMatch.length);

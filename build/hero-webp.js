@@ -31,10 +31,14 @@ function findHeroBgImages(html) {
 }
 
 function mobileWebpExists(jpgUrl) {
-  const mobileWebpUrl = jpgUrl.replace(/\.jpg$/, '-mobile.webp');
-  const webpRelPath = mobileWebpUrl.startsWith('/') ? mobileWebpUrl.slice(1) : mobileWebpUrl;
-  const webpAbsPath = path.join(DIST, webpRelPath);
-  return fs.existsSync(webpAbsPath) ? mobileWebpUrl : null;
+  // Hero-specific 768px render first, then the generic -768.webp sibling
+  // that build/responsive-images.js creates for content images.
+  const base = jpgUrl.replace(/\.jpg$/, '');
+  for (const candidate of [`${base}-mobile.webp`, `${base}-768.webp`]) {
+    const rel = candidate.startsWith('/') ? candidate.slice(1) : candidate;
+    if (fs.existsSync(path.join(DIST, rel))) return candidate;
+  }
+  return null;
 }
 
 function processFile(filePath) {
@@ -56,7 +60,21 @@ function processFile(filePath) {
     const webpRelPath = webpUrl.startsWith('/') ? webpUrl.slice(1) : webpUrl;
     const webpAbsPath = path.join(DIST, webpRelPath);
 
-    if (!fs.existsSync(webpAbsPath)) continue;
+    if (!fs.existsSync(webpAbsPath)) {
+      // No desktop WebP twin. Keep the inline JPG for desktop and only swap in
+      // the 768px variant on phones — !important is required because the
+      // inline style would otherwise win over this rule.
+      const mobileOnly = mobileWebpExists(jpgUrl);
+      if (!mobileOnly) continue;
+      const cls = `hero-bg-${heroIndex++}`;
+      cssRules.push(
+        `@media (max-width: ${MOBILE_BREAKPOINT}) { .${cls} { background-image: url('${mobileOnly}') !important; } }`
+      );
+      const attrs = bg.attrs.replace(/(class="[^"]*)/, `$1 ${cls}`);
+      html = html.replace(bg.fullMatch, `<div${attrs}>`);
+      changed = true;
+      continue;
+    }
 
     const className = `hero-bg-${heroIndex}`;
     heroIndex++;

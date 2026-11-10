@@ -93,9 +93,14 @@ async function optimizeHeroes() {
     return { webpFixed: 0, jpgFixed: 0 };
   }
 
+  // Only heroes a page actually renders as a hero background — see the note
+  // in build/hero-mobile.js.
+  const { collectImageRefs } = require('./utils');
+  const refs = collectImageRefs();
   const files = fs
     .readdirSync(IMG_DIR)
-    .filter((f) => f.startsWith('hero-') && /\.jpe?g$/i.test(f) && !f.includes('-mobile.'));
+    .filter((f) => f.startsWith('hero-') && /\.jpe?g$/i.test(f) && !f.includes('-mobile.'))
+    .filter((f) => refs.hero.has(f));
 
   let webpFixed = 0;
   let jpgFixed = 0;

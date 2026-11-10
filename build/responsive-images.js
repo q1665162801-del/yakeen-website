@@ -61,7 +61,14 @@ async function processImage(file) {
 async function generateMobileImages() {
   if (!fs.existsSync(IMG_DIR)) return { created: 0, skipped: 0 };
 
-  const files = fs.readdirSync(IMG_DIR).filter(isCandidate);
+  const { collectImageRefs } = require('./utils');
+  const refs = collectImageRefs();
+  const files = fs
+    .readdirSync(IMG_DIR)
+    .filter(isCandidate)
+    // Only build a 768px sibling for images a page can actually request.
+    // og:image-only sources (crawlers fetch them directly) never need one.
+    .filter((f) => refs.img.has(f) || refs.bg.has(f));
   let created = 0;
   let skipped = 0;
   let savedBytes = 0;
