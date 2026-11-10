@@ -114,12 +114,6 @@ body#yakeen-page .section-lead--home-light {
   color: rgba(245, 240, 227, 0.65);
 }
 
-.hero-stat-divider {
-  width: 1px;
-  height: 28px;
-  background: rgba(245, 240, 227, 0.22);
-}
-
 /* 2. Hero bottom gold rule + centered dot */
 .home-hero::after {
   content: '';
@@ -132,12 +126,12 @@ body#yakeen-page .section-lead--home-light {
 }
 
 /* 3+4. Section numbered labels + gold accent line upgrade */
-.home-section-label, .section-label {
+.home-section-label {
   position: relative;
   padding-top: 18px; /* space for the number + line above */
 }
 
-.home-section-label::before, .section-label::before {
+.home-section-label::before {
   content: attr(data-num);
   position: absolute;
   top: -14px;
@@ -152,7 +146,7 @@ body#yakeen-page .section-lead--home-light {
   background: transparent;
 }
 
-.home-section-label::after, .section-label::after {
+.home-section-label::after {
   content: '';
   position: absolute;
   top: 8px;
@@ -165,50 +159,9 @@ body#yakeen-page .section-lead--home-light {
 }
 
 /* Center-aligned section headers also get numbered label */
-.section-header--center .home-section-label::before, .section-header--center .section-label::before {
+.section-header--center .home-section-label::before {
   left: 50%;
   transform: translateX(-50%);
-}
-
-/* 5. Project card tag — gold dot on left */
-.hproj-tag {
-  position: relative;
-  padding-left: 12px;
-}
-
-.hproj-tag::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 6px;
-  height: 6px;
-  background: var(--color-gold-primary);
-  border-radius: 50%;
-}
-
-/* 6. Product card hover — gold bottom border animates in */
-.hp-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.hp-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--color-gold-muted) 0%, var(--color-gold-primary) 50%, var(--color-gold-muted) 100%);
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.hp-card:hover::after {
-  transform: scaleX(1);
 }
 
 /* --- Mobile adjustments for hero stats --- */

@@ -14,7 +14,7 @@
    ============================================================ */
 
 /* Shallow-dip surfaces: cards, tiles, wrappers */
-.card, .component-card, .component-grid, .project-card, .hproj-card, .case-card, .case-study-card, .quality-pillar, .solution-link-card, .solution-link-grid, .cap-card--eng, .cap-card--spec, .capability-card, .capability-grid, .workflow-step, .workflow-grid, .process-grid, .process-num, .why-card, .why-section, .price-breakdown-wrap, .quick-ref-card, .mistake-item, .mistake-list, .resources-grid, .documents-grid, .report-data-grid, .featured-project, .project-category, .project-title, .project-scope, .project-spec-tags, .project-location {
+.card, .component-card, .component-grid, .project-card, .hproj-card, .case-card, .case-study-card, .quality-pillar, .solution-link-card, .solution-link-grid, .cap-card--eng, .cap-card--spec, .capability-card, .capability-grid, .workflow-step, .workflow-grid, .process-grid, .process-num, .why-card, .why-section, .price-breakdown-wrap, .quick-ref-card, .mistake-item, .mistake-list, .resources-grid, .featured-project, .project-category, .project-title, .project-scope, .project-spec-tags, .project-location {
   background: var(--color-bg-elevated);
 }
 

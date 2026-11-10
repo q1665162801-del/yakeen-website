@@ -61,41 +61,6 @@ body#yakeen-page .cert-cta-row {
   flex-wrap: wrap;
 }
 
-body#yakeen-page .cert-link-medium {
-  font-weight: 500;
-}
-
-/* ============================================================
-   CERTIFICATION / STANDARDS / DOCUMENT COMPONENTS
-   ============================================================ */
-
-.doc-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px;
-  background: var(--color-bg-elevated);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  transition: all var(--transition-fast);
-}
-
-.doc-item:hover {
-  border-color: var(--color-border-gold);
-}
-
-.doc-icon {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-}
-
-.doc-text {
-  flex: 1;
-  font-size: 0.9rem;
-  color: var(--color-text-primary);
-  font-weight: 500;
-}
-
 .cert-header {
   padding: 24px;
   background: var(--color-bg-surface);

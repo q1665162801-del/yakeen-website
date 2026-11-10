@@ -267,20 +267,6 @@ body#yakeen-page .hero-actions--center {
   margin: 0 0 16px;
 }
 
-.equip-specs ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 12px;
-}
-
-.equip-specs li {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.6);
-  padding: 4px 0;
-}
-
 @media (max-width: 900px) {
   .equipment-grid { grid-template-columns: 1fr; }
 }
@@ -346,6 +332,12 @@ body#yakeen-page .hero-actions--center {
   border-radius: var(--radius-md);
 }
 
+.deliverable-icon svg {
+  width: 1em;
+  height: 1em;
+  display: block;
+}
+
 .deliverable-text {
   flex: 1;
 }
@@ -403,42 +395,4 @@ body#yakeen-page .hero-actions--center {
   font-weight: 600;
 }
 
-/* --- Report / Case Study --- */
-.report-id {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-gold-primary);
-  margin-bottom: 8px;
-  font-weight: 600;
-}
 
-.report-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--color-border);
-}
-
-.report-meta-item {
-  font-size: 0.8rem;
-  color: var(--color-text-tertiary);
-}
-
-.report-meta-item strong {
-  display: block;
-  color: var(--color-text-secondary);
-  font-weight: 600;
-  margin-bottom: 2px;
-}
-
-.report-sample {
-  padding: 28px;
-  margin-top: 24px;
-  background: var(--color-bg-elevated);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-}

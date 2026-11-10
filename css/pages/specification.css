@@ -332,12 +332,6 @@ body#yakeen-page .spec-confidence-cta {
   color: var(--color-text-primary);
 }
 
-.unit {
-  font-size: 0.85rem;
-  color: var(--color-text-tertiary);
-  margin-left: 2px;
-}
-
 /* ============================================================
    SPEC ADVANTAGE — Advantage icon sizing
    ============================================================ */

@@ -396,7 +396,7 @@ body#yakeen-page .nav--transparent.nav--scrolled .nav-toggle span {
   max-width: 300px;
 }
 
-.footer-col h4, .footer-col h5 {
+body#yakeen-page .footer-col h2 {
   font-size: 12px;
   font-weight: 600;
   color: var(--color-text-heading);
@@ -452,13 +452,13 @@ body#yakeen-page .nav--transparent.nav--scrolled .nav-toggle span {
   font-family: var(--font-sans);
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--color-gold-light);
+  color: var(--color-gold-ink);
   font-size: 1rem;
   text-transform: uppercase;
 }
 
 .footer-copyright {
-  color: var(--color-text-muted);
+  color: var(--color-text-tertiary);
   font-size: 0.75rem;
   font-weight: 400;
 }

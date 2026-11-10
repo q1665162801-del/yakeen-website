@@ -716,6 +716,12 @@ body#yakeen-page .page-hero .hero-stats-row .hero-stat-divider {
   align-self: stretch;
 }
 
+/* Home hero stats sit on a dark surface — taller, dimmer divider */
+.home-hero .hero-stat-divider {
+  height: 28px;
+  background: rgba(245, 240, 227, 0.22);
+}
+
 .hero-stat-row {
   border-top: 1px solid var(--color-border);
   margin-top: 48px;

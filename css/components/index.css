@@ -733,8 +733,6 @@ a:hover .arrow {
 
 @media (max-width: 900px) {
   .resources-grid { grid-template-columns: 1fr; }
-  .documents-grid { grid-template-columns: 1fr; }
-  .report-data-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ============================================================
@@ -917,10 +915,6 @@ a:hover .arrow {
   line-height: 1.6;
   color: var(--color-text-secondary);
   margin: 0;
-}
-
-.process-section {
-  padding: var(--section-padding-y) 0;
 }
 
 .process-grid {
