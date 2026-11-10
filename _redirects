@@ -549,12 +549,12 @@
 /home/                                           /                                        301
 
 # --- Old page paths → new paths (AR) ---
-/ar/about-us/                                    /ar/about/                               301
-/ar/contact-us/                                  /ar/contact/                             301
-/ar/products.html                                /ar/products/                            301
-/ar/news/                                        /ar/blog/                                301
-/ar/articles/                                    /ar/blog/                                301
-/ar/services/                                    /ar/products/                            301
+/ar/about-us/                                    /about-ar                                301
+/ar/contact-us/                                  /contact-ar                              301
+/ar/products.html                                /products/index-ar                       301
+/ar/news/                                        /blog/index-ar                           301
+/ar/articles/                                    /blog/index-ar                           301
+/ar/services/                                    /products/index-ar                       301
 
 # --- Old /en/ prefix → root (previous site used /en/ for English) ---
 /en/                                             /                                        301
@@ -568,7 +568,7 @@
 # --- Old single-product detail URLs (not /products/*) → products index ---
 /product/*                                       /products/                               301
 /en/product/*                                    /products/                               301
-/ar/product/*                                    /ar/products/                            301
+/ar/product/*                                    /products/index-ar                       301
 
 # --- Old blog/article detail URLs → blog index ---
 /blog/post/*                                     /blog/                                   301
