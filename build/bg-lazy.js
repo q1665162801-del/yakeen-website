@@ -1,21 +1,28 @@
 /**
- * build/bg-lazy.js — Mark below-the-fold background images for lazy loading
- * 
- * Adds data-bg attribute + lazy-bg class to elements with inline
- * background-image (non-hero only). data-bg points at the WebP twin when
- * one exists; the inline JPG style stays as the no-JS fallback.
- * 
- * IMPORTANT: The inline style is PRESERVED — this is the no-JS fallback.
- * The lazy-loader JS injects a CSS rule with !important that overrides
- * the inline style when JS is enabled.
- * 
- * Hero elements (page-hero-bg, home-hero-bg, hero-bg-*) are skipped
- * because they're above-the-fold and should load immediately.
+ * build/bg-lazy.js — Lazy-load below-the-fold background images
+ *
+ * Every non-hero card background is written as an inline
+ * `style="background-image: url(...)"`. The previous implementation kept that
+ * declaration as the no-JS fallback, which meant the browser fetched the
+ * full-size original while parsing the page and only then asked the loader for
+ * the WebP / 768px variant — every card image was downloaded twice.
+ *
+ * New approach: the inline declaration is replaced by a generated class whose
+ * rules live in a <noscript><style> block, so
+ *   - no-JS visitors still see the image (and phones get the 768px variant
+ *     through the media query),
+ *   - JS visitors download nothing until the element approaches the viewport,
+ *   - only one file is ever requested per element.
+ *
+ * Hero elements (page-hero-bg, home-hero-bg, hero-bg-*) are skipped — they are
+ * above the fold and must paint immediately.
  */
 
 const fs = require('fs');
 const path = require('path');
 const { DIST } = require('./config');
+
+const MOBILE_BREAKPOINT = '768px';
 
 // Classes that should NOT be lazy-loaded (hero / above-the-fold)
 const SKIP_CLASSES = ['page-hero-bg', 'home-hero-bg', 'hero-bg-'];
@@ -25,18 +32,19 @@ function shouldSkip(classAttr) {
   return SKIP_CLASSES.some(cls => classAttr.includes(cls));
 }
 
+function resolveAgainstPage(candidate, filePath) {
+  return candidate.startsWith('/')
+    ? path.join(DIST, candidate.slice(1))
+    : path.resolve(path.dirname(filePath), candidate);
+}
+
 /**
  * Return the WebP twin URL for a JPG background, or null if it doesn't exist.
- * The inline style keeps the JPG (no-JS fallback); only data-bg is switched,
- * so the browser never downloads the JPG when JS runs.
  */
 function webpTwin(bgUrl, filePath) {
   if (/\.webp$/i.test(bgUrl)) return null;
-  const candidate = bgUrl.replace(/\.(jpg|jpeg)$/i, '.webp');
-  const absPath = candidate.startsWith('/')
-    ? path.join(DIST, candidate.slice(1))
-    : path.resolve(path.dirname(filePath), candidate);
-  return fs.existsSync(absPath) ? candidate : null;
+  const candidate = bgUrl.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+  return fs.existsSync(resolveAgainstPage(candidate, filePath)) ? candidate : null;
 }
 
 /**
@@ -48,18 +56,16 @@ function mobileTwin(bgUrl, filePath) {
   const base = bgUrl.replace(/\.(jpg|jpeg|png|webp)$/i, '');
   if (/-(mobile|768|480)$/i.test(base)) return null;
   const candidate = `${base}-768.webp`;
-  const absPath = candidate.startsWith('/')
-    ? path.join(DIST, candidate.slice(1))
-    : path.resolve(path.dirname(filePath), candidate);
-  return fs.existsSync(absPath) ? candidate : null;
+  return fs.existsSync(resolveAgainstPage(candidate, filePath)) ? candidate : null;
 }
 
 function processFile(filePath) {
   let html = fs.readFileSync(filePath, 'utf8');
   let count = 0;
+  const rules = [];
 
-  // Match elements with inline background-image (jpg or webp)
-  const re = /<([a-zA-Z0-9]+)([^>]*\sstyle="[^"]*background-image:\s*url\(['"]?([^'")]+\.(?:jpg|webp))['"]?\)[^"]*"[^>]*)>/gi;
+  // Elements carrying an inline background-image (jpg / png / webp)
+  const re = /<([a-zA-Z0-9]+)([^>]*\sstyle="[^"]*background-image:\s*url\(['"]?([^'")]+\.(?:jpg|jpeg|png|webp))['"]?\)[^>]*"[^>]*)>/gi;
 
   let m;
   while ((m = re.exec(html)) !== null) {
@@ -68,44 +74,51 @@ function processFile(filePath) {
     const bgUrl = m[3];
     const fullMatch = m[0];
 
-    // Extract class attribute
     const classMatch = attrs.match(/class="([^"]*)"/);
     const classAttr = classMatch ? classMatch[1] : '';
 
-    // Skip hero elements
+    // Skip hero elements — above the fold, must load immediately
     if (shouldSkip(classAttr)) continue;
 
-    // Build new attrs: add lazy-bg class + data-bg attribute
-    // (inline style stays for no-JS fallback)
-    let newAttrs = attrs;
+    const desktopUrl = webpTwin(bgUrl, filePath) || bgUrl;
+    const mobileUrl = mobileTwin(desktopUrl, filePath);
 
-    // Add lazy-bg class
+    const cls = `bg-img-${count}`;
+    count++;
+
+    let newAttrs = attrs;
     if (classMatch) {
-      newAttrs = newAttrs.replace(/class="([^"]*)"/, `class="$1 lazy-bg"`);
+      newAttrs = newAttrs.replace(/class="([^"]*)"/, `class="$1 lazy-bg ${cls}"`);
     } else {
-      newAttrs = ` class="lazy-bg"${newAttrs}`;
+      newAttrs = ` class="lazy-bg ${cls}"${newAttrs}`;
     }
 
-    // Add data-bg attribute — prefer the WebP twin when it exists.
-    // The inline JPG style above stays as the no-JS fallback, so only JS
-    // clients (which can decode WebP) ever request the WebP file.
-    const lazyUrl = webpTwin(bgUrl, filePath) || bgUrl;
-    newAttrs = newAttrs + ` data-bg="${lazyUrl}"`;
+    // Drop only the background-image declaration; any other inline style stays.
+    newAttrs = newAttrs
+      .replace(/background-image:\s*url\(['"]?[^'")]+['"]?\)\s*;?\s*/, '')
+      .replace(/style="\s*"/, '');
 
-    // Phone-sized variant, applied by the lazy loader when the viewport is
-    // ≤768px. Falls back to data-bg on wider screens.
-    const mobileUrl = mobileTwin(lazyUrl, filePath);
-    if (mobileUrl) newAttrs = newAttrs + ` data-bg-mobile="${mobileUrl}"`;
+    newAttrs += ` data-bg="${desktopUrl}"`;
+    if (mobileUrl) newAttrs += ` data-bg-mobile="${mobileUrl}"`;
+
+    let rule = `.${cls}{background-image:url('${desktopUrl}')}`;
+    if (mobileUrl) {
+      rule += `@media (max-width:${MOBILE_BREAKPOINT}){.${cls}{background-image:url('${mobileUrl}')}}`;
+    }
+    rules.push(rule);
 
     const newTag = `<${tag}${newAttrs}>`;
     html = html.substring(0, m.index) + newTag + html.substring(m.index + fullMatch.length);
-    
-    // Adjust regex lastIndex for the replacement
     re.lastIndex = m.index + newTag.length;
-    count++;
   }
 
   if (count === 0) return 0;
+
+  // The class rules are the no-JS fallback. JS visitors never fetch them: the
+  // loader writes the URL inline only once the element is near the viewport.
+  if (rules.length) {
+    html = html.replace('</head>', `  <noscript><style data-build-bg="1">${rules.join('')}</style></noscript>\n</head>`);
+  }
 
   fs.writeFileSync(filePath, html, 'utf8');
   return count;

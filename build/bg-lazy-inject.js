@@ -6,9 +6,10 @@
  * 2. Sets up IntersectionObserver to load background images on approach
  * 
  * How it works without !important conflicts:
- * - Initially: inline style has the JPG background (no-JS fallback)
- * - JS runs: reads data-bg, preloads the image, then REPLACES the inline
- *   style.backgroundImage with the correct URL. No !important needed.
+ * - build/bg-lazy.js already removed the inline background-image; the no-JS
+ *   fallback lives in a <noscript><style> block instead.
+ * - JS runs: reads data-bg, preloads the image, then writes it into the
+ *   element's inline style. One file requested, one time.
  * - The "hidden" state uses a wrapper approach: we add a class that sets
  *   opacity:0, then remove it when loaded.
  * 
@@ -42,8 +43,15 @@ const LAZY_LOADER_JS = `
 
   // Lazy load with IntersectionObserver (500px pre-fetch margin)
   if(!('IntersectionObserver'in window)){
-    // No IO support — show all immediately (keep inline style, just add is-loaded)
-    document.querySelectorAll('.lazy-bg').forEach(function(el){el.classList.add('is-loaded')});
+    // No IO support — load everything now, picking the phone variant when it applies
+    document.querySelectorAll('.lazy-bg').forEach(function(el){
+      var src=el.dataset.bg;
+      if(src&&el.dataset.bgMobile&&window.matchMedia('(max-width: 768px)').matches){
+        src=el.dataset.bgMobile;
+      }
+      if(src) el.style.backgroundImage='url('+resolveUrl(el,src)+')';
+      el.classList.add('is-loaded');
+    });
     return;
   }
   var io=new IntersectionObserver(function(entries){

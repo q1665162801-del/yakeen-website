@@ -41,25 +41,6 @@ function mobileWebpExists(jpgUrl) {
   return null;
 }
 
-/**
- * Bento card backgrounds: `.hp-card-bg` divs carry the image in an inline
- * `style="background-image: url(...)"`. build/bg-lazy.js adds data-bg-mobile
- * for them, but the inline declaration still makes the browser fetch the
- * 1600px original on phones before the lazy loader ever runs — the fallback
- * is downloaded first and the mobile 768px variant is downloaded second.
- * Moving the URL into a media-queried CSS rule removes the double download
- * and lets the phone pick the small file without any JS.
- */
-function findCardBgImages(html) {
-  const re = /<div([^>]*class="[^"]*\bhp-card-bg\b[^"]*"[^>]*style="[^"]*background-image:\s*url\(['"]?([^'")]+\.(?:webp|jpe?g))['"]?\)[^"]*"[^>]*)>/gi;
-  const results = [];
-  let m;
-  while ((m = re.exec(html)) !== null) {
-    results.push({ fullMatch: m[0], attrs: m[1], url: m[2] });
-  }
-  return results;
-}
-
 function processFile(filePath) {
   let html = fs.readFileSync(filePath, 'utf8');
   let changed = false;
@@ -125,31 +106,6 @@ function processFile(filePath) {
       firstHeroMobileWebp = mobileUrl;
     }
   }
-
-  // Bento card backgrounds — same treatment, but no preload: they are all
-  // below the hero and must not compete with the LCP image.
-  findCardBgImages(html).forEach((bg, i) => {
-    const mobileUrl = mobileWebpExists(bg.url);
-    // No 768px variant means the inline style is already the smallest file we
-    // have; leave it alone so no-JS visitors still see the image.
-    if (!mobileUrl) return;
-
-    const desktopUrl = /\.jpe?g$/i.test(bg.url)
-      ? bg.url.replace(/\.jpe?g$/i, '.webp')
-      : bg.url;
-    const cls = `bento-bg-${i}`;
-    cssRules.push(
-      `.${cls} { background-image: url('${desktopUrl}'); }\n` +
-      `@media (max-width: ${MOBILE_BREAKPOINT}) { .${cls} { background-image: url('${mobileUrl}'); } }`
-    );
-
-    const newAttrs = bg.attrs
-      .replace(/(class="[^"]*)/, `$1 ${cls}`)
-      .replace(/background-image:\s*url\(['"]?[^'")]+['"]?\)\s*;?\s*/, '')
-      .replace(/style="\s*"/, '');
-    html = html.replace(bg.fullMatch, `<div${newAttrs}>`);
-    changed = true;
-  });
 
   if (!changed) return false;
 
