@@ -195,3 +195,9 @@ body#yakeen-page .faq-cta-buttons {
     padding: 22px 20px;
   }
 }
+
+/* --- FAQ embedded in product pages --- */
+
+body#yakeen-page .product-faq-section .faq-grid {
+  margin-top: 40px;
+}
