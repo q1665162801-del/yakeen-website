@@ -29,8 +29,11 @@ body#yakeen-page .section-lead--home-light {
 
 .testimonial-section {
   padding: var(--section-padding-y) 0;
-  background: var(--color-bg-canvas);
+  background:
+    radial-gradient(130% 80% at 50% 0%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 62%),
+    var(--color-bg-canvas);
 }
+
 
 /* ============================================================
    36. PRIMARY UTILITY

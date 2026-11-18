@@ -1556,7 +1556,7 @@
   gap: 0;
   margin-top: 48px;
   counter-reset: wgcc-counter;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-border-gold-strong);
 }
 
 .wgcc-card {
@@ -1565,7 +1565,7 @@
   border-bottom: 1px solid var(--color-border);
   border-radius: 0;
   padding: 36px 28px 36px 0;
-  transition: none;
+  transition: border-color 180ms ease, transform 180ms ease, background-color 180ms ease;
   display: flex;
   gap: 24px;
   align-items: flex-start;
@@ -1575,7 +1575,7 @@
 
 .wgcc-card:nth-child(odd) {
   padding-right: 28px;
-  border-right: 1px solid var(--color-border);
+  border-inline-end: 1px solid var(--color-border-gold);
 }
 
 .wgcc-card:nth-child(even) {
@@ -1584,9 +1584,21 @@
 }
 
 .wgcc-card:hover {
-  border-color: var(--color-border);
-  transform: none;
-  box-shadow: none;
+  border-color: var(--color-border-gold-strong);
+  border-bottom-width: 2px;
+  transform: translateY(-2px);
+  background: var(--color-bg-accent);
+}
+
+/* Touch devices don't need persistent hover states. */
+@media (hover: none) {
+  .wgcc-card:hover,
+  .wgcc-card:active {
+    border-color: inherit;
+    border-bottom-width: 1px;
+    transform: none;
+    background: none;
+  }
 }
 
 .wgcc-card--wide {
@@ -1600,14 +1612,38 @@
 .wgcc-card::before {
   content: counter(wgcc-counter, decimal-leading-zero);
   font-family: var(--font-display);
-  font-size: 3rem;
+  font-size: 2.75rem;
   font-weight: 300;
-  color: var(--color-gold-primary);
+  color: var(--color-gold-text);
   line-height: 0.9;
   letter-spacing: -0.02em;
+  font-variant-numeric: lining-nums tabular-nums;
   flex-shrink: 0;
   padding-top: 0;
-  opacity: 0.9;
+}
+
+/* Lead item — the compliance claim specifiers screen for first. Gives the
+   list a focal point and a tonal block against the sand canvas. */
+.wgcc-card--lead {
+  grid-column: 1 / -1;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-gold);
+  border-top: 0;
+  border-inline-start: 3px solid var(--color-gold-primary);
+  padding: 40px 36px;
+}
+
+.wgcc-card--lead::before {
+  font-size: 3.5rem;
+  color: var(--color-gold-primary);
+}
+
+.wgcc-card--lead h3 {
+  font-size: 1.35rem;
+}
+
+.wgcc-card--lead p {
+  font-size: 0.95rem;
 }
 
 .wgcc-card h3 {
@@ -1632,12 +1668,18 @@
   .why-gcc-grid { grid-template-columns: 1fr; }
   /* Single column: the 3-up flex row (number | title | body) must stack,
      otherwise the title column is squeezed to a few pixels and wraps per letter. */
-  .wgcc-card {
-    padding: 28px 0 !important;
-    border-right: none !important;
-    border-left: none !important;
+  .wgcc-card,
+  .wgcc-card:nth-child(odd),
+  .wgcc-card:nth-child(even) {
+    padding: 28px 0;
     flex-direction: column;
     gap: 6px;
+  }
+  .wgcc-card:not(.wgcc-card--lead) {
+    border-inline: none;
+  }
+  .wgcc-card.wgcc-card--lead {
+    padding: 28px 20px;
   }
   .wgcc-card::before { font-size: 2.25rem; line-height: 1; }
   .wgcc-card--wide { grid-column: span 1; }
