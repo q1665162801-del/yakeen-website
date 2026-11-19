@@ -127,6 +127,15 @@ The information in this file is the current, authoritative description of Yakeen
 - [FAQ](https://www.yakeenlighting.com/faq): frequently asked questions
 - [Contact](https://www.yakeenlighting.com/contact): contact details and enquiry form
 
+### Custom lighting guides (full site)
+
+- [Custom Downlight Guide](https://www.yakeenlighting.com/blog/custom-downlight-guide.html)
+- [Custom Linear Lighting Guide](https://www.yakeenlighting.com/blog/custom-linear-lighting-guide.html)
+- [Custom Track Lighting Guide](https://www.yakeenlighting.com/blog/custom-track-lighting-guide.html)
+- [Custom Wall and Step Lighting Guide](https://www.yakeenlighting.com/blog/custom-wall-and-step-lighting-guide.html)
+- [Custom Surface Ceiling Lighting Guide](https://www.yakeenlighting.com/blog/custom-surface-ceiling-lighting-guide.html)
+- [Custom Order Scope Guide](https://www.yakeenlighting.com/blog/custom-order-scope-guide.html)
+
 ## GCC market pages
 
 - [Saudi Arabia](https://www.yakeenlighting.com/markets/saudi-arabia)

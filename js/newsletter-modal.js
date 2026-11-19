@@ -13,7 +13,19 @@
   var backdrop;
   var shown = false;
 
+  function isMobile() {
+    if (typeof window !== 'undefined' && window.innerWidth < 768) return true;
+    if (typeof navigator !== 'undefined') {
+      var ua = navigator.userAgent || '';
+      if (/Android|iPhone|iPad|webOS|BlackBerry/i.test(ua)) return true;
+    }
+    return false;
+  }
+
   function init() {
+    // Skip auto-trigger on mobile
+    if (isMobile()) return;
+
     // Only run on pages that have the modal markup
     backdrop = document.querySelector('.nl-modal-backdrop');
     if (!backdrop) return;
