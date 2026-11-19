@@ -18,4 +18,17 @@
       }
     }
   </script>
+  <script>
+    // Defer manifest until after LCP — it pulls from a third origin (or same
+    // origin but the browser may assign it a high priority). We need the hero,
+    // CSS, and JS to load first for a fast first paint.
+    window.addEventListener('load', function() {
+      var link = document.createElement('link');
+      link.rel = 'manifest';
+      link.href = document.querySelector('link[rel="canonical"]')
+        ? new URL('/manifest.webmanifest', document.querySelector('link[rel="canonical"]').href).href
+        : '/manifest.webmanifest';
+      document.head.appendChild(link);
+    });
+  </script>
   <script src="{{base}}js/{{jsFile}}" defer></script>

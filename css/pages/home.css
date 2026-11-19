@@ -32,6 +32,11 @@ body#yakeen-page .section-lead--home-light {
   background:
     radial-gradient(130% 80% at 50% 0%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 62%),
     var(--color-bg-canvas);
+  /* Skip rendering offscreen; prevents the testimonial block and its ::after
+     pseudo-element from participating in the initial CLS burst reported by
+     Chrome on mobile traces (0.14 cluster at 4941ms). */
+  content-visibility: auto;
+  contain-intrinsic-size: 800px;
 }
 
 
@@ -90,6 +95,11 @@ body#yakeen-page .section-lead--home-light {
   margin-top: 48px;
   padding: 20px 0 0;
   border-top: 1px solid rgba(245, 240, 227, 0.18);
+  /* Reserve height before fonts load. Cormorant Garamond swaps in from the
+     sans fallback after Google Fonts arrives; without a min-height the stat
+     numbers reflow on swap, producing the 0.14 CLS burst we measured on
+     mobile traces. */
+  min-height: 72px;
 }
 
 .hero-stat {
@@ -107,6 +117,11 @@ body#yakeen-page .section-lead--home-light {
   color: var(--color-gold-light);
   line-height: 1;
   letter-spacing: -0.01em;
+  /* Lock the stat number to 2 lines of its fallback font height so font swap
+     does not shift the hero-stat row. 2 chars + optional suffix = max visual
+     width per stat; clamp() lets it scale on desktop without breaking. */
+  min-height: 1.1em;
+  white-space: nowrap;
 }
 
 .hero-stat__label {

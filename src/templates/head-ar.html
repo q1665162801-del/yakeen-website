@@ -272,7 +272,7 @@
   <meta name="color-scheme" content="light only">
   <meta name="format-detection" content="telephone=no">
   <meta name="apple-mobile-web-app-title" content="Yakeen Lighting">
-  <link rel="manifest" href="{{base}}manifest.webmanifest">
+  <!-- Manifest injected by JS after LCP so it never competes for critical bandwidth -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   
@@ -281,10 +281,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Preload hero image: set per-page via front-matter -->
   {{heroPreload}}
-  <!-- Preload critical font weights for fast first paint -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'">
+  <!-- Arabic head only needs Inter 400/500/600 — the Tajawal Arabic face is
+       injected via {{arabicFont}} below. 300/700/800/900 are never used. -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
   <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
   </noscript>
   
   <link rel="stylesheet" href="{{base}}css/{{cssFile}}">
