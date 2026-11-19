@@ -619,7 +619,9 @@ body#yakeen-page .footer-col h2 {
   }
 
   .footer {
-    padding: 56px 0 32px;
+    /* extra bottom room so the fixed WhatsApp button (50px + 20px offset)
+       never sits on top of the copyright line or CTA copy */
+    padding: 56px 0 96px;
   }
 
   .footer-grid {
