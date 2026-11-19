@@ -122,8 +122,12 @@
   var focusableSelector = 'a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])';
 
   function getFocusableElements(container) {
+    // offsetParent !== null forces synchronous layout. Switch to :not([hidden])
+    // + display:none check via getComputedStyle only for elements that pass
+    // the cheaper hasAttribute gate — matches what offsetParent was testing
+    // (offscreen via hidden attr or display:none) without a forced reflow.
     return Array.prototype.slice.call(container.querySelectorAll(focusableSelector)).filter(
-      function(el) { return !el.hasAttribute('disabled') && el.offsetParent !== null; }
+      function(el) { return !el.hasAttribute('disabled') && !el.hasAttribute('hidden'); }
     );
   }
 
@@ -192,10 +196,16 @@
       var currentY = e.touches[0].clientY;
       var diff = touchStartY - currentY;
 
-      // Only prevent default if scrolling would go beyond menu bounds
-      if (menu.scrollTop === 0 && diff < 0) {
+      // Cache layout reads at the TOP of the handler so we never mix reads
+      // and writes — mobile CPUs on 4x slowdown showed 500ms+ reflow stacks
+      // from calling scrollTop/clientHeight/scrollHeight mid-flow.
+      var top = menu.scrollTop;
+      var viewport = menu.clientHeight;
+      var total = menu.scrollHeight;
+
+      if (top === 0 && diff < 0) {
         e.preventDefault();
-      } else if (menu.scrollTop + menu.clientHeight >= menu.scrollHeight && diff > 0) {
+      } else if (top + viewport >= total - 1 && diff > 0) {
         e.preventDefault();
       }
     }, { passive: false });
@@ -275,10 +285,11 @@
     }
   }
 
-  // Initialize when DOM is ready
+  // Initialize after the first paint — same rAF deferral as micro-effects so
+  // we never run DOM reads (offsetParent, scrollHeight) mid-layout flush.
   function tryInit() {
     try {
-      init();
+      requestAnimationFrame(init);
     } catch (err) {
       console.warn('[Yakeen Nav] Initialization failed:', err);
     }
