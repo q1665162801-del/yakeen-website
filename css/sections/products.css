@@ -1573,3 +1573,21 @@ body#yakeen-page .wv-cross .btn--outline:hover {
   margin: 0;
 }
 
+/* ============================================================
+   PRODUCT PAGE RENDER OPTIMIZATION
+   Skip layout/style work for below-fold sections until they near
+   the viewport. <body> carries a page--products-* class
+   (build/page.js autoPageClass), so this is scoped to product
+   detail pages only and never touches the home page or the
+   generic .section rules used across the site.
+
+   contain-intrinsic-size: auto remembers the real rendered height
+   after first paint, so any scrollbar shift is a one-time,
+   minimal event — not recurring CLS. .page-hero is excluded
+   because it is above the fold and must render immediately for LCP.
+   ============================================================ */
+[class*="page--products-"] section:not(.page-hero) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 700px;
+}
+
