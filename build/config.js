@@ -99,7 +99,7 @@ const ROOT_FILES = [
 
 // Analytics — third-party IDs. Empty string = provider disabled, zero bytes shipped.
 const ANALYTICS = {
-  ga4MeasurementId: 'G-3ELMMCWDRJ',       // Google Analytics 4 — e.g. 'G-XXXXXXXXXX'
+  ga4MeasurementId: 'G-1H38J762Z4',       // Google Analytics 4 — GA4 property "Yakeen Lighting" web stream
   clarityProjectId: '',       // Microsoft Clarity — e.g. 'abcdefghij'
   cloudflareBeaconToken: '',  // Cloudflare Web Analytics — beacon token
 };
