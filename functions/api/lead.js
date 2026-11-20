@@ -45,6 +45,11 @@ const LIMITS = {
   page: 300,
   elapsed: 10,
   source: 80,
+  medium: 40,
+  campaign: 120,
+  ref: 120,
+  landing: 200,
+  last_source: 80,
   form_type: 40,
   lang: 5,
 };
@@ -109,7 +114,12 @@ function describe(lead, kind) {
   if (lead.project_type) lines.push('Project type: ' + lead.project_type);
   if (lead.project_location) lines.push('Project location: ' + lead.project_location);
   if (lead.timeline) lines.push('Timeline: ' + lead.timeline);
-  if (lead.source) lines.push('Source: ' + lead.source);
+  if (lead.source) {
+    lines.push('Source: ' + lead.source + (lead.last_source ? ' (last touch: ' + lead.last_source + ')' : ''));
+  }
+  if (lead.campaign) lines.push('Campaign: ' + lead.campaign);
+  if (lead.ref) lines.push('Referrer: ' + lead.ref);
+  if (lead.landing) lines.push('Landing page: ' + lead.landing);
   if (lead.page) lines.push('Sent from: ' + lead.page);
   return lines.join('\n');
 }
@@ -272,6 +282,10 @@ function internalEmail(lead, kind, unverified) {
   if (lead.project_location) lines.push('Location: ' + lead.project_location);
   if (lead.timeline) lines.push('Timeline: ' + lead.timeline);
   if (lead.source) lines.push('Source:   ' + lead.source);
+  if (lead.last_source) lines.push('Last:     ' + lead.last_source);
+  if (lead.campaign) lines.push('Campaign: ' + lead.campaign);
+  if (lead.ref) lines.push('Ref:      ' + lead.ref);
+  if (lead.landing) lines.push('Landing:  ' + lead.landing);
   lines.push('Page:     ' + (lead.page || '—'));
   lines.push('Language: ' + lead.lang);
   if (unverified) {

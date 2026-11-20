@@ -54,6 +54,110 @@
   let turnstileFailed = false;
   const pageLoadedAt = Date.now();
 
+  /* ------------------------------------------------------------
+     ATTRIBUTION — where the visitor actually came from
+
+     Forms used to send only the page path, so every inquiry read
+     "from /contact" whether Google, LinkedIn or a direct visit
+     produced it. This records first-touch (the channel that
+     created the demand) and last-touch (the one that closed it),
+     and carries both on the submission, so the CRM record and the
+     internal alert name the real source.
+
+     Kept in localStorage for 90 days: GCC project cycles run for
+     weeks, and a visitor who first arrived in September often
+     inquires in November.
+     ------------------------------------------------------------ */
+  const ATTR_KEY = 'yk_attr';
+  const ATTR_TTL = 90 * 24 * 3600 * 1000;
+
+  function utmParams() {
+    const out = {};
+    try {
+      const q = new URLSearchParams(window.location.search);
+      ['source', 'medium', 'campaign'].forEach(function (k) {
+        const v = q.get('utm_' + k);
+        if (v) out[k] = v.trim().slice(0, 120);
+      });
+    } catch (e) {}
+    return out;
+  }
+
+  function externalReferrer() {
+    try {
+      if (!document.referrer) return '';
+      const host = new URL(document.referrer).hostname.replace(/^www\./, '');
+      const self = window.location.hostname.replace(/^www\./, '');
+      return host === self ? '' : host;
+    } catch (e) {
+      return '';
+    }
+  }
+
+  // Collapses a visit into a label a salesperson can act on:
+  // "google / organic", "linkedin / social", "direct".
+  function channelOf(v) {
+    if (v.source) return v.source + (v.medium ? ' / ' + v.medium : '');
+    const ref = (v.ref || '').toLowerCase();
+    if (/google\./.test(ref)) return 'google / organic';
+    if (/bing\.|msn\./.test(ref)) return 'bing / organic';
+    if (/linkedin|lnkd\.in/.test(ref)) return 'linkedin / social';
+    if (/facebook|instagram/.test(ref)) return 'facebook / social';
+    if (/chatgpt|openai|perplexity|claude|gemini/.test(ref)) return ref.split('.')[0] + ' / ai';
+    if (ref) return ref + ' / referral';
+    return 'direct';
+  }
+
+  function readAttr() {
+    try {
+      const a = JSON.parse(localStorage.getItem(ATTR_KEY) || 'null');
+      return a && a.ts && Date.now() - a.ts < ATTR_TTL ? a : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function captureAttr() {
+    const now = Date.now();
+    const utm = utmParams();
+    const ref = externalReferrer();
+    const visit = {
+      source: utm.source || '',
+      medium: utm.medium || '',
+      campaign: utm.campaign || '',
+      ref: ref,
+      landing: window.location.pathname,
+    };
+    let stored = readAttr();
+
+    if (!stored) {
+      // First visit we can see — this defines first touch, whatever it is.
+      stored = { ts: now, first: visit, last: visit };
+    } else if (utm.source || ref) {
+      // Only an explicit campaign link or an external referrer rewrites
+      // last touch. Internal navigation must never reset it to "direct".
+      stored.last = visit;
+    }
+    try {
+      localStorage.setItem(ATTR_KEY, JSON.stringify(stored));
+    } catch (e) {}
+    return stored;
+  }
+
+  function attribution() {
+    const a = captureAttr();
+    const firstChannel = channelOf(a.first);
+    const lastChannel = a.last ? channelOf(a.last) : '';
+    return {
+      source: firstChannel.slice(0, 80),
+      medium: (a.first.medium || '').slice(0, 40),
+      campaign: (a.first.campaign || '').slice(0, 120),
+      ref: (a.first.ref || '').slice(0, 120),
+      landing: (a.first.landing || '').slice(0, 200),
+      last_source: (lastChannel && lastChannel !== firstChannel ? lastChannel : '').slice(0, 80),
+    };
+  }
+
   // Matches the kinds /api/lead validates and describes.
   const FEEDBACK = {
     newsletter: { title: 'subscribedTitle', text: 'subscribedText' },
@@ -149,10 +253,17 @@
 
       feedback.className = 'form-feedback';
 
+      const attr = attribution();
       const formData = new FormData(form);
       formData.set('page', window.location.pathname);
       formData.set('lang', document.documentElement.lang || 'en');
       formData.set('elapsed', String(Date.now() - pageLoadedAt));
+      formData.set('source', attr.source);
+      formData.set('medium', attr.medium);
+      formData.set('campaign', attr.campaign);
+      formData.set('ref', attr.ref);
+      formData.set('landing', attr.landing);
+      formData.set('last_source', attr.last_source);
 
       // Wait up to 2.5s for the security check; if it never produces a token
       // (blocked script, very slow network), submit without one — the server
