@@ -444,6 +444,10 @@
 /blog/retail-track-lighting-guide.html         /blog/retail-lighting-design                         301
 /blog/retail-track-lighting-guide              /blog/retail-lighting-design                         301
 /blog/retail-track-lighting-guide/             /blog/retail-lighting-design                         301
+/blog/saber-registration-guide-led-lighting.html /blog/saber-registration-guide                      301
+/blog/saber-registration-guide-led-lighting    /blog/saber-registration-guide                       301
+/blog/saber-registration-guide-led-lighting/   /blog/saber-registration-guide                       301
+/blog/g-mark-certification                     /blog/g-mark-certification-guide                     301
 /blog/lighting-budget-estimation-guide.html    /blog/                                               301
 
 # --- 杂项旧 URL ---
@@ -582,3 +586,20 @@
 # --- Old Decap CMS paths → homepage (prevent 404s) ---
 /admin/*                                         /                                        301
 /admin                                           /                                        301
+
+# ============================================================
+# Phase 9 — Content consolidation (thin pages merged into guides)
+# 资源页与低曝光文章正文已并入主指南，旧 URL 永久跳转
+# ============================================================
+
+# DIALux calculation guide → merged into blog article
+/resources/dialux-lighting-calculation-guide.html /blog/lighting-calculations-dialux            301
+/resources/dialux-lighting-calculation-guide      /blog/lighting-calculations-dialux            301
+
+# SASO 2902 compliance checklist → merged into complete guide
+/resources/saso-2902-compliance-checklist.html    /blog/saso-2902-complete-guide                301
+/resources/saso-2902-compliance-checklist         /blog/saso-2902-complete-guide                301
+
+# SABER common errors → merged into registration guide
+/blog/saber-common-errors.html                    /blog/saber-registration-guide                301
+/blog/saber-common-errors                         /blog/saber-registration-guide                301

@@ -17,7 +17,7 @@ dateModified: "2026-10-13"
         <span class="article-dot">&middot;</span>
         <span class="article-category">Saudi / GCC</span>
         <span class="article-dot">&middot;</span>
-        <span class="article-read-time">8 min read</span>
+        <span class="article-read-time">13 min read</span>
       </div>
       <h1 class="article-title">SABER Registration for Lighting Products: Step-by-Step</h1>
       <p class="article-subtitle">How the SABER platform works, what PCoC and SCoC actually mean, and how to avoid certification delays on Saudi projects.</p>
@@ -38,9 +38,9 @@ dateModified: "2026-10-13"
           <li><a href="#step-by-step">Step-by-step SABER registration process</a></li>
           <li><a href="#documents-needed">Documents you'll need</a></li>
           <li><a href="#timeline">How long does SABER registration take?</a></li>
-          <li><a href="#common-problems">Common SABER problems and delays</a></li>
           <li><a href="#saber-vs-saso">SABER vs. SASO IECEE</a></li>
           <li><a href="#tips">Tips for smooth SABER clearance</a></li>
+          <li><a href="#common-problems">Common SABER errors and how to fix them</a></li>
         </ul>
       </aside>
 
@@ -188,34 +188,6 @@ dateModified: "2026-10-13"
 
 <p>These are real-world timelines based on our experience with projects in Riyadh (الرياض) and Jeddah (جدة). The SABER platform itself is generally fast — most delays come from the human review step at the certification body or from incomplete submissions.</p>
 
-<h2 id="common-problems">Common SABER problems and delays</h2>
-
-<p>We have seen shipments delayed for weeks due to avoidable SABER issues. Here are the most frequent ones:</p>
-
-<h3>1. Starting too late</h3>
-
-<p>The most common mistake. Teams wait until the product is ready to ship before starting SABER registration. If any issue comes up during review — and something usually does — the shipment sits at the port while the problem gets resolved. Start PCoC registration as soon as the product specification is finalized.</p>
-
-<h3>2. Incomplete documentation</h3>
-
-<p>Submitting a CB certificate without the test report. Or the test report is in Chinese. Or the Arabic label photo is blurry. Every missing or deficient document adds days to the process as the certification body sends it back for correction. Review your documents against the checklist before you upload.</p>
-
-<h3>3. Model number mismatch</h3>
-
-<p>The model number on the CB report does not exactly match the model number you are registering. Sometimes it is a suffix difference (e.g., "DL-100" vs "DL-100-WW"). Sometimes it is a completely different numbering system. The certification body will flag this and you will need to provide a letter of equivalence from the manufacturer.</p>
-
-<h3>4. Wrong product category</h3>
-
-<p>Selecting the wrong product category on the SABER platform can route your application to the wrong certification body or trigger requirements that do not apply to your product. Take the time to find the correct HS code and SABER product category. If you are unsure, ask the certification body before you submit.</p>
-
-<h3>5. Energy efficiency not registered</h3>
-
-<p>SASO IECEE safety certification is in place, but the energy efficiency registration is missing or expired. The certification body will not issue a PCoC without both. Energy efficiency registration is a separate process — don't assume it is included with the safety certification.</p>
-
-<h3>6. Certificate holder mismatch</h3>
-
-<p>The SABER account is registered to Company A (the importer), but the SASO IECEE certificate is in the name of Company B (the overseas manufacturer). This is normal, but the relationship must be documented. You may need a letter of authorization or a distribution agreement showing the connection.</p>
-
 <h2 id="saber-vs-saso">SABER vs. SASO IECEE</h2>
 
 <p>SABER and SASO IECEE are related but not the same thing. Here is how they fit together:</p>
@@ -241,6 +213,66 @@ dateModified: "2026-10-13"
   <li><strong>Verify SCoC is issued before shipment arrives.</strong> Do not assume it is automatic. Log into SABER and confirm the SCoC status before the ship docks. If there is a problem, you want to catch it while the ship is still at sea.</li>
   <li><strong>Work with suppliers who know SABER.</strong> If your lighting supplier has experience with the Saudi market, they will already have PCoCs for their products and can provide the documentation you need without delay. If they do not, you will be teaching them the process at your project's expense.</li>
 </ol>
+
+<h2 id="common-problems">Common SABER errors and how to fix them</h2>
+
+<p>Most rejections are not exotic. They come from a small set of document and scope problems that repeat across projects. Each item below gives the cause and the fastest legitimate fix.</p>
+
+<h3>1. Model number does not match exactly</h3>
+
+<p><strong>Why it happens:</strong> the datasheet, the test report, and the certificate each use a slightly different version of the model name — "DL-20W-30K" against "DL20W3000K". SABER matches character strings, not product families.</p>
+
+<p><strong>How to fix it:</strong> copy the model number from the certificate and paste it into the platform. Amending a test report takes weeks; correcting the application takes minutes.</p>
+
+<h3>2. Test report from a laboratory outside the IECEE CB scheme</h3>
+
+<p><strong>Why it happens:</strong> ISO 17025 accreditation is not sufficient. SASO accepts reports from laboratories accredited for the relevant standard under the IECEE CB scheme, and reports from other laboratories are refused however professional they look.</p>
+
+<p><strong>How to fix it:</strong> retest, or ask an accredited laboratory whether it can issue a CB report by converting the existing test data with supplementary testing. There is no paperwork shortcut.</p>
+
+<h3>3. Saudi national differences not covered</h3>
+
+<p><strong>Why it happens:</strong> a CB report issued against the base IEC standard may not address the Saudi deviations — 230V/60Hz supply, plug type, Arabic marking, and the local efficiency thresholds.</p>
+
+<p><strong>How to fix it:</strong> obtain a national differences addendum from the issuing laboratory. When commissioning future testing, specify the Saudi deviations at the outset.</p>
+
+<h3>4. Arabic marking rejected</h3>
+
+<p><strong>Why it happens:</strong> labels are English-only, or the Arabic covers the brand but not the technical values, or the terms are machine-translated. A label on the carton alone is not enough.</p>
+
+<p><strong>How to fix it:</strong> have the label text reviewed by a native Arabic speaker with lighting knowledge — "لومن" for lumens, "واط" for watts, "جهد مقدر" for rated voltage. Confirm the marking is on the product itself and durable enough to survive installation.</p>
+
+<h3>5. Energy efficiency registration missing</h3>
+
+<p><strong>Why it happens:</strong> safety certification and energy efficiency registration are separate processes handled through different Saudi channels. A product can hold valid SASO IECEE recognition and still have no efficiency registration.</p>
+
+<p><strong>How to fix it:</strong> submit the photometric data for efficacy, power factor, and standby power, then wait for the efficiency class to be assigned. Run this in parallel with the safety work rather than after it.</p>
+
+<h3>6. Certificate holder is not the importer</h3>
+
+<p><strong>Why it happens:</strong> the certificate is held by one company and the SABER account belongs to another. Both can be legitimate, but the relationship has to be documented.</p>
+
+<p><strong>How to fix it:</strong> obtain an authorization letter on company letterhead, naming the products and the importer covered. A formal certificate transfer is the alternative, but it takes weeks.</p>
+
+<h3>7. HS code misclassified</h3>
+
+<p><strong>Why it happens:</strong> lighting products span several headings — 9405 for luminaires, 8539 for lamps, 8504 for drivers — and the wrong subheading applies the wrong requirements and the wrong certification body.</p>
+
+<p><strong>How to fix it:</strong> correct the classification before submitting. If customs has already flagged the shipment, be ready to provide a written classification rationale through your broker.</p>
+
+<h3>8. Certificates expired or about to expire</h3>
+
+<p><strong>Why it happens:</strong> suppliers keep selling while renewal is "in process". Renewal can involve a factory audit or retesting and may take months, and there is no grace period in SABER.</p>
+
+<p><strong>How to fix it:</strong> check expiry dates on every certificate before ordering. If a certificate expires within six months of the planned shipment, confirm the renewal timeline in writing or specify an alternative product.</p>
+
+<h3>9. Variants beyond the certified scope</h3>
+
+<p><strong>Why it happens:</strong> a product family is treated as if one certificate covers every wattage, beam angle, and colour temperature. Grouping rules are narrower than most manufacturers assume, and SABER checks the exact model.</p>
+
+<p><strong>How to fix it:</strong> read the scope on the certificate and the test report. If the variant is not listed, either certify it or order only the variants that are covered.</p>
+
+<p>When a rejection does arrive, read the stated reason before responding and be realistic about the timeline: a document correction is measured in days, an efficiency registration in weeks, and a retest longer still. That delay almost always costs more than verifying compliance before the order is placed.</p>
 
 <p>At Yakeen, all our Saudi-market products are pre-registered on SABER with active PCoCs. When you place an order with us, we handle the SCoC application for your shipment as part of our standard process. You do not need to chase certificates or figure out the platform — we take care of it so your fixtures clear customs on schedule.</p>
 

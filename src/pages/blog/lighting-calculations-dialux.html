@@ -17,7 +17,7 @@ dateModified: "2026-05-25"
         <span class="article-dot">&middot;</span>
         <span class="article-category">Specification</span>
         <span class="article-dot">&middot;</span>
-        <span class="article-read-time">7 min read</span>
+        <span class="article-read-time">13 min read</span>
       </div>
       <h1 class="article-title">DIALux Calculations: How to Verify Your Lighting Design</h1>
       <p class="article-subtitle">Why lighting calculations are essential, what they tell you, and how to ensure the results match reality on site.</p>
@@ -33,10 +33,14 @@ dateModified: "2026-05-25"
         <h4>In this article</h4>
         <ul>
     <li><a href="#why-matters">Why lighting calculations matter</a></li>
+    <li><a href="#workflow">A DIALux evo workflow that holds up</a></li>
     <li><a href="#what-calculates">What DIALux calculates</a></li>
+    <li><a href="#placement">Fixture placement by space type</a></li>
     <li><a href="#results">Understanding calculation results</a></li>
     <li><a href="#metrics">Key metrics and what they mean</a></li>
+    <li><a href="#false-color">Reading false color maps</a></li>
     <li><a href="#mistakes">Common mistakes in calculations</a></li>
+    <li><a href="#reporting">Presenting results to clients</a></li>
     <li><a href="#support">How Yakeen supports calculation work</a></li>
   </ul>
       </aside>
@@ -52,6 +56,23 @@ dateModified: "2026-05-25"
 
 <p>The alternative &mdash; guessing &mdash; leads to under-lit spaces, over-lit spaces, glare, hot spots, shadow patterns, and expensive rework after installation. Calculations done correctly prevent all of this.</p>
 
+<h2 id="workflow">A DIALux evo workflow that holds up</h2>
+
+<p>A calculation is only as good as the model behind it. These are the steps that decide whether a report survives review or collapses the first time someone tests the assumptions:</p>
+
+<ol>
+  <li><strong>Start from the architect's model.</strong> Import the DWG, DXF, or IFC file rather than tracing dimensions by hand. Manual tracing is where room sizes quietly drift by 100&ndash;200 mm, and that error propagates into every lux value in the report.</li>
+  <li><strong>Model rooms, not boxes.</strong> Include bulkheads, beams, columns, raised floors, mezzanines, and double-height voids. A flat slab ceiling produces a light distribution that does not exist on site.</li>
+  <li><strong>Assign real surface materials.</strong> Take reflectances from the finishes schedule &mdash; painted plasterboard, timber veneer, stone, carpet &mdash; instead of leaving software defaults in place.</li>
+  <li><strong>Define the working plane per space.</strong> 0.75 m for desks, 0.85 m for retail display, 0 m for circulation, and the relevant shelf height for racking. One plane across an entire project produces averages that mean nothing.</li>
+  <li><strong>Set the maintenance factor deliberately.</strong> Agree it with the client or consultant &mdash; typically 0.8 for clean interiors, 0.7 for dusty or high-ceiling spaces, lower for exposed industrial environments.</li>
+  <li><strong>Choose a sensible calculation grid.</strong> 0.25&ndash;0.5 m spacing for task areas, coarser for circulation. Very fine grids slow iteration without changing the design decision.</li>
+  <li><strong>Place fixtures from photometric files.</strong> Use the manufacturer's IES or LDT files at the correct output and beam angle. Generic "similar" luminaires are one of the most common sources of optimism in a report.</li>
+  <li><strong>Run the calculation, then look at the map.</strong> Do not jump straight to the summary table. The false color view shows scallops, dark corners, and wall-washing gaps that the average conceals.</li>
+  <li><strong>Iterate on placement before output.</strong> Moving a row of downlights 300 mm usually fixes a uniformity problem faster and more cheaply than specifying a higher-output fixture.</li>
+  <li><strong>Export and archive the project file.</strong> Keep the DIALux model alongside the report so revisions can be traced. A PDF alone cannot be re-run when the ceiling changes.</li>
+</ol>
+
 <h2 id="what-calculates">What DIALux calculates</h2>
 
 <p>DIALux is capable of far more than just average lux levels. A comprehensive calculation can include:</p>
@@ -66,6 +87,30 @@ dateModified: "2026-05-25"
   <li><strong>Energy calculation.</strong> Power density (W/m&sup2;) and annual energy use.</li>
   <li><strong>Renderings and visualizations.</strong> Photorealistic previews of how the space will look.</li>
 </ul>
+
+<h2 id="placement">Fixture placement by space type</h2>
+
+<p>Layout rules change with the task. These are starting points that survive contact with a real project, not rigid formulas.</p>
+
+<h3>Offices and workplaces</h3>
+
+<p>Align fixtures parallel to the main sightline and keep rows consistent with the ceiling grid and partitioning. Design to the worst desk rather than the average desk &mdash; the person sitting in a gap between rows is the one who complains. Coordinate positions with sprinklers, diffusers, and smoke detectors before the layout is frozen.</p>
+
+<h3>Retail</h3>
+
+<p>Build the scheme in layers: ambient for orientation, accent for merchandise, and feature lighting for focal displays. Accent-to-ambient ratios of roughly 3:1 to 5:1 give depth without turning the ceiling into a starfield. Design for vertical illuminance on the display face, not only horizontal illuminance on the floor.</p>
+
+<h3>Hospitality and residential</h3>
+
+<p>Design for layers and scenes rather than a single uniform grid. Downlights placed tight to a wall produce scallops on the wall instead of light on people; pull them 300&ndash;500 mm off the wall unless a deliberate grazing effect is intended. Keep bed and seating positions out of the direct beam of ceiling fixtures.</p>
+
+<h3>Circulation and back-of-house</h3>
+
+<p>Corridors, stairs, and service areas need even, low-level light with no dark thresholds. Wall-mounted or continuous linear solutions usually outperform a sparse grid of downlights here, and they make the uniformity check simpler.</p>
+
+<h3>Facades and landscape</h3>
+
+<p>Exterior work depends on aiming more than on spacing. Set mounting distances and aiming angles from the elevation, check spill light at the boundary, and confirm that the specified beam angle and accessories will deliver the intended effect at the installed distance.</p>
 
 <h2 id="results">Understanding calculation results</h2>
 
@@ -134,6 +179,18 @@ dateModified: "2026-05-25"
   <li>UGR 25+ &mdash; High glare (generally unacceptable for prolonged occupancy)</li>
 </ul>
 
+<h2 id="false-color">Reading false color maps</h2>
+
+<p>The false color map is the most useful output in the report and the one most often skipped. A few habits make it readable:</p>
+
+<ul>
+  <li><strong>Lock the scale across options.</strong> If each scheme is plotted on its own auto-scale, a darker design can look identical to a brighter one. Fix the minimum and maximum before comparing.</li>
+  <li><strong>Look for bands and scallops.</strong> Regular stripes mean the spacing is wrong for the mounting height and beam angle; scallops on walls mean fixtures sit too close to the surface.</li>
+  <li><strong>Check the edges and thresholds.</strong> Doorways, corners, and stairs are where uniformity fails and where the eye notices it first.</li>
+  <li><strong>Compare the plan with the elevation.</strong> A plan can look even while vertical surfaces &mdash; where people actually look &mdash; are under-lit.</li>
+  <li><strong>Read the numbers behind the colour.</strong> Export the grid values at the worst point; the colour scale is a visual aid, not evidence.</li>
+</ul>
+
 <h2 id="mistakes">Common mistakes in calculations</h2>
 
 <p>Even experienced professionals make these mistakes. Always check:</p>
@@ -146,7 +203,24 @@ dateModified: "2026-05-25"
   <li><strong>Ignoring daylight.</strong> For spaces with windows, daylight often provides most of the light during the day. Electric light calculations should consider both day and nighttime conditions.</li>
   <li><strong>Forgetting about reflected glare.</strong> Light reflecting off computer screens, glossy floors, and other surfaces is as much of a problem as direct glare.</li>
   <li><strong>Single point calculation only.</strong> Always look at the full false color map, not just the average value. A good average can hide very uneven distribution.</li>
+  <li><strong>Working plane at the wrong height.</strong> A calculation set to 0.85 m for an office, or 0 m for a reception desk, produces numbers that cannot be compared with the target or with other spaces in the same report.</li>
+  <li><strong>Photometric data for the wrong variant.</strong> A fixture tested at 4000 K and 40 W is not the product being supplied at 3000 K and 30 W. Use the IES or LDT file that matches the exact configuration on the schedule.</li>
+  <li><strong>Accessories left out of the model.</strong> Louvres, honeycomb, anti-glare films, and diffusers reduce output and change distribution. If they are specified, they must be in the photometric file used for the calculation.</li>
 </ol>
+
+<h2 id="reporting">Presenting results to clients</h2>
+
+<p>Few clients will open the DIALux file. What they see is the summary, and the summary is where a good calculation either earns trust or gets questioned.</p>
+
+<ul>
+  <li><strong>Lead with a one-page summary.</strong> For each space: target illuminance, achieved average, minimum, uniformity, power density, and the luminaire schedule reference.</li>
+  <li><strong>State the assumptions.</strong> Reflectances, maintenance factor, working plane height, and calculation grid. Reviewers check these first.</li>
+  <li><strong>Show one image per space.</strong> A false color plan at a locked scale, plus a rendering when the client is deciding on appearance rather than performance.</li>
+  <li><strong>Flag where the design is tight.</strong> If a value sits close to the target, say so and explain what would erode it &mdash; dirty luminaires, aged LEDs, or a change of finish.</li>
+  <li><strong>Attach the luminaire schedule.</strong> Quantities, wattages, beam angles, and colour temperatures per type, so the calculation can be reconciled with the specification.</li>
+</ul>
+
+<p>A report built this way answers the review questions before they are asked, and it survives value engineering without losing the design intent.</p>
 
 <h2 id="support">How Yakeen supports calculation work</h2>
 
