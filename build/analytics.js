@@ -14,7 +14,16 @@ function ga4Snippet(id) {
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', '${id}');
+    (function(){
+      var cfg = {};
+      try {
+        var q = location.search;
+        if (/[?&]internal=1(&|$)/.test(q)) localStorage.setItem('ya_internal', '1');
+        else if (/[?&]internal=0(&|$)/.test(q)) localStorage.removeItem('ya_internal');
+        if (localStorage.getItem('ya_internal') === '1') cfg.traffic_type = 'internal';
+      } catch (e) {}
+      gtag('config', '${id}', cfg);
+    })();
   </script>`;
 }
 
