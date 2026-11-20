@@ -72,6 +72,8 @@ dateModified: "2026-04-20"
 
 <p>When a product company provides an IES file, you have the raw data you need to calculate exactly how the fixture will perform in any space.</p>
 
+<p>Read in plain terms, photometric data is the record of what a finished luminaire actually does with its light, and an IES file is the machine-readable container for that record. Start with the header: it gives the luminaire description, the number of lamps, lumens per lamp, the photometric type (almost always Type C for architectural products) and the test laboratory. Below the header sit the angle tables &mdash; vertical angles from nadir outwards &mdash; and the candela value measured at each angle. Divide the centre-beam candela by the square of the mounting distance for a rough illuminance figure, or load the file into DIALux and let the software integrate the distribution. A file with no test date, no laboratory name and no candela table is not photometric data; it is a description.</p>
+
 <h2 id="parameters">Key photometric parameters explained</h2>
 
 <p>Beyond the raw data in the IES file, several derived parameters are commonly used in specification.</p>
